@@ -1,0 +1,109 @@
+/* @link https://utopia.fyi/type/calculator?c=360,12,1.414,1800,18,1.414,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+:root {
+  --step--2: clamp(0.3751rem, 0.3282rem + 0.2084vw, 0.5627rem);
+  --step--1: clamp(0.5304rem, 0.4641rem + 0.2947vw, 0.7956rem);
+  --step-0: clamp(0.75rem, 0.6563rem + 0.4167vw, 1.125rem);
+  --step-1: clamp(1.0605rem, 0.9279rem + 0.5892vw, 1.5908rem);
+  --step-2: clamp(1.4995rem, 1.3121rem + 0.8331vw, 2.2493rem);
+  --step-3: clamp(2.1204rem, 1.8553rem + 1.178vw, 3.1805rem);
+  --step-4: clamp(2.9982rem, 2.6234rem + 1.6657vw, 4.4973rem);
+  --step-5: clamp(4.2394rem, 3.7095rem + 2.3552vw, 6.3592rem);
+}
+
+
+/* @link https://utopia.fyi/type/calculator?c=320,14,1.25,1800,30,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+:root {
+  --heading-step--2: clamp(0.56rem, 0.4216rem + 0.6919vw, 1.2rem);
+  --heading-step--1: clamp(0.7rem, 0.527rem + 0.8649vw, 1.5rem);
+  --heading-step-0: clamp(0.875rem, 0.6588rem + 1.0811vw, 1.875rem);
+  --heading-step-1: clamp(1.0938rem, 0.8235rem + 1.3514vw, 2.3438rem);
+  --xx-large: clamp(1.3672rem, 1.0293rem + 1.6892vw, 2.9297rem);
+  --xxx-large: clamp(1.709rem, 1.2867rem + 2.1115vw, 3.6621rem);
+  --heading-step-4: clamp(2.1362rem, 1.6084rem + 2.6394vw, 4.5776rem);
+  --xxxxx-large: clamp(2.6703rem, 2.0104rem + 3.2992vw, 5.722rem);
+}
+
+
+/* @link https://utopia.fyi/space/calculator?c=320,14,1.25,1800,18,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+:root {
+  --space-3xs: clamp(0.25rem, 0.2365rem + 0.0676vw, 0.3125rem);
+  --space-2xs: clamp(0.4375rem, 0.4105rem + 0.1351vw, 0.5625rem);
+  --space-xs: clamp(0.6875rem, 0.647rem + 0.2027vw, 0.875rem);
+  --space-s: clamp(0.875rem, 0.8209rem + 0.2703vw, 1.125rem);
+  --space-m: clamp(1.3125rem, 1.2314rem + 0.4054vw, 1.6875rem);
+  --space-l: clamp(1.75rem, 1.6419rem + 0.5405vw, 2.25rem);
+  --space-xl: clamp(2.625rem, 2.4628rem + 0.8108vw, 3.375rem);
+  --space-2xl: clamp(3.5rem, 3.2838rem + 1.0811vw, 4.5rem);
+  --space-3xl: clamp(5.25rem, 4.9257rem + 1.6216vw, 6.75rem);
+
+  /* One-up pairs */
+  --space-3xs-2xs: clamp(0.25rem, 0.1824rem + 0.3378vw, 0.5625rem);
+  --space-2xs-xs: clamp(0.4375rem, 0.3429rem + 0.473vw, 0.875rem);
+  --space-xs-s: clamp(0.6875rem, 0.5929rem + 0.473vw, 1.125rem);
+  --space-s-m: clamp(0.875rem, 0.6993rem + 0.8784vw, 1.6875rem);
+  --space-m-l: clamp(1.3125rem, 1.1098rem + 1.0135vw, 2.25rem);
+  --space-l-xl: clamp(1.75rem, 1.3986rem + 1.7568vw, 3.375rem);
+  --space-xl-2xl: clamp(2.625rem, 2.2196rem + 2.027vw, 4.5rem);
+  --space-2xl-3xl: clamp(3.5rem, 2.7973rem + 3.5135vw, 6.75rem);
+
+  /* Custom pairs */
+  --space-s-l: clamp(0.875rem, 0.5777rem + 1.4865vw, 2.25rem);
+}
+
+/* @link https://utopia.fyi/grid/calculator?c=320,12,1.25,1800,20,1.333,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+:root {
+  --grid-max-width: 77.50rem;
+  --grid-gutter: var(--space-s-l, clamp(0.75rem, 0.1413rem + 3.0435vw, 2.5rem));
+  --grid-columns: 12;
+}
+
+.u-container {
+  max-width: var(--grid-max-width);
+  padding-inline: var(--grid-gutter);
+  margin-inline: auto;
+}
+
+.u-grid {
+  display: grid;
+  gap: var(--grid-gutter);
+}
+
+:root {
+
+  /* musical scale ratios */
+  --minor-second: calc(16/15);
+  --major-second: calc(9/8);
+  --minor-third: calc(6/5);
+  --major-third: calc(5/4);
+  --perfect-fourth: calc(4/3);
+  --augmented-fourth: sqrt(2);
+  --perfect-fifth: calc(3/2);
+  --major-sixth: calc(5/3);
+
+  /* the ‘golden’ ratio */
+  --golden-ratio: calc((1 + sqrt(5)) / 2);
+
+	/* choose your scale ratio */
+  --scale: var(--major-third);
+
+  @container style(--inline-size-xs: var(--breakpoint-xs)) {
+		--scale: var(--golden-ratio);
+	}
+
+	/* create the typographic scale! */
+	--xx-small: calc(1rem * pow(var(--scale), -0.5));
+	--x-small: calc(1rem * pow(var(--scale), -0.25));
+	--small: calc(1rem * pow(var(--scale), -0.125));
+  --medium: 1rem;
+  --large: calc(1rem * pow(var(--scale), 1));
+  --x-large: calc(1rem * pow(var(--scale), 2));
+  --xx-large: calc(1rem * pow(var(--scale), 3));
+  --xxx-large: calc(1rem * pow(var(--scale), 4));
+  --xxxx-large: calc(1rem * pow(var(--scale), 5));
+  --xxxxx-large: calc(1rem * pow(var(--scale), 6));
+
+}

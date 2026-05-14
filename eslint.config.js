@@ -1,0 +1,145 @@
+import css from '@eslint/css'
+import eslintComments from '@eslint-community/eslint-plugin-eslint-comments'
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
+import eslintConfigPrettier from 'eslint-config-prettier/flat'
+import {fileURLToPath} from 'url'
+import {FlatCompat} from '@eslint/eslintrc'
+import globals from 'globals'
+import js from '@eslint/js'
+import path from 'path'
+import sonarjs from 'eslint-plugin-sonarjs'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+const compat = new FlatCompat({baseDirectory: __dirname})
+
+export default [
+  {
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        $: true,
+        AOS: true,
+        bootstrap: true,
+        Buffer: true,
+        CATCH_UNHANDLED: true,
+        dataLayer: true,
+        DEBUG: true,
+        ENV: true,
+        g_recaptcha_token: true,
+        GLightbox: true,
+        Granim: true,
+        imagesLoaded: true,
+        initSwiperWithCustomPagination: true,
+        Isotope: true,
+        Modernizr: true,
+        module: true,
+        PagefindUI: true,
+        Promise: true,
+        Quill: true,
+        require: true,
+        Set: true,
+        sitekey: true,
+        SW_DEBUG: true,
+        Swiper: true,
+        Uint32Array: true,
+      },
+      parserOptions: {
+        ecmaVersion: 2025,
+        impliedStrict: true,
+        sourceType: 'module',
+      },
+    },
+  },
+  {files: ['./*.js ./src/**/*.js']},
+  {
+    ignores: [
+      '_todo/',
+      '**/assets/',
+      '**/node_modules/',
+      '**/pagefind/',
+      '**/coverage/',
+      '**/_junk/',
+      '**/_holding/',
+      '**/examples/',
+      '**/vendor/',
+      '**/.moon/',
+      '**/.config/',
+      '**/.report-templates/',
+      '**/docs/',
+      'dist/',
+    ],
+  },
+  js.configs.recommended,
+  {plugins: {eslintComments: eslintComments.configs.recommended}},
+  sonarjs.configs.recommended,
+  ...compat.extends('eslint-config-standard'),
+  {
+    rules: {
+      'accessor-pairs': 'off',
+      'block-scoped-var': 'error',
+      'callback-return': 'error',
+      'comma-dangle': ['off'],
+      complexity: ['error', 10],
+      'default-case': 'error',
+      'dot-notation': 'error',
+      'for-direction': 'error',
+      'max-len': ['error', {code: 80, ignoreUrls: true}],
+      'no-await-in-loop': 'error',
+      'no-case-declarations': 'error',
+      'no-else-return': 'error',
+      'no-eq-null': 'error',
+      'no-implicit-coercion': 'error',
+      'no-implicit-globals': ['error', {lexicalBindings: true}],
+      'no-inner-declarations': ['error', 'functions'],
+      'no-loop-func': 'error',
+      'no-mixed-spaces-and-tabs': 'error',
+      'no-regex-spaces': 'error',
+      'no-return-await': 'error',
+      'no-shadow': 'error',
+      'no-unexpected-multiline': 'error',
+      'no-unused-expressions': 'error',
+      'no-use-before-define': 'error',
+      'no-useless-concat': 'error',
+      'no-useless-return': 'error',
+      'no-warning-comments': 'error',
+      'prefer-promise-reject-errors': 'error',
+      'require-await': 'error',
+      'sonarjs/assertions-in-tests': 'off',
+      'sonarjs/chai-determinate-assertion': 'off',
+      'sonarjs/cognitive-complexity': ['error', 5],
+      'sonarjs/disabled-timeout': 'off',
+      'sonarjs/no-commented-code': 'off',
+      'sonarjs/no-dead-store': 'off',
+      'sonarjs/no-gratuitous-expressions': 'off',
+      'sonarjs/no-ignored-exceptions': 'warn',
+      'sonarjs/no-redundant-assignments': 'off',
+      'sonarjs/no-same-argument-assert': 'off',
+      'sonarjs/pseudo-random': 'warn',
+      'sonarjs/os-command': 'warn',
+      'sonarjs/public-static-readonly': 'warn',
+      'sonarjs/slow-regex': 'warn',
+      'sonarjs/unused-import': 'off',
+      'space-before-function-paren': ['off'],
+      camelcase: 'off',
+      curly: ['error', 'all'],
+      eqeqeq: ['error', 'always'],
+      radix: 'error',
+      yoda: ['error', 'never'],
+    },
+  },
+  {
+    files: ['src/css/**/*.css'],
+    language: 'css/css',
+    plugins: {css},
+    rules: {
+      'css/no-duplicate-imports': 'error',
+      'css/use-baseline': ['warn', {available: 'widely'}],
+      'no-irregular-whitespace': ['off'],
+      'no-useless-assignment': ['off'],
+    },
+  },
+  eslintConfigPrettier,
+  eslintPluginPrettierRecommended,
+]

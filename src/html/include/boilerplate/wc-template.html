@@ -1,0 +1,46 @@
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ᴠɪʀᴛᴜᴀʟSᴛʏʟᴇ.ᴜs━━
+@preserve Please retain this header in any/all use(s) of this code.
+@copyright 2026 Rob Wood <https://virtualstyle.us>
+@license GPL-3.0-or-later GNU General Public License v3.0 or later
+
+@project <component-project>
+@file <wc-name>.html
+@description Web component description.
+@author Rob Wood <https://rob.wood.pub><https://github.com/vswood>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<template id="<wc-name>" shadowrootmode="open">
+
+  <style webc:keep>
+    /* Component styles go here */
+  </style>
+
+  <!-- Component markup goes here -->
+
+  <script type="module" webc:keep>
+
+    class WCName extends HTMLElement {
+
+      constructor() {
+        super()
+      }
+
+      connectedCallback() {
+        this.addEventListener('click', this)
+      }
+
+      disconnectedCallback() {
+        this.removeEventListener('click', this)
+      }
+
+      handleEvent(e) {
+        this[`${event.type}Handler`](event)
+      }
+
+      clickHandler() {
+      }
+    }
+
+    customElements.define('<wc-name>', WCName)
+  </script>
+
+</template>

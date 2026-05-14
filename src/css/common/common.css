@@ -1,0 +1,229 @@
+:root {
+  /* overflow-x: clip; */
+  scrollbar-gutter: stable;
+}
+
+/*
+* {
+  overflow-x: clip;
+}
+  */
+
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  /* overflow-x: clip; */
+  overflow-y: clip;
+}
+
+.text-pad {
+  padding-left: 2ch;
+  padding-right: 2ch;
+}
+
+body {
+  color: var(--text-color);
+  /* background-color: var(--background-color); */
+  /* background-color: var(--background-color); */
+  background: var(--gradient-bg-1);
+  background-blend-mode: lighten;
+  font-family: var(--text-font);
+  font-size: clamp(1rem, var(--medium, 17px + 0.24vw), 1.25rem);
+}
+
+.container {
+  padding: 0 1ch;
+}
+
+#body-wrapper {
+	height: 100%;
+	position: relative;
+  transition: transform 0.35s ease-in-out;
+  transform-style: preserve-3d;
+  perspective: 1500px;
+  #main-grid {
+    transform-style: preserve-3d;
+    transition: transform 0.35s ease-in-out, width 0.35s ease-in-out;
+    position: fixed;
+    left: 0;
+    z-index: 99;
+    height: 100vh;
+    width: 100vw;
+    perspective: 1000px;
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      background: rgba(0,0,0,0.2);
+      content: '';
+      opacity: 0;
+      transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+    }
+    main {
+      grid-area: content;
+      padding: 0;
+      height: 100vh;
+      max-width: 100vw;
+      overflow-y: scroll;
+    }
+  }
+}
+
+@container style(--inline-size-xs: var(--breakpoint-xs)) {
+  #main-grid {
+    display: grid;
+    grid-template-columns: 300px auto;
+    grid-template-areas:
+      'header content';
+  }
+}
+
+section {
+	scroll-snap-align: start;
+  color: var(--text-color);
+  background: var(--gradient-bg);
+  background-blend-mode: multiply;
+  padding: 3lh 0 3lh 0;
+
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  /*h2:not(.main-heading):not(.resume-heading) {
+    font-family: var(--heading-font);
+    font-size: var(--xx-large);
+    margin: 1lh 2ch;
+    text-align: center;
+  }
+
+  h3 {
+    font-family: var(--heading-font);
+    font-size: var(--heading-step--1);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 1lh 0 0.5lh 0;
+
+    @container style(--inline-size-xs: var(--breakpoint-xs)) {
+
+    }
+  }
+
+  p {
+    max-width: 80ch;
+    margin: 0 1ch 1lh 1ch;
+    padding-left: 0.5ch;
+    font-weight: 400;
+    line-height: 1.2;
+    color: color-mix(in srgb, var(--text-color), transparent 10%);
+    text-align: left;
+  }
+
+  p + p {
+    margin: 1lh 1ch;
+  }*/
+
+}
+
+.actions {
+  display: flex;
+  margin-bottom: 1.5lh;
+  margin-top: 2lh;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 3ch;
+  font-size: var(--large);
+
+  a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .btn-primary {
+    padding: 0.5lh 1ch;
+    background: var(--accent-color);
+    color: var(--contrast-color);
+    border-radius: 6px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    border: 1px solid var(--accent-color);
+
+    &:hover {
+      background: color-mix(in srgb, var(--accent-color), black 10%);
+      border-color: color-mix(in srgb, var(--accent-color), black 10%);
+      transform: translateY(-2px);
+    }
+  }
+
+  .btn-secondary {
+    padding: 0.5lh 1ch;
+    background: transparent;
+    color: var(--heading-color);
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    border: 1px solid color-mix(in srgb, var(--accent-color), transparent 30%);
+
+    &:hover {
+      background: transparent;
+      color: var(--accent-color);
+      border-color: var(--accent-color);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Section Titles
+--------------------------------------------------------------*/
+.section-heading-alt {
+  text-align: center;
+  padding: 1rem  0;
+  position: relative;
+  margin-bottom: 4.5rem;
+}
+
+.section-heading-alt h2 {
+  font-size: 32px;
+  font-weight: 300;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.section-heading-alt h2:before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 160px;
+  height: 1px;
+  background: color-mix(in srgb, var(--text-color), transparent 60%);
+  left: 0;
+  right: 0;
+  bottom: 1px;
+  margin: auto;
+}
+
+.section-heading-alt h2::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--accent-color);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.section-heading-alt p {
+  margin-bottom: 0;
+}

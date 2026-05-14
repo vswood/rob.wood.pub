@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+
+  {% include "../include/common/head/meta-info.html" %}
+
+  {% favicons './src/img/icon/icon.svg', appleIconBgColor='#ffffff' %}
+
+  {% include "../include/common/head/fonts.html" %}
+
+  {% include "../include/common/head/style.html"  %}
+
+  {% block head %}{% endblock head %}
+</head>
+
+<body class="index-page">
+  {% include "../include/common/social-icon-sprite.html" %}
+  {% include "../include/common/nav-icon-sprite.html" %}
+  <span class="skip-link-container">
+    <a id="top" class="skip-link" href="#hero">Skip to main content</a>
+  </span>
+
+  <div id="body-wrapper">
+
+
+    <div id="main-grid" class="">
+
+      {% include "../include/common/header.html"  %}
+
+      <main class="main">
+
+        {% block body %}{% endblock body %}
+        {% include "../include/common/footer.html" %}
+
+      </main>
+
+    </div>
+
+    <div class="header-toggle-wrapper">
+      <i class="header-toggle d-xl-none bi bi-list"></i>
+    </div>
+  </div>
+
+  {% include "../include/common/scrolltop.html"  %}
+  {% include "../include/common/preloader.html"  %}
+
+  {% include "../include/common/scripts.html"  %}
+
+  {% block scripts %}{% endblock scripts %}
+
+  <div id="faux-content" class="faux-content"></div>
+</body>
+
+</html>
+

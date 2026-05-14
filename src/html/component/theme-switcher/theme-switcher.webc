@@ -1,0 +1,309 @@
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ᴠɪʀᴛᴜᴀʟSᴛʏʟᴇ.ᴜs━━
+@preserve Please retain this header in any/all use(s) of this code.
+@copyright 2026 Rob Wood <https://virtualstyle.us>
+@license GPL-3.0-or-later GNU General Public License v3.0 or later
+
+@project rob.wood.pub 0.2.0
+@file single-file-theme-switcher.html
+@description Pure CSS dark mode toggle button with animated sun and moon icons created using psuedoelements, backgrounds,and borders, implemented (in the pattern published by kristoferjoseph) as a single file web component, with the animated mode switch button adapted from a jgarrow codepen, under the MIT license, as shown below.
+@see https://gist.github.com/kristoferjoseph/c4e47389ae0f0447db175b914e471628
+@see https://codepen.io/jgarrow/pen/JjKaMVy
+@author Rob Wood <https://rob.wood.pub><https://github.com/vswood>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Copyright (c) 2026 by jgarrow (https://codepen.io/jgarrow/pen/JjKaMVy)
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<template id="theme-switcher" shadowrootmode="open">
+
+  <style webc:keep>
+    :host {
+      color-scheme: light dark;
+      --button-bg: light-dark(#fcfcfc, #1f1f1f);
+      --button-fg: light-dark(#1f1f1f, #fcfcfc);
+      --button-border: light-dark(rgba(31, 31, 31, 0.12), rgba(255, 255, 255, 0.12));
+    }
+
+    :host[data-theme="light"] {
+      color-scheme: light;
+    }
+
+    :host[data-theme="dark"] {
+      color-scheme: dark;
+    }
+    :host {
+      --toggle-duration: 90ms;
+      --toggle-ease: ease;
+    }
+
+    .color-mode-toggle {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      inline-size: 1.75rem;
+      block-size: 1.75rem;
+      margin-inline-start: auto;
+      padding: 0.35rem;
+      background: var(--button-bg);
+      border: 1px solid var(--button-border);
+      border-radius: 999px;
+      color: var(--button-fg);
+      cursor: pointer;
+      transition:
+        color var(--toggle-duration) var(--toggle-ease),
+        background-color var(--toggle-duration) var(--toggle-ease),
+        border-color var(--toggle-duration) var(--toggle-ease),
+        transform var(--toggle-duration) var(--toggle-ease);
+
+      @media screen and (min-width: 18em) {
+        margin-inline-start: 0;
+      }
+
+      .sun,
+      .moon {
+        position: absolute;
+        inline-size: 50%;
+        block-size: 50%;
+        pointer-events: none;
+        opacity: 0;
+        transition:
+          transform 0.3s ease-in,
+          opacity 0.2s ease-in 0.1s;
+      }
+
+      .sun {
+        transform: scale(0.6) rotate(0deg);
+        background: radial-gradient(circle, rgba(0, 0, 0, 0) 50%, var(--button-fg) 50%);
+
+        &.visible {
+          opacity: 1;
+          transform: scale(1) rotate(180deg);
+        }
+
+        &::before {
+          position: absolute;
+          display: block;
+          inline-size: 100%;
+          block-size: 100%;
+          background: radial-gradient(circle, var(--button-fg) 30%, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 50%,var(--button-fg) 50%);
+          content: "";
+          transform: rotate(45deg);
+        }
+      }
+
+      .moon {
+        inset-block-start: 18.75%;
+        inset-inline-start: 12.5%;
+        background-color: rgba(0, 0, 0, 0);
+        border-radius: 50%;
+        box-shadow: 9px 3px 0 0 var(--button-fg);
+        transform: scale(0.3) rotate(65deg);
+
+        &.visible {
+          opacity: 1;
+          pointer-events: auto;
+          transform: scale(1) rotate(0deg);
+
+          .star {
+            opacity: 0.8;
+
+            &.small {
+              opacity: 0.7;
+              transform: scale(0.45) rotate(35deg);
+            }
+          }
+        }
+
+        .star {
+          position: absolute;
+          inset-block-start: 25%;
+          inset-inline-start: 5%;
+          display: block;
+          inline-size: 0;
+          block-size: 0;
+          border-inline: 7px solid rgba(0, 0, 0, 0);
+          border-block-end: 5px solid var(--button-fg);
+          opacity: 0;
+          transform: scale(0.55) rotate(35deg);
+          transition: all 0.2s ease-in 0.4s;
+
+          &::before {
+            position: absolute;
+            inset-block-start: -3px;
+            inset-inline-start: -5px;
+            display: block;
+            inline-size: 0;
+            block-size: 0;
+            border-inline: 3px solid rgba(0, 0, 0, 0);
+            border-block-end: 5px solid var(--button-fg);
+            content: "";
+            transform: rotate(-35deg);
+          }
+
+          &::after {
+            position: absolute;
+            inset-block-start: 0;
+            inset-inline-start: -7px;
+            display: block;
+            inline-size: 0;
+            block-size: 0;
+            border-inline: 7px solid rgba(0, 0, 0, 0);
+            border-block-end: 5px solid var(--button-fg);
+            content: "";
+            transform: rotate(-70deg);
+          }
+
+          &.small {
+            position: relative;
+            inset-block-start: 50%;
+            inset-inline-start: 37.5%;
+            opacity: 0;
+            transform: scale(0.35) rotate(35deg);
+            transition: all 0.2s ease-in 0.45s;
+          }
+        }
+      }
+
+      &:is(:hover, :focus-visible) {
+        background: var(--text);
+        transform: scale(1.1);
+        .sun,
+        .moon {
+          filter: invert();
+        }
+      }
+    }
+
+  </style>
+
+  <button
+    class="color-mode-toggle"
+    type="button"
+    data-theme-toggle
+    aria-label="Toggle color theme"
+  >
+    <div class="sun">
+    </div>
+    <div class="moon visible">
+      <div class="star"></div>
+      <div class="star small"></div>
+    </div>
+  </button>
+
+  <script type="module" webc:keep>
+
+    class ThemeSwitcher extends HTMLElement {
+      #theme
+      #sun
+      #moon
+      #colorPref
+      #storedTheme = false
+
+      constructor() {
+        super()
+        /* const template = document.getElementById('theme-switcher')
+        this.attachShadow({mode: 'open'}).appendChild(
+          template.content.cloneNode(true),
+        ) */
+        this.#colorPref = window.matchMedia('(prefers-color-scheme: dark)')
+        this.#sun = this.shadowRoot.querySelector('.sun')
+        this.#moon = this.shadowRoot.querySelector('.moon')
+        this.checkForManualThemeOverride()
+        if(!this.#storedTheme) {
+          const prefersDark = this.#colorPref.matches
+          this.#theme = prefersDark ? 'dark' : 'light'
+        }
+        if(this.theme !== document.documentElement.dataset.theme) {
+          this.toggleTheme()
+          this.toggleButton()
+        }
+      }
+
+      connectedCallback() {
+        this.addEventListener('click', this)
+        this.#colorPref.addEventListener('change', this)
+        document.addEventListener('di:ready', this.#handleServiceReady)
+        this.dispatchEvent(new CustomEvent('di:request', {
+          bubbles: true,
+          composed: true,
+          detail: {
+            name: 'eventBus',
+          },
+        }))
+      }
+
+      #handleServiceReady(e) {
+        console.log(e)
+      }
+
+      disconnectedCallback() {
+        this.removeEventListener('click', this)
+        this.#colorPref.removeEventListener('change', this)
+      }
+
+      handleEvent(e) {
+        this[`${event.type}Handler`](event)
+      }
+
+      changeHandler() {
+        if (!this.#storedTheme) {
+          const prefersDark = this.#colorPref.matches
+          this.#theme = prefersDark ? 'dark' : 'light'
+          this.toggleTheme()
+          this.toggleButton()
+        }
+      }
+
+      clickHandler() {
+        this.#theme = this.#theme === 'light' ? 'dark' : 'light'
+        this.toggleTheme()
+        this.toggleButton()
+        this.saveThemeSelection()
+      }
+
+      saveThemeSelection() {
+        localStorage.setItem('theme', this.#theme)
+        this.#storedTheme = true
+      }
+
+      checkForManualThemeOverride() {
+        const savedTheme = localStorage.getItem('theme')
+        if(savedTheme !==  null) {
+          this.#theme = savedTheme
+          this.#storedTheme = true
+        }
+      }
+
+      toggleTheme() {
+        document.documentElement.dataset.theme = this.#theme
+      }
+
+      toggleButton() {
+        if (this.#theme === 'dark') {
+          this.#sun.classList.add('visible')
+          this.#moon.classList.remove('visible')
+        } else {
+          this.#sun.classList.remove('visible')
+          this.#moon.classList.add('visible')
+        }
+      }
+
+      get theme() {
+        return this.#theme
+      }
+
+      set theme(value) {
+        this.#theme = value
+      }
+    }
+
+    customElements.define('theme-switcher', ThemeSwitcher)
+  </script>
+
+</template>

@@ -1,0 +1,129 @@
+/*--------------------------------------------------------------
+# Global Header
+--------------------------------------------------------------*/
+:root {
+  --nav-width: 200px;
+}
+
+.menu-wrap {
+	position: absolute;
+	z-index: 1001;
+	width: var(--nav-width);
+	height: 100vh;
+	/* font-size: 1.15em; */
+	transform: translate3d(calc(-1 * var(--nav-width)),0,0);
+	transition: transform 0.4s;
+  transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+}
+
+@container style(--inline-size-xs: var(--breakpoint-xs)) {
+  .menu-wrap {
+    --nav-width: 300px;
+    /*position: fixed;*/
+    grid-area: header;
+    top: 0;
+    left: 0;
+    transform: translate3d(0,0,0);
+    transition: transform 0.8s;
+    transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+  }
+}
+
+header {
+  color: var(--text-color);
+  background: var(--gradient-bg-2);
+  background-blend-mode: darken;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100vh;
+  padding: 0 15px;
+  width: var(--nav-width);
+  transition: transform ease-in-out 0.3s;
+  z-index: 9999999;
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.2);
+    content: '';
+    opacity: 1;
+    /* transition: opacity 0.5s;*/
+  }
+}
+
+.morph-shape {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	right: 0;
+	fill: #1c2737;
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0;
+}
+
+
+
+.sitename {
+  /* font-size: var(--step-0); */
+  font-family: var(--heading-font);
+  text-align: center;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.headline {
+  text-align: center;
+  /* font-size: var(--step--1); */
+  line-height: 1.1;
+  padding: 0;
+  margin-bottom: 1em;
+  span {
+    font-weight: bold;
+  }
+}
+
+.header .profile-img img {
+  margin: 25px auto;
+  display: block;
+  border-radius: 20px;
+  max-width: 120px;
+  border: 8px solid color-mix(in srgb, var(--text-color), transparent 85%);
+}
+
+.header.visible {
+  left: 0;
+}
+
+.header-toggle-wrapper {
+  position:absolute;
+  width:100vw;
+  height:3em;
+}
+
+.header-toggle {
+  color: var(--background-color);
+  background-color: var(--accent-color);
+  /* font-size: 22px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 9px;
+  cursor: pointer;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 9999;
+  transition: 0.3s;
+}
+
+.header-toggle:hover {
+  background-color: color-mix(in srgb, var(--accent-color) 90%, black 15%);
+}

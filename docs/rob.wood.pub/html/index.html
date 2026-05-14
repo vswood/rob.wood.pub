@@ -1,0 +1,1387 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset='utf-8'>
+  <title>@virtualstyle/rob.wood.pub 0.2.0 | Documentation</title>
+  <meta name='description' content='Rob Wood&#39;s professional portfolio website by virtualStyle intelligent systems engineering (virtualstyle.us).'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='assets/bass.css' rel='stylesheet'>
+  <link href='assets/style.css' rel='stylesheet'>
+  <link href='assets/github.css' rel='stylesheet'>
+  <link href='assets/split.css' rel='stylesheet'>
+</head>
+<body class='documentation m0'>
+    <div class='flex'>
+      <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'>@virtualstyle/rob.wood.pub</h3>
+          <div class='mb1'><code>0.2.0</code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block input'
+            spellcheck='false'
+            autocapitalize='off'
+            autocorrect='off'
+            type='text' />
+          <div id='toc'>
+            <ul class='list-reset h5 py1-ul'>
+              
+                
+                <li><a
+                  href='#application-base'
+                  class="h5 bold black caps">
+                  Application Base
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#eventbus'
+                  class=" toggle-sibling">
+                  EventBus
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#eventbuson'
+                        class='regular pre-open'>
+                        #on
+                      </a></li>
+                      
+                      <li><a
+                        href='#eventbusoff'
+                        class='regular pre-open'>
+                        #off
+                      </a></li>
+                      
+                      <li><a
+                        href='#eventbusonce'
+                        class='regular pre-open'>
+                        #once
+                      </a></li>
+                      
+                      <li><a
+                        href='#eventbusemit'
+                        class='regular pre-open'>
+                        #emit
+                      </a></li>
+                      
+                      <li><a
+                        href='#eventbuswaitfor'
+                        class='regular pre-open'>
+                        #waitFor
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#dependencyinjectioncontainer'
+                  class=" toggle-sibling">
+                  DependencyInjectionContainer
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  
+                    <ul class='list-reset py1-ul pl1'>
+                      <li class='h5'><span>Instance members</span></li>
+                      
+                      <li><a
+                        href='#dependencyinjectioncontainereventbus'
+                        class='regular pre-open'>
+                        #eventBus
+                      </a></li>
+                      
+                      <li><a
+                        href='#dependencyinjectioncontainerhas'
+                        class='regular pre-open'>
+                        #has
+                      </a></li>
+                      
+                      <li><a
+                        href='#dependencyinjectioncontainerregister'
+                        class='regular pre-open'>
+                        #register
+                      </a></li>
+                      
+                      <li><a
+                        href='#dependencyinjectioncontainerregisterfactory'
+                        class='regular pre-open'>
+                        #registerFactory
+                      </a></li>
+                      
+                      <li><a
+                        href='#dependencyinjectioncontainerget'
+                        class='regular pre-open'>
+                        #get
+                      </a></li>
+                      
+                      <li><a
+                        href='#dependencyinjectioncontainerresolve'
+                        class='regular pre-open'>
+                        #resolve
+                      </a></li>
+                      
+                    </ul>
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+            </ul>
+          </div>
+          <div class='mt1 h6 quiet'>
+            <a href='https://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
+          </div>
+        </div>
+      </div>
+      <div id='split-right' class='relative overflow-auto height-viewport-100'>
+        
+          
+            <div class='keyline-top-not py2'><section class='py2 clearfix'>
+
+  <h2 id='application-base' class='mt0'>
+    Application Base
+  </h2>
+
+  
+    <h1>virtualStyle Application Base</h1>
+<p>These classes and functions provide the foundation upon which virtualStyle builds its applications.</p>
+
+  
+</section></div>
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='eventbus'>
+      EventBus
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>A lightweight application event bus built on the native <a href="https://developer.mozilla.org/docs/Web/API/EventTarget">EventTarget</a>.</p>
+<p>It exposes a small convenience API for subscribing, emitting, and awaiting
+named events without adding third-party dependencies.</p>
+
+    <div class='pre p1 fill-light mt0'>new EventBus()</div>
+  
+  
+    <p>
+      Extends
+      
+        <a href="https://developer.mozilla.org/docs/Web/API/EventTarget">EventTarget</a>
+      
+    </p>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">import</span> <span class="hljs-title class_">EventBus</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./EventBus.js&#x27;</span>
+
+<span class="hljs-keyword">const</span> eventBus = <span class="hljs-keyword">new</span> <span class="hljs-title class_">EventBus</span>()
+
+<span class="hljs-keyword">const</span> unsubscribe = eventBus.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;user:login&#x27;</span>, <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(event.<span class="hljs-property">detail</span>.<span class="hljs-property">userId</span>)
+})
+
+eventBus.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;user:login&#x27;</span>, {<span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;42&#x27;</span>})
+<span class="hljs-title function_">unsubscribe</span>()</pre>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> eventBus = <span class="hljs-keyword">new</span> <span class="hljs-title class_">EventBus</span>()
+
+eventBus.<span class="hljs-title function_">waitFor</span>(<span class="hljs-string">&#x27;data:ready&#x27;</span>, {<span class="hljs-attr">timeout</span>: <span class="hljs-number">1000</span>})
+  .<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(event.<span class="hljs-property">detail</span>.<span class="hljs-property">items</span>)
+  })
+
+eventBus.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;data:ready&#x27;</span>, {<span class="hljs-attr">items</span>: [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>]})</pre>
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='eventbuson'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>on(type, listener, options?)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Subscribe to an event type.</p>
+<p>Returns an unsubscribe function that removes the listener with the same
+options that were originally used to register it.</p>
+
+    <div class='pre p1 fill-light mt0'>on(type: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, listener: <a href="https://developer.mozilla.org/docs/Web/API/EventListener">EventListener</a>, options: (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a> | AddEventListenerOptions)?): function (): void</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>type</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    The event type to subscribe to.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>listener</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/API/EventListener">EventListener</a>)</code>
+	    The event listener callback.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>options</span> <code class='quiet'>((<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a> | AddEventListenerOptions)?)</code>
+	    Native listener options.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>function (): void</code>:
+        Unsubscribe function.
+
+      
+    
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> unsubscribe = eventBus.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;chat:message&#x27;</span>, <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(event.<span class="hljs-property">detail</span>.<span class="hljs-property">text</span>)
+})
+
+<span class="hljs-title function_">unsubscribe</span>()</pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='eventbusoff'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>off(type, listener, options?)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Remove a previously registered event listener.</p>
+
+    <div class='pre p1 fill-light mt0'>off(type: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, listener: <a href="https://developer.mozilla.org/docs/Web/API/EventListener">EventListener</a>, options: (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a> | EventListenerOptions)?): void</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>type</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    The subscribed event type.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>listener</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/API/EventListener">EventListener</a>)</code>
+	    The original event listener callback.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>options</span> <code class='quiet'>((<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a> | EventListenerOptions)?)</code>
+	    Native listener options.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>void</code>:
+        
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='eventbusonce'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>once(type, listener, options?)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Subscribe to the next occurrence of an event type.</p>
+<p>Returns an unsubscribe function in case the listener should be removed
+before the event occurs.</p>
+
+    <div class='pre p1 fill-light mt0'>once(type: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, listener: <a href="https://developer.mozilla.org/docs/Web/API/EventListener">EventListener</a>, options: (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a> | AddEventListenerOptions)?)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>type</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    The event type to subscribe to.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>listener</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/API/EventListener">EventListener</a>)</code>
+	    The event listener callback.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>options</span> <code class='quiet'>((<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a> | AddEventListenerOptions)?)</code>
+	    Native listener options.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>eventBus.<span class="hljs-title function_">once</span>(<span class="hljs-string">&#x27;dialog:open&#x27;</span>, <span class="hljs-function"><span class="hljs-params">event</span> =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(event.<span class="hljs-property">detail</span>.<span class="hljs-property">id</span>)
+})</pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='eventbusemit'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>emit(type, detail?, options)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Dispatch a <a href="https://developer.mozilla.org/docs/Web/API/CustomEvent/CustomEvent">CustomEvent</a> for the provided event type.</p>
+
+    <div class='pre p1 fill-light mt0'>emit(type: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, detail: any?, options: CustomEventInit): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>type</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    The event type to dispatch.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>detail</span> <code class='quiet'>(any?)</code>
+	    Consumer-defined event payload.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>options</span> <code class='quiet'>(CustomEventInit
+            = <code>{}</code>)</code>
+	    Native custom event options.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
+        The result of 
+<a href="EventTarget#dispatchEvent">EventTarget#dispatchEvent</a>
+.
+
+      
+    
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>eventBus.<span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;toast:show&#x27;</span>, {
+  <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;Saved successfully.&#x27;</span>,
+  <span class="hljs-attr">level</span>: <span class="hljs-string">&#x27;success&#x27;</span>,
+})</pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='eventbuswaitfor'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>waitFor(type, options)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Resolve with the next matching event.</p>
+<p>This is useful when consumers need asynchronous coordination without
+directly coupling components together.</p>
+
+    <div class='pre p1 fill-light mt0'>waitFor(type: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/API/CustomEvent/CustomEvent">CustomEvent</a>></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>type</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    The event type to wait for.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>options</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>
+            = <code>{}</code>)</code>
+	    Wait options.
+
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>options.signal</span> <code class='quiet'>AbortSignal?</code>
+  </td>
+  <td class='break-word'><span>Abort the wait early.
+</span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>options.timeout</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>?</code>
+  </td>
+  <td class='break-word'><span>Reject after the given number of
+milliseconds.
+</span></td>
+</tr>
+
+
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/API/CustomEvent/CustomEvent">CustomEvent</a>></code>:
+        Promise resolving with the received event.
+
+      
+    
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> event = <span class="hljs-keyword">await</span> eventBus.<span class="hljs-title function_">waitFor</span>(<span class="hljs-string">&#x27;profile:loaded&#x27;</span>, {<span class="hljs-attr">timeout</span>: <span class="hljs-number">2000</span>})
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(event.<span class="hljs-property">detail</span>.<span class="hljs-property">profile</span>)</pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='dependencyinjectioncontainer'>
+      DependencyInjectionContainer
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>A small dependency injection container with synchronous and asynchronous
+service resolution.</p>
+
+    <div class='pre p1 fill-light mt0'>new DependencyInjectionContainer(eventBus: <a href="#eventbus">EventBus</a>)</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>eventBus</span> <code class='quiet'>(<a href="#eventbus">EventBus</a>
+            = <code>newEventBus()</code>)</code>
+	    The event bus used for internal
+and consumer-facing dependency events.
+<p>The container always registers an <a href="#eventbus">EventBus</a> instance as the
+<code>eventBus</code> service. Consumers can use it directly or listen for
+<code>di:requested:&#x3C;serviceName></code> events to register services on demand.</p>
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">import</span> <span class="hljs-title class_">DependencyInjectionContainer</span>
+  <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./DependencyInjectionContainer.js&#x27;</span>
+
+<span class="hljs-keyword">const</span> container = <span class="hljs-keyword">new</span> <span class="hljs-title class_">DependencyInjectionContainer</span>()
+
+container.<span class="hljs-title function_">register</span>(<span class="hljs-string">&#x27;config&#x27;</span>, {
+  <span class="hljs-attr">apiBaseUrl</span>: <span class="hljs-string">&#x27;/api&#x27;</span>,
+})
+
+<span class="hljs-keyword">const</span> config = container.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;config&#x27;</span>)
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(config.<span class="hljs-property">apiBaseUrl</span>)</pre>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> container = <span class="hljs-keyword">new</span> <span class="hljs-title class_">DependencyInjectionContainer</span>()
+
+container.<span class="hljs-property">eventBus</span>.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;di:requested:logger&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+  container.<span class="hljs-title function_">register</span>(<span class="hljs-string">&#x27;logger&#x27;</span>, {
+    <span class="hljs-attr">log</span>: <span class="hljs-function"><span class="hljs-params">message</span> =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(message),
+  })
+})
+
+<span class="hljs-keyword">const</span> logger = <span class="hljs-keyword">await</span> container.<span class="hljs-title function_">resolve</span>(<span class="hljs-string">&#x27;logger&#x27;</span>)
+logger.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;ready&#x27;</span>)</pre>
+    
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='dependencyinjectioncontainereventbus'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>eventBus</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Access the container event bus directly.</p>
+
+    <div class='pre p1 fill-light mt0'>eventBus</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="#eventbus">EventBus</a></code>:
+        
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='dependencyinjectioncontainerhas'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>has(name)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Check whether a service or service factory is registered.</p>
+
+    <div class='pre p1 fill-light mt0'>has(name: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>name</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    Service name.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
+        
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='dependencyinjectioncontainerregister'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>register(name, service)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Register an already-created service instance or value.</p>
+<p>Emits <code>di:registered:&#x3C;serviceName></code> after registration.</p>
+
+    <div class='pre p1 fill-light mt0'>register(name: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, service: any): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>name</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    Service name.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>service</span> <code class='quiet'>(any)</code>
+	    Service instance or value.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        The registered service.
+
+      
+    
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">const</span> apiClient = {<span class="hljs-attr">get</span>: <span class="hljs-function"><span class="hljs-params">path</span> =&gt;</span> <span class="hljs-title function_">fetch</span>(path)}
+container.<span class="hljs-title function_">register</span>(<span class="hljs-string">&#x27;apiClient&#x27;</span>, apiClient)</pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='dependencyinjectioncontainerregisterfactory'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>registerFactory(name, factory)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Register a lazy singleton factory.</p>
+<p>The factory runs the first time the service is resolved with <code>get()</code> or
+<code>resolve()</code>. Its return value is cached and emitted as a registered service.</p>
+
+    <div class='pre p1 fill-light mt0'>registerFactory(name: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, factory: any): void</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>name</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    Service name.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>factory</span> <code class='quiet'>(any)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>void</code>:
+        
+      
+    
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>container.<span class="hljs-title function_">registerFactory</span>(<span class="hljs-string">&#x27;settingsStore&#x27;</span>, <span class="hljs-function"><span class="hljs-params">currentContainer</span> =&gt;</span> {
+  <span class="hljs-keyword">const</span> eventBus = currentContainer.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;eventBus&#x27;</span>)
+  <span class="hljs-keyword">return</span> {eventBus}
+})</pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='dependencyinjectioncontainerget'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>get(name)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Resolve a service immediately.</p>
+<p>If the service was registered via <code>registerFactory()</code>, the factory will be
+invoked once and its result cached.</p>
+
+    <div class='pre p1 fill-light mt0'>get(name: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): any</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>name</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    Service name.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        The resolved service.
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='dependencyinjectioncontainerresolve'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>resolve(name, options?)</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Resolve a service asynchronously.</p>
+<p>If the service is not registered yet, the container emits
+<code>di:requested:&#x3C;serviceName></code> and waits for a later
+<code>di:registered:&#x3C;serviceName></code> event.</p>
+
+    <div class='pre p1 fill-light mt0'>resolve(name: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, options: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;any></div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>name</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    Service name.
+
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>options</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>?)</code>
+	    Wait options forwarded to
+
+<a href="#eventbuswaitfor">EventBus#waitFor</a>
+.
+
+          </div>
+          
+          <table class='mt1 mb2 fixed-table h5 col-12'>
+            <colgroup>
+              <col width='30%' />
+              <col width='70%' />
+            </colgroup>
+            <thead>
+              <tr class='bold fill-light'>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class='mt1'>
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>options.signal</span> <code class='quiet'>AbortSignal?</code>
+  </td>
+  <td class='break-word'><span>Abort the wait early.
+</span></td>
+</tr>
+
+
+              
+                <tr>
+  <td class='break-word'><span class='code bold'>options.timeout</span> <code class='quiet'><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>?</code>
+  </td>
+  <td class='break-word'><span>Reject after the given number of
+milliseconds.
+</span></td>
+</tr>
+
+
+              
+            </tbody>
+          </table>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;any></code>:
+        Promise resolving with the service.
+
+      
+    
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Example</div>
+    
+      
+      <pre class='p1 overflow-auto round fill-light'>container.<span class="hljs-property">eventBus</span>.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;di:requested:userStore&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+  container.<span class="hljs-title function_">register</span>(<span class="hljs-string">&#x27;userStore&#x27;</span>, {<span class="hljs-attr">currentUser</span>: <span class="hljs-literal">null</span>})
+})
+
+<span class="hljs-keyword">const</span> userStore = <span class="hljs-keyword">await</span> container.<span class="hljs-title function_">resolve</span>(<span class="hljs-string">&#x27;userStore&#x27;</span>)</pre>
+    
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+      </div>
+    </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/split.js'></script>
+  <script src='assets/site.js'></script>
+</body>
+</html>

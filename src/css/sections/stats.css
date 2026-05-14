@@ -1,0 +1,104 @@
+
+/*--------------------------------------------------------------
+# Stats Section
+--------------------------------------------------------------*/
+.stats {
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3lh;
+    margin-bottom: 4lh;
+    text-align: center;
+
+
+    @container style(--inline-size-xs: var(--breakpoint-xs)) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5lh;
+      margin-bottom: 7.5lh;
+    }
+
+    .stat-item  {
+
+      .stat-number {
+        font-family: var(--heading-font);
+        font-size: var(--xxxxx-large);
+        font-weight: 300;
+        color: var(--heading-color);
+        line-height: 1;
+        margin-bottom: 1lh;
+        letter-spacing: -2px;
+
+        span {
+          display: inline-block;
+        }
+      }
+
+      .stat-label {
+        /* font-size: var(--step-0); */
+        color: var(--text-color);
+        opacity: 0.7;
+        margin: 0;
+        line-height: 1.1;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .achievements-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+
+
+    @container style(--inline-size-xs: var(--breakpoint-xs)) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 60px;
+    }
+
+    .achievement {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      padding: 2.5rem 0 0.5rem 0;
+      border-top: 1px solid color-mix(in srgb, var(--text-color), transparent 90%);
+
+      .achievement-icon {
+        flex-shrink: 0;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: color-mix(in srgb, var(--accent-color), transparent 95%);
+        border-radius: 8px;
+
+        svg {
+          width: 36px;
+          height: 36px;
+        }
+      }
+
+      .achievement-content {
+        h3 {
+          font-family: var(--heading-font);
+          font-size: var(--heading-step-0);
+          font-weight: 600;
+          color: var(--heading-color);
+          margin: 0;
+          margin-bottom: 0.25em;
+          line-height: 1;
+        }
+
+        p {
+          /* font-size: var(--step-0); */
+          color: var(--text-color);
+          opacity: 0.7;
+          padding-top: 0;
+          margin: 0;
+          line-height: 1;
+        }
+      }
+    }
+  }
+}

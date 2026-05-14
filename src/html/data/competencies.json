@@ -1,0 +1,163 @@
+{
+  "topStrengths": [
+    {
+      "name": "Expert Generalist:",
+      "description": "Adaptive/Fast Learner: Masters Complex Domains in Hours, Delivers Solutions in Days.",
+      "iconid": "icon-architect",
+      "impact": [
+        {
+          "name": "High-Traffic Scaling:",
+          "description": "Sustained 7TB/month traffic on constrained legacy infrastructure.",
+          "iconid": "icon-rising-graph"
+        },
+        {
+          "name": "Microservices Migration:",
+          "description": "99% reduction in failures via transition to containerized auto-healing,auto-scaling service clusters on ECS/Fargate.",
+          "iconid": "icon-container-service"
+        },
+        {
+          "name": "Architectural Decoupling:",
+          "description": "Eliminated failures at Netflix by decoupling logic from 3rd party schemas.",
+          "iconid": "icon-disconnect"
+        }
+      ]
+    },
+    {
+      "name": "Resilience Architect:",
+      "description": "Systems Thinker: Turning Brittle Legacy Systems into Scalable Assets.",
+      "iconid": "icon-devops",
+      "impact": [
+        {
+          "name": "AWS Governance & Compliance:",
+          "description": "Established Multi-Account AWS Organization With Centralized Shared Resources and Network Controls, and Least-Privilege Workload Isolation.",
+          "iconid": "icon-cloud-governance"
+        },
+        {
+          "name": "Infrastructure as Code:",
+          "description": "(IaC) 90% reduction in operational complexity and disaster-proofing via CDK and CI/CD.",
+          "iconid": "icon-pipeline"
+        },
+        {
+          "name": "Cost Optimization:",
+          "description": "60% reduction in cloud spend through rightsizing, workload migration, observability and monitoring.",
+          "iconid": "icon-cost-cutting"
+        }
+      ]
+    },
+    {
+      "name": "Systems Redeemer:",
+      "description": "Triaging and Solving Intractable Performance and Data Integrity Bottlenecks.",
+      "iconid": "icon-leadership",
+      "impact": [
+        {
+          "name": "System Triage & Query Optimization:",
+          "description": "Restored Sunrun queries from 400s+ to sub-1s performance.",
+          "iconid": "icon-warning"
+        },
+        {
+          "name": "Data Integrity & ETL Rescue:",
+          "description": "Stabilized broken ingestion flows for a nationwide solar fleet.",
+          "iconid": "icon-data-integrity"
+        },
+        {
+          "name": "Chasing 9s In A Brittle Environment:",
+          "description": "Held on to 4 9s through 7TB data egress monthly on FDOH's acclaimed COVID vaccination website.",
+          "iconid": "icon-uptime"
+        }
+      ]
+    },
+    {
+      "name": "Adaptive Leader:",
+      "description": "Guiding teams & systems through accelerated growth raising capability and quality through a culture of continuous improvement and ownership.",
+      "iconid": "icon-team-leader",
+      "impact": [
+        {
+          "name": "Mentorship:",
+          "description": "Raising team capability through cloud-native best practices and code quality.",
+          "iconid": "icon-mentor"
+        },
+        {
+          "name": "Cross-functional Alignment:",
+          "description": "Bridging the gap between C-suite vision and engineering reality.",
+          "iconid": "icon-executive"
+        },
+        {
+          "name": "Operational Transparency:",
+          "description": "Standardizing CI/CD and GitOps for clear, effortless delivery paths.",
+          "iconid": "icon-cloud-circle"
+        },
+        {
+          "name": "Dx (Developer Experience):",
+          "description": "Eliminating pain points in local dev environments to boost morale and eliminate 100s of lost developer hours.",
+          "iconid": "icon-question-duck"
+        }
+      ]
+    }
+  ],
+  "extendedStrengths1": [
+    {
+      "name": "Security Advocate:",
+      "description": "Compliance-Ready Automated Infrastructure, Isolated,Auditable, Scalable.",
+      "iconid": "icon-identity-security"
+    },
+    {
+      "name": "Systems Architecture:",
+      "description": "Balancing performance with budget to create resilient, evolvable, cost-efficient, and secure ecosystems.",
+      "iconid": "icon-server"
+    },
+    {
+      "name": "DevOps & DevEx:",
+      "description": "Removing friction from development and operations processes with self-healing systems and pipelines that ensure high-confidence delivery and operational stability.",
+      "iconid": "icon-deployment"
+    },
+    {
+      "name": "IT Strategy:",
+      "description": "Systems assessment, gap analysis, planning, and execution",
+      "iconid": "icon-strategy-plan"
+    }
+  ],
+  "extendedStrengths2": [
+    {
+      "name": "Cybersecurity & Compliance:",
+      "description": "Engineering systems that exceed standards through least-privilege isolation and centralized controls.",
+      "iconid": "icon-identity-security"
+    },
+    {
+      "name": "Optimization & Modernization:",
+      "description": "Untangling legacy architectures to restore scalability, reliability, and long-term maintainability.",
+      "iconid": "icon-optimization"
+    },
+    {
+      "name": "Full-Stack Engineering:",
+      "description": "Delivering end-to-end solutions that merge sophisticated backends with user-centric, high-performance UIs.",
+      "iconid": "icon-stack"
+    },
+    {
+      "name": "Legacy Modernization & High-Stakes System Rescue:",
+      "description": "A rare specialization in \"The Rescue\" - the ability to triage and revitalize failing, brittle, or unworkable enterprise assets. While many architects can build from scratch, few can unstick failing infrastructure and restore performance in high-pressure environments like Sunrun or Netflix.",
+      "iconid": "icon-legacy"
+    }
+  ],
+  "extendedStrengths3": [
+    {
+      "name": "Scalable Cloud Architecture & Governance:",
+      "description": "Expert-level mastery of the current technical landscape, specifically in architecting Compliance-ready cloud organizations. Focused on least-privilege isolation, centralized network controls, and Infrastructure as Code (IaC) to eliminate configuration drift and reduce operational risk.",
+      "iconid": "icon-cloud-governance"
+    },
+    {
+      "name": "Strategic Product Transformation:",
+      "description": "The ability to identify technical debt and refactor it into a \"Revenue Engine.\" This is evidenced by the conversion of bespoke legacy applications into multi-tenant SaaS platforms that facilitate rapid market scaling and secure multi-million-dollar enterprise contracts.",
+      "iconid": "icon-product"
+    },
+    {
+      "name": "Frontend UI/UX Engineering",
+      "description": "The modern frontend landscape demands more than \"pixel-perfect\" UI; it requires the ability to bridge high-fidelity experience with high-scale system reliability. Whether optimizing complex graphical canvases for the National Institute on Aging, or building vendor onboarding platforms at Netflix, it's understood that the frontend is a driver of product performance and user trust.",
+      "iconid": "icon-frontend"
+    },
+    {
+      "name": "Cloud Architecture & Engineering",
+      "description": "In the infrastructure layer, the focus shifts toward resilience and cost-efficiency, and a demonstrated ability to \"triage\" failing pipelines and architect cloud environments that serve as a durable foundation for growth.",
+      "iconid": "icon-cloud-network"
+    }
+  ]
+}

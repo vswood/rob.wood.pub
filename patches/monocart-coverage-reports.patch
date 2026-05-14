@@ -1,0 +1,13 @@
+diff --git a/lib/converter/converter.js b/lib/converter/converter.js
+index 44eb1557fce839ec4edd871962249f6faf47b224..d61b930de04ea39c1ce01819ff672d6103165c5a 100644
+--- a/lib/converter/converter.js
++++ b/lib/converter/converter.js
+@@ -886,7 +886,7 @@ const decodeSourceMappings = (state, originalDecodedMap) => {
+             const [generatedColumn, sourceIndex, originalLine, originalColumn, nameIndex] = segment;
+             // the segment length could be 1, 4 or 5
+ 
+-            if (typeof sourceIndex === 'undefined') {
++            if (typeof sourceIndex === 'undefined' || originalDecodedMap.get(sourceIndex) === undefined) {
+                 // console.log('============================ sourceIndex undefined');
+                 // console.log(segment);
+                 return;

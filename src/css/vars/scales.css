@@ -1,0 +1,402 @@
+@layer reset, base, type, layout, override;
+
+html {
+	/* choose your scale ratio */
+  --scale: 1.2;
+
+	/* create the typographic scale! */
+	--xx-small: calc(1rem * pow(var(--scale), -0.5));
+	--x-small: calc(1rem * pow(var(--scale), -0.25));
+	--small: calc(1rem * pow(var(--scale), -0.125));
+  --medium: 1rem;
+  --large: calc(1rem * pow(var(--scale), 1));
+  --x-large: calc(1rem * pow(var(--scale), 2));
+  --xx-large: calc(1rem * pow(var(--scale), 3));
+  --xxx-large: calc(1rem * pow(var(--scale), 4));
+
+  /* musical scale ratios */
+  --minor-second: calc(16/15);
+  --major-second: calc(9/8);
+  --minor-third: calc(6/5);
+  --major-third: calc(5/4);
+  --perfect-fourth: calc(4/3);
+  --augmented-fourth: sqrt(2);
+  --perfect-fifth: calc(3/2);
+  --major-sixth: calc(5/3);
+
+  /* the ‘golden’ ratio */
+  --golden-ratio: calc((1 + sqrt(5)) / 2);
+
+	@media (width > 50em) {
+		--scale: var(--perfect-fourth);
+	}
+}
+
+th:last-child {
+	inline-size: 75%;
+}
+
+td:first-child {
+	white-space: nowrap;
+}
+
+.sample {
+	contain: inline-size;
+	display: block;
+	font-size: var(--keyword);
+	overflow: clip;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+@layer base {
+  html {
+    --base-font-size: 20px;
+    --gap: round(up, 3vmin, 0.25lh);
+    --tab-size: 2;
+    --tab: calc(var(--tab-size, 2) * 1ch);
+    /* not fluid, just clamped by user preferences */
+    font-size: clamp(1em, var(--base-font-size), 1.25em);
+    interpolate-size: allow-keywords;
+    line-height: 1.5;
+    tab-size: var(--tab-size);
+  }
+
+  body { margin: var(--gap); }
+  body > :is(header, main, footer) {
+    container: layout / inline-size;
+  }
+
+  /* prose */
+  h1, h2, h3 {
+    line-height: 1.25;
+    margin-block: 0.25rlh;
+  }
+
+  figure { margin-inline: unset; }
+  blockquote { margin-inline: var(--tab); }
+  p { margin-block: 0.5lh; }
+  ol, ul { padding-inline-start: var(--tab); }
+  dd { margin-inline-start: var(--tab); }
+  hr {
+    border: 0 dotted;
+    border-block-end-width: thin;
+    margin-block: 1.5lh;
+  }
+
+  /* controls */
+  :target { scroll-margin: 1lh; }
+  :focus { outline-offset: 4px; }
+  label { display: block; }
+  textarea {
+    field-sizing: content;
+    inline-size: 100%;
+    min-block-size: 4lh;
+  }
+
+  /* tables */
+  table {
+    border-collapse: collapse;
+    inline-size: 100%;
+    font-variant-numeric: tabular-nums;
+  }
+
+  th, td {
+    border: thin dotted;
+    text-align: left;
+    padding: 0.25lh 1ch;
+    vertical-align: baseline;
+  }
+
+  /* visibility */
+  [visually-hidden=skip-links]:focus-within {
+    background: Canvas;
+    border: thin solid grey;
+    color: CanvasText;
+    inset: 0 auto auto 0;
+    list-style: none;
+    margin: unset;
+    padding: 1em;
+    position: fixed;
+  }
+}
+
+@layer reset {
+  html {
+    block-size: 100%;
+    color-scheme: light dark;
+    overflow-wrap: break-word;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+  }
+
+  body { margin: unset; }
+
+  pre {
+    white-space: pre-wrap; /* old syntax */
+    white-space: preserve wrap; /* new syntax */
+  }
+
+  /* media */
+  picture { display: contents; }
+
+  img,
+  video,
+  iframe {
+    display: block;
+    block-size: auto;
+    max-inline-size: 100%;
+  }
+
+  /* controls */
+  input, button, textarea, select { font: inherit; }
+
+  button,
+  input:where(
+    [type="submit"],
+    [type="reset"],
+    [type="button"]
+  ) {
+    background: CanvasText;
+    color: Canvas;
+    border: thin solid grey;
+  }
+
+  [aria-expanded=true],
+  [aria-pressed=true] {
+    background: SelectedItem;
+    border-color: CanvasText;
+    color: SelectedItemText;
+  }
+
+  /* visibility */
+  [hidden] { display: none !important; }
+
+  visually-hidden,
+  [visually-hidden]:not(:focus-within):not(:active) {
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    white-space: nowrap !important;
+    width: 1px !important;
+  }
+}
+
+
+@layer type {
+	html {
+		--gap: round(up, 3vmin, 0.25lh);
+		--tab-size: 2;
+		--tab: calc(var(--tab-size, 2) * 1ch);
+		line-height: 1.5;
+		tab-size: var(--tab-size);
+
+		/* musical scale ratios */
+		--minor-second: calc(16 / 15);
+		--major-second: calc(9 / 8);
+		--minor-third: calc(6 / 5);
+		--major-third: calc(5 / 4);
+		--perfect-fourth: calc(4 / 3);
+		--augmented-fourth: sqrt(2);
+		--perfect-fifth: calc(3 / 2);
+		--major-sixth: calc(5 / 3);
+
+		/* the ‘golden’ ratio */
+		--golden-ratio: calc((1 + sqrt(5)) / 2);
+	}
+
+	/* for re-setting the type scale within a container */
+	[type-container] {
+		container: type / inline-size;
+	}
+
+	body,
+	[type-set] {
+		--medium: clamp(1rem, 17px + 0.24cqi, 1.25rem);
+		font-size: var(--type-set-size, var(--medium));
+
+		--xx-small: calc(1rem * pow(var(--scale), -0.3));
+		--x-small: calc(1rem * pow(var(--scale), -0.2));
+		--small: calc(1rem * pow(var(--scale), -0.1));
+		--large: calc(var(--medium) * pow(var(--scale), 1));
+		--x-large: calc(var(--medium) * pow(var(--scale), 2));
+		--xx-large: calc(var(--medium) * pow(var(--scale), 3));
+		--xxx-large: calc(var(--medium) * pow(var(--scale), 4));
+
+		--scale: var(--minor-third);
+
+		@container (inline-size > 50em) {
+			--scale: var(--major-third);
+		}
+	}
+
+	/* The body doesn't have a container */
+	body {
+		@media (width > 50em) {
+			--scale: var(--major-third);
+		}
+	}
+
+	[type-set="small"] {
+		--type-set-size: var(--small);
+	}
+
+	[type-set="large"] {
+		--type-set-size: var(--large);
+	}
+
+	/* prose */
+	h1 {
+		font-size: var(--xx-large);
+	}
+
+	h2 {
+		font-size: var(--x-large);
+	}
+
+	h3 {
+		font-size: var(--large);
+	}
+
+	h4 {
+		font-size: var(--medium);
+	}
+
+	h1,
+	h2,
+	h3 {
+		line-height: 1.25;
+		margin-block: 0.25rlh;
+	}
+
+	p,
+	li {
+		text-wrap: pretty;
+	}
+
+	figcaption {
+		font-size: var(--small);
+		font-style: italic;
+	}
+}
+
+@layer layout {
+	body {
+		display: grid;
+		gap: var(--gap);
+		padding-block: var(--gap);
+
+		> :is(header, main, aside, footer) {
+			container: layout / inline-size;
+		}
+	}
+
+	main {
+		display: grid;
+		gap: 1lh 0;
+		grid-template-columns:
+			[full-start] var(--margin, var(--gap))
+			[pull-start] minmax(0, 1.5fr)
+			[content-start] minmax(auto, 35em)
+			[content-end] minmax(0, 1fr)
+			[pull-end] var(--margin, var(--gap))
+			[full-end];
+
+		@media (width > 45em) {
+			--margin: 0;
+			column-gap: var(--gap);
+		}
+
+		> * {
+			margin: unset;
+			grid-column: content;
+		}
+	}
+
+	.by-line {
+		font-size: var(--small);
+		line-height: 1rlh;
+
+		@container (width > 50em) {
+			grid-column: pull-start / content-start;
+			text-align: right;
+		}
+
+		p {
+			margin: unset;
+		}
+	}
+
+	figure {
+		grid-column: pull-start / content-end;
+	}
+
+	#articles {
+		padding: var(--gap);
+	}
+
+	article-grid {
+		display: grid;
+		gap: var(--gap);
+		grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
+	}
+}
+
+@layer base {
+	figure {
+		margin-inline: unset;
+	}
+
+	p {
+		margin-block: 0.5lh;
+	}
+
+	ol,
+	ul {
+		padding-inline-start: var(--tab);
+	}
+
+	hr {
+		border: 0 dotted;
+		border-block-end-width: thin;
+		margin-block: 1.5lh;
+	}
+
+	/* controls */
+	:target {
+		scroll-margin: 1lh;
+	}
+
+	:focus {
+		outline-offset: 4px;
+	}
+}
+
+@layer reset {
+	html {
+		block-size: 100%;
+		color-scheme: light dark;
+		overflow-wrap: break-word;
+		-webkit-text-size-adjust: none;
+		text-size-adjust: none;
+	}
+
+	body {
+		margin: unset;
+	}
+
+	pre {
+		white-space: pre-wrap;
+		/* old syntax */
+		white-space: preserve wrap;
+		/* new syntax */
+	}
+
+	/* media */
+	img {
+		display: block;
+		block-size: auto;
+		max-inline-size: 100%;
+	}
+}
