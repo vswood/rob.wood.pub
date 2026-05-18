@@ -1,0 +1,26 @@
+---
+title: Pages
+pagination:
+  data: collections.content
+  size: 1
+  alias: article
+
+
+permalink: /{{ article.data.id | slugify }}.html
+---
+{% extends "src/html/layout/default.html" %}
+{% import "src/html/include/page-components/content.html" as components %}
+
+{% block body %}
+  {{ article.templateContent | safe }}
+{% endblock body %}
+
+{% block scripts %}
+<script>
+  $(document).ready(() => {
+    $('.btn').on('click', (e) => {
+      e.preventDefault()
+    })
+  })
+</script>
+{% endblock scripts %}

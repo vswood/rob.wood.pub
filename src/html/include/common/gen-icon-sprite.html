@@ -1,0 +1,7 @@
+{% if collections.icons and collections.icons.length > 0 %}
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width: 0; height: 0; position: absolute;">
+  {% for icon in collections.icons %}
+    {{ icon.symbol | safe }}
+  {% endfor %}
+</svg>
+{% endif %}

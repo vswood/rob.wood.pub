@@ -1,10 +1,9 @@
-{% import "../macros.html" as macro %}
 <div class="menu-wrap">
   <header id="header" class="header offcanvas-menu offcanvas-wrapper">
 
     <div class="header-top">
       <div class="profile-img">
-        <img src="./img/profile/working-at-laptop.png" alt="" class="img-fluid">
+        <img src="../../img/profile/working-at-laptop.png" alt="" class="img-fluid">
       </div>
 
       <a href="index.html">
@@ -18,7 +17,12 @@
     {% include "../common/nav.html" %}
 
     <div class="social-links text-center">
-      {% include "../common/social-links.html" %}
+      {% for item in social %}
+        <a href="{{item.link}}" target="_blank" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-placement="top" data-bs-delay='{"show":400,"hide":150}' data-bs-title="{{item.description}}" aria-label="{{item.description}}">
+            {% icon item.iconid, '{ "width": "24", "height": "24" }' %}
+          <span class="visually-hidden">{{item.text}}</span>
+        </a>
+      {% endfor %}
     </div>
   </header>
 

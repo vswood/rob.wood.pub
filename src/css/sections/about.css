@@ -1,11 +1,86 @@
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
-.about {
+:root {
+  /* EXAMPLE:
+    --image-size: 45rem;
+    --center-top: calc(42% - var(--image-size) * .5);
+    FORMULA:
+      6.5vh + 1500vh / x + 4vh * exp(-0.1vh * (x - 80vh))
 
-  h2.primary-heading {
-    div.five {
-      letter-spacing: 5.5px;
+    •	If you want everything higher → adjust --param2
+    •	If you want early --img-size higher → adjust --param1
+    •	If you want the rise near --img-size=100 higher → --param3
+
+    FORMULA:
+    51 + 90 / x + var(--image-width-nu) * exp(-0.08 * var(--image-width-nu))
+
+    •	param4a → baseline shift.
+    •	param3a → controls steepness of early drop.
+    •	param2a and param1a → fine-tunes smoothing through mid---img-size.
+  */
+  /* 50@100,45@90,40@80,35@70,29.5@60,24@50,18.5@40,12.5@30,5.5@20,-5@10 */
+
+  /* 50@100 45@90 40@80 35@70 29@60 24@50 19@40 13@30 6@20 -5@10  */
+  --img-size: 15;
+
+  --param1: 300;
+  --param2: 4.75;
+  --param3: 4.025;
+  --param1a: 0.08;
+  --param2a: 4;
+  --param3a: 90;
+  --param4a: 1.65; /* 24@50, 19@40,  9.5@25, 37@75  */
+
+  --image-size: calc(1vh * var(--img-size));
+  --sum0: calc(var(--img-size) - 80);
+  --sum1: calc(0.1 * var(--sum0));
+  --sum2: exp(var(--sum1));
+  --sum4: calc(var(--param3)* exp(var(--sum1)));
+  --sum5: calc(var(--img-size) + var(--sum4));
+  --sum6: calc(var(--param1) / var(--sum5));
+  --sum7: calc(var(--param2) + var(--sum6));
+  --center-top: calc(1vh * var(--sum7));
+
+  --sum0a: calc(var(--param1a) * var(--img-size));
+  --sum0b: exp(var(--sum0a));
+  --sum1a: calc(var(--param2a) / var(--sum0b));
+  --sum2a: calc(var(--param3a) / var(--img-size));
+  --sum3a: calc(var(--sum1a) + var(--sum2a));
+  --sum4a: calc(var(--param4a) + var(--sum3a));
+  --adjustment-offset: calc(1vh * var(--sum4a));
+
+  --right-col-extra: calc(var(--image-size) * .55);
+  --center-common: 1.5vh;
+  --center-offset: calc(var(--image-size) * .1);
+  --right-col-offset: calc(var(--adjustment-offset) * -2);
+  --animation-half: calc(var(--image-size) * .95);
+
+  --border-color: #1c2737;
+}
+
+#about {
+
+  .primary-heading {
+
+    .small.raise {
+      letter-spacing: 2px;
+    }
+  }
+
+  .section-heading-alt {
+    max-width: 90%;
+    width: 26.35ch;
+    text-align: center;
+    .primary-heading {
+      .large {
+        font-size: var(--xx-large);
+        letter-spacing: -2px;
+      }
+      .small {
+        font-size: var(--xx-large);
+        letter-spacing: 4px;
+      }
     }
   }
 
@@ -32,14 +107,33 @@
     }
   }
 
-  .profile-wrapper {
-    margin-bottom: 100px;
+  .about-story {
+    padding: 2lh 0;
+    padding-left: 4ch;
+    padding-top: 0;
+    max-width: fit-content;
+    margin: auto;
+
+    h2.primary-heading,
+    .subtitle,
+    .subtitle2 {
+      margin-left: 0;
+      padding-left: 0;
+    }
+
+
+
+    h3:not(.accord-title) {
+      margin: 1lh auto 0.5lh auto;
+    }
   }
 
   .profile-image {
     .profile-image-container {
-      margin-bottom: 2rem;
       text-align: center;
+      max-width: 200px;
+      margin: 3lh auto;
+      margin-top: 1lh;
     }
 
     img {
@@ -78,6 +172,7 @@
 
         span {
           width: 90%;
+          line-height: 1.2;
         }
 
         .status-indicator {
@@ -87,19 +182,18 @@
           border-radius: 50%;
           margin-right: 0.5rem;
           animation: pulse 2s infinite;
+
         }
       }
     }
   }
 
   .expertise-grid {
-    margin-bottom: 3rem;
-    h3 {
+    margin-top: 3lh;
+    margin-bottom: 3lh;
+
+    .expertise-grid.copy-wrapper h3 {
       font-size: var(--x-large);
-      text-transform: uppercase;
-      letter-spacing: -1px;
-      margin-top: 2lh;
-      margin-bottom: 1lh;
     }
 
     .expertise-item {
@@ -165,7 +259,7 @@
       font-size: var(--medium);
       max-width: 660px;
       letter-spacing: 0;
-      line-height: 1;
+      line-height: 1.3;
       font-style: italic;
       font-weight: 300;
       color: color-mix(in oklch, var(--accent), white 75%);
@@ -177,91 +271,6 @@
       b {
         font-weight: 500;
       }
-    }
-  }
-
-  .bottom-section {
-    padding-top: 60px;
-    border-top: 1px solid color-mix(in srgb, var(--text-color), transparent 85%);
-
-    .collab-text {
-      position: relative;
-
-      &::before {
-        content: "";
-        position: absolute;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background-image:url(../../img/profile/office-presentation.png);
-        background-size: cover;
-        filter: sepia(10) grayscale(10) opacity(0.15);
-        z-index: -1;
-      }
-    }
-
-    .collaboration-text {
-      h3 {
-      font-size: var(--heading-step--2);
-        font-weight: 600;
-        text-transform: uppercase;
-        margin: 2rem 0 1rem 0;
-        color: var(--heading-color);
-        font-family: var(--heading-font);
-
-        p {
-          /* font-size: var(--step-0); */
-          line-height: 1.2;
-          color: color-mix(in srgb, var(--text-color), transparent 20%);
-          margin: 0;
-        }
-      }
-    }
-
-    .action-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-direction: column;
-
-      @container style(--inline-size-xs: var(--breakpoint-xs)) {
-        flex-direction: row;
-      }
-
-      .btn-custom {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.875rem 1rem;
-        border-radius: 6px;
-        font-weight: 600;
-        text-decoration: none;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-        /* font-size: var(--step-0); */
-
-        &.primary {
-          font-weight: 800;
-          background-color: var(--accent-color);
-          color: var(--contrast-color);
-
-          &:hover {
-            background-color: color-mix(in srgb, var(--accent-color), transparent 15%);
-            transform: translateY(-1px);
-          }
-        }
-
-        &.secondary {
-          border: 1px solid color-mix(in srgb, var(--text-color), transparent 70%);
-          color: var(--text-color);
-
-          &:hover {
-            border-color: var(--accent-color);
-            color: var(--accent-color);
-            transform: translateY(-1px);
-          }
-        }
-      }
-
-
     }
   }
 
@@ -285,6 +294,102 @@
       }
     }
   }
+
+  .about-img-2 {
+    max-width: 90%;
+    margin: 2lh auto;
+    margin-top :0;
+    position: relative;
+    display: flex;
+    gap: 3ch;
+    align-items: flex-start;
+    height: fit-content;
+    p {
+      padding: .25em;
+      margin: 0 0 1em;
+    }
+  }
+
+  .collab-text {
+    padding: 0 2ch;
+    h3 {
+      margin-bottom: 1lh;
+      line-height: 1;
+      text-align: left;
+    }
+  }
+
+  .column.left,
+  .column.right {
+    box-sizing: border-box;
+    text-align: justify;
+    width: calc(50% + var(--right-col-extra));
+    height: fit-content;
+  }
+  .column.left:before,
+  .column.right:before {
+    float: right;
+    content: " ";
+    margin-top: 4.5lh;
+  }
+  .column.right:before {
+    float: left;
+  }
+
+  .center-float {
+    box-sizing: border-box;
+    float: right;
+    clear: right;
+    margin: 0 0 var(--center-common) var(--center-common);
+    border-radius: 50%;
+    border: 3px solid var(--primary-dark);
+    box-shadow: var(--surface-inset-shadow), rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    shape-outside: circle(50%);
+    animation: fadeIn 1.5s forwards;
+    animation-timing-function: cubic-bezier(.93,.57,.1,.4);
+    width: calc(var(--image-size) * .3);
+    height: var(--image-size);
+    opacity: 0;
+  }
+  img.center-float {
+    filter: sepia(0.25) grayscale(0.35) brightness(1.1);
+  }
+  .column.right .center-float {
+    float: left;
+    margin: 0 var(--center-common) var(--center-common) 0;
+    clear: left;
+  }
+  .column.left .adjustment {
+    margin-right: var(--adjustment-offset);
+    /* margin-top: 6lh; */
+  }
+  .column.right .adjustment {
+    margin-left: var(--adjustment-offset);
+    /* margin-top: 6lh; */
+  }
+  .column.right {
+    margin-left: var(--right-col-offset);
+  }
+
+  @keyframes fadeIn {
+    50% {
+      width: calc(var(--image-size) - var(--image-size) * .1);
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      width: var(--image-size);
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .column.left,
+    .column.right {
+      text-align: left;
+    }
+  }
+
+
 }
 
 @keyframes pulse {

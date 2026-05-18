@@ -1,0 +1,5 @@
+{% macro iconlink(link, text, description, svgContent, ttclass="custom-tooltip", ttpos="top", ttdelay='{"show":400,"hide":150}') %}
+<a href="{{link}}" target="_blank" data-bs-toggle="tooltip" data-bs-custom-class="{{ttclass}}" data-bs-placement="{{ttpos}}" data-bs-delay='{{ttdelay}}' data-bs-title="{{description}}" aria-label="{{description}}">{{svgContent}}
+    <span class="visually-hidden">{{text}}</span>
+  </a>
+{% endmacro %}

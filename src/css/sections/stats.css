@@ -3,6 +3,24 @@
 # Stats Section
 --------------------------------------------------------------*/
 .stats {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .section-heading-alt {
+    max-width: 90%;
+    width: 19.35ch;
+    .primary-heading {
+      .large {
+        font-size: var(--xx-large);
+        letter-spacing: -1px;
+      }
+      .small {
+        font-size: var(--xx-large);
+        letter-spacing: 12px;
+      }
+    }
+  }
 
   .stats-grid {
     display: grid;
@@ -26,7 +44,7 @@
         font-weight: 300;
         color: var(--heading-color);
         line-height: 1;
-        margin-bottom: 1lh;
+        margin-bottom: 0.25lh;
         letter-spacing: -2px;
 
         span {
@@ -35,12 +53,14 @@
       }
 
       .stat-label {
-        /* font-size: var(--step-0); */
+        font-size: var(--large);
         color: var(--text-color);
         opacity: 0.7;
         margin: 0;
         line-height: 1.1;
         font-weight: 400;
+        max-width: 21ch;
+        margin: auto;
       }
     }
   }
@@ -48,7 +68,8 @@
   .achievements-row {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 1ch;
+    padding: 0 1ch;
 
 
     @container style(--inline-size-xs: var(--breakpoint-xs)) {
@@ -62,41 +83,27 @@
       gap: 0.5rem;
       padding: 2.5rem 0 0.5rem 0;
       border-top: 1px solid color-mix(in srgb, var(--text-color), transparent 90%);
+      padding: 1lh 1ch;
 
       .achievement-icon {
         flex-shrink: 0;
         width: 50px;
         height: 50px;
+        position: relative;
+        top: 1.35lh;
+        left: -0.5ch;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: color-mix(in srgb, var(--accent-color), transparent 95%);
+        background: color-mix(in oklch, var(--primary), black 5%);
+
+        box-shadow: inset 3px 3px 2px -1px rgba(21,31,43,0.42),
+          inset -3px -3px 2px -1px rgba(75,96,127,0.22);
         border-radius: 8px;
 
         svg {
           width: 36px;
           height: 36px;
-        }
-      }
-
-      .achievement-content {
-        h3 {
-          font-family: var(--heading-font);
-          font-size: var(--heading-step-0);
-          font-weight: 600;
-          color: var(--heading-color);
-          margin: 0;
-          margin-bottom: 0.25em;
-          line-height: 1;
-        }
-
-        p {
-          /* font-size: var(--step-0); */
-          color: var(--text-color);
-          opacity: 0.7;
-          padding-top: 0;
-          margin: 0;
-          line-height: 1;
         }
       }
     }

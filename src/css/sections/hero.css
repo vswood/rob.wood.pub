@@ -1,7 +1,7 @@
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
-.hero {
+#home {
   padding-top: 1lh;
   min-height: 100vh;
   display: flex;
@@ -10,6 +10,7 @@
   overflow: hidden;
 
   .hero-main {
+    padding: 1lh 2ch;
 
       @container style(--inline-size-xs: var(--breakpoint-xs)) {
       .copy-block {
@@ -49,7 +50,7 @@
       justify-content: center;
       gap: 2lh;
       flex-direction: column;
-      margin: 4lh auto;
+      margin: 4lh auto 2lh auto;
 
       @container style(--inline-size-xs: var(--breakpoint-xs)) {
         flex-direction: row;
@@ -92,7 +93,7 @@
 
       .image-wrapper {
         position: relative;
-        max-width: 100vw;
+        max-width: 100%;
         margin: 0 1ch;
 
         .main-image {
@@ -119,7 +120,7 @@
           font-weight: 400;
           padding: 0.5lh 1ch;
           background: var(--surface-color);
-          border: 1.5px solid color-mix(in oklch, var(--surface-color), white 10%);
+          border: 1px solid color-mix(in oklch, var(--surface-color), white 10%);
           border-radius: 8px;
           /*box-shadow: 0 10px 30px color-mix(in srgb, var(--heading-color), transparent 90%);*/
           box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px, 0 10px 30px color-mix(in srgb, var(--heading-color), transparent 90%);
@@ -148,25 +149,25 @@
 
           &.card-1 {
             top: 11%;
-            left: -4%;
+            left: -2%;
             z-index: 3;
           }
 
           &.card-2 {
             top: 13%;
-            right: -4%;
+            right: -2%;
             z-index: 3;
           }
 
           &.card-3 {
             bottom: 18%;
-            left: -2%;
+            left: -1%;
             z-index: 3;
           }
 
           &.card-4 {
             bottom: 16%;
-            right: -3%;
+            right: -1%;
             z-index: 3;
           }
         }

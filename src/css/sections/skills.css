@@ -7,225 +7,286 @@
   --border-light: color-mix(in srgb, var(--text-color), transparent 92%);
   --text-light: color-mix(in srgb, var(--text-color), transparent 35%);
   --surface-soft: color-mix(in srgb, var(--surface-color), var(--accent-color) 1%);
-}
 
-.skills .intro-content {
-  margin-bottom: 5rem;
-}
+  .primary-heading {
+    width: fit-content;
+    margin: 0 auto 0 auto;
+    .large {
+      letter-spacing: -1px;
+    }
+    .small {
+      letter-spacing: 5px;
+    }
+  }
 
+  .copy-wrapper.top {
+    p {
+      margin-bottom: 4lh;
+    }
+  }
 
-.skills .skills-container {
-  padding: 0;
-}
+  details {
+    max-width: 80ch;
+    margin: auto;
+  }
 
-.skills .skills-container .skill-category {
-  margin-bottom: 3rem;
-}
+  .intro-content {
+    margin-bottom: 5rem;
+  }
 
-.skills .skills-container .skill-category:last-child {
-  margin-bottom: 0;
-}
+  .row.skills-top {
+    margin-bottom: 2lh;
+  }
 
-.skills .skills-container .skill-category .category-header {
-  margin-bottom: 32px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--border-light);
-}
+  .skills-container {
+    padding: 0;;
 
-.skills .skills-container .skill-category .category-header .category-title {
-  /* font-size: var(--step-3); */
-  font-weight: 700;
-  color: var(--heading-color);
-  margin-bottom: 8px;
-  font-family: var(--heading-font);
-}
+    .skill-category {
+      max-width: 90%;
+      margin-right: auto;
+      margin-bottom: 3rem;
 
-.skills .skills-container .skill-category .category-header .category-subtitle {
-  /* font-size: var(--step-1); */
-  color: var(--text-light);
-  margin: 0;
-  font-weight: 300;
-}
+      &:last-child {
+        margin-bottom: 0;
+      }
 
-.skills .skills-container .skill-category .skills-list .skill-row {
-  margin-bottom: var(--skill-spacing);
-}
+      .category-header {
+        margin-bottom: 32px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--border-light);
 
-.skills .skills-container .skill-category .skills-list .skill-row:last-child {
-  margin-bottom: 0;
-}
+        .category-title {
+          font-size: var(--xx-large);
+          font-weight: 300;
+          color: var(--heading-color);
+          margin-bottom: 0;
+          font-family: var(--font-6);
 
-.skills .skills-container .skill-category .skills-list .skill-row .skill-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-}
+          b {
+            font-weight: 600;
+          }
+        }
 
-.skills .skills-container .skill-category .skills-list .skill-row .skill-info .skill-name {
-  font-size: 18px;
-  color: var(--text-color);
-  font-weight: 300;
-}
+        .category-subtitle {
+          font-size: var(--medium);
+          color: var(--text-light);
+          margin: 0;
+          font-weight: 300;
+        }
+      }
 
-.skills .skills-container .skill-category .skills-list .skill-row .skill-info .skill-percentage {
-  font-size: 14px;
-  color: var(--accent-color);
-  font-weight: 500;
-  font-family: var(--text-font);
-}
+      .skills-list {
+        .skill-row {
+          margin-bottom: var(--skill-spacing);
 
-.skills .skills-container .skill-category .skills-list .skill-row .progress {
-  height: var(--progress-height);
-  background: var(--border-light);
-  border-radius: 1px;
-  overflow: hidden;
-}
+          &:last-child {
+            margin-bottom: 0;
+          }
 
-.skills .skills-container .skill-category .skills-list .skill-row .progress .progress-bar {
-  width: 0%;
-  height: 100%;
-  background: var(--accent-color);
-  border-radius: 1px;
-  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
+          .skill-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
 
-.skills .skills-sidebar .expertise-highlight {
-  background: var(--surface-soft);
-  padding: 3em 2em;
-  border-radius: 8px;
-  text-align: center;
-  margin-bottom: 40px;
-  border: 1px solid var(--border-light);
-}
+            .skill-name {
+              font-size: 18px;
+              color: var(--text-color);
+              font-weight: 300;
+            }
 
-.skills .skills-sidebar .expertise-highlight .highlight-icon {
-  margin-bottom: 24px;
-}
+            .skill-percentage {
+              font-size: 14px;
+              color: var(--accent-color);
+              font-weight: 500;
+              font-family: var(--text-font);
+            }
+          }
 
-.skills .skills-sidebar .expertise-highlight .highlight-icon svg {
-  width: 72px;
-  height: 72px;
-  color: var(--accent-color);
-}
+          .progress {
+            height: var(--progress-height);
+            background: var(--border-light);
+            border-radius: 1px;
+            overflow: hidden;
 
-.skills .skills-sidebar .expertise-highlight .highlight-title {
-  font-size: var(--xx-large);
-  font-weight: 300;
-  color: var(--heading-color);
-  margin-bottom: 20px;
-  font-family: var(--heading-font);
-}
+            .progress-bar {
+              width: 0%;
+              height: 100%;
+              background: var(--accent-color);
+              border-radius: 1px;
+              transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+          }
+        }
+      }
+    }
+  }
 
-.skills .skills-sidebar .expertise-highlight .experience-number {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 20px;
-}
+  .skills-sidebar {
+    .expertise-highlight {
+      background: var(--surface-soft);
+      padding: 3lh 2ch;
+      border-radius: 8px;
+      text-align: center;
+      margin-bottom: 40px;
+      border: 1px solid var(--border-light);
 
-.skills .skills-sidebar .expertise-highlight .experience-number .purecounter {
-  font-size: 56px;
-  font-weight: 200;
-  color: var(--accent-color);
-  line-height: 1;
-  font-family: var(--heading-font);
-}
+      .highlight-icon {
+        margin-bottom: 0.25lh;
+        width: 80px;
+        height: 80px;
+        margin-right: 1ch;
 
-.skills .skills-sidebar .expertise-highlight .experience-number .experience-label {
-  font-size: 18px;
-  color: var(--text-light);
-  font-weight: 300;
-}
+        svg {
+          width: 72px;
+          height: 72px;
+          color: var(--accent-color);
+        }
+      }
 
-.skills .skills-sidebar .expertise-highlight .highlight-description {
-  font-size: 16px;
-  line-height: 1.7;
-  color: var(--text-light);
-  margin: 0;
-}
+      .highlight-title {
+        font-size: var(--large);
+        font-weight: 300;
+        color: var(--heading-color);
+        margin-bottom: 0.25lh;
+        margin-top: 0.5lh;
+        font-family: var(--heading-font-alt);
+        text-transform: uppercase;
+      }
 
-.skills .skills-sidebar .technologies-section {
-  margin-bottom: 40px;
-}
+      .experience-number-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-.skills .skills-sidebar .technologies-section .tech-title {
-  font-size: 18px;
-  font-weight: 400;
-  color: var(--heading-color);
-  margin-bottom: 24px;
-  font-family: var(--heading-font);
-}
+      .experience-number {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 20px;
 
-.skills .skills-sidebar .technologies-section .tech-stack {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
+        .purecounter {
+          font-size: 56px;
+          font-weight: 200;
+          color: var(--accent-color);
+          line-height: 1;
+          font-family: var(--heading-font);
+        }
 
-.skills .skills-sidebar .technologies-section .tech-stack .tech-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px;
-  background: var(--surface-color);
-  border: 1px solid var(--border-light);
-  border-radius: 6px;
-  transition: all 0.3s ease;
-}
+        .experience-label {
+          font-size: var(--xxx-large);
+          color: var(--accent);
+          font-weight: 600;
+          position: relative;
+          top: -0.15lh;
+        }
+      }
 
-.skills .skills-sidebar .technologies-section .tech-stack .tech-item:hover {
-  border-color: color-mix(in srgb, var(--accent-color), transparent 60%);
-  background: color-mix(in srgb, var(--surface-color), var(--accent-color) 2%);
-}
+      .highlight-description {
+        font-size: var(--medium);
+        line-height: 1.2;
+        color: var(--text-light);
+        margin: 0;
+      }
+    }
 
-.skills .skills-sidebar .technologies-section .tech-stack .tech-item svg {
-  width: 36px;
-  height: 36px;
-  color: var(--accent-color);
-}
+    .technologies-section {
+      margin-bottom: 40px;
 
-.skills .skills-sidebar .technologies-section .tech-stack .tech-item span {
-  font-size: 14px;
-  color: var(--text-color);
-  font-weight: 400;
-}
+      .tech-title {
+        font-size: var(--xx-large);
+        font-weight: 300;
+        color: var(--heading-color);
+        margin-bottom: 1.5lh;
+        font-family: var(--font-6);
+        text-transform: uppercase;
 
-.skills .skills-sidebar .achievements-section .achievements-title {
-  font-size: 18px;
-  font-weight: 400;
-  color: var(--heading-color);
-  margin-bottom: 24px;
-  font-family: var(--heading-font);
-}
+        b {
+          font-weight: 600;
+        }
+      }
 
-.skills .skills-sidebar .achievements-section .achievement-list .achievement-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--border-light);
-}
+      .tech-stack {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
 
-.skills .skills-sidebar .achievements-section .achievement-list .achievement-item:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
+      .tech-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px;
+        background: var(--surface-color);
+        border: 1px solid var(--border-light);
+        border-radius: 6px;
+        transition: all 0.3s ease;
 
-.skills .skills-sidebar .achievements-section .achievement-list .achievement-item .achievement-date {
-  font-size: 12px;
-  color: var(--accent-color);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  min-width: 40px;
-  margin-top: 2px;
-}
+        &:hover {
+          border-color: color-mix(in srgb, var(--accent-color), transparent 60%);
+          background: color-mix(in srgb, var(--surface-color), var(--accent-color) 2%);
+        }
 
-.skills .skills-sidebar .achievements-section .achievement-list .achievement-item .achievement-text {
-  font-size: 15px;
-  color: var(--text-color);
-  line-height: 1.5;
-  font-weight: 300;
+        svg {
+          width: 36px;
+          height: 36px;
+          color: var(--accent-color);
+        }
+
+        span {
+          font-size: 14px;
+          color: var(--text-color);
+          font-weight: 400;
+        }
+      }
+    }
+
+    .achievements-section {
+
+      .achievements-title {
+        font-size: 18px;
+        font-weight: 400;
+        color: var(--heading-color);
+        margin-bottom: 24px;
+        font-family: var(--heading-font);
+      }
+
+      .achievement-list {
+
+        .achievement-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 16px;
+          padding: 16px 0;
+          border-bottom: 1px solid var(--border-light);
+
+          &:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+          }
+
+          .achievement-date {
+            font-size: 12px;
+            color: var(--accent-color);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-width: 40px;
+            margin-top: 2px;
+          }
+
+          .achievement-text {
+            font-size: 15px;
+            color: var(--text-color);
+            line-height: 1.5;
+            font-weight: 300;
+          }
+        }
+      }
+    }
+  }
 }

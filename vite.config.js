@@ -3,6 +3,7 @@ import glob from 'fast-glob'
 import {fileURLToPath} from 'node:url'
 import eslint from 'vite-plugin-eslint2'
 import { fontless } from 'fontless'
+import PluginCritical from 'rollup-plugin-critical'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -19,6 +20,10 @@ export default {
       fix: true,
       include: ['./*.js', './src/**/*.js'],
     }),
+    PluginCritical({
+      criticalUrl: './src/css/index.css',
+      criticalBase: './src/css/',
+  }),
   ],
   clearScreen: false,
   // assetsInclude: ['**/*.xml', '**/*.txt'],
@@ -40,7 +45,7 @@ export default {
       '@html': resolve(__dirname, './src/html'),
       '@sb': resolve(__dirname, './src/stories'),
       '~bootstrap': resolve(__dirname, '../../node_modules/bootstrap'),
-      awilix: 'awilix/browser',
+      '~nm': resolve(__dirname, '../../node_modules'),
     },
   },
   server: {mode: 'development', middlewareMode: true},
@@ -53,7 +58,7 @@ export default {
     manifest: true,
     license: true,
     cssCodeSplit: true,
-    rollupOptions: {
+    rolldownOptions: {
       input: {
         ...Object.fromEntries(
           glob
@@ -117,7 +122,6 @@ export default {
           }
           return `${dir}[name]-[hash][extname]`
         },
-        onlyExplicitManualChunks: true,
         manualChunks: id => {
           if (id.includes('node_modules')) {
             return 'vendor'

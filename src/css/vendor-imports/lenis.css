@@ -1,0 +1,3 @@
+@layer reset, base, theme, components, utilities;
+
+@import url(/vendor/lenis@1.3.23/lenis.css) layer(base);

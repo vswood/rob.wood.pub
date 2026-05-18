@@ -148,7 +148,7 @@ function logFocusEvents() {
 }
 
 function setStandardAnimations() {
-  const targets = gsap.utils.toArray([".hero-image", ".hero-main h2 span", ".hero-main .copy-block", ".cards-wrapper", ".cards-nav", ".floating-card", ".hero-actions", ".hero-stats .stat-item"])
+  const targets = gsap.utils.toArray(["#home .container .row.heading", ".hero-image .image-wrapper .img-fluid.main-image", ".floating-card", ".hero-main .primary-heading", ".hero-main .row.actions", ".hero-main ,copy-wrapper .copy-section", ".hero-main .read-more",  ".hero-stats .stat-item"])
 
   gsap.set(targets, {
     opacity: 0,
@@ -157,19 +157,11 @@ function setStandardAnimations() {
   })
 
   gsap.to(targets, {
-    scrollTrigger: ".hero-main",
+    scrollTrigger: "#home",
     opacity: 1,
     scale: 1,
     duration: 0.1,
     stagger: 0.1,
-    onComplete: () => {
-
-      window.menu.open()
-      setTimeout(() => {
-        const menu = document.querySelector('header#header')
-        menu.classList.add('open')
-      }, 150)
-    },
   })
 }
 
@@ -284,16 +276,27 @@ const visiblePanels = new Set()
 window.visiblePanels = visiblePanels
 initPanelTracking(panels, visiblePanels)
 
-await checkMotionPref()
+// addEventListener('DOMContentLoaded', () => {
 
-if(window.reduceMotion) {
-  setReduceddAnimations()
-} else {
-  setStandardAnimations()
+  await checkMotionPref()
+
+function initMotion() {
+  if(window.reduceMotion) {
+    setReduceddAnimations()
+  } else {
+    setStandardAnimations()
+  }
 }
 
-addEventListener('DOMContentLoaded', () => {
-  // initPart()
+
+window.addEventListener('load', function (e) {
+
+  document.getElementById('body-wrapper').style.visibility = 'visible'
+  document.getElementById('body-wrapper').classList.remove('loading')
+
+  // initMotion()
+
+  //initPart()
 
   // const panels = gsap.utils.toArray('section')
   //initScrollTriggers()

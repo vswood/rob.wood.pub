@@ -1,79 +1,35 @@
-:root {
-  color-scheme: light dark;
+
+
+.cap-1 {
+  font-size: 56px;
+  line-height: 44px;
+
+  &::before {
+    content: "";
+    margin-bottom: -0.0219em;
+    display: table;
+  }
+
+  &::after {
+    content: "";
+    margin-top: -0.0492em;
+    display: table;
+  }
 }
 
-:root {
-  --primary: #25303f;
-  --primary-light: #293341;
-  --primary-dark: #1c2737;
-  --surface: #293443;
-  --surface-light: #4b607f;
-  --surface-dark: #151f2b;
-  --accent: #22e7a1;
-  --accent-light: #81c1aa;
-  --text: #f2f6ff;
+.cap-2 {
+  font-size: 44px;
+  line-height: 35px;
 
-  --secondary: #585ab2;
-  --dark: #1A1D2C;
-  --light: #F8F9FC;
-  --subtle-2: #8D92A3;
-  --subtle: #b8bfd5;
-  --success: #22e7a1;
-  --warning: #f9792e;
-  --danger: #ff4760;
-  --info: #6bb7ff;
-  --accent: var(--info)
+  &::before {
+    content: "";
+    margin-bottom: -0.0322em;
+    display: table;
+  }
+
+  &::after {
+    content: "";
+    margin-top: -0.0595em;
+    display: table;
+  }
 }
-
-:root {
-  --background-color: var(--primary);
-  --text-color: var(--text);
-  --heading-color: var(--text);
-  --accent-color: var(--accent);
-  --surface-color: var(--surface);
-  --contrast-color:var(--primary-dark);
-
-  --nav-color: var(--text);
-  --nav-hover-color: var(--accent);
-  --gradient-pct: 50%;
-}
-
-:root {
-  --color-hue: 270;
-  --palette-chroma: 0.9;
-}
-
-/* Secondary Theme (Teal/Green) */
-.dark-card {
-  --color-hue: 160;
-  --palette-chroma: 0.7;
-}
-
-.card {
-  background: var(--color-8);
-}
-
-.dark-card {
-  background: var(--color-8);
-}
-
-:root[data-theme='light'] {
-  color-scheme: light;
-}
-
-:root[data-theme='dark'] {
-  color-scheme: dark;
-}
-
-:root {
-  --font-1: "Science Gothic",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-2: "Smooch Sans", Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
-  --font-3: "Google Sans Flex",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-4: "Oswald",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --text-font: var(--font-3);
-  --text-font-alt: var(--font-2);
-  --heading-font: var(--font-4);
-  --heading-font-alt: var(--font-1);
-  --nav-font: var(--font-1);
-}
-

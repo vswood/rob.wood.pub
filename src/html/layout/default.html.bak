@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-US" data-bs-theme="dark">
+
+<head>
+  <script>
+
+    function createParticle() {
+      return {
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 20 + 10,
+        opacity: Math.random() * 0.3 + 0.1,
+        speedX: (Math.random() - 0.5) * 0.5,
+        speedY: (Math.random() - 0.5) * 0.5
+      }
+    }
+    function drawFog() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      fogParticles.forEach(p => {
+        // Simple movement
+        p.x += p.speedX
+        p.y += p.speedY
+
+        // Wrap around canvas edges
+        if (p.x > canvas.width + p.radius) p.x = -p.radius
+        if (p.x < -p.radius) p.x = canvas.width + p.radius
+        if (p.y > canvas.height + p.radius) p.y = -p.radius
+        if (p.y < -p.radius) p.y = canvas.height + p.radius
+
+        // Interaction: push particles away from mouse
+        const dx = p.x - mouseX
+        const dy = p.y - mouseY
+        const distance = Math.sqrt(dx * dx + dy * dy)
+        const interactionRadius = 100
+
+        if (distance < interactionRadius) {
+          const force = (interactionRadius - distance) / interactionRadius
+          p.x += dx / distance * force * 2
+          p.y += dy / distance * force * 2
+        }
+
+        ctx.beginPath()
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(107, 183, 255, ${p.opacity})`
+        ctx.fill()
+      })
+
+      requestAnimationFrame(drawFog)
+    }
+  </script>
+  <style>
+    #body-wrapper {
+      visibility: hidden;
+    }
+
+    .loading {
+      visibility: hidden;
+    }
+
+    #preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      overflow: hidden;
+      background: transparent;
+      transition: all 0.6s ease-out;
+
+      &:before {
+        content: "";
+        position: fixed;
+        top: calc(50% - 150px);
+        left: calc(50% - 150px);
+        border: 60px solid #ffffff;
+        border-color: var(--accent-color) transparent var(--accent-color) transparent;
+        border-radius: 50%;
+        width: 300px;
+        height: 300px;
+        animation: animate-preloader 1.5s linear infinite;
+      }
+    }
+
+    @keyframes animate-preloader {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+
+  {% include "../include/common/head/meta-info.html" %}
+
+  {% favicons './src/img/icon/icon.svg', appleIconBgColor='#ffffff' %}
+
+  {% include "../include/common/head/fonts.html" %}
+
+  {% include "../include/common/head/style.html" %}
+
+  {% block head %}{% endblock head %}
+
+</head>
+
+<body>
+  <div id="preloader"><canvas id="fogCanvas"></canvas></div>
+  <script>
+    // fog.js
+    const canvas = document.getElementById('fogCanvas')
+    const ctx = canvas.getContext('2d')
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+
+    let fogParticles = []
+    const numParticles = 100
+    let mouseX = -100, mouseY = -100 // Initialize off-screen
+
+    for (let i = 0; i < numParticles; i++) {
+      fogParticles.push(createParticle())
+    }
+
+    drawFog();
+  </script>
+  {% include "../include/common/icon-sprite.html" %}
+  <span class="skip-link-container">
+    <a id="top" class="skip-link" href="#hero">Skip to main content</a>
+  </span>
+
+  <div id="body-wrapper" class="loading">
+
+    <div id="main-grid" class="">
+
+      {% include "../include/common/header.html" %}
+
+      <main class="main">
+
+        {% block body %}{% endblock body %}
+        {% include "../include/common/footer.html" %}
+
+      </main>
+
+    </div>
+
+    <div class="header-toggle-wrapper">
+      <i class="header-toggle d-xl-none bi bi-list"></i>
+    </div>
+  </div>
+
+  {% include "../include/common/scrolltop.html" %}
+
+  {% include "../include/common/scripts.html" %}
+
+  {% block scripts %}{% endblock scripts %}
+
+  <div id="faux-content" class="faux-content"></div>
+  <style>
+    #body-wrapper {
+      visibility: visible;
+    }
+  </style>
+</body>
+
+</html>

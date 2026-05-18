@@ -2,32 +2,36 @@
 id: resume
 displayOrder: 4
 ---
+{% import "src/html/include/page-components/parts.html" as gen %}
 <!-- Resume Section -->
 <section id="resume" class="resume section">
-
-  <!-- Section Title -->
-  <div class="container section-heading-alt">
-    <h2>Resume</h2>
-    <p>Senior technology leader specializing in high-impact organizational transformations. From FAANG to startups, has
-      a proven history of stabilizing fragile systems and modernizing infrastructure. Brings 20+ years of expertise in
-      "Technology as a System"—integrating architecture, security, and process to deliver business-critical platforms at
-      scale..</p>
-  </div><!-- End Section Title -->
-
   <div class="container">
+
+    <div class="section-heading-alt">
+      {{gen.pageHeading("", "Resume", "", "", "Curriculum Vitae")}}
+    </div>
+    <div class="copy-wrapper">
+
+      <h3>Principal Software Engineer</h3>
+      <p>
+        Senior engineering leader, founder, and consultant with 20+ years of experience modernizing legacy systems, building scalable AWS Cloud Platforms, and transforming underperforming teams into High-Velocity Product Organizations.
+      </p>
+      <p>Trusted by global enterprises—including Netflix and Sunrun—to rescue fragile systems, reduce operational complexity, and ensure four-nines uptime for business-critical platforms.
+      </p>
+      </p> Proven record of Legacy Modernization, converting bespoke solutions into repeatable, revenue-generating products that secure multi-million dollar revenue impact.
+      </p>
+    </div>
 
     <div class="row align-items-start">
       <div class="col-lg-8">
-        <div class="professional-journey">
+        <div class="professional-journey copy-block">
           <div class="subsection-heading">
-            <div class="icon-wrapper">
-              <svg>
-                <use href="#icon-experience"></use>
-              </svg>
+            <div class="resume-heading-wrapper">
+              <div class="icon-wrapper">
+                {% icon "experience", '{ "width": "24", "height": "24" }' %}
+              </div>
+              <h2 class="resume-heading">Experience</h2>
             </div>
-            <h2 class="resume-heading">Experience</h2>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium
-              totam rem aperiam.</p>
           </div>
 
           <div class="experience-timeline">
@@ -35,16 +39,60 @@ displayOrder: 4
               <div class="timeline-dot"></div>
               <div class="timeline-content">
                 <div class="position-meta">
-                  <span class="timeline-year">2023 - Present</span>
+                  <span class="timeline-year">2025 - Present</span>
                 </div>
-                <h3>Creative Director</h3>
-                <h3>Innovation Studios Ltd</h3>
-                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia
-                  consequuntur magni dolores eos qui ratione.</p>
+                <h3>Founder/Principal Systems Consultant</h3>
+                <h4>virtualStyle intelligent systems engineering</h4>
+                <ul>
+                  <li>Pioneered end-to-end full-stack architectures for a diverse client roster ranging from FAANG giants like Netflix, to SMBs & startups, translating ambiguous business requirements into high-availability systems across
+                    heterogeneous platforms.</li>
+                  <li>
+                    Architected and maintained secure, scalable cloud instances and containerized environments for over a decade, evolving from legacy VPS management to modern AWS-native orchestration.
+                  </li>
+                  <li>
+                    Managed all facets of an independent consultancy, including technical strategy, regulatory compliance, and client delivery, consistently overcoming non-standard operational challenges through inventive problem-solving
+                  </li>
+                </ul>
+                <div class="key-achievements">
+                  <span class="achievement-tag">Branding & Marketing</span>
+                  <span class="achievement-tag">Graphic Design</span>
+                  <span class="achievement-tag">Strategic Planning</span>
+                  <span class="achievement-tag">Project Management</span>
+                  <span class="achievement-tag">Customer Relationship Management</span>
+                  <span class="achievement-tag">Public Relations</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="position-meta">
+                  <span class="timeline-year">2019 - 2025</span>
+                </div>
+                <h3>Sr. Group Leader/Lead developer</h3>
+                <h4>Marketing for Change Co.</h4>
+                <ul>
+                  <li>Spearheaded the ground-up construction of a modern IT organization for a behavioral change agency.</li>
+                  <li>Transitioned digital team into a product division, establishing a multi-year roadmap for technical maturity and
+                    revenue growth.</li>
+                  <li>Architected a secure, multi-account AWS environment using CDK and least-privilege isolation, resulting in audit-ready, compliant by default, and disaster-proof infrastructure, with verifiable optimum security and resilience monitored and managed with centralized controls.</li>
+                  <li>Sustained a renowned COVID-19 platform handling 7TB/month, ensuring mission-critical availability despite
+                    constraints.</li>
+                  <li>Redesigned legacy dev environments in Docker and trunk-based workflows, reclaiming 600+ lost developer hours annually, doubling development velocity, and reversing a negative trend in morale and developer experience.</li>
+                  <li>Standardized devops, transforming deployments from high-risk manual events into low-friction operational
+                    patterns.</li>
+                  <li>Reimagined a legacy application as a multi-tenant SaaS platform, securing a $3M contract plus a source of
+                    recurring revenue.</li>
+                </ul>
                 <div class="key-achievements">
                   <span class="achievement-tag">Team Leadership</span>
                   <span class="achievement-tag">Strategic Planning</span>
-                  <span class="achievement-tag">Creative Vision</span>
+                  <span class="achievement-tag">Product Management</span>
+                  <span class="achievement-tag">AWS Infrastructure</span>
+                  <span class="achievement-tag">Microservices</span>
+                  <span class="achievement-tag">Containerized Deployments</span>
+                  <span class="achievement-tag">DevOps/CI/CD</span>
                 </div>
               </div>
             </div>
@@ -53,12 +101,25 @@ displayOrder: 4
               <div class="timeline-dot"></div>
               <div class="timeline-content">
                 <div class="position-meta">
-                  <span class="timeline-year">2020 - 2023</span>
+                  <span class="timeline-year">2018 - 2019</span>
                 </div>
-                <h3>Senior Product Designer</h3>
-                <h3>Digital Innovations Corp</h3>
-                <p>Ut enim ad minima veniam quis nostrum exercitationem ullam corporis suscipit laboriosam nisi
-                  ut aliquid ex ea commodi.</p>
+                <h3>Principal Software Engineer</h3>
+                <h4>Netflix</h4>
+                <ul>
+                  <li>Recruited to modernize critical fintech systems within Netflix's global supplier ecosystem.</li>
+                  <li>Balanced the maintenance of high-stakes legacy systems with the greenfield redesign of the next-generation supplier onboarding platform.</li>
+                  <li>Co-designed and delivered the "Ozark" onboarding platform, which achieved a 99% reduction in system errors and manual interventions by decoupling logic from volatile third-party schemas.</li>
+                  <li>Led the migration of legacy infrastructure to Netflix’s "Golden AMIs" and paved-path deployment tooling, protocols.</li>
+                  <li>Built internal asset management tools using Google Drive and Calendar APIs, accelerating production velocity by eliminating global time-zone errors and asset access bottlenecks.</li>
+                </ul>
+                <div class="key-achievements">
+                  <span class="achievement-tag">Legacy System Renewal</span>
+                  <span class="achievement-tag">Product Planning</span>
+                  <span class="achievement-tag">AWS Infrastructure</span>
+                  <span class="achievement-tag">Linux CLI &amp; Netflix Tooling</span>
+                  <span class="achievement-tag">React</span>
+                  <span class="achievement-tag">DevOps/CI/CD</span>
+                </div>
               </div>
             </div>
 
@@ -66,14 +127,53 @@ displayOrder: 4
               <div class="timeline-dot"></div>
               <div class="timeline-content">
                 <div class="position-meta">
-                  <span class="timeline-year">2017 - 2020</span>
+                  <span class="timeline-year">2017 - 2018</span>
                 </div>
-                <h3>UX/UI Designer</h3>
-                <h3>Creative Solutions Agency</h3>
-                <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-                  consequatur vel illum.</p>
+                <h3>Principal Data Engineer</h3>
+                <h4>Sunrun</h4>
+                <ul>
+                  <li>Served as a "rescue engineer" to stabilize a failing nationwide solar fleet monitoring dashboard overwhelmed by exponential data growth and naive legacy code.</li>
+                  <li>Diagnosed and eliminated MySQL query lockups, delivering a 4x performance improvement in data ingestion and dashboard responsiveness.</li>
+                  <li>Redesigned the core data model and ETL pipelines to support Business Intelligence (BI) protocols, restoring observability and enabling data-driven executive decision-making.</li>
+                </ul>
+                <div class="key-achievements">
+                  <span class="achievement-tag">Legacy System Renewal</span>
+                  <span class="achievement-tag">Data Architecture</span>
+                  <span class="achievement-tag">Database Optimization</span>
+                  <span class="achievement-tag">SQL Query Optimization</span>
+                  <span class="achievement-tag">ETL</span>
+                </div>
               </div>
             </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="position-meta">
+                  <span class="timeline-year">2012 - 2015</span>
+                </div>
+                <h3>Lead Developer</h3>
+                <h4>Our Town America</h4>
+                <ul>
+                  <li>Drove technical strategy for a national franchising  corporation, expanding legacy systems into modern, targeted digital products.</li>
+                  <li>
+                    Built self-service geospatial planning tools using Google  Maps and Oracle Spatial, which increased sales by 20% and freed up hundreds of hours in the call center through  dramatically reduced sales and support demands.
+                  </li>
+                  Re-engineered the Oracle-based production system for unlimited demographic targeting, closing a deal with Brighthouse, a major regional client, increasing national advertiser insert revenue by 25% and fulfilling long-term
+                    franchisee requirements.
+                  </li>
+                </ul>
+                <div class="key-achievements">
+                  <span class="achievement-tag">Legacy System Renewal</span>
+                  <span class="achievement-tag">Data Architecture</span>
+                  <span class="achievement-tag">Database Optimization</span>
+                  <span class="achievement-tag">SQL Query Optimization</span>
+                  <span class="achievement-tag">Geospatial Data &amp; Queries</span>
+                  <span class="achievement-tag">Google Maps</span>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -81,16 +181,12 @@ displayOrder: 4
       <div class="col-lg-4">
         <div class="education-skills">
           <div class="subsection-heading">
-            <div class="icon-wrapper">
-              <svg>
-                <use href="#icon-education"></use>
-              </svg>
+            <div class="resume-heading-wrapper">
+              <div class="icon-wrapper">
+                {% icon "education", '{ "width": "24", "height": "24" }' %}
+              </div>
+              <h2 class="resume-heading">Education</h2>
             </div>
-            <h2 class="resume-heading">Education</h2>
-            <p>A university education formed an excellent foundation for the vastly larger body of knowledge accumulated
-              on top of it.</p>
-            <p>As the ceaseless march of technology grows exponentially more difficult to keep up with, each year is
-              equivalent to an associate's degreee or more, just to keep up.</p>
           </div>
 
           <div class="education-grid">
@@ -98,10 +194,7 @@ displayOrder: 4
             <div class="education-card primary">
               <div class="education-header">
                 <div class="degree-icon">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <use href="#icon-services"></use>
-                  </svg>
+                  {% icon "services", '{ "width": "24", "height": "24" }' %}
                 </div>
                 <div class="degree-info">
                   <h3>Bachelor of Science</h3>

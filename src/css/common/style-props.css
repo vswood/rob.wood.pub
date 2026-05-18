@@ -1,0 +1,26 @@
+/**━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ᴠɪʀᴛᴜᴀʟSᴛʏʟᴇ.ᴜs━━
+ * @preserve Please retain this header in any/all use(s) of this code.
+ * @copyright 2026 Rob Wood <https://virtualstyle.us>
+ * @license GPL-3.0-or-later GNU General Public License v3.0 or later
+ *
+ * @project rob.wood.pub.us 0.2.0
+ * {@link https://rob.wood.pub}
+ * {@link https://github.com/vswood}
+ * @file style-props.css
+ * @description Reusable styles saved as reusable props for Rob Wood's Developer Portfolio.
+ * @author Rob Wood <rob@virtualstyle.us>
+ * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ */
+
+ :root {
+  --focus-top: 3px solid color-mix(in oklch, var(--accent-color), white 30%);
+  --focus-ring: 3px solid color-mix(in oklch, var(--accent-color), white 30%);
+
+  --surface-inset-shadow-2: rgba(0, 0, 0, 0.28) 0px 2px 4px 0px inset;
+  --surface-inset-shadow: inset 3px 3px 2px -1px rgba(21,31,43,0.42),
+    inset -3px -3px 2px -1px rgba(75,96,127,0.22);
+
+  --cubic-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --content-transition: content-visibility 0.33s allow-discrete, opacity 0.33s, block-size 0.33s;
+  --details-inner-transition: max-height 0.3s ease-in-out;
+}

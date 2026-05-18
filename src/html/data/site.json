@@ -1,0 +1,14 @@
+{
+  "name": "Rob Wood Developer Portfolio",
+  "sections": [
+    "home",
+    "about",
+    "stats",
+    "skills",
+    "resume",
+    "portfolio",
+    "services",
+    "testimonials",
+    "contact"
+  ]
+}

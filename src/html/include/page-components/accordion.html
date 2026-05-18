@@ -1,0 +1,49 @@
+{% macro accord(data) %}
+<section class="accord" aria-label="Signature Strengths & Strategic Competencies">
+  {% for item in data %}
+  <details class="accord-item" name="strengths">
+    {{ accordionSummary(iconClass = item.iconClass, iconid = item.iconid, name = item.name, description = item.description)  }}
+    <div class="accord-content">
+      <ul class="alert-list">
+      {% for impact in item.impact  %}
+        {{ accordionAlertItem(iconClass = impact.iconClass, iconid = impact.iconid, name = impact.name, description = impact.description) }}
+      {% endfor  %}
+      </ul>
+    </div>
+  </details>
+  {% endfor %}
+</section>
+{% endmacro %}
+
+{% macro accordionSummary(iconClass = "", iconid, name, description) %}
+<summary class="accord-button">
+  <div class="accord-header">
+    <div class="accord-header-inner">
+      <div class="accord-icon {{iconClass}}">
+        {% icon iconid, '{ "width": "36", "height": "36" }' %}
+      </div>
+      <div>
+        <h3 class="accord-title">{{name}}
+          <svg width="36" height="36" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </h3>
+        <p class="accord-subtitle">{{description}}</p>
+      </div>
+    </div>
+  </div>
+</summary>
+{% endmacro %}
+
+
+{% macro accordionAlertItem(iconClass = "", iconid, name, description) %}
+<li class="alert-item">
+  <div class="alert-icon {{iconClass}}">
+    {% icon iconid, '{ "width": "28", "height": "28" }' %}
+  </div>
+  <div class="alert-content">
+    <h4 class="alert-title">{{name}}</h4>
+    <p class="alert-message">{{description}}</p>
+  </div>
+</li>
+{% endmacro %}

@@ -1,0 +1,50 @@
+[
+  {
+    "link": "https://github.com/vswood",
+    "text": "Github",
+    "description": "Github - Code repositories",
+    "iconid": "github"
+  },
+  {
+    "link": "https://x.com/virtualstyle_us",
+    "text": "Twitter",
+    "description": "Twitter/X - Short form social content",
+    "iconid": "x"
+  },
+  {
+    "link": "https://www.facebook.com/vs.rob.wood/",
+    "text": "Facebook",
+    "description": "Facebook - Social & community hub",
+    "iconid": "facebook"
+  },
+  {
+    "link": "https://www.instagram.com/virtualstyle.us/",
+    "text": "Instagram",
+    "description": "Instagram - Image-based social media",
+    "iconid": "instagram"
+  },
+  {
+    "link": "https://www.youtube.com/@virtualstyleus",
+    "text": "YouTube",
+    "description": "YouTube - Hard-Headed Tech Videos",
+    "iconid": "youtube"
+  },
+  {
+    "link": "https://substack.com/@virtualstyle",
+    "text": "Substack",
+    "description": "Substack - Long form content, blog articles",
+    "iconid": "substack"
+  },
+  {
+    "link": "https://virtualstyle.medium.com/",
+    "text": "Medium",
+    "description": "Medium - Long form content, blog articles",
+    "iconid": "medium"
+  },
+  {
+    "link": "https://linkedin.com/in/rob-wood",
+    "text": "LinkedIn",
+    "description": "LinkedIn - Professional networking social media",
+    "iconid": "linkedin"
+  }
+]

@@ -1,12 +1,17 @@
-.faux-content {
-  visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 2147483647;
-  pointer-events: none;
+@layer reset, base, theme, components, utilities;
+
+@layer theme {
+
+  .faux-content {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2147483647;
+    pointer-events: none;
+  }
 }

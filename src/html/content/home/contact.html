@@ -2,27 +2,28 @@
 id: contact
 displayOrder: 8
 ---
-<!-- Contact Section -->
-<section id="contact" class="contact section">
-  <!-- Section Title -->
-  <div class="container section-heading-alt">
-    <h2>Contact</h2>
-    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-      consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
-      sit in iste officiis commodi quidem hic quas.</p>
-  </div><!-- End Section Title -->
-
+{% import "src/html/include/page-components/parts.html" as gen %}
+<section id="contact">
   <div class="container">
-    <div class="row gy-4">
+    <div class="row">
+      <div class="copy-wrapper">
+        <div class="section-heading-alt">
+          {{gen.pageHeading("", "Start A", "", "", "Conversation")}}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+
       <div class="col-lg-5">
 
         <div class="info-item">
           <div class="info-icon">
-            <i class="bi bi-chat-dots"></i>
+            {% icon "speech-bubble-round", '{ "width": "48", "height": "48" }' %}
           </div>
-          <div class="info-content">
-            <h3>Let's Connect</h3>
-            <p>We're here to discuss your vision and explore how we can bring it to life together.</p>
+          <div class="info-content copy-wrapper">
+            <h3>Let's <b>Connect</b></h3>
+            <p>You can send me an email, or book a meeting with me using the forms below. I look forward to hearing from
+              you!</p>
           </div>
         </div>
 
@@ -30,7 +31,8 @@ displayOrder: 8
 
           <div class="detail-item">
             <div class="detail-icon">
-              <i class="bi bi-envelope-open"></i>
+              {% icon "email", '{ "width": "32", "height": "32" }' %}
+              </svg>
             </div>
             <div class="detail-content">
               <span class="detail-label">Email us</span>
@@ -40,7 +42,8 @@ displayOrder: 8
 
           <div class="detail-item">
             <div class="detail-icon">
-              <i class="bi bi-telephone-outbound"></i>
+              {% icon "phone", '{ "width": "32", "height": "32" }' %}
+              </svg>
             </div>
             <div class="detail-content">
               <span class="detail-label">Call us</span>
@@ -50,11 +53,12 @@ displayOrder: 8
 
           <div class="detail-item">
             <div class="detail-icon">
-              <i class="bi bi-geo-alt-fill"></i>
+              {% icon "location", '{ "width": "32", "height": "32" }' %}
+              </svg>
             </div>
             <div class="detail-content">
-              <span class="detail-label">Visit us</span>
-              <span class="detail-value">547 Madison Avenue<br>New York, NY 10022</span>
+              <span class="detail-label">Book a Meet</span>
+              <span class="detail-value"><a href="#">Booking Page</a></span>
             </div>
           </div>
 
@@ -68,46 +72,115 @@ displayOrder: 8
             <h3>Send us a message</h3>
           </div>
 
-          <form action="forms/contact.php" method="post" class="php-email-form">
+          <form class="needs-validation" novalidate>
+            <div class="container">
 
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Full Name</label>
-                  <input type="text" name="name" required="">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group input-group ">
-                  <div class="mb-3">
-                    <label for="input-email" class="form-label">Email address</label>
-                    <input type="email" name="email" class="form-control" id="input-email" aria-describedby="help-email" required="">
-                    <div id="help-email" class="form-text">We'll never share your email with anyone else.</div>
+              <div class="row gx-3">
+
+                <div class="form-col col-md-6">
+                  <div class="form-floating mb-3">
+                    <input type="phone" name="phone" class="form-control" id="input-name" aria-describedby="help-name"
+                      required="" placeholder="First Last">
+                    <label for="input-name" class="form-label">
+                      <span class="hint">Full name</span>
+                      <span class="invalid">Invalid name</span>
+                      <span class="valid">Looks good!</span>
+                    </label>
+                    <div class="invalid-feedback">
+                      You must enter a name with your message.
+                    </div>
                   </div>
+                  <div id="help-name" class="form-text">Enter your full name - preferred name plus surname</div>
                 </div>
+
+                <div class="form-col col-md-6">
+                  <div class="form-floating mb-3">
+                    <input type="email" name="email" class="form-control" id="input-email" aria-describedby="help-email"
+                      required="" placeholder="name@email.com">
+                    <label for="input-email" class="form-label">Email address</label>
+                    <div class="invalid-feedback">
+                      You must enter a valid email address with your message.
+                    </div>
+                  </div>
+                  <div id="help-email" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+
               </div>
-            </div>
+              <div class="row gx-3">
 
-            <div class="form-group">
-              <label>Subject</label>
-              <input type="text" name="subject" required="">
-            </div>
 
-            <div class="form-group">
-              <label for="projectMessage">Message</label>
-              <textarea name="message" id="projectMessage" rows="5" required=""></textarea>
-            </div>
+                <div class="form-col col-md-6">
+                  <div class="form-floating mb-3">
+                    <input type="tel" name="name" class="form-control" id="input-phone" aria-describedby="help-phone"
+                      required="" placeholder="(123) 456-7890">
+                    <label for="input-phone" class="form-label">Phone number</label>
+                    <div class="invalid-feedback">
+                      You must enter a valid phone number with your message.
+                    </div>
+                  </div>
+                  <div id="help-phone" class="form-text">Enter your phone number</div>
+                </div>
 
-            <div class="my-3">
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your message has been sent. Thank you!</div>
-            </div>
+                <div class="form-col col-md-6">
+                  <div class="form-floating mb-3">
+                    <input type="text" name="company" class="form-control" id="input-company"
+                      aria-describedby="help-company" required="" placeholder="Company name">
+                    <label for="input-company" class="form-label">Company name</label>
+                    <div class="invalid-feedback">
+                      You must enter your company name with your message.
+                    </div>
+                  </div>
+                  <div id="help-company" class="form-text">Enter your company name</div>
+                </div>
 
-            <button type="submit" class="submit-btn">
-              <span>Send Message</span>
-              <i class="bi bi-arrow-right"></i>
-            </button>
+              </div>
+              <div class="row gx-3">
+
+                <div class="form-col col-md-6">
+                  <div class="form-floating mb-3">
+                    <input type="text" name="subject" class="form-control" id="input-subject"
+                      aria-describedby="help-subject" required="" placeholder="Subject">
+                    <label for="input-subject" class="form-label">Subject</label>
+                    <div class="invalid-feedback">
+                      You must enter a subject for your message.
+                    </div>
+                  </div>
+                  <div id="help-subject" class="form-text">Enter your subject</div>
+                </div>
+
+                <div class="form-col col-md-6">
+                  <div class="form-floating mb-3">
+                    <textarea style="height:5lh" name="message" class="form-control" id="input-message"
+                      aria-describedby="help-message" required="" placeholder="Message"></textarea>
+                    <label for="input-message" class="form-label">Message</label>
+                    <div class="invalid-feedback">
+                      You must enter a message to send.
+                    </div>
+                  </div>
+                  <div id="help-message" class="form-text">Enter your message</div>
+                </div>
+
+              </div>
+              <div class="row gx-3">
+
+                <div class="form-col col-md-12">
+                  <div class="form-messages">
+                    <div class="loading">Loading</div>
+                    <div class="error-message"></div>
+                    <div class="sent-message">Your message has been sent. Thank you!</div>
+                  </div>
+
+                  <div class="actions">
+                    <button type="submit" class="btn btn-3d btn-primary">
+                      <span>Send Message</span>
+                      {% icon "send", '{ "width": "32", "height": "32" }' %}
+                      </svg>
+                    </button>
+                  </div>
+
+                </div>
+
+              </div>
 
           </form>
 
@@ -116,7 +189,7 @@ displayOrder: 8
       </div>
 
     </div>
+
   </div>
 
 </section>
-<!-- /Contact Section -->

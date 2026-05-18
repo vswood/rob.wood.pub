@@ -2,16 +2,17 @@
 id: testimonials
 displayOrder: 7
 ---
+{% import "src/html/include/page-components/parts.html" as gen %}
 <!-- Testimonials Section -->
 <section id="testimonials" class="testimonials section light-background">
 
   <!-- Section Title -->
   <div class="container section-heading-alt">
-    <h2>Testimonials</h2>
-    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-      consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
-      sit in iste officiis commodi quidem hic quas.</p>
+    {{gen.pageHeading("", "Kind Words &", "", "", "Testimonials")}}
   </div><!-- End Section Title -->
+  <div class="copy-wrapper">
+    <p>These are a few of the kind words that have been said about me by employers, customers,and coworkers.</p>
+  </div>
 
   <div class="container">
 
@@ -59,7 +60,7 @@ displayOrder: 7
             </div>
             <div class="testimonial-footer">
               <div class="author-info">
-                <img src="./img/person/person-f-12.webp" alt="Author" class="author-avatar">
+                <img src="../img/person/person-f-12.webp" alt="Author" class="author-avatar">
                 <div class="author-details">
                   <h3>Sophia Martinez</h3>
                   <span class="role">Operations Director</span>
@@ -90,7 +91,7 @@ displayOrder: 7
             </div>
             <div class="testimonial-footer">
               <div class="author-info">
-                <img src="./img/person/person-m-14.webp" alt="Author" class="author-avatar">
+                <img src="../img/person/person-m-14.webp" alt="Author" class="author-avatar">
                 <div class="author-details">
                   <h3>Michael Anderson</h3>
                   <span class="role">Project Manager</span>
@@ -121,7 +122,7 @@ displayOrder: 7
             </div>
             <div class="testimonial-footer">
               <div class="author-info">
-                <img src="./img/person/person-f-11.webp" alt="Author" class="author-avatar">
+                <img src="../img/person/person-f-11.webp" alt="Author" class="author-avatar">
                 <div class="author-details">
                   <h3>Jennifer Wilson</h3>
                   <span class="role">Digital Strategy Lead</span>

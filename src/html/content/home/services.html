@@ -2,83 +2,90 @@
 id: services
 displayOrder: 6
 ---
+{% import "src/html/include/page-components/parts.html" as gen %}
 <!-- Services Section -->
 <section id="services" class="services section">
 
   <!-- Section Title -->
   <div class="container section-heading-alt">
-    <h2>Services</h2>
-    <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-  </div><!-- End Section Title -->
+    {{gen.pageHeading("", "Available", "", "", "Services")}}
+  </div>
+  <div class="copy-block">
+    <p>The following are some of the primary services I offer on a freelance basis - though there's not much I amunfamiliar with, so the following list is more for convenience - if you've got an IT problem, ask me! I can probably solve it. </p>
+  </div>
+  <!-- End Section Title -->
 
   <div class="container">
 
-    <div class="row g-5">
+    <div class="row">
 
-      <div class="col-lg-6">
+      <div class="col-lg-6 ">
         <div class="service-item">
-          <div class="service-icon">
-            <i class="bi bi-palette"></i>
+          <div class="service-heading">
+            <div class="service-icon">
+              {% icon "experience", '{ "width": "24", "height": "24" }' %}
+            </div>
+            <h3><a href="service-details.html">Branding Strategy</a></h3>
           </div>
           <div class="service-content">
-            <h3><a href="service-details.html">Brand Identity Design</a></h3>
-            <p>Crafting distinctive visual identities that capture your brand's essence and connect with your
-              target audience through thoughtful design systems.</p>
+            <p>Formalize your brand! Solidify your brand's identity and get it all down on paper in a brand book to serve as the ever-evolving roadmap to maintain complete consisitency. I'll audit your existing resources, work with you to fill in any blanks, and create a comprehensive brand style guide/brand book to make your branding concrete and communicatable, ensuring consistency in all of your messaging, visual identity,and everything else.</p>
             <a href="service-details.html" class="read-more">
               <span>Learn More</span>
-              <i class="bi bi-arrow-right"></i>
+              {% icon "arrow-right", '{ "width": "24", "height": "24" }' %}
             </a>
           </div>
         </div>
       </div>
 
-      <div class="col-lg-6">
+      <div class="col-lg-6 ">
         <div class="service-item">
-          <div class="service-icon">
-            <i class="bi bi-code-slash"></i>
-          </div>
-          <div class="service-content">
+          <div class="service-heading">
+            <div class="service-icon">
+              {% icon "frontend", '{ "width": "24", "height": "24" }' %}
+            </div>
             <h3><a href="service-details.html">Web Development</a></h3>
-            <p>Building modern, responsive websites and applications with clean code, optimal performance, and
-              seamless user experiences across all devices.</p>
+          </div>
+          <div class="service-content">
+            <p>Cutting-edge web development, accessible, responsive, perfomance optimized, I'll help you decide what tradeoffs make sense, then develop an MVP that exceeds expectations and remains under budget.</p>
             <a href="service-details.html" class="read-more">
               <span>Learn More</span>
-              <i class="bi bi-arrow-right"></i>
+              {% icon "arrow-right", '{ "width": "24", "height": "24" }' %}
             </a>
           </div>
         </div>
       </div>
 
-      <div class="col-lg-6">
+      <div class="col-lg-6 ">
         <div class="service-item">
-          <div class="service-icon">
-            <i class="bi bi-phone"></i>
+          <div class="service-heading">
+            <div class="service-icon">
+              {% icon "data-integrity", '{ "width": "24", "height": "24" }' %}
+            </div>
+            <h3><a href="service-details.html">Auditing & Diagnosis</a></h3>
           </div>
           <div class="service-content">
-            <h3><a href="service-details.html">UI/UX Design</a></h3>
-            <p>Designing intuitive interfaces and user experiences that balance aesthetics with functionality,
-              ensuring every interaction feels natural and purposeful.</p>
+            <p>I'll assess your current IT and strategy and help you find ways to move faster while saving money and exposing yourself to less risk.</p>
             <a href="service-details.html" class="read-more">
               <span>Learn More</span>
-              <i class="bi bi-arrow-right"></i>
+              {% icon "arrow-right", '{ "width": "24", "height": "24" }' %}
             </a>
           </div>
         </div>
       </div>
 
-      <div class="col-lg-6">
-        <div class="service-item">
-          <div class="service-icon">
-            <i class="bi bi-megaphone"></i>
-          </div>
-          <div class="service-content">
+      <div class="col-lg-6 ">
+          <div class="service-item">
+            <div class="service-heading">
+            <div class="service-icon">
+              {% icon "strategy-plan", '{ "width": "24", "height": "24" }' %}
+            </div>
             <h3><a href="service-details.html">Digital Strategy</a></h3>
-            <p>Developing comprehensive digital strategies that align with your business goals and maximize your
-              online presence through data-driven insights.</p>
+          </div>
+          <div class="service-content">
+            <p>I'll help you determine what your best IT strategy is, and develop a plan and a schedule to get it done. </p>
             <a href="service-details.html" class="read-more">
               <span>Learn More</span>
-              <i class="bi bi-arrow-right"></i>
-            </a>
+              {% icon "arrow-right", '{ "width": "24", "height": "24" }' %}
           </div>
         </div>
       </div>

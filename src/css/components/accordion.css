@@ -18,16 +18,15 @@ details.accord-item>summary {
   gap: 10px;
 
   details.accord-item {
-    interpolate-size: allow-keywords;
     overflow: hidden;
-    transition: content-visibility 0.33s allow-discrete, opacity 0.33s, block-size 0.33s;
+    transition: var(--content-transition);
     margin: 0;
-    padding: 0.5lh 1ch;
+    padding: 0.5lh 0.5ch;
     padding-bottom: 0;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.28) 0px 2px 4px 0px inset;
-    border: 1px solid color-mix(in oklch, var(--subtle), transparent 90%);
+    box-shadow: var(--surface-inset-shadow);
+    border: var(--border-1-subtle-trans-90);
     background: transparent;
     backdrop-filter: blur(10px);
     max-width: 65ch;
@@ -36,7 +35,7 @@ details.accord-item>summary {
       opacity: 0;
       block-size: 0;
       overflow-y: clip;
-      transition: content-visibility 0.33s allow-discrete, opacity 0.33s, block-size 0.33s;
+      transition: var(--content-transition);
     }
 
     &.active {
@@ -52,25 +51,24 @@ details.accord-item>summary {
         block-size: auto;
       }
     }
-    &[open],
-    &:hover {
-      /*transform: translateY(-2px);
-      box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;*/
-      color: var(--info);
-      background: color-mix(in oklch, var(--dark), transparent 60%);
 
+    &[open] {
       .accord-header {
         .accord-header-inner {
-
-          .accord-icon {
-            color: var(--info);
-          }
-
-          .accord-subtitle {
-            color: var(--info);
+          .accord-title {
+            svg {
+              transform: rotate(180deg);
+            }
           }
         }
       }
+    }
+
+    &[open],
+    &:hover,
+    &:has(summary:focus-visible) {
+      outline: 2px solid var(--accent);
+      background: color-mix(in oklch, var(--primary), black 5%);
     }
 
     .accord-button {
@@ -78,17 +76,21 @@ details.accord-item>summary {
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      padding: 0;
+      padding: 0.25lh 0.5ch;
       border: none;
       background: none;
       cursor: pointer;
       text-align: left;
       color: inherit;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: var(--cubic-transition);
+      &:focus,
+      &focus-visible {
+        outline: none;
+      }
     }
 
     .accord-header {
-      padding: 0.25lh 0.5ch 0 0.5ch;
+      padding: 0.25lh 0.25ch 0 0.25ch;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -96,38 +98,11 @@ details.accord-item>summary {
       border-radius: 0.5em;
       cursor: pointers;
 
-      .arrow-wrap {
-        width: 4ch;
-        height: 5.5em;
-        display: flex;
-        border-radius: 0.5em;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .accord-arrow {
-        flex-shrink: 0;
-        width: 24px;
-        height: 24px;
-        transition: transform 0.3s ease;
-
-        svg {
-          width: 100%;
-          height: 100%;
-          fill: none;
-          stroke: currentColor;
-          stroke-width: 2;
-          stroke-linecap: round;
-          stroke-linejoin: round;
-        }
-      }
-
       .accord-header-inner {
         padding: 0;
         display: flex;
         align-items: center;
-        gap: 0.75rem;
-        margin-right: 0.5rem;
+        gap: 0.5ch;
         margin-bottom: 0.75lh;
 
         .accord-icon {
@@ -137,25 +112,32 @@ details.accord-item>summary {
           display: flex;
           align-items: center;
           justify-content: center;
+          margin-right: 2ch;
           flex-shrink: 0;
-          box-shadow: inset 3px 3px 2px -1px rgba(21,31,43,0.42),
-            inset -3px -3px 2px -1px rgba(75,96,127,0.22);
+          box-shadow: var(--surface-inset-shadow);
           background: var(--primary);
-          color: var(--accent);
+          color: var(--accent-trans-20);
         }
 
         .accord-title {
-          font-family: var(--text-font-alt);
-          font-size: var(--xx-large);
-          font-weight: 300;
+          font-family: var(--font-6);
+          font-size: var(--x-large);
+          font-weight: 500;
           margin: 0;
           line-height: 1.2;
+          letter-spacing: 0;
+          display:flex;
+          justify-content: space-between;
+          svg {
+            width: 32px;
+            height: 32px;
+            color: var(--accent);
+            transition: var(--cubic-transition);
+          }
         }
 
         .accord-subtitle {
-          /* font-size: var(--step--2); */
           color: var(--subtle);
-          margin: 0;
           line-height: 1;
         }
 
@@ -167,7 +149,6 @@ details.accord-item>summary {
             color: var(--accent);
             height: 100%;
             font-weight: bold;
-            /* font-size: var(--step-0); */
             margin-right: 0.5em;
             line-height: 1;
             padding-left: 0.5rem;
@@ -176,7 +157,7 @@ details.accord-item>summary {
 
         .accord-content {
           overflow: hidden;
-          transition: max-height 0.3s ease-in-out;
+          transition: var(--details-inner-transition);
           padding: 0;
         }
       }
@@ -194,25 +175,27 @@ details.accord-item>summary {
         padding: 1lh 1ch;
         border-radius: 8px;
         margin: 0.5lh 0.5ch;
-        background-color: var(--primary);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: inset 3px 3px 2px -1px rgba(21,31,43,0.42),
-          inset -3px -3px 2px -1px rgba(75,96,127,0.22);
+        background-color: var(--surface-black-5);
+        transition: var(--cubic-transition);
+        box-shadow: var(--surface-inset-shadow);
+        &:focus,
+        &:focus-visible {
+          outline: none;
+        }
         &:last-child {
           margin-bottom: 0;
         }
 
         .alert-icon {
-          width: 48px;
-          height: 48px;
+          width: 3.5rem;
+          height: 3.5rem;
           border-radius: 6px;
-          margin-right: 0.75rem;
+          margin-right: 2ch;
           display: flex;
           align-items: center;
           justify-content: center;
           flex-shrink: 0;
-          box-shadow: inset 3px 3px 2px -1px rgba(21,31,43,0.42),
-            inset -3px -3px 2px -1px rgba(75,96,127,0.22);
+          box-shadow: var(--surface-inset-shadow);
         }
 
 
@@ -238,29 +221,3 @@ details.accord-item>summary {
 
   }
 }
-
-
-details.accord-item[open] .accord-button,
-.accord-button:hover {
-  .accord-header {
-    /*box-shadow: inset 3px 3px 2px -1px rgba(21,31,43,0.42),
-      inset -3px -3px 2px -1px rgba(75,96,127,0.22);*/
-      color: var(--info);
-   h3,
-   h4,
-   p {
-    color: var(--info);
-   }
-  }
-
-  .accord-icon {
-    color: var(--info);
-  }
-  /*.arrow-wrap {
-    box-shadow: inset 3px 3px 2px -1px rgba(21,31,43,0.42),
-      inset -3px -3px 2px -1px rgba(75,96,127,0.22);
-    background: color-mix(in oklch, var(--dark), transparent 60%);
-  }*/
-}
-
-

@@ -1,0 +1,144 @@
+/* EXAMPLE:
+  --image-size: 45rem;
+  --center-top: calc(42% - var(--image-size) * .5);
+  FORMULA:
+    6.5vh + 1500vh / x + 4vh * exp(-0.1vh * (x - 80vh))
+
+  •	If you want everything higher → adjust --param2
+  •	If you want early --img-size higher → adjust --param1
+  •	If you want the rise near --img-size=100 higher → --param3
+
+  FORMULA:
+  51 + 90 / x + var(--image-width-nu) * exp(-0.08 * var(--image-width-nu))
+
+  •	param4a → baseline shift.
+  •	param3a → controls steepness of early drop.
+  •	param2a and param1a → fine-tunes smoothing through mid---img-size.
+*/
+/* 50@100,45@90,40@80,35@70,29.5@60,24@50,18.5@40,12.5@30,5.5@20,-5@10 */
+
+/* 50@100 45@90 40@80 35@70 29@60 24@50 19@40 13@30 6@20 -5@10  */
+:root {
+  --img-size: 30;
+
+  --param1: 300;
+  --param2: 4.75;
+  --param3: 4.025;
+  --param1a: 0.08;
+  --param2a: 4;
+  --param3a: 90;
+  --param4a: 12.75; /* 24@50, 19@40,  9.5@25, 37@75  */
+}
+
+@media screen and (max-width: 767px) {
+  :root {
+    --img-size: 40;
+    --param4a: 19;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  :root {
+    --img-size: 25;
+    --param4a: 9.5;
+  }
+}
+
+:root {
+
+  --image-size: calc(1vh * var(--img-size));
+  --sum0: calc(var(--img-size) - 80);
+  --sum1: calc(0.1 * var(--sum0));
+  --sum2: exp(var(--sum1));
+  --sum4: calc(var(--param3)* exp(var(--sum1)));
+  --sum5: calc(var(--img-size) + var(--sum4));
+  --sum6: calc(var(--param1) / var(--sum5));
+  --sum7: calc(var(--param2) + var(--sum6));
+  --center-top: calc(1vh * var(--sum7));
+
+  --sum0a: calc(var(--param1a) * var(--img-size));
+  --sum0b: exp(var(--sum0a));
+  --sum1a: calc(var(--param2a) / var(--sum0b));
+  --sum2a: calc(var(--param3a) / var(--img-size));
+  --sum3a: calc(var(--sum1a) + var(--sum2a));
+  --sum4a: calc(var(--param4a) + var(--sum3a));
+  --adjustment-offset: calc(1vh * var(--sum4a));
+
+  --right-col-extra: calc(var(--image-size) * .55);
+  --center-common: 1.5vh;
+  --center-offset: calc(var(--image-size) * .1);
+  --right-col-offset: calc(var(--adjustment-offset) * -2);
+  --animation-half: calc(var(--image-size) * .95);
+
+  --border-color: #1c2737;
+}
+
+.about-img-2 {
+  max-width: 90%;
+  margin: 3em auto;
+  position: relative;
+  display: flex;
+  gap: 2vh;
+  align-items: flex-start;
+  height: fit-content;
+  p {
+    padding: .25em;
+    margin: 0 0 1em;
+  }
+}
+
+.column.left,
+.column.right {
+  box-sizing: border-box;
+  text-align: justify;
+  width: calc(50% + var(--right-col-extra));
+  height: fit-content;
+}
+
+.center-float {
+  box-sizing: border-box;
+  float: right;
+  clear: right;
+  margin: 0 0 var(--center-common) var(--center-common);
+  border-radius: 50%;
+  shape-outside: circle(50%);
+  animation: fadeIn 1.5s forwards;
+  animation-timing-function: cubic-bezier(.93,.57,.1,.4);
+  width: calc(var(--image-size) * .3);
+  height: var(--image-size);
+  opacity: 0;
+}
+.column.right .center-float {
+  float: left;
+  margin: 0 var(--center-common) var(--center-common) 0;
+  clear: left;
+}
+.column.left .adjustment {
+  margin-right: var(--adjustment-offset);
+  /* margin-top: 6lh; */
+}
+.column.right .adjustment {
+  margin-left: var(--adjustment-offset);
+  /* margin-top: 6lh; */
+}
+.column.right {
+  margin-left: var(--right-col-offset);
+}
+
+@keyframes fadeIn {
+  50% {
+    width: calc(var(--image-size) - var(--image-size) * .1);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    width: var(--image-size);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .column.left,
+  .column.right {
+    text-align: left;
+  }
+}

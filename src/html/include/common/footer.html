@@ -1,14 +1,16 @@
-{% import "../macros.html" as macro %}
 <footer id="footer" class="footer light-background">
   <div class="container">
     <h3 class="sitename">Rob Wood</h3>
 
     <p>Realizing the Promise of Technology Through Cost-Effective Measurable Outcomes</p>
 
-    <!--<p>A <b>cognitive edge relentlessly honed</b> through <b>lifelong learning</b>, sparking <b>remarkable insight and critical thinking</b>, driving <b>extraordinary problem-solving and strategic instincts</b>, resulting in <b>confident, agile adaptability and persistence,</b> always ready and <b> equal to any challenge</b>.</p>-->
-
     <div class="social-links d-flex justify-content-center">
-      {% include "../common/social-links.html" %}
+      {% for item in social %}
+        <a href="{{item.link}}" target="_blank" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-placement="top" data-bs-delay='{"show":400,"hide":150}' data-bs-title="{{item.description}}" aria-label="{{item.description}}">
+            {% icon item.iconid, '{ "width": "24", "height": "24" }' %}
+          <span class="visually-hidden">{{item.text}}</span>
+        </a>
+      {% endfor %}
     </div>
     <div class="container">
       <div class="copyright">
