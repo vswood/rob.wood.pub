@@ -2,3 +2,6 @@ allowBuilds:
   esbuild: true
   puppeteer: true
   sharp: true
+patchedDependencies:
+  jsdoc: patches/jsdoc.patch
+  monocart-coverage-reports: patches/monocart-coverage-reports.patch

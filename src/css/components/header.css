@@ -18,7 +18,6 @@
 
 @container style(--inline-size-xs: var(--breakpoint-xs)) {
   .menu-wrap {
-    --nav-width: 300px;
     /*position: fixed;*/
     grid-area: header;
     top: 0;
@@ -29,6 +28,11 @@
   }
 }
 
+@container style(--inline-size-sm: var(--breakpoint-sm)) {
+  .menu-wrap {
+    --nav-width: 300px;
+  }
+}
 
 .morph-shape {
 	position: absolute;

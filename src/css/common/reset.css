@@ -1,6 +1,16 @@
-@layer reset, base, theme, components, utilities;
+@layer reset, theme, base, layout, component, utility, override;
 
 @layer reset {
+
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+
   /* Box sizing and border defaults */
   :where(*, *::before, *::after) {
     box-sizing: border-box;

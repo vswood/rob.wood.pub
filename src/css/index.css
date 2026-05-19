@@ -20,25 +20,46 @@
   initial-value: 100vi;
 }
 
+@property --inline-size-sm {
+  syntax: "<length-percentage>";
+  inherits: true;
+  initial-value: 100vi;
+}
+
+@property --inline-size-md {
+  syntax: "<length-percentage>";
+  inherits: true;
+  initial-value: 100vi;
+}
+
+@property --inline-size-lg {
+  syntax: "<length-percentage>";
+  inherits: true;
+  initial-value: 100vi;
+}
+
+@property --inline-size-xl {
+  syntax: "<length-percentage>";
+  inherits: true;
+  initial-value: 100vi;
+}
+
 :root {
   --breakpoint-xs: 28.8rem;
   --breakpoint-sm: 38.4rem;
   --breakpoint-md: 49.6rem;
   --breakpoint-lg: 60rem;
   --breakpoint-xl: 100rem;
+
   --inline-size-xs: min(var(--breakpoint-xs), 100vi);
+  --inline-size-sm: min(var(--breakpoint-sm), 100vi);
+  --inline-size-md: min(var(--breakpoint-md), 100vi);
+  --inline-size-lg: min(var(--breakpoint-lg), 100vi);
+  --inline-size-xl: min(var(--breakpoint-xl), 100vi);
 }
 
 :root {
   --heading-gradient-point: 20ch;
-}
-
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
 
 .is-paused {

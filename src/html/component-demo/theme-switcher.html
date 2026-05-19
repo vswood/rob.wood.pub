@@ -1,0 +1,47 @@
+---
+component: theme-switcher
+title: ThemeSwitcher
+---
+{% extends "src/html/layout/component-demo.html" %}
+
+{% block head %}
+<style>
+  :root {
+    color-scheme: light dark;
+    --page-bg: light-dark(#fbfbfb, #1f1f1f);
+    --page-bg-strong: light-dark(#ebebeb, #2f2f2f);
+    --surface: light-dark(rgba(255, 255, 255, 0.52), rgba(18, 24, 33, 0.56));
+    --surface-strong: light-dark(rgba(255, 255, 255, 0.78), rgba(18, 24, 33, 0.78));
+    --line: light-dark(rgba(18, 24, 33, 0.12), rgba(205, 216, 231, 0.12));
+    --line-strong: light-dark(rgba(18, 24, 33, 0.22), rgba(205, 216, 231, 0.2));
+    --text: light-dark(#3f3f3f, #ebebeb);
+    --text-soft: light-dark(#5f5f5f, #afafaf);
+    --accent: light-dark(#0d6eaf, #f9792e);
+    --accent-strong: light-dark(#0a5689, #f95c01);
+    --accent-soft: light-dark(rgba(12, 109, 253, 0.12), rgba(103, 164, 255, 0.16));
+    --shadow: light-dark(0 22px 80px rgba(16, 20, 29, 0.08), 0 24px 100px rgba(0, 0, 0, 0.32));
+  }
+
+  :root[data-theme="light"] {
+    color-scheme: light;
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+  }
+</style>
+
+<style>
+  body {
+    margin: 0;
+    min-block-size: 100vh;
+    background: var(--page-bg);
+    color: var(--text);
+    font-family: system-ui, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+</style>
+{% endblock head %}

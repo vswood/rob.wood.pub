@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" clip-rule="evenodd" viewBox="0 0 500 500">
-  <path fill="none" d="M0 0h500v500H0z"/>
-  <clipPath id="a">
-    <path d="M0 0h500v500H0z"/>
-  </clipPath>
-  <g clip-path="url(#a)">
-    <path fill="currentColor" fill-rule="nonzero" d="M500 166.667H333.333L250 0l-83.333 166.667H0l125 131.25L75 500l175-106.25L425 500l-50-202.083zM270.833 358.333 250 345.833V93.75l45.833 91.667 12.5 22.916h93.75L343.75 268.75l-16.667 16.667 6.25 22.916 25 104.167z"/>
-  </g>
-</svg>

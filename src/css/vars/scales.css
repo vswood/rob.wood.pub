@@ -1,5 +1,3 @@
-@layer reset, base, type, layout, override;
-
 html {
 	/* choose your scale ratio */
   --scale: 1.2;

@@ -1,3 +1,0 @@
-@layer reset, base, theme, components, utilities;
-
-@import url(/vendor/glightbox/css/glightbox.min.css) layer(base);

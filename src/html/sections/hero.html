@@ -1,0 +1,122 @@
+---
+id: hero
+displayOrder: 0
+---
+{% import "../include/page-components/parts.html" as insert %}
+<!-- Hero Section -->
+<section id="home">
+
+  <div class="container">
+
+    {{insert.mainHeading("Welcome!", "I'm", "Rob Wood", "B.S. CSC", "Game-Changing Engineer")}}
+
+    <div class="row">
+
+      <div class="image-col col-lg-6 order-lg-2">
+        <div class="hero-image">
+          <div class="image-wrapper">
+            <img src="../../../img/profile/suit-desk-clasped-hands.png" alt="Creative Designer Portfolio"
+              class="img-fluid main-image">
+            <div class="floating-card card-1">
+              {% icon "architect", '{ "width": "24", "height": "24" }' %}
+              <span>Triage<br>Engineer</span>
+            </div>
+            <div class="floating-card card-2">
+              {% icon "devops", '{ "width": "24", "height": "24" }' %}
+              <span>Systems<br>Strategist</span>
+            </div>
+            <div class="floating-card card-3">
+              {% icon "leadership", '{ "width": "24", "height": "24" }' %}
+              <span>Force<br>Multiplier</span>
+            </div>
+            <div class="floating-card card-4">
+              {% icon "money", '{ "width": "24", "height": "24" }' %}
+              <span>Operational<br>Opportunist</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-lg-6 order-lg-1">
+        <div class="hero-main">
+          {{insert.pageHeading("I connect ", "Engineering", "to", "Business", "Outcomes.")}}
+
+          <div class="row actions">
+            <div class="col-sm-6 order-2 order-sm-1">
+              <a href="#portfolio" class="btn btn-3d btn-secondary">
+                <span>Work Examples</span>
+                {% icon "portfolio", '{ "width": "18", "height": "18" }' %}
+              </a>
+            </div>
+
+            <div class="col-sm-6 order-1 order-sm-2">
+              <a href="#contact" class="btn btn-3d btn-primary">
+                <span>Start a Conversation</span>
+                {% icon "speech-bubble-square", '{ "width": "24", "height": "24" }' %}
+              </a>
+            </div>
+          </div>
+
+          <div class="copy-wrapper">
+            <div class="copy-section">
+              <h3>I <b>revitalize</b> eroded systems.</h3>
+              <p>
+                I take legacy platforms, overloaded teams, and unclear situations and produce stable, maintainable systems.
+              </p>
+            </div>
+          </div>
+          <details class="read-more">
+            <summary>
+              {% icon "expand", '{ "width": "16", "height": "16" }' %}
+              <span class="closed">More... (click to expand details)</span>
+              <span class="open">Less... (click to close details)</span>
+            </summary>
+
+            <div class="copy-wrapper">
+              <div class="copy-section">
+                <h3>I <b>improve delivery</b> without drama.
+                </h3>
+                <p>
+                  From cloud architecture to developer workflows, I remove friction so teams can ship faster with more confidence.
+                </p>
+              </div>
+              <div class="copy-section">
+                <h3>When systems stall growth, <b>I fix the foundations.</b></h3>
+                <p>
+                  I bring senior-level engineering judgment, broad technical range, and a track record of transformational improvements.
+                </p>
+                <p>
+                  I help organizations reduce technical drag, stabilize delivery, and make better architecture decisions before costs compound.
+                </p>
+              </div>
+            </div>
+          </details>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number"><span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-separator="true" data-purecounter-once ="false" data-purecounter-duration="1"
+                class="purecounter"></span>+</span>
+              <span class="stat-label">Years Experience</span>
+            </div>
+            <div class="stat-item">
+              <span class=" stat-number">
+                <span data-purecounter-start="0" data-purecounter-end="27" data-purecounter-separator="true" data-purecounter-once ="false" data-purecounter-duration="0.5"
+              class="purecounter"></span>+</span>
+              <span class="stat-label">Coding Languages</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number"><span data-purecounter-start="0" data-purecounter-end="252" data-purecounter-separator="true" data-purecounter-once ="false" data-purecounter-duration="0.5"
+                class="purecounter"></span>+</span>
+              <span class="stat-label">Tech Skills</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- /Hero Section -->

@@ -21,7 +21,7 @@ details.accord-item>summary {
     overflow: hidden;
     transition: var(--content-transition);
     margin: 0;
-    padding: 0.5lh 0.5ch;
+    padding: 0.25lh 0.5ch;
     padding-bottom: 0;
     border-radius: 12px;
     overflow: hidden;
@@ -82,7 +82,7 @@ details.accord-item>summary {
       cursor: pointer;
       text-align: left;
       color: inherit;
-      transition: var(--cubic-transition);
+      transition: var(--transform-colors-transition);
       &:focus,
       &focus-visible {
         outline: none;
@@ -101,9 +101,8 @@ details.accord-item>summary {
       .accord-header-inner {
         padding: 0;
         display: flex;
-        align-items: center;
-        gap: 0.5ch;
-        margin-bottom: 0.75lh;
+        align-items: flex-start;
+        gap: 0.25ch;
 
         .accord-icon {
           width: 3.5rem;
@@ -132,7 +131,7 @@ details.accord-item>summary {
             width: 32px;
             height: 32px;
             color: var(--accent);
-            transition: var(--cubic-transition);
+            transition: var(--transform-colors-transition);
           }
         }
 
@@ -172,11 +171,11 @@ details.accord-item>summary {
         cursor: pointer;
         display: flex;
         align-items: flex-start;
-        padding: 1lh 1ch;
+        padding: 0.5lh 1ch;
         border-radius: 8px;
         margin: 0.5lh 0.5ch;
         background-color: var(--surface-black-5);
-        transition: var(--cubic-transition);
+        transition: var(--transform-colors-transition);
         box-shadow: var(--surface-inset-shadow);
         &:focus,
         &:focus-visible {

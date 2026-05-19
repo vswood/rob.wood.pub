@@ -69,9 +69,9 @@
   }
 
   .section-heading-alt {
-    max-width: 90%;
     width: 26.35ch;
     text-align: center;
+    margin-bottom: 1lh;
     .primary-heading {
       .large {
         font-size: var(--xx-large);
@@ -84,33 +84,11 @@
     }
   }
 
-  .intro-header {
-    margin-bottom: 2rem;
-
-    .subtitle {
-      font-family: var(--text-font-alt);
-      font-size: var(--large);
-      font-weight: 500;
-      margin: 1em 0;
-      line-height: 0.9;
-    }
-
-    .subtitle2 {
-      font-size: var(--x-small);
-      font-family: var(--heading-font-alt);
-      font-weight: 200;
-      font-style: italic;
-      color: color-mix(in oklch, var(--accent), white 60%);
-      margin: 0;
-      line-height: 1.1;
-      letter-spacing: -1px;
-    }
+  .actions {
+    margin-bottom: 3lh;
   }
 
   .about-story {
-    padding: 2lh 0;
-    padding-left: 4ch;
-    padding-top: 0;
     max-width: fit-content;
     margin: auto;
 
@@ -121,11 +99,30 @@
       padding-left: 0;
     }
 
-
-
     h3:not(.accord-title) {
       margin: 1lh auto 0.5lh auto;
+      line-height: 1.25cap;
     }
+
+    .subtitle {
+      font-family: var(--text-font-alt);
+      font-size: var(--mdeium);
+      font-weight: 500;
+      margin: 1em 0;
+      line-height: 0.9;
+    }
+
+    .subtitle2 {
+      font-size: var(--xx-small);
+      font-family: var(--heading-font-alt);
+      font-weight: 200;
+      font-style: italic;
+      color: color-mix(in oklch, var(--accent), white 60%);
+      margin: 0;
+      line-height: 1.1;
+      letter-spacing: -1px;
+    }
+
   }
 
   .profile-image {
@@ -249,7 +246,7 @@
       position: absolute;
       top: -10px;
       left: 0;
-      font-size:var(--xxxxx-large);
+      font-size:var(--xxxx-large);
       font-weight: 300;
       color: color-mix(in srgb, var(--accent-color), transparent 20%);
       line-height: 1;
@@ -279,7 +276,7 @@
 
     .image-wrapper {
       position: relative;
-      max-width: 450px;
+      max-width: 250px;
       margin: 0 auto;
       margin-bottom: 2em;
       filter: drop-shadow(4px 2px 12px color-mix(in oklch, var(--info), transparent 50%));
@@ -289,6 +286,9 @@
       border-radius: 12px;
       box-shadow: 3px 3px 6px 0px #CCDBE8 inset, -3px -3px 6px 1px rgba(255,255,255,0.5) inset;
       clip-path: polygon(0 10%, 60% 10%, 60% 0%, 100% 50%, 60% 100%, 60% 90%, 0 90%);
+      width: 200px;
+      margin: auto;
+
       &:hover {
         transform: scale(1.02);
       }
@@ -296,7 +296,6 @@
   }
 
   .about-img-2 {
-    max-width: 90%;
     margin: 2lh auto;
     margin-top :0;
     position: relative;

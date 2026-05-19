@@ -19,13 +19,11 @@
  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  */
  :root {
-  --font-1: "Science Gothic",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-1: "Archivo",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-2: "Smooch Sans", Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
-  --font-3: "Google Sans Flex",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-3: "Atkinson Hyperlegible Next",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-4: "Oswald",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-5: "Fira Sans Extra Condensed",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-6: "Sofia Sans Extra Condensed",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-
+  --font-5: "Atkinson Hyperlegible Mono",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
   --text-font: var(--font-3);
   --text-font-alt: var(--font-2);
@@ -41,16 +39,13 @@
  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  */
 .section-heading-alt {
-  max-width: 90%;
   text-align: center;
   padding: 1lh 2ch;
   position: relative;
-  max-width: 90vw;
   margin: 0 auto 4.5lh auto;
 }
 
 .section-heading-alt h2:before {
-  max-width: 90%;
   content: "";
   position: absolute;
   display: block;
@@ -64,7 +59,6 @@
 }
 
 .section-heading-alt h2::after {
-  max-width: 90%;
   content: "";
   position: absolute;
   display: block;
@@ -83,10 +77,8 @@
  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  */
 .primary-heading {
-  max-width:90%;
   font-weight: 300;
   text-transform: uppercase;
-  margin-top: 1lh;
   margin-bottom: 0.5lh;
   margin-left: 0.5ch;
   position: relative;
@@ -102,7 +94,11 @@
 
   .bottom {
     position: relative;
-    top: -2px;
+    top: 0px;
+
+    .large {
+      line-height: 1cap;
+    }
   }
 
   .small {
@@ -118,7 +114,7 @@
     }
 
     &.raise {
-      top: -7px;
+      top: -6px;
     }
   }
 }
@@ -158,6 +154,10 @@
   margin-top: 0.5lh;
   margin-bottom: 1lh;
 
+  div:first-child {
+    width: 10ch;
+  }
+
   span,
   div {
     display: inline-block;
@@ -169,10 +169,10 @@
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       z-index: 10;
-      font-size: var(--xx-large);
+      font-size: var(--x-large);
       font-family: var(--heading-font-alt);
-      font-weight: 200;
-      top: -4px;
+      font-weight: 300;
+      top: 2px;
       letter-spacing: -2px;
       line-height: 1cap;
       text-box: trim-both cap alphabetic;
@@ -189,15 +189,16 @@
 
     &.main {
       --heading-gradient-point: 10ch;
-      font-weight: 900;
+      font-weight: 600;
       color: var(--heading-color);
-      font-size: var(--xxxxx-large);
-      font-family: var(--heading-font);
-      text-transform: uppercase;
-      letter-spacing: -5px;
+      font-size: var(--xxxx-large);
+      font-family: var(--heading-font-alt);
+      /* text-transform: uppercase; */
+      letter-spacing: -4px;
       padding-right: 0.25ch;
-      line-height: 1.255cap;
+      line-height: 1cap;
       text-box: trim-both cap alphabetic;
+      /* font-variant: small-caps; */
     }
 
     &.tag {
@@ -206,10 +207,10 @@
       font-weight: 300;
       font-family: var(--heading-font-alt);
       color: var(--accent-color) !important;
-      font-size: calc(var(--xx-large) * 0.85);
+      font-size: calc(var(--x-large) * 0.85);
       text-transform: none;
       letter-spacing: -2px;
-      left: 0;
+      left: -0.5ch;
       padding-right: 0.25ch;
       line-height: 1.155cap;
       text-box: trim-both cap alphabetic;
@@ -222,7 +223,7 @@
       --heading-gradient-point: 45ch;
       --gradient-pct: 100%;
       text-transform: uppercase;
-      font-size: var(--x-large);
+      font-size: var(--large);
       font-family: var(--heading-font);
       color: var(--heading-color);
       font-weight: 400;

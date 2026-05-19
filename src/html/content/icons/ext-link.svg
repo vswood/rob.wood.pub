@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" clip-rule="evenodd" viewBox="0 0 500 500">
-  <g fill="currentColor" fill-rule="nonzero">
-    <path d="M93.75 0v406.25H500V0zm367.188 367.188H132.812l.001-328.126 328.125.001z"/>
-    <path d="M39.063 460.938 39.062 93.75H0V500h406.25v-39.063z"/>
-    <path d="m227.355 305.497 115.097-115.098v82.81h39.063v-149.49h-149.49v39.062h82.809L199.737 277.878z"/>
-  </g>
-</svg>

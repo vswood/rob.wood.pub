@@ -78,11 +78,12 @@ details.read-more {
   summary {
     list-style: none;
     border-radius: 4px;
-    height: 2lh;
+    height: 2.35lh;
     padding: 1lh 1ch 1lh 1ch;
     position: absolute;
+    font-size: var(--medium);
     font-weight: 600;
-    top: -0.6lh;
+    top: -0.4lh;
     left: 0;
     right: 0;
     display: flex;
@@ -90,7 +91,7 @@ details.read-more {
     gap: 2ch;
     background: var(--surface-black-5);
     box-shadow: var(--surface-inset-shadow);
-    transition: var(--cubic-transition);
+    transition: var(--transform-colors-transition);
 
     &::-webkit-details-marker {
       display: none;
@@ -110,7 +111,7 @@ details.read-more {
       color: var(--accent-color);
       position: relative;
       top: -1px;
-      transition: var(--cubic-transition);
+      transition: var(--transform-colors-transition);
     }
   }
 }

@@ -1,14 +1,14 @@
 diff --git a/cli.js b/cli.js
-index 170637c1713641e196522b1db38ebbeef7a4014b..6935c9ad37c8f313a3a5633055e362f0bddc3c98 100644
+index 170637c1713641e196522b1db38ebbeef7a4014b..af54afd263fd25f81f7685b3a8ffa79eacf1e24c 100644
 --- a/cli.js
 +++ b/cli.js
-@@ -88,6 +88,9 @@ module.exports = (() => {
+@@ -87,6 +87,9 @@ module.exports = (() => {
+         try {
              switch ( path.extname(confPath) ) {
                  case '.js':
-                     config = require( path.resolve(confPath) ) || {};
 +                    if (config.default) {
-+                        config = config.default;
++                      config = config.default;
 +                    }
+                     config = require( path.resolve(confPath) ) || {};
                      break;
                  case '.json':
-                 case '.EXAMPLE':

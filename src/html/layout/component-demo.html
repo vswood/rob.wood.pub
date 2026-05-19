@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  {% include "../include/common/head/meta-info.html" %}
+
+  {% favicons './src/img/rob-wood-icon.svg', appleIconBgColor='#ffffff' %}
+
+  {% block head %}{% endblock head %}
+
+</head>
+
+<body>
+
+  {% block bodyTop %}{% endblock bodyTop %}
+
+  <{{component}}>
+
+    {% include "../component/" + component + ".webc" %}
+
+  </{{component}}>
+
+  {% block bodyBottom %}{% endblock bodyBottom %}
+
+  {% block scripts %}{% endblock scripts %}
+
+</body>
+
+</html>

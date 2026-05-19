@@ -47,7 +47,6 @@
   }
 
   .section-heading-alt {
-    max-width: 90%;
     width: 24ch;
     .primary-heading {
       .small {
@@ -270,7 +269,6 @@
         }
 
         .education-details {
-          max-width: 90%;
           ul {
             font-size: var(--large);
             line-height: 1.2;

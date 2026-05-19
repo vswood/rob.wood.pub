@@ -60,7 +60,7 @@
   border: 1px solid color-mix(in srgb, var(--text-color), transparent 80%);
   border-radius: 20px;
   color: var(--text-color);
-  transition: all 0.3s ease;
+  transition: var(--colors-transition);
 }
 
 .portfolio-details .hero-section .project-header .project-tags .tag:hover {

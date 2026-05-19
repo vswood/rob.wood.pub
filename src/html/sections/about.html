@@ -1,0 +1,150 @@
+---
+id: about
+displayOrder: 1
+---
+{% import "../include/page-components/parts.html" as insert %}
+{% import "../include/page-components/accordion.html" as acc %}
+<!-- About Section -->
+<section id="about">
+
+  <div class="container">
+
+    <div class="row align-items-start">
+
+      <div class="col-lg-3">
+
+        <div class="profile-image">
+
+          <div class="profile-image-container">
+            <img src="../../../img/profile/working-at-workstation.png" class="img-fluid" alt="Rob Wood working at computer workstation">
+          </div>
+
+          <div class="profile-meta">
+            <div class="location">
+              {% icon "location", '{ "width": "16", "height": "16" }' %}
+              <span>Escanaba, MI</span>
+            </div>
+            <div class="status">
+              <div class="status-indicator"></div>
+              <span>Available for permanent roles, fractional support, consulting, and contract engagements.</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="philosophy-quote">
+          <div class="quote-mark">"</div>
+          <p>With the advent of AI, <b>code is commoditized, but strategy isn’t</b>. Code velocity alone doesn’t create strategy, protect culture, or build resilience. <b>The real ROI comes from your people - not the tool</b>.</p>
+        </div>
+
+      </div>
+
+      <div class="col-lg-9">
+        <div class="about-story">
+
+          <div class="copy-wrapper">
+            {{insert.pageHeading("", "Rob Wood", "", "", "Full Stack Engineer")}}
+            <p class="subtitle">Senior Engineering Leader | Principal Systems Architect | Transformation Specialist</p>
+            <p class="subtitle2">Realizing the Promise of Technology Through Cost-Effective Measurable Outcomes</p>
+          </div>
+
+          <div class="copy-wrapper">
+            <h3><b>Executive</b> Summary</h3>
+            <p>
+              I work at the intersection of engineering execution, systems architecture, and organizational improvement.
+            </p>
+            <p>
+              I help organizations recover momentum when technology becomes a blocker.
+            </p>
+          </div>
+          <details class="read-more">
+            <summary>
+              {% icon "expand", '{ "width": "16", "height": "16" }' %}
+              <span class="closed">More... (click to expand details)</span>
+              <span class="open">Less... (click to close details)</span>
+            </summary>
+
+            <div class="copy-wrapper">
+              <p class="copy-section">
+                That usually means stepping into environments where the technology is underperforming, the delivery process is noisy, or the business has outgrown the way the software was originally built.
+              </p>
+              <p class="copy-section">
+                I help teams regain control by clarifying the technical path, fixing structural problems, and improving the way software gets delivered.
+              </p>
+              <p class="copy-section">
+                Over the past 20+ years, I have modernized legacy products, rescued fragile systems, improved cloud foundations, and helped teams work with more speed and less noise.
+              </p>
+              <p class="copy-section">
+                My background spans hands-on engineering, architecture, platform work, and leadership, which makes me effective in situations where technical problems are tightly coupled to process and organizational drag.
+              </p>
+              <p class="copy-section">
+                My work has included stabilizing critical systems for companies such as Netflix and Sunrun, supporting nationally visible public-sector platforms, and helping turn internal tools into revenue-generating products.
+              </p>
+            </div>
+          </details>
+
+          <div class="expertise-grid copy-wrapper">
+            <h3><b>Signature Strengths</b> & Strategic Competencies</h3>
+            {{ acc.accord(competencies)  }}
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="section-heading-alt">
+      {{insert.pageHeading("", "Let's Make", "", "", "Some Changes!", "")}}
+    </div>
+
+    <div class="row align-items-start">
+      <div class="col-lg-5 image-col">
+        <div class="about-image">
+          <div class="image-wrapper">
+            <img src="../../../img/profile/business-conference.png" alt="Rob Wood seated in a business conference"
+            class="img-fluid main-image">
+          </div>
+        </div>
+        <div class="row actions">
+          <div class="col-sm-6 order-2 order-sm-1">
+            <a href="#portfolio" class="btn btn-3d btn-secondary">
+              <span>View Portfolio</span>
+              {% icon "portfolio", '{ "width": "18", "height": "18" }' %}
+            </a>
+          </div>
+          <div class="col-sm-6 order-1 order-sm-2">
+            <a href="#contact" class="btn btn-3d btn-primary">
+              <span>Start a Project</span>
+              {% icon "speech-bubble-square", '{ "width": "24", "height": "24" }' %}
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7 collab-text">
+        <div class="about-img-2">
+          <div class="column left">
+            <img width="324" height="324" class="center-float" src="../../../img/profile/office-presentation-round.png" alt="Rob Wood presenting to a group.">
+            <div class="adjustment">
+              <h3><b>How I can help</b> your business/team</h3>
+              <p>If you need a staff engineer or technical leader who can step into ambiguity, untangle complexity, and create forward motion, that is the work I do best.</p>
+              <h3><b>What I bring</b> to projects and teams</h3>
+              <p>
+                Fast understanding, honest diagnosis, practical execution, and meaningful improvement without unnecessary churn.
+              </p>
+            </div>
+          </div>
+          <div class="column right">
+            <div class="center-float" aria-hidden="true"></div>
+            <div class="adjustment">
+              <h3><b>Contact me today</b> and let's get started!</h3>
+              <p>Tech should be a force multiplier, not a blocker, a time sink, or a money pit. Let's talk about how to affordably optimize your systems to eliminate problems and maximize your ROI!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+<!-- /About Section -->

@@ -27,9 +27,10 @@
   --param1a: 0.08;
   --param2a: 4;
   --param3a: 90;
-  --param4a: 12.75; /* 24@50, 19@40,  9.5@25, 37@75  */
+  --param4a: 7.5; /* 24@50, 19@40,  9.5@25, 37@75  */
 }
 
+/*
 @media screen and (max-width: 767px) {
   :root {
     --img-size: 40;
@@ -43,6 +44,7 @@
     --param4a: 9.5;
   }
 }
+  */
 
 :root {
 
@@ -74,7 +76,6 @@
 }
 
 .about-img-2 {
-  max-width: 90%;
   margin: 3em auto;
   position: relative;
   display: flex;

@@ -1,0 +1,196 @@
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ᴠɪʀᴛᴜᴀʟSᴛʏʟᴇ.ᴜs━━
+@preserve Please retain this header in any/all use(s) of this code.
+@copyright 2026 Rob Wood <https://virtualstyle.us>
+@license GPL-3.0-or-later GNU General Public License v3.0 or later
+
+@project rob.wood.pub 0.2.0
+@file single-file-theme-switcher.html
+@description Pure CSS dark mode toggle button with animated sun and moon icons created using psuedoelements, backgrounds,and borders, implemented (in the pattern published by kristoferjoseph) as a single file web component, with the animated mode switch button adapted from a jgarrow codepen, under the MIT license, as shown below.
+@see https://gist.github.com/kristoferjoseph/c4e47389ae0f0447db175b914e471628
+@see https://codepen.io/jgarrow/pen/JjKaMVy
+@author Rob Wood <https://rob.wood.pub><https://github.com/vswood>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Copyright (c) 2026 by jgarrow (https://codepen.io/jgarrow/pen/JjKaMVy)
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<template id="vs-preloader" shadowrootmode="open">
+
+  <style webc:keep>
+    #preloader {
+      visibility: hidden;
+    }
+
+    @keyframes delay {
+
+      0%,
+      40%,
+      100% {
+        transform: scaleY(0.05);
+        -webkit-transform: scaleY(0.05);
+      }
+
+      20% {
+        transform: scaleY(1);
+        -webkit-transform: scaleY(1);
+      }
+    }
+
+    .loader {
+      margin: 0 auto;
+      width: 60px;
+      height: 50px;
+      text-align: center;
+      font-size: 10px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-50%) translateX(-50%);
+      z-index: 500;
+      opacity: 1;
+
+      div {
+        height: 100%;
+        width: 8px;
+        display: inline-block;
+        float: left;
+        margin-left: 2px;
+        -webkit-animation: delay 0.8s infinite ease-in-out;
+        animation: delay 0.8s infinite ease-in-out;
+
+        &.bar1 {
+          background-color: #754fa0;
+        }
+
+        &.bar2 {
+          background-color: #09b7bf;
+          -webkit-animation-delay: -0.7s;
+          animation-delay: -0.7s;
+        }
+
+        &.bar3 {
+          background-color: #90d36b;
+          -webkit-animation-delay: -0.6s;
+          animation-delay: -0.6s;
+        }
+
+        &.bar4 {
+          background-color: #f2d40d;
+          -webkit-animation-delay: -0.5s;
+          animation-delay: -0.5s;
+        }
+
+        &.bar5 {
+          background-color: #fcb12b;
+          -webkit-animation-delay: -0.4s;
+          animation-delay: -0.4s;
+        }
+
+        &.bar6 {
+          background-color: #ed1b72;
+          -webkit-animation-delay: -0.3s;
+          animation-delay: -0.3s;
+        }
+      }
+    }
+  </style>
+
+  <div id="preloader">
+    <canvas id="fogCanvas"></canvas>
+    <div class="loader">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+      <div class="bar4"></div>
+      <div class="bar5"></div>
+      <div class="bar6"></div>
+    </div>
+  </div>
+
+  <script type="module" webc:keep>
+    class VsPreloader extends HTMLElement {
+      #loaded = false
+      #canvas
+      #ctx
+      #fogParticles = []
+      #numParticles = 100
+
+
+      constructor () {
+        super()
+        const template = document.getElementById('vs-preloader')
+        this.attachShadow({ mode: 'open' })
+          .appendChild(template.content.cloneNode(true))
+
+        setTimeout(() => {
+          if (this.#loaded !== true) {
+            this.init()
+          }
+        }, 330)
+      }
+
+      init() {
+        this.shadowRoot.getElementById('preloader').style.visibility = 'visible'
+        this.#canvas = this.shadowRoot.getElementById('fogCanvas')
+        this.#ctx = this.#canvas.getContext('2d')
+        this.#canvas.width = window.innerWidth
+        this.#canvas.height = window.innerHeight
+
+        const numParticles = 100
+        let mouseX = -100, mouseY = -100 // Initialize off-screen
+
+        for (let i = 0; i < numParticles; i++) {
+          this.#fogParticles.push(this.createParticle())
+        }
+
+        this.drawFog()
+      }
+
+      connectedCallback () {
+        console.log('Why hello there 👋')
+      }
+
+      createParticle() {
+        return {
+          x: Math.random() * this.#canvas.width,
+          y: Math.random() * this.#canvas.height,
+          radius: Math.random() * 20 + 10,
+          opacity: Math.random() * 0.15 + 0.05,
+          speedX: (Math.random() - 0.5) * 0.5,
+          speedY: (Math.random() - 0.5) * 0.5
+        }
+      }
+
+      drawFog() {
+        this.#ctx.clearRect(0, 0, this.#canvas.width, this.#canvas.height)
+
+        this.#fogParticles.forEach(p => {
+          // Simple movement
+          p.x += p.speedX
+          p.y += p.speedY
+
+          // Wrap around canvas edges
+          if (p.x > this.#canvas.width + p.radius) p.x = -p.radius
+          if (p.x < -p.radius) p.x = this.#canvas.width + p.radius
+          if (p.y > this.#canvas.height + p.radius) p.y = -p.radius
+          if (p.y < -p.radius) p.y = this.#canvas.height + p.radius
+
+          this.#ctx.beginPath()
+          this.#ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2)
+          this.#ctx.fillStyle = `rgba(107, 183, 255, ${p.opacity})`
+          this.#ctx.fill()
+        })
+
+        requestAnimationFrame(this.drawFog.bind(this))
+      }
+    }
+
+    customElements.define('vs-preloader', VsPreloader)
+  </script>
+
+</template>

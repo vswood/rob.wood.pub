@@ -9,8 +9,7 @@
 .portfolio {
 
   .section-heading-alt {
-    max-width: 90%;
-    width: 30ch;
+    width: 31ch;
     .primary-heading {
       .large {
         letter-spacing: -1px;
@@ -26,7 +25,6 @@
     border: none;
     transition: all 0.4s ease;
     height: 100%;
-    max-width: 90%;
     display: flex;
     flex-direction: column;
 

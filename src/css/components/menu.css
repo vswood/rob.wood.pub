@@ -1,5 +1,3 @@
-@layer reset, base, theme, components, utilities;
-
 @layer theme {
 
   .faux-content {

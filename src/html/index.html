@@ -1,25 +1,17 @@
 ---
 permalink: /index.html
 title: Rob Wood Developer Portfolio
-eleventyImport:
-  collections: ["icons", "sections"]
 ---
 {% extends "src/html/layout/default.html" %}
-{% import "src/html/include/page-components/content.html" as components %}
+{% import "./include/page-components/parts.html" as insert %}
 
 {% block body %}
 
 {% for item in collections.sections %}
-{{ components.contentSection(item.data.id, item.templateContent) }}
+{{item.templateContent | safe}}
 {% endfor %}
+
 {% endblock body %}
 
 {% block scripts %}
-<script>
-  $(document).ready(() => {
-    $('.btn').on('click', (e) => {
-      e.preventDefault()
-    })
-  })
-</script>
 {% endblock scripts %}

@@ -3,6 +3,8 @@
 --------------------------------------------------------------*/
 
 .services {
+  flex-direction: column;
+  align-items: center;
 
   .copy-block {
     margin-bottom: 4lh;
@@ -33,31 +35,91 @@
   }
 
   .service-item {
-    padding: 0;
-    margin: 0;
-  }
+    padding: 1lh 2ch;
+    margin: 1lh 1ch;
 
-  .service-heading {
-    display: flex;
-    gap: 3ch;
-    align-items: center;
-    margin-top: 4lh;
-    margin-bottom: 2lh;
+    .service-heading {
+      display: flex;
+      gap: 3ch;
+      align-items: center;
+      margin-top: 4lh;
+      margin-bottom: 2lh;
 
-    a {
-      color: var(--heading-color);
-      text-decoration: none;
-      transition: all 0.3s ease;
-      cursor: pointer;
+      a {
+        color: var(--heading-color);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
 
-      &:hover {
+        &:hover {
+          color: var(--accent-color);
+        }
+      }
+
+      .service-icon {
+        width: 80px;
+        height: 80px;
+        background: color-mix(in srgb, var(--accent-color), transparent 90%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s ease;
+
+        svg {
+         height: 48px;
+         width: 48px;
+         color: color-mix(in oklch, var(--accent), transparent 30%);
+        }
+      }
+    }
+
+    .service-content {
+      h3 {
+        font-size: 28px;
+        font-weight: 300;
+        margin-bottom: 20px;
+        line-height: 1.3;
+      }
+      p {
+        font-size: 16px;
+        line-height: 1.7;
+        color: color-mix(in srgb, var(--text-color), transparent 20%);
+        margin-bottom: 0.5lh;
+      }
+
+      .learn-more {
+        display: flex;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: 2ch;
+        align-items: center;
+        gap: 8px;
         color: var(--accent-color);
+        font-family: var(--text-font-alt);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: var(--large);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        height: 1lh;
+
+        svg {
+          position: relative;
+          top: -4px;
+          padding-right: 0.5ch;
+        }
+
+        &:hover {
+          color: var(--heading-color);
+          transform: translateX(4px);
+        }
       }
     }
   }
 
   .section-heading-alt {
-    max-width: 90%;
     width: 24.35ch;
     .primary-heading {
       .large {
@@ -67,61 +129,6 @@
       .small {
         letter-spacing: 16px;
       }
-    }
-  }
-
-  .service-icon {
-    width: 80px;
-    height: 80px;
-    background: color-mix(in srgb, var(--accent-color), transparent 90%);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.4s ease;
-
-    svg {
-     height: 48px;
-     width: 48px;
-     color: color-mix(in oklch, var(--accent), transparent 30%);
-    }
-  }
-
-
-  .service-content {
-    h3 {
-      font-size: 28px;
-      font-weight: 300;
-      margin-bottom: 20px;
-      line-height: 1.3;
-    }
-    p {
-      font-size: 16px;
-      line-height: 1.7;
-      color: color-mix(in srgb, var(--text-color), transparent 20%);
-      margin-bottom: 0.5lh;
-    }
-  }
-
-  .read-more {
-    display: flex;
-    width: fit-content;
-    margin-left: auto;
-    align-items: center;
-    gap: 8px;
-    color: var(--accent-color);
-    font-family: var(--text-font-alt);
-    text-decoration: none;
-    font-weight: 800;
-    font-size: var(--x-large);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    height: 1lh;
-
-    &:hover {
-      color: var(--heading-color);
-      transform: translateX(4px);
     }
   }
 }

@@ -2,10 +2,11 @@
 # Testimonials Section
 --------------------------------------------------------------*/
 .testimonials {
+  flex-direction: column;
+  align-items: center;
 
   .section-heading-alt {
-    max-width: 90%;
-    width: 31.35ch;
+    width: 32.35ch;
     .primary-heading {
       .large {
         font-size: var(--xx-large);
@@ -66,9 +67,10 @@
     justify-content: center;
     box-shadow: 0 8px 25px color-mix(in srgb, var(--accent-color), transparent 70%);
 
-    i {
+    svg {
       color: var(--contrast-color);
-      font-size: 1.5rem;
+      width: 48px;
+      height: 48px;
     }
   }
 

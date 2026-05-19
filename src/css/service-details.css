@@ -172,8 +172,9 @@
   margin-bottom: 1.5rem;
 }
 
-.service-details .service-sidebar .testimonial-block .quote-icon i {
-  font-size: 2.5rem;
+.service-details .service-sidebar .testimonial-block .quote-icon svg {
+  width: 48px;
+  height: 48px;
   color: var(--accent-color);
   opacity: 0.6;
 }
