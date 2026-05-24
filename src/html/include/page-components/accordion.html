@@ -1,34 +1,34 @@
-{% macro accord(data) %}
-<section class="accord" aria-label="Signature Strengths & Strategic Competencies">
+{% macro accordion(data) %}
+<div class="vs-accordion" aria-label="Signature Strengths & Strategic Competencies">
   {% for item in data %}
-  <details class="accord-item" name="strengths">
+  <details class="vs-accordion-item" name="strengths">
     {{ accordionSummary(iconClass = item.iconClass, iconid = item.iconid, name = item.name, description = item.description)  }}
-    <div class="accord-content">
+    <div class="alert-content">
       <ul class="alert-list">
       {% for impact in item.impact  %}
-        {{ accordionAlertItem(iconClass = impact.iconClass, iconid = impact.iconid, name = impact.name, description = impact.description) }}
+        {{ accordionItem(iconClass = impact.iconClass, iconid = impact.iconid, name = impact.name, description = impact.description) }}
       {% endfor  %}
       </ul>
     </div>
   </details>
   {% endfor %}
-</section>
+</div>
 {% endmacro %}
 
 {% macro accordionSummary(iconClass = "", iconid, name, description) %}
-<summary class="accord-button">
-  <div class="accord-header">
-    <div class="accord-header-inner">
-      <div class="accord-icon {{iconClass}}">
+<summary class="vs-accordion-button">
+  <div class="vs-accordion-header">
+    <div class="vs-accordion-header-inner">
+      <div class="vs-accordion-icon {{iconClass}}">
         {% icon iconid, '{ "width": "36", "height": "36" }' %}
       </div>
-      <div>
-        <h3 class="accord-title">{{name}}
+      <div class="vs-accordion-content">
+        <h3 class="vs-accordion-title">{{name}}
           <svg width="36" height="36" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
         </h3>
-        <p class="accord-subtitle">{{description}}</p>
+        <p class="vs-accordion-subtitle">{{description}}</p>
       </div>
     </div>
   </div>
@@ -36,7 +36,7 @@
 {% endmacro %}
 
 
-{% macro accordionAlertItem(iconClass = "", iconid, name, description) %}
+{% macro accordionItem(iconClass = "", iconid, name, description) %}
 <li class="alert-item">
   <div class="alert-icon {{iconClass}}">
     {% icon iconid, '{ "width": "28", "height": "28" }' %}

@@ -6,23 +6,25 @@ displayOrder: 8
 <section id="contact">
   <div class="container">
     <div class="row">
-      <div class="copy-wrapper">
-        <div class="section-heading-alt">
-          {{insert.pageHeading("", "Start A", "", "", "Conversation")}}
+      <div class="col-12">
+        <div class="copy-wrapper">
+          <div class="section-heading-alt">
+            {{insert.pageHeading("", "Start A", "", "", "Conversation")}}
+          </div>
         </div>
       </div>
     </div>
     <div class="row">
 
-      <div class="col-lg-3">
+      <div class="col-xl-3">
 
         <div class="info-item">
           <div class="info-icon">
-            {% icon "speech-bubble-round", '{ "width": "48", "height": "48" }' %}
+            {% icon "speech-bubble-round", '{ "width": "24", "height": "24" }' %}
           </div>
           <div class="info-content copy-wrapper">
             <h3>Let's <b>Connect</b></h3>
-            <p>You can send me an email, or book a meeting with me using the forms on this page. I look forward to hearing from
+            <p>You can send me an email, or book a meeting with me using the contact form/booking link on this page. I look forward to hearing from
               you!</p>
           </div>
         </div>
@@ -31,34 +33,37 @@ displayOrder: 8
 
           <div class="detail-item">
             <div class="detail-icon">
-              {% icon "email", '{ "width": "32", "height": "32" }' %}
+              {% icon "email", '{ "width": "24", "height": "24" }' %}
               </svg>
             </div>
             <div class="detail-content">
-              <span class="detail-label">Email us</span>
-              <span class="detail-value">contact@example.com</span>
+              <span class="detail-label">Email me</span>
+              <span class="detail-value">
+                <span id="eml"></span>
+                <script type='text/javascript'>const p = (a) => {return a.join('')};  const e=new Array(['&#x75;','&#x73;',],['&#x72;','&#x6F;','&#x62;',],['&#x76;','&#x69;','&#x72;','&#x74;','&#x75;','&#x61;','&#x6C;','&#x73;','&#x74;','&#x79;','&#x6C;','&#x65;',],['&#x40;',],['&#x2E;',],);document.getElementById('eml').innerHTML = "<a href='mailto:"+p(e[1])+p(e[3])+p(e[2])+p(e[4])+p(e[0])+"'>"+p(e[1])+p(e[3])+p(e[2])+p(e[4])+p(e[0])+"</a>";</script>
+              </span>
             </div>
           </div>
 
           <div class="detail-item">
             <div class="detail-icon">
-              {% icon "phone", '{ "width": "32", "height": "32" }' %}
+              {% icon "phone", '{ "width": "24", "height": "24" }' %}
               </svg>
             </div>
             <div class="detail-content">
-              <span class="detail-label">Call us</span>
-              <span class="detail-value">+1 (555) 432-8976</span>
+              <span class="detail-label">Call me</span>
+              <span class="detail-value">+1 (313) 306-1064</span>
             </div>
           </div>
 
           <div class="detail-item">
             <div class="detail-icon">
-              {% icon "location", '{ "width": "32", "height": "32" }' %}
+              {% icon "location", '{ "width": "24", "height": "24" }' %}
               </svg>
             </div>
             <div class="detail-content">
-              <span class="detail-label">Book a Meet</span>
-              <span class="detail-value"><a href="#">Booking Page</a></span>
+              <span class="detail-label">Meet with me</span>
+              <span class="detail-value"><a href="https://book.virtualstyle.us">Book a Meeting Now!</a></span>
             </div>
           </div>
 
@@ -66,10 +71,11 @@ displayOrder: 8
 
       </div>
 
-      <div class="col-lg-9">
+      <div class="col-xl-9">
         <div class="form-wrapper">
           <div class="form-header">
-            <h3>Send us a message</h3>
+            <h3>Send me a message</h3>
+            <h4>I <b>do not</b> retain, sell, or share any user information.</h4>
           </div>
 
           <form class="needs-validation" novalidate>
@@ -77,57 +83,57 @@ displayOrder: 8
 
               <div class="row gx-3">
 
-                <div class="form-col col-md-6">
+                <div class="col-lg-6">
                   <div class="form-floating mb-3">
                     <input type="phone" name="phone" class="form-control" id="input-name" aria-describedby="help-name"
-                      required="" placeholder="First Last">
+                      required="" placeholder="">
                     <label for="input-name" class="form-label">
                       <span class="hint">Full name</span>
                       <span class="invalid">Invalid name</span>
                       <span class="valid">Looks good!</span>
                     </label>
-                    <div class="invalid-feedback">
-                      You must enter a name with your message.
-                    </div>
+                  </div>
+                  <div class="invalid-feedback">
+                    You must enter a name with your message.
                   </div>
                   <div id="help-name" class="form-text">Enter your full name - preferred name plus surname</div>
                 </div>
 
-                <div class="form-col col-md-6">
+                <div class="col-lg-6">
                   <div class="form-floating mb-3">
                     <input type="email" name="email" class="form-control" id="input-email" aria-describedby="help-email"
-                      required="" placeholder="name@email.com">
+                      required="" placeholder="">
                     <label for="input-email" class="form-label">Email address</label>
-                    <div class="invalid-feedback">
-                      You must enter a valid email address with your message.
-                    </div>
                   </div>
-                  <div id="help-email" class="form-text">We'll never share your email with anyone else.</div>
+                  <div class="invalid-feedback">
+                    You must enter a valid email address with your message.
+                  </div>
+                  <div id="help-email" class="form-text">Enter your email address</div>
                 </div>
 
               </div>
               <div class="row gx-3">
 
-                <div class="form-col col-md-6">
+                <div class="col-lg-6">
                   <div class="form-floating mb-3">
                     <input type="tel" name="name" class="form-control" id="input-phone" aria-describedby="help-phone"
-                      required="" placeholder="(123) 456-7890">
+                      required="" placeholder="">
                     <label for="input-phone" class="form-label">Phone number</label>
-                    <div class="invalid-feedback">
-                      You must enter a valid phone number with your message.
-                    </div>
+                  </div>
+                  <div class="invalid-feedback">
+                    You must enter a valid phone number with your message.
                   </div>
                   <div id="help-phone" class="form-text">Enter your phone number</div>
                 </div>
 
-                <div class="form-col col-md-6">
+                <div class="col-lg-6">
                   <div class="form-floating mb-3">
                     <input type="text" name="company" class="form-control" id="input-company"
-                      aria-describedby="help-company" required="" placeholder="Company name">
+                      aria-describedby="help-company" required="" placeholder="">
                     <label for="input-company" class="form-label">Company name</label>
-                    <div class="invalid-feedback">
-                      You must enter your company name with your message.
-                    </div>
+                  </div>
+                  <div class="invalid-feedback">
+                    You must enter your company name with your message.
                   </div>
                   <div id="help-company" class="form-text">Enter your company name</div>
                 </div>
@@ -135,34 +141,34 @@ displayOrder: 8
               </div>
               <div class="row gx-3">
 
-                <div class="form-col col-md-6">
+                <div class="col-lg-6">
                   <div class="form-floating mb-3">
                     <input type="text" name="subject" class="form-control" id="input-subject"
-                      aria-describedby="help-subject" required="" placeholder="Subject">
+                      aria-describedby="help-subject" required="" placeholder="">
                     <label for="input-subject" class="form-label">Subject</label>
-                    <div class="invalid-feedback">
-                      You must enter a subject for your message.
-                    </div>
                   </div>
-                  <div id="help-subject" class="form-text">Enter your subject</div>
+                  <div class="invalid-feedback">
+                    You must enter a subject for your message.
+                  </div>
+                  <div id="help-subject" class="form-text">Enter your email subject</div>
                 </div>
 
-                <div class="form-col col-md-6">
+                <div class="col-lg-6">
                   <div class="form-floating mb-3">
-                    <textarea style="height:5lh" name="message" class="form-control" id="input-message"
-                      aria-describedby="help-message" required="" placeholder="Message"></textarea>
-                    <label for="input-message" class="form-label">Message</label>
-                    <div class="invalid-feedback">
-                      You must enter a message to send.
-                    </div>
+                    <textarea style="height:15lh" name="message" class="form-control" id="input-message"
+                      aria-describedby="help-message" required="" placeholder=""></textarea>
+                    <label for="input-message" class="form-label textarea">Message</label>
                   </div>
-                  <div id="help-message" class="form-text">Enter your message</div>
+                  <div class="invalid-feedback">
+                    You must enter a message to send.
+                  </div>
+                  <div id="help-message" class="form-text">Enter your email message</div>
                 </div>
 
               </div>
               <div class="row gx-3">
 
-                <div class="form-col col-md-12">
+                <div class="col-md-12">
                   <div class="form-messages">
                     <div class="loading">Loading</div>
                     <div class="error-message"></div>
@@ -170,7 +176,7 @@ displayOrder: 8
                   </div>
 
                   <div class="actions">
-                    <button type="submit" class="btn btn-3d btn-primary">
+                    <button type="submit" class="btn btn-primary">
                       <span>Send Message</span>
                       {% icon "send", '{ "width": "32", "height": "32" }' %}
                       </svg>

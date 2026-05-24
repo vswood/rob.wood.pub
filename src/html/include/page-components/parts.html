@@ -1,15 +1,15 @@
 {% macro mainHeading(line1, line2, line3, line4, line5) %}
 <div class="row heading">
   <h1>
-    <div class="bottom-bar" style="--gradient-pct: 100%;--bottom-bar-color:#fff;--bottom-bar-offset:0px;">
+    <span class="bottom-bar block" style="--gradient-pct: 100%;--bottom-bar-color:#fff;--bottom-bar-offset:1px;">
       <span class="top">{{line1}}</span>
       <span class="top var">{{line2}}</span>
-    </div>
-    <div class="g-text-white">
+    </span>
+    <span class="g-text-white block">
       <span class="main">{{line3}}</span>
       <span class="tag">{{line4}}</span>
-    </div>
-    <div class="bottom g-text-white top-bar bottom-bar">{{line5}}</div>
+    </span>
+    <span class="bottom g-text-white top-bar bottom-bar block">{{line5}}</span>
   </h1>
 </div>
 {% endmacro %}
@@ -17,12 +17,12 @@
 {% macro pageHeading(one, two, three, four, five, xclass="raise") %}
 <h2 class="primary-heading">
   {% if(one !== "") %}
-  <div class="small top">{{one}}</div>
+  <span class="small top">{{one}}</span>
   {% endif %}
   {% if(two !== "") %}
-  <div class="large">{{two}}</div>
+  <span class="large block">{{two}}</span>
   {% endif %}
-  <div class="bottom">
+  <span class="bottom block">
     {% if(three !== "") %}
     <span class="small {{xclass}}">{{three}}</span>
     {% endif %}
@@ -32,6 +32,6 @@
     {% if(five !== "") %}
     <span class="small {{xclass}}">{{five}}</span>
     {% endif %}
-  </div>
+  </span>
 </h2>
 {% endmacro %}

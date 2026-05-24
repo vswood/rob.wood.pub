@@ -19,7 +19,7 @@
     <div class="social-links text-center">
       {% for item in social %}
         <a href="{{item.link}}" target="_blank" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-placement="top" data-bs-delay='{"show":400,"hide":150}' data-bs-title="{{item.description}}" aria-label="{{item.description}}">
-            {% icon item.iconid, '{ "width": "24", "height": "24" }' %}
+            {% icon item.iconid, '{ "width": "16", "height": "16" }' %}
           <span class="visually-hidden">{{item.text}}</span>
         </a>
       {% endfor %}

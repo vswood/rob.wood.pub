@@ -4,7 +4,7 @@ displayOrder: 6
 ---
 {% import "../include/page-components/parts.html" as insert %}
 <!-- Services Section -->
-<section id="services" class="services section">
+<section id="services">
 
   <div class="container">
     <div class="row">
@@ -12,7 +12,7 @@ displayOrder: 6
     <div class="section-heading-alt">
         {{insert.pageHeading("", "Available", "", "", "Services")}}
       </div>
-      <div class="copy-block">
+      <div class="copy-wrapper">
         <p>The following are some of the primary services I offer on a freelance basis - though there's not much I amunfamiliar with, so the following list is more for convenience - if you've got an IT problem, ask me! I can probably solve it. </p>
       </div>
 
@@ -27,7 +27,7 @@ displayOrder: 6
         <div class="service-item">
           <div class="service-heading">
             <div class="service-icon">
-              {% icon "experience", '{ "width": "48", "height": "48" }' %}
+              {% icon "experience", '{ "width": "24", "height": "24" }' %}
             </div>
             <h3><a href="service-details.html">Branding Strategy</a></h3>
           </div>
@@ -45,7 +45,7 @@ displayOrder: 6
         <div class="service-item">
           <div class="service-heading">
             <div class="service-icon">
-              {% icon "frontend", '{ "width": "48", "height": "48" }' %}
+              {% icon "frontend", '{ "width": "24", "height": "24" }' %}
             </div>
             <h3><a href="service-details.html">Web Development</a></h3>
           </div>
@@ -63,7 +63,7 @@ displayOrder: 6
         <div class="service-item">
           <div class="service-heading">
             <div class="service-icon">
-              {% icon "data-integrity", '{ "width": "48", "height": "48" }' %}
+              {% icon "data-integrity", '{ "width": "24", "height": "24" }' %}
             </div>
             <h3><a href="service-details.html">Auditing & Diagnosis</a></h3>
           </div>
@@ -81,7 +81,7 @@ displayOrder: 6
           <div class="service-item">
             <div class="service-heading">
             <div class="service-icon">
-              {% icon "strategy-plan", '{ "width": "48", "height": "48" }' %}
+              {% icon "strategy-plan", '{ "width": "24", "height": "24" }' %}
             </div>
             <h3><a href="service-details.html">Digital Strategy</a></h3>
           </div>
@@ -90,6 +90,7 @@ displayOrder: 6
             <a href="service-details.html" class="learn-more">
               <span>Learn More</span>
               {% icon "arrow-right-narrow", '{ "width": "24", "height": "24" }' %}
+            </a>
           </div>
         </div>
       </div>

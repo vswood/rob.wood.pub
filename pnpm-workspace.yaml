@@ -5,3 +5,29 @@ allowBuilds:
 patchedDependencies:
   jsdoc: patches/jsdoc.patch
   monocart-coverage-reports: patches/monocart-coverage-reports.patch
+  snapsvg: patches/snapsvg.patch
+overrides:
+  'abab': 'npm:@socketregistry/abab@^1'
+  'ajv': '8.20.0'
+  'core-js': '^3.47.0'
+  'eslint': '^10.4.0'
+  'eslint-plugin-n': '^18.0.1'
+  'eslint-plugin-promise': '^7.2.1'
+  'glob': '13.0.6'
+  'inflight': 'npm:inflight@^1.0.0'
+  'jsdom': '29.1.1'
+  'koa': 'file:./.exclude-package/koa'
+  'lodash': '^4.18.1'
+  'lodash.get': ''
+  'lodash.isEqual': ''
+  'minimatch': '10.2.5'
+  'nanoid': '5.1.11'
+  'pug': '3.0.4'
+  'pug-code-gen': '3.0.4'
+  'puppeteer': '25.0.4'
+  'react': ''
+  'react-ace': 'file:./.exclude-package/react-ace'
+  'react-dom': ''
+  'rimraf': '^6.1.3'
+  'vue-template-compiler': '2.7.16'
+  'encoding-sniffer': '1.0.2'

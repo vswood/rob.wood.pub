@@ -1,0 +1,160 @@
+diff --git a/.npmignore b/.npmignore
+deleted file mode 100644
+index 8f4bf8a2ea829a7af2025be0a04781aa0d8e6152..0000000000000000000000000000000000000000
+diff --git a/dist/snap.svg.js b/dist/snap.svg.js
+index 42798a5ed50572202efc0b8ce3d1548b4eaa884f..232f843bd9e50cfbf9bf1fe3f6c6713d7f3d2fc5 100644
+--- a/dist/snap.svg.js
++++ b/dist/snap.svg.js
+@@ -17,13 +17,13 @@
+ // build: 2017-02-06
+ 
+ // Copyright (c) 2013 Adobe Systems Incorporated. All rights reserved.
+-// 
++//
+ // Licensed under the Apache License, Version 2.0 (the "License");
+ // you may not use this file except in compliance with the License.
+ // You may obtain a copy of the License at
+-// 
++//
+ // http://www.apache.org/licenses/LICENSE-2.0
+-// 
++//
+ // Unless required by applicable law or agreed to in writing, software
+ // distributed under the License is distributed on an "AS IS" BASIS,
+ // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+@@ -82,7 +82,7 @@
+ 
+      = (object) array of returned values from the listeners. Array has two methods `.firstDefined()` and `.lastDefined()` to get first or last not `undefined` value.
+     \*/
+-        eve = function (name, scope) {
++        const eve = function (name, scope) {
+             var e = events,
+                 oldstop = stop,
+                 args = Array.prototype.slice.call(arguments, 2),
+@@ -223,7 +223,7 @@
+      - name (array) if you don’t want to use separators, you can use array of strings
+      - f (function) event handler function
+      **
+-     = (function) returned function accepts a single numeric parameter that represents z-index of the handler. It is an optional feature and only used when you need to ensure that some subset of handlers will be invoked in a given order, despite of the order of assignment. 
++     = (function) returned function accepts a single numeric parameter that represents z-index of the handler. It is an optional feature and only used when you need to ensure that some subset of handlers will be invoked in a given order, despite of the order of assignment.
+      > Example:
+      | eve.on("mouse", eatIt)(2);
+      | eve.on("mouse", scream);
+@@ -7599,13 +7599,13 @@ Snap.plugin(function (Snap, Element, Paper, glob) {
+ });
+ 
+ // Copyright (c) 2013 Adobe Systems Incorporated. All rights reserved.
+-// 
++//
+ // Licensed under the Apache License, Version 2.0 (the "License");
+ // you may not use this file except in compliance with the License.
+ // You may obtain a copy of the License at
+-// 
++//
+ // http://www.apache.org/licenses/LICENSE-2.0
+-// 
++//
+ // Unless required by applicable law or agreed to in writing, software
+ // distributed under the License is distributed on an "AS IS" BASIS,
+ // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+@@ -7748,7 +7748,7 @@ Snap.plugin(function (Snap, Element, Paper, glob) {
+      - handler (function) handler for the event
+      = (object) @Element
+     \*/
+-    
++
+     /*\
+      * Element.dblclick
+      [ method ]
+@@ -7765,7 +7765,7 @@ Snap.plugin(function (Snap, Element, Paper, glob) {
+      - handler (function) handler for the event
+      = (object) @Element
+     \*/
+-    
++
+     /*\
+      * Element.mousedown
+      [ method ]
+@@ -7782,7 +7782,7 @@ Snap.plugin(function (Snap, Element, Paper, glob) {
+      - handler (function) handler for the event
+      = (object) @Element
+     \*/
+-    
++
+     /*\
+      * Element.mousemove
+      [ method ]
+@@ -7799,7 +7799,7 @@ Snap.plugin(function (Snap, Element, Paper, glob) {
+      - handler (function) handler for the event
+      = (object) @Element
+     \*/
+-    
++
+     /*\
+      * Element.mouseout
+      [ method ]
+@@ -7816,7 +7816,7 @@ Snap.plugin(function (Snap, Element, Paper, glob) {
+      - handler (function) handler for the event
+      = (object) @Element
+     \*/
+-    
++
+     /*\
+      * Element.mouseover
+      [ method ]
+@@ -7833,7 +7833,7 @@ Snap.plugin(function (Snap, Element, Paper, glob) {
+      - handler (function) handler for the event
+      = (object) @Element
+     \*/
+-    
++
+     /*\
+      * Element.mouseup
+      [ method ]
+@@ -7850,7 +7850,7 @@ Snap.plugin(function (Snap, Element, Paper, glob) {
+      - handler (function) handler for the event
+      = (object) @Element
+     \*/
+-    
++
+     /*\
+      * Element.touchstart
+      [ method ]
+@@ -7867,7 +7867,7 @@ Snap.plugin(function (Snap, Element, Paper, glob) {
+      - handler (function) handler for the event
+      = (object) @Element
+     \*/
+-    
++
+     /*\
+      * Element.touchmove
+      [ method ]
+@@ -7884,7 +7884,7 @@ Snap.plugin(function (Snap, Element, Paper, glob) {
+      - handler (function) handler for the event
+      = (object) @Element
+     \*/
+-    
++
+     /*\
+      * Element.touchend
+      [ method ]
+@@ -7901,7 +7901,7 @@ Snap.plugin(function (Snap, Element, Paper, glob) {
+      - handler (function) handler for the event
+      = (object) @Element
+     \*/
+-    
++
+     /*\
+      * Element.touchcancel
+      [ method ]
+@@ -7995,8 +7995,8 @@ Snap.plugin(function (Snap, Element, Paper, glob) {
+      - mcontext (object) #optional context for moving handler
+      - scontext (object) #optional context for drag start handler
+      - econtext (object) #optional context for drag end handler
+-     * Additionaly following `drag` events are triggered: `drag.start.<id>` on start, 
+-     * `drag.end.<id>` on end and `drag.move.<id>` on every move. When element is dragged over another element 
++     * Additionaly following `drag` events are triggered: `drag.start.<id>` on start,
++     * `drag.end.<id>` on end and `drag.move.<id>` on every move. When element is dragged over another element
+      * `drag.over.<id>` fires as well.
+      *
+      * Start event and start handler are called in specified context or in context of the element with following parameters:

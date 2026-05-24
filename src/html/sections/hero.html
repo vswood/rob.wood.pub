@@ -8,11 +8,11 @@ displayOrder: 0
 
   <div class="container">
 
-    {{insert.mainHeading("Welcome!", "I'm", "Rob Wood", "B.S. CSC", "Game-Changing Engineer")}}
+    {{insert.mainHeading("Welcome!", "I'm", "Rob Wood", "BS CSC", "Game-Changing Engineer")}}
 
     <div class="row">
 
-      <div class="image-col col-lg-6 order-lg-2">
+      <div class="image-col col-xl-6 order-xl-2">
         <div class="hero-image">
           <div class="image-wrapper">
             <img src="../../../img/profile/suit-desk-clasped-hands.png" alt="Creative Designer Portfolio"
@@ -38,24 +38,26 @@ displayOrder: 0
 
       </div>
 
-      <div class="col-lg-6 order-lg-1">
+      <div class="col-xl-6 order-xl-1">
         <div class="hero-main">
           {{insert.pageHeading("I connect ", "Engineering", "to", "Business", "Outcomes.")}}
 
           <div class="row actions">
-            <div class="col-sm-6 order-2 order-sm-1">
-              <a href="#portfolio" class="btn btn-3d btn-secondary">
+
+            <div class="col-sm-6">
+              <a href="#portfolio" class="btn btn-secondary">
                 <span>Work Examples</span>
-                {% icon "portfolio", '{ "width": "18", "height": "18" }' %}
+                {% icon "experience", '{ "width": "24", "height": "24" }' %}
               </a>
             </div>
 
-            <div class="col-sm-6 order-1 order-sm-2">
-              <a href="#contact" class="btn btn-3d btn-primary">
+            <div class="col-sm-6">
+              <a href="#contact" class="btn btn-primary">
                 <span>Start a Conversation</span>
                 {% icon "speech-bubble-square", '{ "width": "24", "height": "24" }' %}
               </a>
             </div>
+
           </div>
 
           <div class="copy-wrapper">

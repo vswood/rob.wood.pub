@@ -1,0 +1,118 @@
+@layer layout {
+  section {
+    scroll-snap-align: start;
+    color: var(--text-color);
+    background: var(--gradient-bg);
+    background-blend-mode: multiply;
+    max-width: 100%;
+    padding: 3lh 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    .container {
+      justify-content: center;
+    }
+  }
+
+  html,
+  body {
+    scrollbar-gutter: stable;
+    transform: translateZ(0); /* Forces hardware acceleration */
+    will-change: transform;   /* Optimizes rendering for transformations */
+    /* overflow-x: clip; */
+  }
+
+  html,
+  body {
+    height: 100vh;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: clip;
+  }
+
+  body {
+    color: var(--text-color);
+    background: var(--gradient-bg-1);
+    background-blend-mode: lighten;
+    font-family: var(--font-3);
+    font-size: clamp(1rem, var(--medium, 17px + 0.24vw), 1.25rem);
+  }
+
+  @container style(--inline-size-xl: var(--breakpoint-xl)) {
+    .container {
+      max-width: 1720px;
+      padding: 0 3ch;
+    }
+  }
+
+  #body-wrapper {
+    height: 100%;
+    position: relative;
+    transition: transform 0.35s ease-in-out;
+    transform-style: preserve-3d;
+    perspective: 1500px;
+
+    #main-grid {
+      transform-style: preserve-3d;
+      transition: transform 0.35s ease-in-out, width 0.35s ease-in-out;
+      position: fixed;
+      left: 0;
+      z-index: 99;
+      height: 100vh;
+      width: 100%;
+      perspective: 1000px;
+
+      /* @container style(--inline-size-xs: var(--breakpoint-xs)) {
+        display: grid;
+        grid-template-columns: 200px auto;
+        grid-template-areas:
+          'header content';
+      } */
+
+      @container style(--inline-size-xl: var(--breakpoint-xl)) {
+        display: grid;
+        grid-template-columns: 300px auto;
+        grid-template-areas:
+          'header content';
+      }
+
+      &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 0;
+        height: 0;
+        background: rgba(0, 0, 0, 0.2);
+        content: '';
+        opacity: 0;
+        transition: opacity 0.5s, width 0.1s 0.5s, height 0.1s 0.5s;
+      }
+
+      main {
+        grid-area: content;
+        padding: 0;
+        height: 100vh;
+        max-width: 100%;
+        overflow-y: scroll;
+      }
+    }
+  }
+
+  .grid-2-col {
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    gap: 1lh;
+
+    @container style(--inline-size-xs: var(--breakpoint-xs)) {
+      grid-template-rows: 1fr;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1lh;
+    }
+  }
+
+}

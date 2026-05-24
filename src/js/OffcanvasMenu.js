@@ -1,4 +1,7 @@
+import Snap from 'snapsvg'
+
 export default class OffcanvasMenu {
+  #menuWrap
   #header
   #headerToggle
   #bodyWrapper
@@ -29,6 +32,7 @@ export default class OffcanvasMenu {
   #setVariables() {
     this.#headerToggle = document.querySelector('.header-toggle')
     this.#header = document.querySelector('#header')
+    this.#menuWrap = document.querySelector('.menu-wrap')
     this.#bodyWrapper = document.getElementById('body-wrapper')
     this.#mainGrid = document.getElementById('main-grid')
 
@@ -50,24 +54,20 @@ export default class OffcanvasMenu {
     this.#bodyWrapper.addEventListener('click', (e) => {
       var target = e.target
       if (this.isOpen && target !== document.querySelector('.header-toggle') && !document.querySelector('.menu-wrap').contains(target)) {
-        document.dispatchEvent(new CustomEvent('toggleMenu'))
+        this.menuClose()
       }
     })
+
     document.addEventListener('toggleMenu', this)
+
     this.#headerToggle.addEventListener('click', () => {
+      console.log(this.isOpen)
       document.dispatchEvent(new CustomEvent('toggleMenu'))
     })
   }
 
   handleEvent(e) {
     this[`${event.type}Handler`](event)
-  }
-
-  #toggleClasses() {
-    ['bi-list', 'bi-x'].forEach(cls => this.#headerToggle.classList.toggle(cls))
-    // this.#bodyWrapper.classList.toggle('offcanvas-wrapper')
-    document.body.classList.toggle('show-menu')
-    this.#header.classList.toggle('visible')
   }
 
   #createFalseContent() {
@@ -86,25 +86,6 @@ export default class OffcanvasMenu {
       window.lenis.stop()
       document.querySelector('main').style.top = window.savedTop
     }
-  }
-
-  #closeMenu() {
-    this.#header.style.transform = 'translate3d(calc(-1 * var(--nav-width)),0,0)'
-    this.#animate(0, this.#stepsOut)
-    setTimeout(() => {
-      // reset path
-      this.#path.attr('d', this.#closedPath)
-      this.#morphEl.style.display = 'none'
-      this.#isAnimating = false
-    }, 1000)
-  }
-
-  #openMenu() {
-    this.#morphEl.style.display = 'block'
-    setTimeout(() => {
-      this.#header.style.transform = 'none'
-    }, 100)
-    this.#animate(0, this.#stepsIn)
   }
 
   #animate(pos, steps) {
@@ -132,42 +113,41 @@ export default class OffcanvasMenu {
   #finishAnimation() {
     this.isOpen = !this.isOpen
     if (this.isOpen) {
-
+      this.#morphEl.style.display = 'none'
     } else {
+      this.#morphEl.style.display = 'none'
     }
-  }
-
-  setStart() {
-    this.#path.attr('d', this.#closedPath)
-  }
-
-  setEnd() {
-    this.#path.attr('d', this.#openPath)
-  }
-
-  open() {
-    this.#openMenu()
-  }
-
-  close() {
-    this.#closeMenu()
   }
 
   #menuBubbleOpen() {
     console.log('bubble in')
+    this.#morphEl.style.display = 'block'
+    this.#menuWrap.classList.add('open')
+    this.#animate(0, this.#stepsIn)
+    setTimeout(() => {
+      this.#header.classList.add('open')
+    }, 400)
   }
 
   #menuBubbleClose() {
     console.log('bubble out')
+    this.#morphEl.style.display = 'block'
+    this.#header.classList.remove('open')
+    this.#animate(0, this.#stepsOut)
+    setTimeout(() => {
+       this.#menuWrap.classList.remove('open')
+    }, 400)
   }
 
   toggleMenuHandler() {
     if (this.isOpen) {
-      this.#menuBubbleClose()
-      this.isOpen = false
+      this.#headerToggle.classList.remove('opened')
+      this.#headerToggle.setAttribute('aria-expanded', true)
+      this.menuBubbleOpen()
     } else {
-      this.#menuBubbleOpen()
-      this.isOpen = true
+      this.#headerToggle.classList.add('opened')
+      this.#headerToggle.setAttribute('aria-expanded', false)
+      this.menuBubbleClose()
     }
   }
 
@@ -175,7 +155,6 @@ export default class OffcanvasMenu {
     if (this.#isAnimating) {
       return false
     }
-
     if (this.isOpen) {
       this.#header.classList.add('disabled')
       this.#toggleSuspendedContent()

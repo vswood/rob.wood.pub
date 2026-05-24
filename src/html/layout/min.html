@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-US" data-bs-theme="dark">
+
+<head>
+  <style>
+    @layer reset, theme, base, layout, component, utility, override;
+
+    #body-wrapper {
+      content-visibility: hidden;
+    }
+  </style>
+
+  {% include "../include/common/head/meta-info.html" %}
+
+  {% favicons './src/img/rob-wood-icon.svg', appleIconBgColor='#ffffff' %}
+
+  {% include "../include/common/head/fonts.html" %}
+
+  {% include "../include/common/head/styles.html" %}
+
+  {% block head %}{% endblock head %}
+
+</head>
+
+<body>
+
+  {% block body %}{% endblock body %}
+
+  {% block scripts %}{% endblock scripts %}
+
+</body>
+
+</html>

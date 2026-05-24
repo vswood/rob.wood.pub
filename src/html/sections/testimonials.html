@@ -4,14 +4,10 @@ displayOrder: 7
 ---
 {% import "../include/page-components/parts.html" as insert %}
 <!-- Testimonials Section -->
-<section id="testimonials" class="testimonials section light-background">
+<section id="testimonials">
 
-  <!-- Section Title -->
   <div class="container section-heading-alt">
     {{insert.pageHeading("", "Kind Words &", "", "", "Testimonials")}}
-  </div><!-- End Section Title -->
-  <div class="copy-wrapper">
-    <p>These are a few of the kind words that have been said about me by employers, customers,and coworkers.</p>
   </div>
 
   <div class="container">
@@ -43,14 +39,14 @@ displayOrder: 7
           <div class="testimonial-slide">
             <div class="testimonial-header">
               <div class="stars-rating">
-                {% icon "star-full", '{ "width": "24", "height": "24" }' %}
-                {% icon "star-full", '{ "width": "24", "height": "24" }' %}
-                {% icon "star-full", '{ "width": "24", "height": "24" }' %}
-                {% icon "star-full", '{ "width": "24", "height": "24" }' %}
-                {% icon "star-full", '{ "width": "24", "height": "24" }' %}
+                {% icon "star-full", '{ "width": "16", "height": "16" }' %}
+                {% icon "star-full", '{ "width": "16", "height": "16" }' %}
+                {% icon "star-full", '{ "width": "16", "height": "16" }' %}
+                {% icon "star-full", '{ "width": "16", "height": "16" }' %}
+                {% icon "star-full", '{ "width": "16", "height": "16" }' %}
               </div>
               <div class="quote-icon">
-                {% icon "quote", '{ "width": "48", "height": "48" }' %}
+                {% icon "quote", '{ "width": "24", "height": "24" }' %}
               </div>
             </div>
             <div class="testimonial-body">
@@ -75,14 +71,14 @@ displayOrder: 7
           <div class="testimonial-slide">
             <div class="testimonial-header">
               <div class="stars-rating">
-                {% icon "star-full", '{ "width": "24", "height": "24" }' %}
-                {% icon "star-full", '{ "width": "24", "height": "24" }' %}
-                {% icon "star-full", '{ "width": "24", "height": "24" }' %}
-                {% icon "star-full", '{ "width": "24", "height": "24" }' %}
-                {% icon "star-full", '{ "width": "24", "height": "24" }' %}
+                {% icon "star-full", '{ "width": "16", "height": "16" }' %}
+                {% icon "star-full", '{ "width": "16", "height": "16" }' %}
+                {% icon "star-full", '{ "width": "16", "height": "16" }' %}
+                {% icon "star-full", '{ "width": "16", "height": "16" }' %}
+                {% icon "star-full", '{ "width": "16", "height": "16" }' %}
               </div>
               <div class="quote-icon">
-                {% icon "quote", '{ "width": "48", "height": "48" }' %}
+                {% icon "quote", '{ "width": "24", "height": "24" }' %}
               </div>
             </div>
             <div class="testimonial-body">
@@ -106,14 +102,14 @@ displayOrder: 7
           <div class="testimonial-slide">
             <div class="testimonial-header">
               <div class="stars-rating">
-                {% icon "star-full", '{ "width": "24", "height": "24" }' %}
-                {% icon "star-full", '{ "width": "24", "height": "24" }' %}
-                {% icon "star-full", '{ "width": "24", "height": "24" }' %}
-                {% icon "star-full", '{ "width": "24", "height": "24" }' %}
-                {% icon "star-full", '{ "width": "24", "height": "24" }' %}
+                {% icon "star-full", '{ "width": "16", "height": "16" }' %}
+                {% icon "star-full", '{ "width": "16", "height": "16" }' %}
+                {% icon "star-full", '{ "width": "16", "height": "16" }' %}
+                {% icon "star-full", '{ "width": "16", "height": "16" }' %}
+                {% icon "star-full", '{ "width": "16", "height": "16" }' %}
               </div>
               <div class="quote-icon">
-                {% icon "quote", '{ "width": "48", "height": "48" }' %}
+                {% icon "quote", '{ "width": "24", "height": "24" }' %}
               </div>
             </div>
             <div class="testimonial-body">
@@ -136,9 +132,13 @@ displayOrder: 7
       </div>
 
       <div class="swiper-navigation-wrapper">
-        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-prev">
+          {% icon "arrow-left", '{ "width": "24", "height": "24" }' %}
+        </div>
         <div class="swiper-pagination"></div>
-        <div class="swiper-button-next"></div>
+        <div class="swiper-button-next">
+          {% icon "arrow-right", '{ "width": "24", "height": "24" }' %}
+        </div>
       </div>
 
     </div>

@@ -1,0 +1,1139 @@
+/**
+ * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ * Simplified color scheme preference
+ * 1. color-scheme decides whether the current context is light or dark.
+ * 2. light-dark() resolves concrete values based on that current scheme.
+ * 3. CSS custom props store semantic design tokens and component-level aliases.
+ * 4. JavaScript merely persists user preference and toggles a root attribute.
+ * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ */
+
+@layer base {
+  :root {
+    color-scheme: light dark;
+  }
+
+  :root {
+    --primary: #25303f;
+    --primary-light: #293341;
+    --primary-dark: #1c2737;
+    --surface: #293443;
+    --surface-light: #4b607f;
+    --surface-dark: #151f2b;
+    --accent: #22e7a1;
+    --accent-light: #81c1aa;
+    --text: #f2f6ff;
+
+    --accent-2: #22e7a1;
+    --secondary: #585ab2;
+    --dark: #1A1D2C;
+    --light: #F8F9FC;
+    --subtle-2: #8D92A3;
+    --subtle: #b8bfd5;
+    --success: #22e7a1;
+    --warning: #f9792e;
+    --danger: #ff4760;
+    --info: #6bb7ff;
+    --accent: var(--info)
+  }
+
+  :root {
+    --background-color: var(--primary);
+    --text-color: var(--text);
+    --heading-color: var(--text);
+    --accent-color: var(--accent);
+    --surface-color: var(--surface);
+    --contrast-color:var(--primary-dark);
+
+    --nav-color: var(--text);
+    --nav-hover-color: var(--accent);
+
+    --gradient-pct: 50%;
+    --top-bar-color: #ffffff;
+    --bottom-bar-color: var(--accent-color);
+    --top-bar-offset: -4px;
+    --bottom-bar-offset: -6px;
+
+    --text-default: #f3f4f6;
+    --heading-default: #f9fafb;
+
+    --accent-trans-20: color-mix(in oklch, var(--accent), transparent 20%);
+    --surface-black-5: color-mix(in oklch, var(--surface), black 5%);
+  }
+
+  :root {
+    --color-hue: 270;
+    --palette-chroma: 0.9;
+  }
+
+  :root[data-theme='light'] {
+    color-scheme: light;
+  }
+
+  :root[data-theme='dark'] {
+    color-scheme: dark;
+  }
+
+  :where(html) {
+    --color-1: oklch(98% calc(0.03 * var(--palette-chroma)) calc(var(--palette-hue) + (0 * var(--palette-hue-rotate-by))));
+    --color-2: oklch(97% calc(0.06 * var(--palette-chroma)) calc(var(--palette-hue) + (1 * var(--palette-hue-rotate-by))));
+    --color-3: oklch(93% calc(0.1 * var(--palette-chroma)) calc(var(--palette-hue) + (2 * var(--palette-hue-rotate-by))));
+    --color-4: oklch(84% calc(0.12 * var(--palette-chroma)) calc(var(--palette-hue) + (3 * var(--palette-hue-rotate-by))));
+    --color-5: oklch(80% calc(0.16 * var(--palette-chroma)) calc(var(--palette-hue) + (4 * var(--palette-hue-rotate-by))));
+    --color-6: oklch(71% calc(0.19 * var(--palette-chroma)) calc(var(--palette-hue) + (5 * var(--palette-hue-rotate-by))));
+    --color-7: oklch(66% calc(0.2 * var(--palette-chroma)) calc(var(--palette-hue) + (6 * var(--palette-hue-rotate-by))));
+    --color-8: oklch(58% calc(0.21 * var(--palette-chroma)) calc(var(--palette-hue) + (7 * var(--palette-hue-rotate-by))));
+    --color-9: oklch(53% calc(0.2 * var(--palette-chroma)) calc(var(--palette-hue) + (8 * var(--palette-hue-rotate-by))));
+    --color-10: oklch(49% calc(0.19 * var(--palette-chroma)) calc(var(--palette-hue) + (9 * var(--palette-hue-rotate-by))));
+    --color-11: oklch(42% calc(0.17 * var(--palette-chroma)) calc(var(--palette-hue) + (10 * var(--palette-hue-rotate-by))));
+    --color-12: oklch(35% calc(0.15 * var(--palette-chroma)) calc(var(--palette-hue) + (11 * var(--palette-hue-rotate-by))));
+    --color-13: oklch(27% calc(0.12 * var(--palette-chroma)) calc(var(--palette-hue) + (12 * var(--palette-hue-rotate-by))));
+    --color-14: oklch(20% calc(0.09 * var(--palette-chroma)) calc(var(--palette-hue) + (13 * var(--palette-hue-rotate-by))));
+    --color-15: oklch(16% calc(0.07 * var(--palette-chroma)) calc(var(--palette-hue) + (14 * var(--palette-hue-rotate-by))));
+    --color-16: oklch(10% calc(0.05 * var(--palette-chroma)) calc(var(--palette-hue) + (15 * var(--palette-hue-rotate-by))));
+  }
+
+  .oklch {
+    --color-0: oklch(99% .03 var(--color-hue, 0));
+    --color-1: oklch(95% .06 var(--color-hue, 0));
+    --color-2: oklch(88% .12 var(--color-hue, 0));
+    --color-3: oklch(80% .14 var(--color-hue, 0));
+    --color-4: oklch(74% .16 var(--color-hue, 0));
+    --color-5: oklch(68% .19 var(--color-hue, 0));
+    --color-6: oklch(63% .20 var(--color-hue, 0));
+    --color-7: oklch(58% .21 var(--color-hue, 0));
+    --color-8: oklch(53% .20 var(--color-hue, 0));
+    --color-9: oklch(49% .19 var(--color-hue, 0));
+    --color-10: oklch(42% .17 var(--color-hue, 0));
+    --color-11: oklch(35% .15 var(--color-hue, 0));
+    --color-12: oklch(27% .12 var(--color-hue, 0));
+    --color-13: oklch(20% .09 var(--color-hue, 0));
+    --color-14: oklch(14% .07 var(--color-hue, 0));
+    --color-15: oklch(11% .05 var(--color-hue, 0));
+    --color-bright: oklch(65% .3 var(--color-hue, 0));
+  }
+
+
+  :where(html) {
+    --gray-0: #f8f9fa;
+    --gray-1: #f1f3f5;
+    --gray-2: #e9ecef;
+    --gray-3: #dee2e6;
+    --gray-4: #ced4da;
+    --gray-5: #adb5bd;
+    --gray-6: #868e96;
+    --gray-7: #495057;
+    --gray-8: #343a40;
+    --gray-9: #212529;
+    --gray-10: #16191d;
+    --gray-11: #0d0f12;
+    --gray-12: #030507;
+    --stone-0: #f8fafb;
+    --stone-1: #f2f4f6;
+    --stone-2: #ebedef;
+    --stone-3: #e0e4e5;
+    --stone-4: #d1d6d8;
+    --stone-5: #b1b6b9;
+    --stone-6: #979b9d;
+    --stone-7: #7e8282;
+    --stone-8: #666968;
+    --stone-9: #50514f;
+    --stone-10: #3a3a37;
+    --stone-11: #252521;
+    --stone-12: #121210;
+    --red-0: #fff5f5;
+    --red-1: #ffe3e3;
+    --red-2: #ffc9c9;
+    --red-3: #ffa8a8;
+    --red-4: #ff8787;
+    --red-5: #ff6b6b;
+    --red-6: #fa5252;
+    --red-7: #f03e3e;
+    --red-8: #e03131;
+    --red-9: #c92a2a;
+    --red-10: #b02525;
+    --red-11: #962020;
+    --red-12: #7d1a1a;
+    --pink-0: #fff0f6;
+    --pink-1: #ffdeeb;
+    --pink-2: #fcc2d7;
+    --pink-3: #faa2c1;
+    --pink-4: #f783ac;
+    --pink-5: #f06595;
+    --pink-6: #e64980;
+    --pink-7: #d6336c;
+    --pink-8: #c2255c;
+    --pink-9: #a61e4d;
+    --pink-10: #8c1941;
+    --pink-11: #731536;
+    --pink-12: #59102a;
+    --purple-0: #f8f0fc;
+    --purple-1: #f3d9fa;
+    --purple-2: #eebefa;
+    --purple-3: #e599f7;
+    --purple-4: #da77f2;
+    --purple-5: #cc5de8;
+    --purple-6: #be4bdb;
+    --purple-7: #ae3ec9;
+    --purple-8: #9c36b5;
+    --purple-9: #862e9c;
+    --purple-10: #702682;
+    --purple-11: #5a1e69;
+    --purple-12: #44174f;
+    --violet-0: #f3f0ff;
+    --violet-1: #e5dbff;
+    --violet-2: #d0bfff;
+    --violet-3: #b197fc;
+    --violet-4: #9775fa;
+    --violet-5: #845ef7;
+    --violet-6: #7950f2;
+    --violet-7: #7048e8;
+    --violet-8: #6741d9;
+    --violet-9: #5f3dc4;
+    --violet-10: #5235ab;
+    --violet-11: #462d91;
+    --violet-12: #3a2578;
+    --indigo-0: #edf2ff;
+    --indigo-1: #dbe4ff;
+    --indigo-2: #bac8ff;
+    --indigo-3: #91a7ff;
+    --indigo-4: #748ffc;
+    --indigo-5: #5c7cfa;
+    --indigo-6: #4c6ef5;
+    --indigo-7: #4263eb;
+    --indigo-8: #3b5bdb;
+    --indigo-9: #364fc7;
+    --indigo-10: #2f44ad;
+    --indigo-11: #283a94;
+    --indigo-12: #21307a;
+    --blue-0: #e7f5ff;
+    --blue-1: #d0ebff;
+    --blue-2: #a5d8ff;
+    --blue-3: #74c0fc;
+    --blue-4: #4dabf7;
+    --blue-5: #339af0;
+    --blue-6: #228be6;
+    --blue-7: #1c7ed6;
+    --blue-8: #1971c2;
+    --blue-9: #1864ab;
+    --blue-10: #145591;
+    --blue-11: #114678;
+    --blue-12: #0d375e;
+    --cyan-0: #e3fafc;
+    --cyan-1: #c5f6fa;
+    --cyan-2: #99e9f2;
+    --cyan-3: #66d9e8;
+    --cyan-4: #3bc9db;
+    --cyan-5: #22b8cf;
+    --cyan-6: #15aabf;
+    --cyan-7: #1098ad;
+    --cyan-8: #0c8599;
+    --cyan-9: #0b7285;
+    --cyan-10: #095c6b;
+    --cyan-11: #074652;
+    --cyan-12: #053038;
+    --teal-0: #e6fcf5;
+    --teal-1: #c3fae8;
+    --teal-2: #96f2d7;
+    --teal-3: #63e6be;
+    --teal-4: #38d9a9;
+    --teal-5: #20c997;
+    --teal-6: #12b886;
+    --teal-7: #0ca678;
+    --teal-8: #099268;
+    --teal-9: #087f5b;
+    --teal-10: #066649;
+    --teal-11: #054d37;
+    --teal-12: #033325;
+    --green-0: #ebfbee;
+    --green-1: #d3f9d8;
+    --green-2: #b2f2bb;
+    --green-3: #8ce99a;
+    --green-4: #69db7c;
+    --green-5: #51cf66;
+    --green-6: #40c057;
+    --green-7: #37b24d;
+    --green-8: #2f9e44;
+    --green-9: #2b8a3e;
+    --green-10: #237032;
+    --green-11: #1b5727;
+    --green-12: #133d1b;
+    --lime-0: #f4fce3;
+    --lime-1: #e9fac8;
+    --lime-2: #d8f5a2;
+    --lime-3: #c0eb75;
+    --lime-4: #a9e34b;
+    --lime-5: #94d82d;
+    --lime-6: #82c91e;
+    --lime-7: #74b816;
+    --lime-8: #66a80f;
+    --lime-9: #5c940d;
+    --lime-10: #4c7a0b;
+    --lime-11: #3c6109;
+    --lime-12: #2c4706;
+    --yellow-0: #fff9db;
+    --yellow-1: #fff3bf;
+    --yellow-2: #ffec99;
+    --yellow-3: #ffe066;
+    --yellow-4: #ffd43b;
+    --yellow-5: #fcc419;
+    --yellow-6: #fab005;
+    --yellow-7: #f59f00;
+    --yellow-8: #f08c00;
+    --yellow-9: #e67700;
+    --yellow-10: #b35c00;
+    --yellow-11: #804200;
+    --yellow-12: #663500;
+    --orange-0: #fff4e6;
+    --orange-1: #ffe8cc;
+    --orange-2: #ffd8a8;
+    --orange-3: #ffc078;
+    --orange-4: #ffa94d;
+    --orange-5: #ff922b;
+    --orange-6: #fd7e14;
+    --orange-7: #f76707;
+    --orange-8: #e8590c;
+    --orange-9: #d9480f;
+    --orange-10: #bf400d;
+    --orange-11: #99330b;
+    --orange-12: #802b09;
+    --choco-0: #fff8dc;
+    --choco-1: #fce1bc;
+    --choco-2: #f7ca9e;
+    --choco-3: #f1b280;
+    --choco-4: #e99b62;
+    --choco-5: #df8545;
+    --choco-6: #d46e25;
+    --choco-7: #bd5f1b;
+    --choco-8: #a45117;
+    --choco-9: #8a4513;
+    --choco-10: #703a13;
+    --choco-11: #572f12;
+    --choco-12: #3d210d;
+    --brown-0: #faf4eb;
+    --brown-1: #ede0d1;
+    --brown-2: #e0cab7;
+    --brown-3: #d3b79e;
+    --brown-4: #c5a285;
+    --brown-5: #b78f6d;
+    --brown-6: #a87c56;
+    --brown-7: #956b47;
+    --brown-8: #825b3a;
+    --brown-9: #6f4b2d;
+    --brown-10: #5e3a21;
+    --brown-11: #4e2b15;
+    --brown-12: #422412;
+    --sand-0: #f8fafb;
+    --sand-1: #e6e4dc;
+    --sand-2: #d5cfbd;
+    --sand-3: #c2b9a0;
+    --sand-4: #aea58c;
+    --sand-5: #9a9178;
+    --sand-6: #867c65;
+    --sand-7: #736a53;
+    --sand-8: #5f5746;
+    --sand-9: #4b4639;
+    --sand-10: #38352d;
+    --sand-11: #252521;
+    --sand-12: #121210;
+    --camo-0: #f9fbe7;
+    --camo-1: #e8ed9c;
+    --camo-2: #d2df4e;
+    --camo-3: #c2ce34;
+    --camo-4: #b5bb2e;
+    --camo-5: #a7a827;
+    --camo-6: #999621;
+    --camo-7: #8c851c;
+    --camo-8: #7e7416;
+    --camo-9: #6d6414;
+    --camo-10: #5d5411;
+    --camo-11: #4d460e;
+    --camo-12: #36300a;
+    --jungle-0: #ecfeb0;
+    --jungle-1: #def39a;
+    --jungle-2: #d0e884;
+    --jungle-3: #c2dd6e;
+    --jungle-4: #b5d15b;
+    --jungle-5: #a8c648;
+    --jungle-6: #9bbb36;
+    --jungle-7: #8fb024;
+    --jungle-8: #84a513;
+    --jungle-9: #7a9908;
+    --jungle-10: #658006;
+    --jungle-11: #516605;
+    --jungle-12: #3d4d04;
+  }
+
+  :root {
+    --gradient-bg: radial-gradient(circle at 29% 55%,
+      rgba(252,252,252, 0.0075) 0%,
+      rgba(252,252,252, 0.0075) 4%,
+      transparent 4%,
+      transparent 44%,
+      transparent 44%,
+      transparent 100%),
+      radial-gradient(circle at 85% 89%,
+      rgba(252,252,252, 0.0075) 0%,
+      rgba(252,252,252, 0.0075) 51%,
+      transparent 51%,
+      transparent 52%,
+      transparent 52%,
+      transparent 100%),
+      radial-gradient(circle at 6% 90%,
+      rgba(252,252,252, 0.0075) 0%,
+      rgba(252,252,252, 0.0075) 53%,
+      transparent 53%,
+      transparent 64%,
+      transparent 64%,
+      transparent 100%),
+      radial-gradient(circle at 35% 75%,
+      rgba(252,252,252, 0.0075) 0%,
+      rgba(252,252,252, 0.0075) 6%,
+      transparent 6%,
+      transparent 98%,
+      transparent 98%,
+      transparent 100%),
+      radial-gradient(circle at 56% 75%,
+      rgba(252,252,252, 0.0075) 0%,
+      rgba(252,252,252, 0.0075) 16%,
+      transparent 16%,
+      transparent 23%,
+      transparent 23%,
+      transparent 100%),
+      radial-gradient(circle at 42% 0%,
+      rgba(252,252,252, 0.0075) 0%,
+      rgba(252,252,252, 0.0075) 3%,
+      transparent 3%,
+      transparent 26%,
+      transparent 26%,
+      transparent 100%),
+      radial-gradient(circle at 29% 28%,
+      rgba(252,252,252, 0.0075) 0%,
+      rgba(252,252,252, 0.0075) 51%,
+      transparent 51%,
+      transparent 75%,
+      transparent 75%,
+      transparent 100%),
+      radial-gradient(circle at 77% 21%,
+      rgba(252,252,252, 0.0075) 0%,
+      rgba(252,252,252, 0.0075) 35%,
+      transparent 35%,
+      transparent 55%,
+      transparent 55%,
+      transparent 100%),
+      radial-gradient(circle at 65% 91%,
+      rgba(252,252,252, 0.0075) 0%,
+      rgba(252,252,252, 0.0075) 46%,
+      transparent 46%,
+      transparent 76%,
+      transparent 76%,
+      transparent 100%),
+      linear-gradient(to bottom, #25303fdd 0%,#293341 50%, #25303f77 100%);
+
+    --gradient-bg-1: radial-gradient(circle at 29% 55%,
+      rgba(252,252,252, 0.012568627450980392) 0%,
+      rgba(252,252,252, 0.01568627450980392) 4%,
+      transparent 4%,
+      transparent 44%,
+      transparent 44%,
+      transparent 100%),
+      radial-gradient(circle at 85% 89%,
+      rgba(252,252,252, 0.012568627450980392) 0%,
+      rgba(252,252,252, 0.012568627450980392) 51%,
+      transparent 51%,
+      transparent 52%,
+      transparent 52%,
+      transparent 100%),
+      radial-gradient(circle at 6% 90%,
+      rgba(252,252,252, 0.012568627450980392) 0%,
+      rgba(252,252,252, 0.012568627450980392) 53%,
+      transparent 53%,
+      transparent 64%,
+      transparent 64%,
+      transparent 100%),
+      radial-gradient(circle at 35% 75%,
+      rgba(252,252,252, 0.012568627450980392) 0%,
+      rgba(252,252,252, 0.012568627450980392) 6%,
+      transparent 6%,
+      transparent 98%,
+      transparent 98%,
+      transparent 100%),
+      radial-gradient(circle at 56% 75%,
+      rgba(252,252,252, 0.012568627450980392) 0%,
+      rgba(252,252,252, 0.012568627450980392) 16%,
+      transparent 16%,
+      transparent 23%,
+      transparent 23%,
+      transparent 100%),
+      radial-gradient(circle at 42% 0%,
+      rgba(252,252,252, 0.012568627450980392) 0%,
+      rgba(252,252,252, 0.012568627450980392) 3%,
+      transparent 3%,
+      transparent 26%,
+      transparent 26%,
+      transparent 100%),
+      radial-gradient(circle at 29% 28%,
+      rgba(252,252,252, 0.012568627450980392) 0%,
+      rgba(252,252,252, 0.012568627450980392) 51%,
+      transparent 51%,
+      transparent 75%,
+      transparent 75%,
+      transparent 100%),
+      radial-gradient(circle at 77% 21%,
+      rgba(252,252,252, 0.012568627450980392) 0%,
+      rgba(252,252,252, 0.012568627450980392) 35%,
+      transparent 35%,
+      transparent 55%,
+      transparent 55%,
+      transparent 100%),
+      radial-gradient(circle at 65% 91%,
+      rgba(252,252,252, 0.012568627450980392) 0%,
+      rgba(252,252,252, 0.012568627450980392) 46%,
+      transparent 46%,
+      transparent 76%,
+      transparent 76%,
+      transparent 100%),
+      linear-gradient(to bottom, #0e141c 0%,#141c28 50%, #0e141c 100%);
+
+    --gradient-bg-2: radial-gradient(circle at 29% 55%,
+      rgba(252,252,252, 0.01568627450980392) 0%,
+      rgba(252,252,252, 0.01568627450980392) 4%,
+      transparent 4%,
+      transparent 44%,
+      transparent 44%,
+      transparent 100%),
+      radial-gradient(circle at 85% 89%,
+      rgba(252,252,252, 0.01568627450980392) 0%,
+      rgba(252,252,252, 0.01568627450980392) 51%,
+      transparent 51%,
+      transparent 52%,
+      transparent 52%,
+      transparent 100%),
+      radial-gradient(circle at 6% 90%,
+      rgba(252,252,252, 0.01568627450980392) 0%,
+      rgba(252,252,252, 0.01568627450980392) 53%,
+      transparent 53%,
+      transparent 64%,
+      transparent 64%,
+      transparent 100%),
+      radial-gradient(circle at 35% 75%,
+      rgba(252,252,252, 0.010568627450980392) 0%,
+      rgba(252,252,252, 0.010568627450980392) 6%,
+      transparent 6%,
+      transparent 98%,
+      transparent 98%,
+      transparent 100%),
+      radial-gradient(circle at 56% 75%,
+      rgba(252,252,252, 0.010568627450980392) 0%,
+      rgba(252,252,252, 0.010568627450980392) 16%,
+      transparent 16%,
+      transparent 23%,
+      transparent 23%,
+      transparent 100%),
+      radial-gradient(circle at 42% 0%,
+      rgba(252,252,252, 0.010568627450980392) 0%,
+      rgba(252,252,252, 0.010568627450980392) 3%,
+      transparent 3%,
+      transparent 26%,
+      transparent 26%,
+      transparent 100%),
+      radial-gradient(circle at 29% 28%,
+      rgba(252,252,252, 0.010568627450980392) 0%,
+      rgba(252,252,252, 0.010568627450980392) 51%,
+      transparent 51%,
+      transparent 75%,
+      transparent 75%,
+      transparent 100%),
+      radial-gradient(circle at 77% 21%,
+      rgba(252,252,252, 0.010568627450980392) 0%,
+      rgba(252,252,252, 0.010568627450980392) 35%,
+      transparent 35%,
+      transparent 55%,
+      transparent 55%,
+      transparent 100%),
+      radial-gradient(circle at 65% 91%,
+      rgba(252,252,252, 0.010568627450980392) 0%,
+      rgba(252,252,252, 0.010568627450980392) 46%,
+      transparent 46%,
+      transparent 76%,
+      transparent 76%,
+      transparent 100%),
+      linear-gradient(to bottom, #293341 0%,#475c78 50%, #293341 100%),
+      #1c2737ee;
+
+
+    --bg-g-1: radial-gradient(circle at 67% 83%, hsla(317,0%,96%,0.05) 0%, hsla(317,0%,96%,0.05) 1%,transparent 1%, transparent 5%,transparent 5%, transparent 100%),radial-gradient(circle at 24% 80%, hsla(317,0%,96%,0.05) 0%, hsla(317,0%,96%,0.05) 27%,transparent 27%, transparent 63%,transparent 63%, transparent 100%),radial-gradient(circle at 23% 5%, hsla(317,0%,96%,0.05) 0%, hsla(317,0%,96%,0.05) 26%,transparent 26%, transparent 82%,transparent 82%, transparent 100%),radial-gradient(circle at 21% 11%, hsla(317,0%,96%,0.05) 0%, hsla(317,0%,96%,0.05) 35%,transparent 35%, transparent 45%,transparent 45%, transparent 100%),radial-gradient(circle at 10% 11%, hsla(317,0%,96%,0.05) 0%, hsla(317,0%,96%,0.05) 21%,transparent 21%, transparent 81%,transparent 81%, transparent 100%),radial-gradient(circle at 19% 61%, hsla(317,0%,96%,0.05) 0%, hsla(317,0%,96%,0.05) 20%,transparent 20%, transparent 61%,transparent 61%, transparent 100%),radial-gradient(circle at 13% 77%, hsla(317,0%,96%,0.05) 0%, hsla(317,0%,96%,0.05) 63%,transparent 63%, transparent 72%,transparent 72%, transparent 100%),radial-gradient(circle at 30% 93%, hsla(317,0%,96%,0.05) 0%, hsla(317,0%,96%,0.05) 33%,transparent 33%, transparent 82%,transparent 82%, transparent 100%),linear-gradient(181deg, rgb(13,110,175),rgb(83,135,189));
+
+    --bg-g-2: linear-gradient(135deg, rgba(254,255,255,1) 0%,rgba(221,241,249,1) 35%,rgba(160,216,239,1) 100%);
+
+    --bg-g-3: radial-gradient(circle at 75% 23%, rgba(226, 226, 226,0.025) 0%, rgba(226, 226, 226,0.025) 50%,rgba(11, 11, 11,0.025) 50%, rgba(11, 11, 11,0.025) 100%),radial-gradient(circle at 75% 51%, rgba(168, 168, 168,0.025) 0%, rgba(168, 168, 168,0.025) 50%,rgba(75, 75, 75,0.025) 50%, rgba(75, 75, 75,0.025) 100%),radial-gradient(circle at 38% 11%, rgba(31, 31, 31,0.025) 0%, rgba(31, 31, 31,0.025) 50%,rgba(254, 254, 254,0.025) 50%, rgba(254, 254, 254,0.025) 100%),linear-gradient(114deg, rgb(37,48,63),rgb(28,39,55));
+
+    --bg-g-4: linear-gradient(135deg, rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%);
+
+    --bg-g-5: linear-gradient(135deg, rgba(167,207,223,1) 0%,rgba(35,83,138,1) 100%);
+
+    --bg-g-6: linear-gradient(135deg, rgba(207,231,250,1) 0%,rgba(99,147,193,1) 100%);
+
+    --bg-g-7: linear-gradient(135deg, rgba(212,228,239,1) 0%,rgba(134,174,204,1) 100%);
+
+    --bg-g-8: linear-gradient(135deg, rgba(254,255,255,1) 0%,rgba(221,241,249,1) 35%,rgba(160,216,239,1) 100%);
+
+    --bg-g-9: linear-gradient(135deg, rgba(184,198,223,1) 0%,rgba(109,136,183,1) 100%);
+
+    --bg-g-10: linear-gradient(135deg, rgba(181,189,200,1) 0%,rgba(130,140,149,1) 36%,rgba(40,52,59,1) 100%);
+
+    --bg-g-11: linear-gradient(135deg, rgba(96,108,136,1) 0%,rgba(63,76,107,1) 100%);
+
+    --bg-g-12: repeating-linear-gradient(165deg, rgba(0,0,0,0.04),rgba(0,0,0,0.08),rgba(0,0,0,0.05),rgba(0,0,0,0.04),rgba(0,0,0,0.01),rgba(0,0,0,0.1),rgba(0,0,0,0.09),rgba(0,0,0,0.1),rgba(0,0,0,0.03),transparent,rgba(0,0,0,0.07),rgba(0,0,0,0.03),rgba(0,0,0,0.06) 4px),linear-gradient(210deg, rgb(255,255,255),#0c6dfd44);
+
+    --bg-g-13: repeating-linear-gradient(284deg, transparent 0px, transparent 1px,rgb(251,251,251) 1px, rgb(251,251,251) 3px),repeating-linear-gradient(14deg, transparent 0px, transparent 1px,rgb(251,251,251) 1px, rgb(251,251,251) 3px),linear-gradient(90deg, rgb(13,110,175),rgb(13,110,175));
+
+    --bg-g-14: linear-gradient(135deg, #0d6eaf 0%,#1a2b37 100%);
+
+    --bg-g-15: linear-gradient(135deg, #25303f 0%,#6e8fbc 100%), linear-gradient(135deg, #485d7abf 0%,#1c2737 100%);
+  }
+
+}
+
+@layer base {
+  .sr-only {
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    white-space: nowrap !important;
+  }
+
+  :root {
+    --doc-thumb-color: #22e7a122;
+    scroll-behavior: smooth;
+    overflow-anchor: auto;
+    scrollbar-gutter: stable;
+    scrollbar-width: 0.33rem;
+    scrollbar-color: var(--doc-thumb-color) #1f2a3a33;
+  }
+
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    height: 0.33rem;
+    width: 0.5rem;
+    cursor: pointer;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1f2a3a33;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--doc-thumb-color);
+    border-radius: 0.33rem;
+    /*width: 10px;*/
+  }
+
+  .is-paused {
+    animation-play-state: paused !important;
+  }
+
+  #body-wrapper {
+    content-visibility: hidden;
+  }
+
+  vs-preloader {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .lg-screen {
+    display: none;
+  }
+
+  .sm-screen {
+    display: none;
+  }
+
+  .sm-break {
+    display: none;
+  }
+
+  .skip-link-container {
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    height: 0;
+  }
+
+  .skip-link {
+    background: var(--primary-dark);
+    color: var(--accent-2);
+    font-size: var(--xx-large);
+    font-weight: 700;
+    margin: auto;
+    padding: 0.5lh 2ch;
+    position: absolute;
+    transform: translateX(-200%);
+    z-index:  2147483647;
+
+    &:hover {
+      background: var(--accent);
+      color: var(--contrast-color);
+    }
+  }
+
+  .skip-link:focus-visible {
+    outline: var(--focus-ring);
+    transform: translateX(0);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    border: 2px solid var(--primary-light);
+  }
+
+  .tooltip.custom-tooltip.bs-tooltip-auto {
+    background-color: var(--accent) !important;
+    color: var(--text-color) !important;
+    font-family: var(--font-3);
+    font-size: var(--small);
+    line-height: 1.25cap;
+    font-weight:700;
+
+    .tooltip-inner {
+      background: transparent;
+    }
+  }
+
+}
+
+@layer base {
+
+  /* @link https://utopia.fyi/type/calculator?c=340,14,1.2,1800,22,1.2,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+  :root {
+    --step--2: clamp(0.6076rem, 0.5268rem + 0.3805vw, 0.9549rem);
+    --step--1: clamp(0.7292rem, 0.6321rem + 0.4566vw, 1.1458rem);
+    --step-0: clamp(0.875rem, 0.7586rem + 0.5479vw, 1.375rem);
+    --step-1: clamp(1.05rem, 0.9103rem + 0.6575vw, 1.65rem);
+    --step-2: clamp(1.26rem, 1.0923rem + 0.789vw, 1.98rem);
+    --step-3: clamp(1.512rem, 1.3108rem + 0.9468vw, 2.376rem);
+    --step-4: clamp(1.8144rem, 1.573rem + 1.1362vw, 2.8512rem);
+    --step-5: clamp(2.1773rem, 1.8875rem + 1.3635vw, 3.4214rem);
+  }
+
+  :root {
+
+    /* musical scale ratios */
+    --minor-second: calc(16/15);
+    --major-second: calc(9/8);
+    --minor-third: calc(6/5);
+    --major-third: calc(5/4);
+    --perfect-fourth: calc(4/3);
+    --augmented-fourth: sqrt(2);
+    --perfect-fifth: calc(3/2);
+    --major-sixth: calc(5/3);
+
+    /* the ‘golden’ ratio */
+    --golden-ratio: calc((1 + sqrt(5)) / 2);
+
+    /* choose your scale ratio */
+    --scale: var(--major-third);
+
+    @container style(--inline-size-xs: var(--breakpoint-xs)) {
+      --scale: var(--golden-ratio);
+    }
+
+    --xx-small: calc(1rem * pow(var(--scale), -0.5));
+    --x-small: var(--step--2);
+    --small: var(--step--1);
+    --medium: var(--step-0);
+    --large: var(--step-1);
+    --x-large: var(--step-2);
+    --xx-large: var(--step-3);
+    --xxx-large: var(--step-4);
+    --xxxx-large: var(--step-5);
+    --xxxxx-large: calc(var(--step-5) * pow(var(--scale), 1));
+
+  }
+
+
+ /**
+  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  * Setting font stacks as variables for easy reuse/maintenance
+  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  */
+  :root {
+    --font-1: "Archivo",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-2: "Smooch Sans", Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
+    --font-3: "Atkinson Hyperlegible Next",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-4: "Oswald",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-5: "Atkinson Hyperlegible Mono",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+
+ /**
+  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  * Section headings with segmented partial lines
+  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  */
+  .section-heading-alt {
+    text-align: center;
+    padding: 1lh 2ch;
+    position: relative;
+    margin: 0 auto 2lh auto;
+  }
+
+  .section-heading-alt h2:before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: color-mix(in srgb, var(--text-color), transparent 60%);
+    left: 0;
+    right: 0;
+    bottom: 1px;
+    margin: auto;
+  }
+
+  .section-heading-alt h2::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 40%;
+    height: 3px;
+    background: var(--accent-color);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+ /**
+  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  * Section headings with varied font sizes
+  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  */
+  .primary-heading {
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 0.5lh;
+    position: relative;
+
+    .large {
+      font-family: var(--font-1);
+      font-size: var(--xxxx-large);
+      letter-spacing: -3px;
+      text-shadow: 2px 1px 7px rgba(40,40,40,0.67);
+      line-height: 1cap;
+      position: relative;
+      top: -8px;
+      text-box: trim-both cap alphabetic;
+
+      @container style(--inline-size-xl: var(--breakpoint-xl)) {
+        font-size: var(--xxxx-large);
+      }
+    }
+
+    .bottom {
+      position: relative;
+      top: -3px;
+
+      .large {
+        position: relative;
+        top: 0px;
+        line-height: 1cap;
+      }
+    }
+
+    .small {
+      font-family: var(--font-2);
+      font-size: var(--xx-large);
+      font-weight: 500;
+      letter-spacing: 0;
+      position: relative;
+      line-height: 1cap;
+      text-box: trim-both cap alphabetic;
+
+      &.top {
+        top: -4px;
+      }
+
+      &.raise {
+        top: -9px;
+      }
+    }
+  }
+
+ /**
+  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  * Primary text container
+  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  */
+
+  .copy-wrapper {
+    max-width: 80ch;
+    margin: auto;
+  }
+
+  .copy-wrapper:not(.skills-heading-two) {
+
+    .copy-section {
+      margin: 1lh auto;
+
+      @container style(--inline-size-md: var(--breakpoint-md)) {
+        margin: 2lh auto;
+      }
+    }
+
+    h3 {
+      font-family: var(--font-2);
+      font-size: var(--xxx-large);
+      font-weight: 400;
+      line-height: 1.25cap;
+      margin-bottom: 0.5lh;
+      b {
+        font-weight: 600;
+      }
+    }
+  }
+
+ /**
+  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  * Site header with varying font sizes, weights,and colors,with
+  * gradient text,and gradient lines
+  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  */
+  .row.heading h1,
+  .row.heading h2 {
+    margin: 0;
+    margin-top: 0.5lh;
+    margin-bottom: 1lh;
+
+    div:first-child {
+      width: 10ch;
+    }
+
+    span,
+    div {
+      display: inline-block;
+      position: relative;
+
+      &.top {
+        color: var(--accent);
+        text-decoration: none;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+        z-index: 10;
+        font-size: var(--medium);
+        font-family: var(--font-5);
+        font-weight: 400;
+        top: 1px;
+        letter-spacing: 2px;
+        line-height: 1cap;
+        text-box: trim-both cap alphabetic;
+
+        &.var {
+          color: var(--text-color);
+          text-decoration: none;
+        }
+
+        @container style(--inline-size-xs: var(--breakpoint-xs)) {
+          top: 0.2lh;
+        }
+      }
+
+      &.main {
+        --heading-gradient-point: 10ch;
+        font-weight: 600;
+        color: var(--heading-color);
+        font-size: var(--xxxxx-large);
+        font-family: var(--font-4);
+        text-transform: uppercase;
+        letter-spacing: -2px;
+        top: 2px;
+        padding-right: 0.25ch;
+        line-height: 1cap;
+        text-box: trim-both cap alphabetic;
+        /* font-variant: small-caps; */
+      }
+
+      &.tag {
+        --heading-gradient-point: 3ch;
+        font-style: italic;
+        font-weight: 400;
+        font-family: var(--font-5);
+        color: var(--accent-color) !important;
+        font-size: calc(var(--x-large) * 0.85);
+        text-transform: none;
+        letter-spacing: -2px;
+        word-spacing: -0.5ch;
+        left: -0.5ch;
+        top: 2px;
+        padding-right: 0.25ch;
+        line-height: 1.155cap;
+        text-box: trim-both cap alphabetic;
+        @container style(--inline-size-xs: var(--breakpoint-xs)) {
+          left: 0;
+        }
+      }
+
+      &.bottom {
+        --heading-gradient-point: 45ch;
+        --gradient-pct: 100%;
+        text-transform: uppercase;
+        font-size: var(--large);
+        font-family: var(--font-4);
+        color: var(--heading-color);
+        font-weight: 400;
+        letter-spacing: 3px;
+        line-height: 1.155cap;
+        text-box: trim-both cap alphabetic;
+        top: 4px;
+
+        @container style(--inline-size-xs: var(--breakpoint-xs)) {
+          line-height: 0.9;
+        }
+
+        &.five {
+          letter-spacing: 4px;
+        }
+
+      }
+    }
+  }
+
+ /**
+  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  * Gradient bar above text line
+  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  */
+  .top-bar {
+    position: relative;
+      &::before {
+      content: "";
+      position: absolute;
+      top: var(--top-bar-offset);
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, var(--top-bar-color), color-mix(in srgb, var(--top-bar-color), transparent 100%) var(--gradient-pct));
+    }
+  }
+ /**
+  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  * Gradient bar below text line
+  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  */
+  .bottom-bar {
+    position: relative;
+      &::after {
+      content: "";
+      position: absolute;
+      bottom: var(--bottom-bar-offset);
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, var(--bottom-bar-color), color-mix(in srgb, var(--bottom-bar-color), transparent 100%) var(--gradient-pct));
+    }
+  }
+
+ /**
+  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  * White gradient background clipped with text
+  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  */
+  .g-text-white {
+    display: block !important;
+    background: linear-gradient(90deg, white, color-mix(in oklch, white, transparent 80%) var(--heading-gradient-point));
+    background-attachment: fixed;
+    background-clip: text;
+    color: transparent !important;
+    span,
+    div {
+      padding: 0;
+      margin: 0;
+      background: inherit;
+      background-attachment: fixed;
+      background-clip: text;
+      color: transparent !important;
+    }
+  }
+
+ /**
+  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  * Green gradient background clipped with text
+  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  */
+  .g-text-accent {
+    display: block !important;
+    background: linear-gradient(90deg, var(--accent-color), color-mix(in oklch, var(--accent-color), transparent 30%) var(--heading-gradient-point));
+    background-attachment: fixed;
+    background-clip: text;
+    color: transparent !important;
+    span,
+    div {
+      padding: 0;
+      margin: 0;
+      background: inherit;
+      background-attachment: fixed;
+      background-clip: text;
+      color: transparent !important;
+    }
+  }
+
+ /**
+  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  * Default heading and paragraph fonts, colors, sizes, and weights
+  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  */
+
+  .block {
+    display: block;
+  }
+
+  h1,
+  h2,
+  h3,
+  h3,
+  h4,
+  h6 {
+    color: var(--heading-color);
+    font-family: var(--font-2);
+  }
+
+  h1 {
+    font-size: var(--xxx-large);
+  }
+
+  h2 {
+    font-size: var(--xx-large);
+  }
+
+  h3 {
+    font-size: var(--x-large);
+  }
+
+  h4 {
+    font-size: var(--large);
+  }
+
+  h5 {
+    font-size: var(--medium);
+  }
+
+  p {
+    font-family: var(--font-3);
+    font-size: var(--medium);
+    line-height: 1.2;
+    max-width: 80ch;
+    margin: 1lh auto;
+  }
+
+  body {
+    font-family: var(--font-3);
+    font-size: var(--medium);
+    color: var(--text);
+  }
+}

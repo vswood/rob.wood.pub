@@ -4,6 +4,7 @@ import {fileURLToPath} from 'node:url'
 import eslint from 'vite-plugin-eslint2'
 import { fontless } from 'fontless'
 import PluginCritical from 'rollup-plugin-critical'
+import browserslistToEsbuild from 'browserslist-to-esbuild'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -21,9 +22,15 @@ export default {
       include: ['./*.js', './src/**/*.js'],
     }),
     PluginCritical({
-      criticalUrl: './src/css/index.css',
-      criticalBase: './src/css/',
-  }),
+      criticalUrl: './dist/',
+      criticalBase: './dist/',
+      criticalPages: [
+        { uri: 'index.html', template: 'index' },
+      ],
+      criticalConfig: {
+        inline: true,
+      },
+    }),
   ],
   clearScreen: false,
   // assetsInclude: ['**/*.xml', '**/*.txt'],
@@ -51,6 +58,7 @@ export default {
   server: {mode: 'development', middlewareMode: true},
   appType: 'custom',
   build: {
+    target: browserslistToEsbuild(),
     emptyOutDir: true,
     outDir: 'dist',
     modulePreload: false,

@@ -1,259 +1,37 @@
+import vsEleventyPlugin from './src/config/vsEleventyPlugin.js'
 import pluginWebc from '@11ty/eleventy-plugin-webc'
-import EleventyVitePlugin from '@11ty/eleventy-plugin-vite'
-import {RenderPlugin} from '@11ty/eleventy'
-import viteConfig from './vite.config.js'
-import faviconsPlugin from 'eleventy-plugin-gen-favicons'
-import schema from '@quasibit/eleventy-plugin-schema'
-import {minify} from 'terser'
-import {eleventyImageTransformPlugin} from '@11ty/eleventy-img'
-import {cpSync, readdirSync, readFileSync, copyFileSync} from 'node:fs'
-import {join, parse, dirname} from 'node:path'
-import {fileURLToPath} from 'node:url'
-// import {inspect} from 'node:util'
-import pageIcons from './src/html/data/pageIcons.js'
-// import { parse as svgParse } from 'svg-parser';
-// import {filter} from 'unist-util-filter'
-// import {toHtml} from 'hast-util-to-html'
-// import {matches, select, selectAll} from 'unist-util-select'
-import vendorFiles from './src/config/vendors.js'
-
-const isProd = process.env.ELEVENTY_ENV === "prod"
-
-const jsMinCache = {}
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-
-const vitePluginConfig = {
-  tempFolderName: '.11ty-vite',
-  viteOptions: {...viteConfig},
-}
+import dirOutputPlugin from '@11ty/eleventy-plugin-directory-output'
 
 export default function (eleventyConfig) {
 
-  eleventyConfig.setDataFileSuffixes(['.data', ''])
+  eleventyConfig.addPlugin(vsEleventyPlugin)
 
-  const activate = {
-    jquery: true,
-    bootstrap: true,
-    glightbox: true,
-    gsap: true,
-    gsapScrolltrigger: true,
-    gsapScrollSmoother: true,
-    gsapSplitText: true,
-    lenis: true,
-    purecounter: true,
-    swiper: true,
-    snapSvg: true,
-  }
-
-  /*const activeVendorScripts = []
-  const activeVendorStyles = []
-
-  for (const [key, value] of Object.entries(vendorFiles)) {
-    let folder = key
-    if (value.folder) {
-      folder = value.folder
-    }
-    if (value.js) {
-      activeVendorScripts.push(...value.js.map(f => {
-        const path = join(__dirname, `./src-assets/vendor/${folder}/${f}`)
-        console.log(path)
-        return path
-      }))
-    }
-    if (value.css) {
-      activeVendorStyles.push(...value.css.map(f => {
-        const path = join(__dirname, `./src-assets/vendor/${folder}/${f}`)
-        console.log(path)
-        return path
-      }))
-    }
-  }*/
-
-  // eleventyConfig.addGlobalData('activeVendorScripts', activeVendorScripts)
-  // eleventyConfig.addGlobalData('activeVendorStyles', activeVendorStyles)
-
-  eleventyConfig.on("eleventy.after", async ({ dir, results, runMode }) => {
-    // copyFileSync(`${join(eleventyConfig.directories.output, '/vendor/')}vendor.css`, `${join(__dirname, '../public/')}vendor.css`)
-    copyFileSync(`${join(eleventyConfig.directories.output, '/vendor-css/')}bootstrap.min.css`, `${join(eleventyConfig.directories.output, '/css/')}bootstrap.min.css`)
-  })
+  // eleventyConfig.addBundle("css")
+  // eleventyConfig.addBundle("js")
 
   eleventyConfig.addPlugin(pluginWebc, {
     components: ['./src/html/component/**/*.webc'],
   })
 
-  eleventyConfig.addPlugin(RenderPlugin)
+  // eleventyConfig.setServerPassthroughCopyBehavior('passthrough')
 
-  eleventyConfig.addPlugin(EleventyVitePlugin, vitePluginConfig)
+  eleventyConfig.setQuietMode(true);
+	eleventyConfig.addPlugin(dirOutputPlugin)
 
-  eleventyConfig.addPlugin(schema)
-
-  eleventyConfig.addPlugin(faviconsPlugin, {
-    outputDir: 'dist',
-    manifestData: {
-      name: 'rob.wood.pub',
-      short_name: 'rob.wood.pub',
-      description: 'The professional portfolio website of Rob Wood.',
-      background_color: '#ffffff',
-      theme_color: '#0d6eaf',
-    },
-  })
-
-  /* eleventyConfig.addFilter('cssmin', function (code) {
-    return new CleanCSS({}).minify(code).styles
-  }) */
-
-  eleventyConfig.addNunjucksAsyncFilter(
-    'jsmin',
-    async function (code, callback) {
-      try {
-        const minified = await minify(code)
-        return callback(null, minified.code)
-      } catch (err) {
-        console.error('Terser error: ', err)
-        return callback(null, code)
-      }
-    },
-  )
-
-  eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
-    urlPath: '/img/built/',
-    extensions: 'html',
-    outputDir: '.cache/@11ty/img/',
-    failOnError: false,
-    svgShortCircuit: true,
-    // output image formats
-    formats: ['svg', 'avif', 'webp', 'jpeg'],
-
-    // output image widths
-    // widths: ['auto'],
-    widths: [320, 570, 880, 1024, 1248],
-
-    // optional, attributes assigned on <img> nodes override these values
-    htmlOptions: {
-      imgAttributes: {
-        loading: 'lazy',
-        decoding: 'async',
-      },
-      pictureAttributes: {}
-    },
-    filenameFormat: (id, src, width, format) => {
-      const {name} = path.parse(src)
-      return `${name}-${width}w.${format}`
-    },
-  })
-
-  eleventyConfig.on('eleventy.after', () => {
-    cpSync('.cache/@11ty/img/', join(eleventyConfig.directories.output, '/img/built/'), {
-      recursive: true
-    })
-  })
-
-  eleventyConfig.addCollection('sortedSections', function (collection) {
-    const content = collection.getFilteredByTag('sections')
-    content.sort(
-      (content1, content2) =>
-        content1.data.displayOrder - content2.data.displayOrder,
-    )
-  })
-
-  /*eleventyConfig.addCollection("icons", function () {
-    const iconDir = join(__dirname, "src/html/content/icons") // Your SVG path
-
-    // Read the directory and filter for .svg files
-    const usedIcons = Array.from(pageIcons.icons).map(i => i[0])
-    const icons = readdirSync(iconDir)
-      .filter(file => {
-        return file.endsWith(".svg") && usedIcons.includes(file.replace('.svg', ''))
-      })
-      .map(file => {
-        const name = parse(file).name.replace('.svg', '')
-        const data = readFileSync(join(iconDir, file), "utf8")
-
-        const parsed = svgParse(data)
-        // const children = parsed.children
-        const viewBox = parsed.children[0].properties.viewBox
-
-        const groups = selectAll('[tagName="g"]', parsed)
-        const paths = selectAll('[tagName="path"]', parsed)
-        console.dir(groups, {depth:null})
-        console.dir(paths, {depth:null})
-        let els = paths
-        if(groups.length > 0) {
-          els = groups
-        }
-
-        const symbol = `<symbol id="icon-${name}" viewBox="${viewBox}">${toHtml(els)}</symbol>`
-        return {
-          name,
-          symbol,
-        }
-      })
-    return icons
-  })*/
-
-  /* eleventyConfig.addTransform('htmlmin', function (content) {
-    // String conversion to handle `permalink: false`
-    if ((this.page.outputPath || '').endsWith('.html') && !this.page.outputPath.includes('single-page')) {
-      let minified = htmlmin.minify(content, {
-        useShortDoctype: true,
-        removeComments: true,
-        collapseWhitespace: true,
-      })
-
-      return minified
-    }
-
-    // If not an HTML output, return content as-is
-    return content
-  }) */
-
-  eleventyConfig.addShortcode('icon', function (name, attrs = {}) {
-    let icon
-    let width
-    let height
-    try {
-      const parsedAttrs = JSON.parse(attrs)
-      width = parsedAttrs.width
-      height = parsedAttrs.height
-      icon = {
-        name,
-        width,
-        height,
-      }
-    } catch (e) {
-      console.error(e)
-    }
-    pageIcons.icons.set(name, icon)
-    return `<svg role='img' aria-hidden='true' width='${width}' height='${height}'><use href='#icon-${name}'></use>
-      </svg>`
-  })
-
-  eleventyConfig.addFilter("keys", obj => Object.keys(obj).sort())
-
-  // Advanced debug filter using Node's util.inspect
-  eleventyConfig.addFilter("debug", (obj) => {
-    return inspect(obj, {depth: 3})
-  })
-
-  eleventyConfig.addPassthroughCopy('src/css')
-  eleventyConfig.addPassthroughCopy('src/js')
-  eleventyConfig.addPassthroughCopy('src/img')
-  // eleventyConfig.addPassthroughCopy('src/media')
-  eleventyConfig.addPassthroughCopy({
-    './node_modules/open-props/palette.min.css': 'css/palette.min.css',
-  })
-  eleventyConfig.addPassthroughCopy({
-    './node_modules/bootstrap/dist/css/bootstrap.min.css.map': 'css/bootstrap.min.css.map',
+  eleventyConfig.setServerOptions({
+    port: 8081,
+    /*https: {
+      key: './.ssl/localhost.key',
+      cert: './.ssl/localhost.cert',
+    },*/
   })
 
   return {
-    templateFormats: ['md', 'njk', 'html', 'liquid', 'webc'],
+    templateFormats: ['md', 'njk', 'html', 'liquid', 'webc', '11ty.js'],
     htmlTemplateEngine: 'njk',
-    markdownTemplateEngine: "njk",
-    dataTemplateEngine: "njk",
-    passthroughFileCopy: true,
+    markdownTemplateEngine: 'njk',
+    dataTemplateEngine: 'njk',
+    // passthroughFileCopy: true,
     dir: {
       input: 'src',
       output: 'dist',
@@ -262,4 +40,5 @@ export default function (eleventyConfig) {
       data: 'html/data',
     },
   }
+
 }

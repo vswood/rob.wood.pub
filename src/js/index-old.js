@@ -196,11 +196,7 @@ function captureViewportToWrapper(wrapperId) {
         swiperElement.querySelector(".swiper-config").innerHTML.trim()
       )
 
-      if (swiperElement.classList.contains("swiper-tab")) {
-        initSwiperWithCustomPagination(swiperElement, config)
-      } else {
-        new Swiper(swiperElement, config)
-      }
+      new Swiper(swiperElement, config)
     })
   }
 

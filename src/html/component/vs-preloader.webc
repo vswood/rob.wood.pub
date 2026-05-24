@@ -1,30 +1,6 @@
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ᴠɪʀᴛᴜᴀʟSᴛʏʟᴇ.ᴜs━━
-@preserve Please retain this header in any/all use(s) of this code.
-@copyright 2026 Rob Wood <https://virtualstyle.us>
-@license GPL-3.0-or-later GNU General Public License v3.0 or later
-
-@project rob.wood.pub 0.2.0
-@file single-file-theme-switcher.html
-@description Pure CSS dark mode toggle button with animated sun and moon icons created using psuedoelements, backgrounds,and borders, implemented (in the pattern published by kristoferjoseph) as a single file web component, with the animated mode switch button adapted from a jgarrow codepen, under the MIT license, as shown below.
-@see https://gist.github.com/kristoferjoseph/c4e47389ae0f0447db175b914e471628
-@see https://codepen.io/jgarrow/pen/JjKaMVy
-@author Rob Wood <https://rob.wood.pub><https://github.com/vswood>
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  Copyright (c) 2026 by jgarrow (https://codepen.io/jgarrow/pen/JjKaMVy)
-
-  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <template id="vs-preloader" shadowrootmode="open">
 
   <style webc:keep>
-    #preloader {
-      visibility: hidden;
-    }
 
     @keyframes delay {
 
@@ -39,6 +15,16 @@
         transform: scaleY(1);
         -webkit-transform: scaleY(1);
       }
+    }
+
+    :host {
+      content-visibility: hidden;
+      width: 100%;
+      height: 100%;
+    }
+
+    :host(.loading) {
+      content-visibility: visible;
     }
 
     .loader {
@@ -113,6 +99,7 @@
   </div>
 
   <script type="module" webc:keep>
+    import virtualStyleApp from '../../js/VirtualStyleApp.js'
     class VsPreloader extends HTMLElement {
       #loaded = false
       #canvas
@@ -123,36 +110,60 @@
 
       constructor () {
         super()
-        const template = document.getElementById('vs-preloader')
-        this.attachShadow({ mode: 'open' })
-          .appendChild(template.content.cloneNode(true))
-
+        //const template = document.getElementById('vs-preloader')
+        //this.attachShadow({ mode: 'open' })
+        //  .appendChild(template.content.cloneNode(true))
+        window.addEventListener('window:loaded', () => {
+          this.end()
+          console.log('window:loaded')
+        })
         setTimeout(() => {
+          console.log('timeout:', this.#loaded)
           if (this.#loaded !== true) {
             this.init()
+          } else {
+            this.classList.remove('loading')
+            virtualStyleApp.emit('preloader:exit')
           }
         }, 330)
       }
 
       init() {
-        this.shadowRoot.getElementById('preloader').style.visibility = 'visible'
+        // this.shadowRoot.getElementById('preloader').style.visibility = 'visible'
+        this.classList.add('loading')
         this.#canvas = this.shadowRoot.getElementById('fogCanvas')
         this.#ctx = this.#canvas.getContext('2d')
         this.#canvas.width = window.innerWidth
         this.#canvas.height = window.innerHeight
 
-        const numParticles = 100
-        let mouseX = -100, mouseY = -100 // Initialize off-screen
-
-        for (let i = 0; i < numParticles; i++) {
+        for (let i = 0; i < this.#numParticles; i++) {
           this.#fogParticles.push(this.createParticle())
         }
 
         this.drawFog()
       }
 
+      end() {
+        this.#loaded = true
+        this.classList.remove('loading')
+        this.style.display = 'none'
+        virtualStyleApp.emit('preloader:exit')
+      }
+
+      set loaded(value) {
+        this.#loaded = value
+      }
+
+      get loaded() {
+        return this.#loaded
+      }
+
       connectedCallback () {
-        console.log('Why hello there 👋')
+
+      }
+
+      disconnectedCallback() {
+
       }
 
       createParticle() {

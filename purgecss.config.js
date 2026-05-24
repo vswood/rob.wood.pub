@@ -1,5 +1,5 @@
 export default {
-  content: ['./src/html/**/*.njk', './src/js/**/*.js'],
+  content: ['./src/html/**/*.html', './src/js/**/*.js'],
   css: ['./src/css/**/*.scss', './src/css/**/*.css'],
   rejected: true,
   rejectedCss: true,
