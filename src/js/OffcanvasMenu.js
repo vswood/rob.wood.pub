@@ -1,11 +1,16 @@
 import Snap from 'snapsvg'
+import vsApp from './VirtualStyleApp.js'
+import FreezeFrame from './FreezeFrame.js'
 
 export default class OffcanvasMenu {
   #menuWrap
   #header
   #headerToggle
+  #scrollTop
+  #scroller
   #bodyWrapper
   #mainGrid
+  #freezeFrame
   isOpen = false
   #morphEl
   #path
@@ -27,6 +32,38 @@ export default class OffcanvasMenu {
     this.#setVariables()
     this.#initEvents()
     window.offcanvasMenu = this
+    this.#freezeFrame = new FreezeFrame({
+      target: document.getElementById('main'),
+      extraClass: 'suspended',
+    })
+  }
+
+  #initEvents() {
+    this.#bodyWrapper.addEventListener('click', (e) => {
+      var target = e.target
+      if (this.isOpen && target !== document.querySelector('.header-toggle') && !document.querySelector('.menu-wrap').contains(target)) {
+        this.#close()
+      }
+    })
+
+    document.addEventListener('keydown', (e) => {
+      if (this.isOpen && e.key === 'Escape') {
+        this.#close()
+      }
+    })
+
+    document.querySelectorAll('.navmenu a').forEach(el => el.addEventListener('click', (e) => {
+      if (window.location.hash && document.querySelector(window.location.hash)) {
+        e.preventDefault()
+        this.#close(window.location.hash)
+      }
+    }))
+
+    window.addEventListener('toggleMenu', this)
+
+    this.#headerToggle.addEventListener('click', () => {
+      vsApp.emit('toggleMenu')
+    })
   }
 
   #setVariables() {
@@ -35,6 +72,8 @@ export default class OffcanvasMenu {
     this.#menuWrap = document.querySelector('.menu-wrap')
     this.#bodyWrapper = document.getElementById('body-wrapper')
     this.#mainGrid = document.getElementById('main-grid')
+    this.#scrollTop = document.getElementById('scroll-top')
+    this.#scroller = document.getElementById('main')
 
     this.#morphEl = document.getElementById('morph-shape')
     const s = Snap(this.#morphEl.querySelector('svg'))
@@ -50,45 +89,21 @@ export default class OffcanvasMenu {
     this.#isAnimating = false
   }
 
-  #initEvents() {
-    this.#bodyWrapper.addEventListener('click', (e) => {
-      var target = e.target
-      if (this.isOpen && target !== document.querySelector('.header-toggle') && !document.querySelector('.menu-wrap').contains(target)) {
-        this.menuClose()
-      }
-    })
-
-    document.addEventListener('toggleMenu', this)
-
-    this.#headerToggle.addEventListener('click', () => {
-      console.log(this.isOpen)
-      document.dispatchEvent(new CustomEvent('toggleMenu'))
-    })
-  }
+  /*goto(hash) {
+    setTimeout(() => {
+      this.#scroller.scrollTo({
+        top: vsApp.anchors[hash],
+        behavior: 'smooth'
+      })
+    }, 100)
+  }*/
 
   handleEvent(e) {
-    this[`${event.type}Handler`](event)
+    // console.log(`${e.type}Handler`)
+    this[`${e.type}Handler`](e)
   }
 
-  #createFalseContent() {
-    captureViewportToWrapper('faux-content')
-  }
-
-  #toggleSuspendedContent() {
-    if (this.isOpen) {
-      setTimeout(() => {
-        this.#mainGrid.classList.remove('suspended')
-      }, 100)
-    } else {
-      // this.#createFalseContent()
-      this.#mainGrid.classList.add('suspended')
-      window.savedTop = `${-1 * window.lenis.scroll}px`
-      window.lenis.stop()
-      document.querySelector('main').style.top = window.savedTop
-    }
-  }
-
-  #animate(pos, steps) {
+  #animate(pos, steps, goto) {
     if (pos > steps.length - 1) {
       this.#isAnimating = false
       return
@@ -101,26 +116,34 @@ export default class OffcanvasMenu {
       pos % 2 === 0 ? mina.ease : mina.elastic,
       () => {
         if (pos <= steps.length - 1) {
-          this.#animate(pos, steps)
+          this.#animate(pos, steps, goto)
         } else {
-          this.#finishAnimation()
+          this.#finishAnimation(goto)
         }
       }
     )
     pos++
   }
 
-  #finishAnimation() {
+  #finishAnimation(goto) {
     this.isOpen = !this.isOpen
     if (this.isOpen) {
       this.#morphEl.style.display = 'none'
+      document.querySelector('#home-link').focus({focusVisible: true})
     } else {
       this.#morphEl.style.display = 'none'
+      this.#headerToggle.focus({focusVisible: true})
+      if (goto) {
+        this.goto(goto)
+      }
     }
   }
 
-  #menuBubbleOpen() {
-    console.log('bubble in')
+  #open() {
+    this.#headerToggle.classList.add('opened')
+    this.#freezeFrame.toggleViewportFreeze()
+    this.#scrollTop.style.display = 'none'
+    this.#headerToggle.setAttribute('aria-expanded', true)
     this.#morphEl.style.display = 'block'
     this.#menuWrap.classList.add('open')
     this.#animate(0, this.#stepsIn)
@@ -129,52 +152,24 @@ export default class OffcanvasMenu {
     }, 400)
   }
 
-  #menuBubbleClose() {
-    console.log('bubble out')
+  #close(goto) {
+    this.#headerToggle.classList.remove('opened')
+    this.#freezeFrame.toggleViewportFreeze()
+    this.#scrollTop.style.display = 'block'
+    this.#headerToggle.setAttribute('aria-expanded', false)
     this.#morphEl.style.display = 'block'
     this.#header.classList.remove('open')
-    this.#animate(0, this.#stepsOut)
+    this.#animate(0, this.#stepsOut, goto)
     setTimeout(() => {
-       this.#menuWrap.classList.remove('open')
+      this.#menuWrap.classList.remove('open')
     }, 400)
   }
 
   toggleMenuHandler() {
     if (this.isOpen) {
-      this.#headerToggle.classList.remove('opened')
-      this.#headerToggle.setAttribute('aria-expanded', true)
-      this.menuBubbleOpen()
+      this.#close()
     } else {
-      this.#headerToggle.classList.add('opened')
-      this.#headerToggle.setAttribute('aria-expanded', false)
-      this.menuBubbleClose()
+      this.#open()
     }
-  }
-
-  toggleMenuHandlerOld() {
-    if (this.#isAnimating) {
-      return false
-    }
-    if (this.isOpen) {
-      this.#header.classList.add('disabled')
-      this.#toggleSuspendedContent()
-      this.#closeMenu()
-      setTimeout(() => {
-        this.#header.classList.remove('disabled')
-        this.#toggleClasses()
-        const top = parseInt(window.savedTop, 10) * -1
-        window.lenis.start()
-        //window.lenis.scrollTo(top, {immediate: true})
-        setTimeout(() => {
-          window.lenis.scrollTo(top, {immediate: true})
-        }, 500)
-      }, 750)
-    } else {
-      this.#openMenu()
-      this.#toggleClasses()
-      this.#toggleSuspendedContent()
-    }
-
-    this.isOpen = !this.isOpen
   }
 }

@@ -3,12 +3,13 @@ allowBuilds:
   puppeteer: true
   sharp: true
 patchedDependencies:
+  ajv: patches/ajv.patch
   jsdoc: patches/jsdoc.patch
   monocart-coverage-reports: patches/monocart-coverage-reports.patch
   snapsvg: patches/snapsvg.patch
 overrides:
   'abab': 'npm:@socketregistry/abab@^1'
-  'ajv': '8.20.0'
+  'ajv': '6.12.6'
   'core-js': '^3.47.0'
   'eslint': '^10.4.0'
   'eslint-plugin-n': '^18.0.1'
@@ -31,3 +32,6 @@ overrides:
   'rimraf': '^6.1.3'
   'vue-template-compiler': '2.7.16'
   'encoding-sniffer': '1.0.2'
+minimumReleaseAgeExclude:
+  - '@eslint-community/eslint-plugin-eslint-comments@4.7.2'
+  - swiper@12.2.0

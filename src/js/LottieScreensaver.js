@@ -38,9 +38,10 @@ export default class LottieScreensaver {
     this.#screenSaverElement = el
     $('body').append(this.#screenSaverElement)
     this.#timeout = timeout
-    document.addEventListener("mousemove", this);
-    document.addEventListener("keydown", this);
-    document.addEventListener("scroll", this);
+    document.addEventListener('mousemove', this)
+    document.addEventListener('keydown', this)
+    document.addEventListener('scroll', this)
+    document.addEventListener('wheel', this)
     this.#savedTitle = document.title
     this.#disable()
   }
@@ -53,6 +54,7 @@ export default class LottieScreensaver {
 
   enable() {
     this.#screenSaverElement.css({display: 'block'})
+    this.#screenSaverElement.empty()
     this.#loadAnimation()
     this.#updateTitle()
   }
@@ -67,6 +69,10 @@ export default class LottieScreensaver {
 
   handleEvent(e) {
     this[`${e.type}Handler`]()
+  }
+
+  wheelHandler() {
+    this.#disable()
   }
 
   scrollHandler() {

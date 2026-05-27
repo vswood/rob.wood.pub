@@ -115,7 +115,12 @@
 
 .no-animations,
 .no-animations * {
-  animation: none !important;
   animation-play-state: paused !important;
   transition: none !important;
+}
+
+.animate,
+.animate * {
+  animation-play-state: play !important;
+  transition: revert !important;
 }

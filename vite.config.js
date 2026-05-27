@@ -53,6 +53,7 @@ export default {
       '@sb': resolve(__dirname, './src/stories'),
       '~bootstrap': resolve(__dirname, './node_modules/bootstrap'),
       '~nm': resolve(__dirname, './node_modules'),
+      'snapsvg': resolve(__dirname, './node_modules/snapsvg/dist/snap.svg.js'),
     },
   },
   server: {mode: 'development', middlewareMode: true},

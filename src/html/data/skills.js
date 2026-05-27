@@ -8,6 +8,7 @@ export default {
   python: 'Python',
   gcp: 'GCP',
   azure: 'Azure',
+  cloudflare: 'Cloudflare',
   copilot: 'Github Copilot',
   openai: 'OpenAI',
   docker: 'Docker',
@@ -24,5 +25,6 @@ export default {
   esbuild: 'Esbuild',
   postcss: 'PostCSS',
   '11ty': '11ty',
+  vite: 'Vite',
   zsh:	'Zsh',
 }

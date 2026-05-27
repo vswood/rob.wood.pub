@@ -19,6 +19,7 @@ export default class VendorCSS {
       'glightbox/dist/css/glightbox.min.css',
       'swiper/swiper-bundle.css',
       'open-props/palette.min.css',
+      'lenis/dist/lenis.css',
     ].map(f => join(__dirname, '../../node_modules/', f))
     return fileLoop(files, '@layer external {\n', '\n}')
   }

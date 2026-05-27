@@ -1,24 +1,33 @@
 class VirtualStyleApp {
-  #config
   #motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
   #prefersReducedMotion
+  scroller
+  anchors = {}
 
   constructor() {
     this.#prefersReducedMotion = Boolean(this.#motionQuery.matches)
   }
 
+  set scroller(value) {
+    this.scroller = document.getElementById(value)
+  }
+
   emit(event, options) {
-    const config = {}
+    const eventOptions = {}
     if(options?.detail) {
-      config.detail = options.detail
+      eventOptions.detail = options.detail
     }
     if(options?.bubbles) {
-      config.bubbles = options.bubbles
+      eventOptions.bubbles = options.bubbles
     }
     if(options?.cancelable) {
-      config.cancelable = options.cancelable
+      eventOptions.cancelable = options.cancelable
     }
-    window.dispatchEvent(new CustomEvent(event, config))
+    window.dispatchEvent(new CustomEvent(event, eventOptions))
+  }
+
+  addListeners(element, events, handler) {
+    events.forEach(e => element.addEventListener(e, handler));
   }
 
   initPreferenceListeners() {
@@ -38,6 +47,14 @@ class VirtualStyleApp {
 
   get prefersReducedMotion() {
     return this.#prefersReducedMotion
+  }
+
+  locateAnchors(sections) {
+    sections.forEach((section, index) => {
+      const rect = section.getBoundingClientRect()
+      const sectionTop = rect.top + parseInt(this.scroller.scrollTop, 10)
+      this.anchors[`#${section.id}`] = sectionTop
+    })
   }
 }
 

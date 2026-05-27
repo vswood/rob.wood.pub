@@ -1,54 +1,100 @@
-import  virtualStyleApp from './VirtualStyleApp.js'
-import * as bootstrap from 'bootstrap'
-import PureCounter from '@srexi/purecounterjs'
-import initLightbox from './glightbox.js'
-import initSwiper from './swiper.js'
-import initMenu from './menu.js'
-import initAnimvis from './animvis.js'
-// import LottieScreensaver from './LottieScreensaver.js'
+import vsApp from './VirtualStyleApp.js'
+import initApp from './initApp.js'
 
-window.bootstrap = bootstrap
+window.vsApp = vsApp
 
 window.addEventListener('preloader:exit', () => {
-  document.getElementById('body-wrapper').style.contentVisibility = 'visible'
+  comsole.log('fuck')
+  const bodyWrap = document.getElementById('body-wrapper')
+  bodyWrap.style.visibility = 'visible'
+  bodyWrap.setAttribute('aria-busy', false)
+
 })
 
-document.addEventListener('DOMContentLoaded', () => {
-  initMenu()
+const sections = document.querySelectorAll('section')
 
-  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+const animationSections = document.querySelectorAll('section, .animate-section')
+const setAnimateVisible = true
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      entry.target.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused'
-    });
-  }, { threshold: 0.5 })
+const swiperEls = document.querySelector('.testimonials-slider.swiper')
+const swiperOptions = {
+  loop: true,
+  speed: 600,
+  autoplay: {
+    delay: 5000,
+  },
+  slidesPerView: 1,
+  spaceBetween: 30,
+  pagination: {
+    el: '.swiper-pagination',
+    type: 'bullets',
+    clickable: true
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+}
 
-  document.querySelectorAll('.animation').forEach(el => observer.observe(el))
+const glightboxOptions = {
+  selector: '.glightbox'
+}
 
-  new PureCounter({
-    separator: true,
+const setTooltips = true
+
+const setCounters = true
+const counterOptions = {separator: true}
+
+const setScreensaver = true
+
+const lenisOptions = {
+  allowNestedScroll: true,
+  // infinite: true,
+  wrapper: document.getElementById('main'),
+  eventsTarget: document.getElementById('main'),
+  content: document.getElementById('main'),
+  syncTouch: true,
+  smoothWheel: true,
+  stopInertiaOnNavigate: true,
+
+}
+const gsapPlugins = [
+  'ScrollTrigger'
+]
+
+const scrollbarActiveColor = '#22e7a1'
+const scrollbarColor = '#22e7a155'
+
+window.addEventListener('DOMContentLoaded', () => {
+  initApp({
+    animationSections,
+    setAnimateVisible: true,
+    swiperEls,
+    swiperOptions,
+    glightboxOptions,
+    setTooltips: true,
+    setCounters: true,
+    counterOptions,
+    setScreensaver: true,
+    setScrollTop: true,
+    setLenis: false,
+    lenisOptions,
+    scrollbarColor,
+    scrollbarActiveColor,
+    setGsap: true,
+    gsapPlugins
   })
-
-  if(document.querySelector('.glightbox')) {
-    initLightbox()
-  }
-
-  if(document.querySelector('.testimonials-slider.swiper')) {
-    initSwiper()
-  }
-
-  initAnimvis()
-
-  // window.lss = new LottieScreensaver()
 })
 
 window.addEventListener('load', () => {
-  virtualStyleApp.emit('window:loaded')
-})
+  vsApp.emit('window:loaded')
 
-document.querySelectorAll('.btn').forEach(el => el.addEventListener('click', (e) => {
+  document.querySelectorAll('.btn').forEach(el => el.addEventListener('click', (e) => {
     e.preventDefault()
-  })
-)
+  }))
+
+  vsApp.scroller = document.getElementById('main')
+  /*setTimeout(() => {
+    vsApp.locateAnchors(sections)
+  }, 2000)*/
+})

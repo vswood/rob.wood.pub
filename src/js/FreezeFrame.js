@@ -1,29 +1,38 @@
 export default class FreezeFrame {
+  #target
+  #clone
   #isFrozen = false
   #originalScrollY = 0
-  #originalScrollX = 0
   #keys
   #cloneId
+  #extraClass
 
-  constructor({activeKeys =[
-    'ArrowUp',
-    'ArrowDown',
-    'ArrowLeft',
-    'ArrowRight',
-    'PageUp',
-    'PageDown',
-    'Home',
-    'End',
-  ], cloneId = 'viewport-overlay-clone'} = {}) {
+  constructor({
+    target = 'body',
+    activeKeys =[
+      'ArrowUp',
+      'ArrowDown',
+      'ArrowLeft',
+      'ArrowRight',
+      'PageUp',
+      'PageDown',
+      'Home',
+      'End',
+    ],
+    cloneId = 'viewport-overlay-clone',
+    extraClass,
+  } = {}) {
+    this.#target = target
     this.#keys = activeKeys
     this.#cloneId = cloneId
+    this.#extraClass = extraClass
   }
 
   toggleViewportFreeze() {
     if (this.#isFrozen) {
-      unfreezeViewport()
+      this.unfreezeViewport()
     } else {
-      freezeViewport()
+      this.freezeViewport()
     }
   }
 
@@ -41,7 +50,7 @@ export default class FreezeFrame {
 
   keydownHandler(e) {
     if (this.#keys[e.key]) {
-      preventDefault(e)
+      e.preventDefault()
     }
   }
 
@@ -57,20 +66,18 @@ export default class FreezeFrame {
       window.removeEventListener('keydown', this)
   }
 
-  #freezeViewport() {
+  freezeViewport() {
     if (this.#isFrozen) return
 
-    this.#originalScrollX = window.pageXOffset || document.documentElement.scrollLeft
-    this.#originalScrollY = window.pageYOffset || document.documentElement.scrollTop
+    this.#originalScrollY = this.#target.scrollTop
 
-    const clone = document.documentElement.cloneNode(true)
-    clone.id = this.#cloneId
+    this.#clone = this.#target.cloneNode(true)
+    this.#clone.id = this.#cloneId
 
-    clone.removeAttribute('id')
-    const scripts = clone.querySelectorAll('script, iframe, object, embed')
+    const scripts = this.#clone.querySelectorAll('script, iframe, object, embed')
     scripts.forEach(script => script.remove())
 
-    Object.assign(clone.style, {
+    Object.assign(this.#clone.style, {
         position: 'fixed',
         top: '0',
         left: '0',
@@ -79,29 +86,39 @@ export default class FreezeFrame {
         zIndex: '999999',
         overflow: 'hidden',
         pointerEvents: 'none',
+        filter: 'blur(1px)',
     })
-
-    document.body.appendChild(clone)
-    document.documentElement.style.overflow = 'hidden'
+    this.#clone.inert = true
+    this.#target.replaceWith(this.#clone)
+    this.#clone.scrollTop = this.#originalScrollY
+    setTimeout(() => {
+      if(this.#extraClass) {
+       this.#clone.classList.add(this.#extraClass)
+      }
+    }, 150)
 
     this.#disableScrollMethods()
     this.#isFrozen = true
   }
 
-  #unfreezeViewport() {
+  unfreezeViewport() {
     if (!this.#isFrozen) return
+    if (this.#clone) {
+      this.#target.classList.add(this.#extraClass)
+      this.#target.scrollTop = this.#originalScrollY
+      this.#clone.replaceWith(this.#target)
 
-    const existingClone = document.body.getElementById(this.#cloneId)
-    if (existingClone) {
-        existingClone.remove()
+      setTimeout(() => {
+        if(this.#extraClass) {
+         this.#target.classList.remove(this.#extraClass)
+        }
+      }, 150)
     }
-    document.documentElement.style.overflow = ''
 
     this.#enableScrollMethods()
 
-    window.scrollTo(this.#originalScrollX, this.#originalScrollY)
+    this.#target.scrollTo(0, this.#originalScrollY)
     this.#isFrozen = false;
-    this.#originalScrollX = 0
     this.#originalScrollY = 0
   }
 }

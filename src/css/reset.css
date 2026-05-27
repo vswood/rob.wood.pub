@@ -10,7 +10,7 @@
 
   * {
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility !important;
+    text-rendering: optimizeSpeed;
   }
 
   /* Box sizing and border defaults */
@@ -18,21 +18,27 @@
     box-sizing: border-box;
     border-width: 0;
     border-style: solid;
-    min-width: 0;
-    max-width: 100%;
+  }
+
+  /* Responsive media
+     Intentionally excludes svg/canvas to avoid breaking lottie-web */
+  :where(img, picture, video) {
+    display: block;
+    max-inline-size: 100%;
+    block-size: auto;
   }
 
   /* Core root defaults */
   :where(html) {
     block-size: 100%;
     text-size-adjust: none;
-    interpolate-size: allow-keywords;
+    /* interpolate-size: allow-keywords; */
   }
 
   :where(body) {
     min-block-size: 100vh;
-    line-height: 1.5;
     margin: 0;
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -48,11 +54,10 @@
     margin-block-end: 1em;
   }
 
-  /* Media handling */
-  :where(img, svg, video, canvas) {
+  /* Media handling
+     Keep svg/canvas display:block only, without sizing constraints */
+  :where(svg, canvas) {
     display: block;
-    max-inline-size: 100%;
-    block-size: auto;
   }
 
   /* Form control modernization */
@@ -78,9 +83,13 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.01ms!important;
-      transition-duration: 0.01ms!important;
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
     }
   }
 }

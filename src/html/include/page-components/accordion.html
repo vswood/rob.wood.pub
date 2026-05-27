@@ -1,5 +1,5 @@
 {% macro accordion(data) %}
-<div class="vs-accordion" aria-label="Signature Strengths & Strategic Competencies">
+<div class="vs-accordion" aria-label="Signature Strengths & Strategic Competencies" role="region">
   {% for item in data %}
   <details class="vs-accordion-item" name="strengths">
     {{ accordionSummary(iconClass = item.iconClass, iconid = item.iconid, name = item.name, description = item.description)  }}
@@ -17,21 +17,21 @@
 
 {% macro accordionSummary(iconClass = "", iconid, name, description) %}
 <summary class="vs-accordion-button">
-  <div class="vs-accordion-header">
-    <div class="vs-accordion-header-inner">
-      <div class="vs-accordion-icon {{iconClass}}">
-        {% icon iconid, '{ "width": "36", "height": "36" }' %}
-      </div>
-      <div class="vs-accordion-content">
+  <span class="vs-accordion-header">
+    <span class="vs-accordion-header-inner">
+      <span class="vs-accordion-icon {{iconClass}}">
+        {% icon iconid, '{ "width": "100%", "height": "100%" }' %}
+      </span>
+      <span class="vs-accordion-content">
         <h3 class="vs-accordion-title">{{name}}
-          <svg width="36" height="36" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <polyline points="6 9 12 15 18 9"></polyline>
           </svg>
         </h3>
         <p class="vs-accordion-subtitle">{{description}}</p>
-      </div>
-    </div>
-  </div>
+      </span>
+    </span>
+  </span>
 </summary>
 {% endmacro %}
 
@@ -39,7 +39,7 @@
 {% macro accordionItem(iconClass = "", iconid, name, description) %}
 <li class="alert-item">
   <div class="alert-icon {{iconClass}}">
-    {% icon iconid, '{ "width": "28", "height": "28" }' %}
+    {% icon iconid, '{ "width": "100%", "height": "100%" }' %}
   </div>
   <div class="alert-content">
     <h4 class="alert-title">{{name}}</h4>

@@ -1,14 +1,7 @@
 <!DOCTYPE html>
-<html lang="en-US" data-bs-theme="dark">
+<html lang="en-US">
 
 <head>
-  <style>
-    @layer reset, theme, base, layout, component, utility, override;
-
-    #body-wrapper {
-      content-visibility: hidden;
-    }
-  </style>
 
   {% include "../include/common/head/meta-info.html" %}
 
@@ -16,17 +9,26 @@
 
   {% include "../include/common/head/fonts.html" %}
 
-  {% include "../include/common/head/styles.html" %}
+  {% include "../include/common/head/styles-1.html" %}
 
-  {% block head %}{% endblock head %}
+  {% block head %}
+    <style>
+      #anim {
+        width: 100%;
+        height: 100vh;
+      }
+    </style>
+  {% endblock head %}
 
 </head>
 
 <body>
 
-  {% block body %}{% endblock body %}
+  {% block body %}
+  {% endblock body %}
 
-  {% block scripts %}{% endblock scripts %}
+  {% block scripts %}
+  {% endblock scripts %}
 
 </body>
 
