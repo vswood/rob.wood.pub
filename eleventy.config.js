@@ -13,7 +13,7 @@ export default function (eleventyConfig) {
     components: ['./src/html/component/**/*.webc'],
   })
 
-  eleventyConfig.setServerPassthroughCopyBehavior('passthrough')
+  eleventyConfig.setServerPassthroughCopyBehavior('copy')
 
   eleventyConfig.setQuietMode(true);
 	eleventyConfig.addPlugin(dirOutputPlugin)

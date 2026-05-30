@@ -1,0 +1,539 @@
+[
+  {
+    "project": "The Basics White Label",
+    "year": "2020",
+    "description": "A white-label WordPress multisite theme and system engineered for national brand consistency and rapid regional chapter deployment.",
+    "tags": [
+      "WordPress",
+      "PHP",
+      "White-Label",
+      "Multisite",
+      "DRY Architecture",
+      "Clean Code",
+      "SaaS Development"
+    ],
+    "clients": [
+      {
+        "name": "The Basics 501(c)(3)",
+        "logo": "logo-basics-new.png",
+        "alt": "The Basics 501(c)(3) official branding logo"
+      }
+    ],
+    "images": [
+      {
+        "name": "the-basics-main-page.png",
+        "alt": "The Basics national website homepage featuring a modern responsive layout and branding",
+        "primary": true
+      },
+      {
+        "name": "the-basics-white-label-collage.png",
+        "alt": "Collage displaying multiple regional chapter websites styled under the unified white-label theme",
+        "primary": false
+      },
+      {
+        "name": "the-basics-white-label-collage-2.png",
+        "alt": "Additional showcase of regional chapter websites built on the same multi-tenant WordPress codebase",
+        "primary": false
+      }
+    ],
+    "projectNarrative": "# The Basics White Label Website Platform\n\n## Strategic Challenge\nThe Basics 501(c)(3), a national early childhood development organization, faced a massive scaling challenge. They needed to deploy dozens of distinct websites for regional chapters across the United States. Each site required local administrative control, localized event calendars, and region-specific resource pages, yet they had to remain locked to the strict national brand guidelines. Developing one-off sites was financially prohibitive and created a massive long-term security, maintenance, and consistency nightmare.\n\n## Architectural Innovation\nTo solve this, Rob Wood designed and engineered a modular, white-label WordPress theme and multisite architecture from the ground up. Instead of utilizing bloated, off-the-shelf page builders, he created a bespoke, highly optimized framework using clean, native PHP templates and a strict component-driven design system. \n\nKey technical aspects included:\n* **DRY Codebase Isolation**: A single custom parent theme controlled 100% of the core branding, security configurations, and accessibility parameters.\n* **Granular Multisite Controls**: Child setups allowed regional managers to customize text, select local event grids, and publish regional directories, while hardcoding the global layouts and stylesheets to ensure absolute brand compliance.\n* **High-Performance Execution**: Conceived with a \"zero-bloat\" philosophy, yielding highly optimized database queries, fast server response times, and near-perfect PageSpeed scores—a rarity in traditional WordPress implementations.\n\n## Business Impact\nThe white-label platform turned a repetitive, high-overhead consulting process into a productized recurring-revenue stream for the agency. Chapter websites could be initialized, themed, and launched in under an hour instead of weeks. The resulting platform dramatically lowered ongoing maintenance overhead, simplified security updates across the entire network, and delivered bulletproof brand integrity for a highly respected national organization."
+  },
+  {
+    "project": "NIA OutReachPro Materials Generator",
+    "year": "2021",
+    "description": "A highly customized, 508-compliant dynamic materials generator and subdomain microsite system supporting clinical trial recruitment.",
+    "tags": [
+      "React",
+      "AWS",
+      "Serverless",
+      "PDF Generation",
+      "508 Compliance",
+      "Clinical Trials",
+      "Accessibility"
+    ],
+    "clients": [
+      {
+        "name": "NIH National Institute on Aging",
+        "logo": "NIA-Logo.jpg",
+        "alt": "National Institute on Aging (NIA) official logo"
+      }
+    ],
+    "images": [
+      {
+        "name": "nia-outreachpro-main-page.jpg",
+        "alt": "OutreachPro homepage displaying high-quality, targeted clinical trial recruiting categories",
+        "primary": true
+      },
+      {
+        "name": "nia-outreachpro-questionnaire-page.jpg",
+        "alt": "Interactive questionnaire page allowing coordinators to filter materials based on study demographics",
+        "primary": false
+      },
+      {
+        "name": "nia-outreachpro-template-picker-page.jpg",
+        "alt": "Responsive template picker interface displaying customizable brochures, flyers, and digital cards",
+        "primary": false
+      },
+      {
+        "name": "nia-outreachpro-editor-page.jpg",
+        "alt": "Advanced browser-based design editor enabling content customization, color theme selection, and rich text editing",
+        "primary": false
+      }
+    ],
+    "projectNarrative": "# NIA OutreachPro: Clinical Trial Accessibility Platform\n\n## Strategic Challenge\nRecruiting diverse participant demographics for clinical trials is one of the greatest challenges in medical research, particularly for conditions like Alzheimer's disease which disproportionately impact older populations. The NIH National Institute on Aging (NIA) needed a system that would allow trial coordinators nationwide to easily create, customize, and localize high-quality outreach materials. Crucially, the entire system and all output materials had to comply with strict federal Section 508 accessibility guidelines and handle high security and compliance scrutiny.\n\n## Technical Execution\nOutreachPro was developed by rapidly adapting a custom multi-tenant serverless materials generator SaaS platform. Pushing the limits of client-side browser performance and serverless architectures at the time, the project achieved several key breakthroughs:\n* **Section 508-Compliant PDF Generation**: Created a backend compilation pipeline that parsed HTML templates, converted rich text styles, and compiled them into fully tagged, accessible PDFs in real-time.\n* **Advanced Visual Template Editor**: Built a high-performance React-based drag-and-drop editor canvas. Trial coordinators could swap out pre-approved, culturally relevant photography, translate or customize text blocks, and toggle color palettes, all within strict layout boundaries that prevented the design from breaking.\n* **On-Demand Dynamic Microsites**: Built a serverless micro-site generator that allowed users to host localized trial registration landing pages instantly on dynamically provisioned subdomains, with automated HTTPS certificate generation.\n\n## Business Impact\nBy rapidly delivering a highly polished, robust application that met every stringent federal accessibility and security standard, the project successfully secured and delivered a massive **$3.0M+ contract** for the agency. OutreachPro established a new benchmark for clinical trial recruiting, drastically reducing the time and cost required to launch local recruitment campaigns while opening research access to underserved communities across the nation."
+  },
+  {
+    "project": "M4C Materials Generator",
+    "year": "2020",
+    "description": "A multi-tenant serverless SaaS product that automates personalized outreach and marketing materials creation for public interest campaigns.",
+    "tags": [
+      "SaaS",
+      "AWS",
+      "Serverless",
+      "Multi-Tenant",
+      "Canvas",
+      "PDF Generation",
+      "Rich Text",
+      "Product Management"
+    ],
+    "clients": [
+      {
+        "name": "Marketing for Change Co.",
+        "logo": "m4c.png",
+        "alt": "Marketing for Change Co. logo"
+      },
+      {
+        "name": "Central Maryland 988 Helpline",
+        "logo": "988-logo.svg",
+        "alt": "Central Maryland 988 Crisis Helpline logo"
+      },
+      {
+        "name": "Home Fire Sprinkler Coalition",
+        "logo": "HFSC-logo.webp",
+        "alt": "Home Fire Sprinkler Coalition logo"
+      },
+      {
+        "name": "Louisiana 988 Helpline",
+        "logo": "la988-logo.svg",
+        "alt": "Louisiana 988 Crisis Helpline logo"
+      },
+      {
+        "name": "Ohio 988 Helpline",
+        "logo": "oh988-logo.png",
+        "alt": "Ohio 988 Crisis Helpline logo"
+      },
+      {
+        "name": "Vision 2020",
+        "logo": "v2020-logo.png",
+        "alt": "Vision 2020 public health campaign logo"
+      }
+    ],
+    "images": [
+      {
+        "name": "materials-generator-main-page-full-size.png",
+        "alt": "SaaS landing page for the Materials Generator platform with custom tenant branding",
+        "primary": true
+      },
+      {
+        "name": "materials-generator-main-page-collage.png",
+        "alt": "Collage showcasing multiple branded tenant landing pages running off a single multi-tenant serverless backend",
+        "primary": false
+      },
+      {
+        "name": "materials-generator-template-editor-templates-page.png",
+        "alt": "Administrative dashboard for managing and editing campaign document templates",
+        "primary": false
+      },
+      {
+        "name": "materials-generator-questionnaire-page-full-size.png",
+        "alt": "Branded questionnaire flow designed to select materials tailored to specific demographic profiles",
+        "primary": false
+      },
+      {
+        "name": "materials-generator-questionnaire-page-collage.png",
+        "alt": "Collage of different questionnaire user interfaces customized per client tenant",
+        "primary": false
+      },
+      {
+        "name": "materials-generator-template-editor-questionnaire-editor-page.png",
+        "alt": "Template editor and questionnaire configuration dashboard for administrative managers",
+        "primary": false
+      },
+      {
+        "name": "materials-generator-materials-page-full-size.png",
+        "alt": "Main results page displaying a curated list of generated materials matching the user criteria",
+        "primary": false
+      },
+      {
+        "name": "materials-generator-materials-page-collage.png",
+        "alt": "Collage of materials results pages skinned uniquely for various client branding guidelines",
+        "primary": false
+      },
+      {
+        "name": "materials-generator-editor-page-full-size.png",
+        "alt": "High-performance browser-based editing canvas with options to swap copy, photos, and change themes",
+        "primary": false
+      },
+      {
+        "name": "materials-generator-editor-page-collage.png",
+        "alt": "Collage of the core visual design editor interface displaying multiple dynamic themes",
+        "primary": false
+      },
+      {
+        "name": "materials-generator-options-modal-full-size.png",
+        "alt": "Visual selection modal providing pre-approved copywriting and photography choices",
+        "primary": false
+      },
+      {
+        "name": "materials-generator-options-modal-collage.png",
+        "alt": "Collage of customization option panels offering tailored assets for user selections",
+        "primary": false
+      }
+    ],
+    "projectNarrative": "# M4C Materials Generator: Multi-Tenant Serverless SaaS\n\n## Strategic Challenge\nMarketing for Change Co., a behavioral change creative agency, spent significant engineering resources building bespoke, custom websites and downloadable materials for every individual public safety and public health campaign they won. This agency model had zero leverage: high development costs, slow delivery speeds, and rising maintenance burdens for each unique client campaign. The strategic need was clear—transform one-off campaign builds into a scalable, multi-tenant software product with recurring SaaS revenue.\n\n## Architectural Design\nDesigned, architected, and fully developed from scratch, the Materials Generator was built to be a robust, zero-maintenance SaaS application using a modern, serverless cloud architecture.\n\nKey technological pillars included:\n* **Serverless Scale & Low Costs**: Deployed on AWS Lambda, Amazon API Gateway, and DynamoDB. Operational costs were virtually zero when idle, yet scaled instantly to handle heavy public campaigns.\n* **Automated Multi-Tenant Skinning**: Created a dynamic system where new tenants (such as state 988 helplines or national coalitions) could be provisioned in minutes. The front-end automatically loaded customized fonts, colors, and logos based on the request domain.\n* **Proprietary Canvas and Layout Engine**: Built an in-browser layout engine using React and Canvas that allowed users to preview, edit, and compile complex print-ready PDFs without overlapping text or breaking brand guidelines.\n\n## Business Impact\nAs the company's first recurring-revenue SaaS product, the Materials Generator drove a fundamental cultural and operational transformation in the engineering team, steering them from a manual agency model toward a product-driven organization. The system became highly successful, instantly supporting crucial initiatives including the Central Maryland 988 Helpline, Home Fire Sprinkler Coalition, and multiple state campaigns, providing the agency with durable software leverage and clean recurring revenue."
+  },
+  {
+    "project": "Netflix Ozark",
+    "year": "2022",
+    "description": "A secure, decoupled enterprise onboarding platform rewrite built for Netflix's global supplier network.",
+    "tags": [
+      "React",
+      "Java Spring Boot",
+      "Fintech",
+      "Compliance",
+      "DocuSign",
+      "Netflix Paved Path",
+      "DevOps",
+      "Microservices"
+    ],
+    "clients": [
+      {
+        "name": "Netflix",
+        "logo": "netflix-logo.png",
+        "alt": "Netflix corporate logo"
+      }
+    ],
+    "images": [
+      {
+        "name": "netflix-ozark-supplier-request-form.jpg",
+        "alt": "Decoupled React-based supplier request form with embedded real-time validation and compliance check integrations",
+        "primary": true
+      },
+      {
+        "name": "netflix-ozark-supplier-search-page.jpg",
+        "alt": "High-performance supplier search interface using visual color-coding and sorting to prevent duplicate supplier entry",
+        "primary": false
+      },
+      {
+        "name": "netflix-ozark-supplier-listing-page.jpg",
+        "alt": "Detailed supplier listing page displaying comprehensive compliance profiles, tax data, and onboarding progress",
+        "primary": false
+      }
+    ],
+    "projectNarrative": "# Netflix Ozark: Global Supplier Onboarding Rewrite\n\n## Strategic Challenge\nNetflix's global operations rely on an expansive network of production partners, creative agencies, and physical suppliers. The legacy onboarding application, \"Memento,\" was a complex, monolithic EmberJS and Ruby on Rails system. Over time, it grew fragile, suffering from frequent service disruptions because its business logic was tightly coupled with highly volatile, rapidly changing schemas from third-party financial databases and compliance registers. Supplier onboarding delays directly impacted physical productions and bloated operational overhead.\n\n## Technical Execution\nRob Wood consulted directly for Netflix's Fintech and FinOps groups, maintaining the legacy \"Memento\" platform while co-designing, architecting, and building its complete enterprise-grade replacement: \"Ozark.\"\n\nKey technical milestones included:\n* **Decoupled Architecture**: Designed a robust microservice-based backend using Java Spring Boot, completely isolating volatile external financial schemas through clean, versioned data abstraction layers. This eliminated downstream failures when external systems changed.\n* **Strict Paved-Path Adherence**: Deployed the system inside Netflix's secure cloud infrastructure using their custom DevOps toolchain, including Golden AMIs, Spinnaker CD pipelines, and Metatron authentication, ensuring resilience against Chaos Monkey teardowns.\n* **Integrated Compliance Workflows**: Engineered automated, real-time OFAC compliance checks and integrated a seamless DocuSign API workflow directly within the modern ReactJS single-page application.\n* **UX Optimizations**: Designed a smart search and deduplication screen. By using advanced sorting and contextual color-coding for exact and partial name matches, it prevented the rampant creation of duplicate supplier profiles.\n\n## Business Impact\nOzark completely streamlined global supplier onboarding, cutting the average registration time significantly while removing manual administrative bottlenecks. The decoupled, modern architecture eliminated recurring integration outages, allowing Netflix's Fintech teams to operate with extreme stability and efficiency."
+  },
+  {
+    "project": "USPHS Website",
+    "year": "2021",
+    "description": "The official recruitment portal for the U.S. Public Health Service Commissioned Officer Corps built in C#.Net and Umbraco CMS.",
+    "tags": [
+      "C#",
+      ".NET",
+      "Umbraco",
+      "CMS",
+      "Web Components",
+      "Google Maps",
+      "System Integration"
+    ],
+    "clients": [
+      {
+        "name": "U.S. Public Health Service",
+        "logo": "usphs-logo.png",
+        "alt": "U.S. Public Health Service official logo"
+      }
+    ],
+    "images": [
+      {
+        "name": "usphs-main-page.jpg",
+        "alt": "USPHS Commissioned Officer Corps recruitment homepage displaying professional layout and CMS-driven structure",
+        "primary": true
+      },
+      {
+        "name": "usphs-opportunities-page.jpg",
+        "alt": "USPHS opportunities and career exploration page powered by dynamic Umbraco back-end indexing",
+        "primary": false
+      },
+      {
+        "name": "usphs-map-view.jpg",
+        "alt": "Custom interactive map web component showing active training, deployment, and service opportunities across the nation",
+        "primary": false
+      }
+    ],
+    "projectNarrative": "# USPHS: Commissioned Officer Corps Portal\n\n## Strategic Challenge\nThe U.S. Public Health Service (USPHS) Commissioned Officer Corps is one of the nation's premier uniformed services, consisting of highly qualified public health professionals. They needed a state-of-the-art recruitment portal that would educate the public, streamline candidate intake, and show open service opportunities nationwide. The platform had to be highly secure, accessible, easy for internal teams to update, and capable of handling rapid spikes in traffic during recruitment drives.\n\n## Technical Execution\nDeveloped as a solo engineering project, the portal was engineered on top of Microsoft's .NET ecosystem using the Umbraco Enterprise Content Management System (CMS).\n\nKey architectural and front-end feats included:\n* **Custom Interactive Map Web Component**: Designed and developed a highly responsive, custom web component to visualize active service stations, recruit openings, and response missions. The component queried Umbraco's data APIs asynchronously, plotting locations dynamically on a customized map.\n* **Component-Driven C# Backend**: Created clean, modular MVC templates in C#.Net, ensuring that internal content authors could modify page elements and career listings without breaking design standards or accessibility compliance.\n* **Enterprise Delivery Standards**: Handed over a pristine, high-performing codebase built to federal security and hosting specifications, integrating seamlessly with internal USPHS active directories.\n\n## Integrity and Quality\nFollowing a successful handoff, the site was deployed and managed on the government's internal infrastructure. While post-handoff modifications by internal developers introduced some performance bottlenecks and UI inconsistencies over time, the core structure remains a prime example of professional .NET engineering, elegant layout design, and robust API data integration."
+  },
+  {
+    "project": "FDOH COVID-19 Website",
+    "year": "2020",
+    "description": "A high-performance WordPress portal that scaled to sustain 7TB/month of critical vaccine locators and counts under nationwide pandemic visibility.",
+    "tags": [
+      "WordPress",
+      "Scaling",
+      "AWS",
+      "High-Traffic",
+      "Public Health",
+      "Crisis Communication",
+      "Caching"
+    ],
+    "clients": [
+      {
+        "name": "Florida Department of Health",
+        "logo": "fdoh-logo.jpeg",
+        "alt": "Florida Department of Health official logo"
+      }
+    ],
+    "images": [
+      {
+        "name": "fdoh-covid-main-view.png",
+        "alt": "Florida Department of Health COVID-19 portal homepage featuring an interactive vaccination locator and vital alerts",
+        "primary": true
+      },
+      {
+        "name": "fdoh-covid-counts-view.png",
+        "alt": "COVID-19 statistics and tracking dashboard displaying case numbers, counts, and testing volume across Florida",
+        "primary": false
+      },
+      {
+        "name": "fdoh-covid-map-view.png",
+        "alt": "Interactive Google Maps integration plotting all vaccination sites statewide, optimized to handle high-density client queries",
+        "primary": false
+      }
+    ],
+    "projectNarrative": "# Florida Department of Health: COVID-19 Platform\n\n## Strategic Challenge\nAt the onset of the COVID-19 pandemic, the Florida Department of Health faced an unprecedented public communication emergency. They needed to immediately deploy a reliable, real-time vaccination finder, case tracker, and educational portal. Because of extreme public anxiety, the site was subjected to massive, unpredictable traffic spikes, ultimately transferring over **7 Terabytes of data per month**. In a high-risk crisis scenario, server failure or inaccurate data was completely unacceptable.\n\n## Technical Rescue & Scale\nFaced with the challenge of scaling a standard WordPress setup to enterprise levels, Rob Wood executed a high-impact architectural stabilization:\n* **Multi-Tier Caching & CDN Strategy**: Implemented aggressive, layered edge caching, database query optimization, and static resource offloading using high-performance CDNs. This insulated the origin servers from direct load, allowing the site to absorb massive traffic spikes smoothly.\n* **Geospatial Optimization**: Engineered an interactive map locator to help citizens find vaccination centers. Initially integrated with Google Maps, the search queries quickly generated massive API costs. Rob spearheaded a transition to self-hosted OpenStreetMap datasets, saving the department tens of thousands of dollars in monthly fees.\n* **Resilient Infrastructure**: Set up secure, auto-scaling AWS infrastructure with least-privilege configurations, guaranteeing high availability and robust security compliance under national scrutiny.\n\n## National Recognition\nThe site stood as a beacon of stability during a critical public health crisis. It received widespread praise, earning formal accolades from the **U.S. Surgeon General** and the **White House Coronavirus Task Force** as an exemplary public health resource. It remains a definitive case study in how rigorous engineering, caching discipline, and smart cloud architectures can push legacy platforms to handle extreme enterprise-grade loads."
+  },
+  {
+    "project": "Overseer Law Office Software",
+    "year": "2008",
+    "description": "A comprehensive, web-based SaaS legal practice management platform designed for document management, legal calendaring, conflict checking, and time keeping.",
+    "tags": [
+      "Legal Software",
+      "SaaS",
+      "Web-Based",
+      "Case Management",
+      "Time Tracking",
+      "Conflict Checking",
+      "Legal Calendaring"
+    ],
+    "clients": [],
+    "images": [],
+    "projectNarrative": "# Overseer Law Office Software: Pioneering SaaS Startup\n\n## Startup Genesis\nIn 2008, long before SaaS became the default software model, Rob Wood co-founded Absolute Information Services and served as its CTO. He designed, architected, and fully implemented **Overseer Law Office Software**—a comprehensive, web-based practice management platform. The startup’s mission was highly disruptive: provide solo practitioners and boutique law firms with enterprise-grade practice management capabilities for a low, accessible subscription starting at just $8.99 per month.\n\n## Full-Stack Feature Depth\nOverseer was built as a highly robust, all-in-one web-based application, offering a broad suite of integrated capabilities that typically required multiple expensive desktop licenses:\n* **Electronic Document Management**: Secure, web-based file organization custom-tailored for the unique filing structures of litigation and transactional law.\n* **Rules-Based Legal Calendaring**: An integrated deadline calculator and calendar system mapping out discovery dates, hearing dates, and trial schedules based on local court rules.\n* **Malpractice Prevention Tickler System**: Automated email deadline alerts and dashboard \"Hotlists\" that kept attorneys and paralegals updated on critical action items.\n* **Conflict of Interest Checking**: A fast, searchable database engine allowing firms to instantly perform conflict audits on prospective clients.\n* **Billable Time Tracking & Billing**: Real-time timer widgets and case note integrations enabling accurate tracking of billable activities.\n\n## Business and Engineering Leadership\nAs CTO, Rob managed the entire startup lifecycle. He personally handled client discovery, security architecture (featuring up to 256-bit transactional SSL encryption and Authorize.Net payment integrations), infrastructure hosting, and technical support. Overseer served as a masterclass in full-stack startup execution, proving Rob's ability to turn complex business requirements into a reliable, commercially successful product."
+  },
+  {
+    "project": "Matrix and Vector Manipulation Language",
+    "year": "2004",
+    "description": "A custom 16-bit compiler, compiler grammar, and text editor IDE that compiles algebraic matrix mathematical instructions directly into Intel 8086 MASM assembly.",
+    "tags": [
+      "Compiler",
+      "IDE",
+      "16-Bit Assembly",
+      "x86 Assembly",
+      "Context-Free Grammar",
+      "MASM",
+      "CS Fundamentals"
+    ],
+    "clients": [],
+    "images": [],
+    "projectNarrative": "# Matrix and Vector Manipulation Language (MVML)\n\n## Academic Innovation\nCreated in Fall 2004 as an advanced systems software project (CSC 350) at Eastern Kentucky University, MVML is a specialized programming language, compiler, and Integrated Development Environment designed by Rob Wood. The strategic goal was to take the mathematical concepts of matrices and vectors and make them easily programmable, compilable, and executable on standard x86 systems.\n\n## Technical Depth\nMVML stands as a rigorous showcase of computer science fundamentals, grammar parsing, and low-level code generation. \n\nThe architecture consists of:\n* **Formal Context-Free Grammar (CFG)**: A complete syntax specification defining variables, mathematical operations, token transitions, and expression limits.\n* **Scanner & Token Parser**: A compiler front-end that processes raw MVML code, produces a structured token stream, and outputs structured XML representation of the abstract syntax tree (AST).\n* **Code Generator**: A compiler backend that translates parsed high-level expressions directly into optimized, 16-bit 8086 Intel assembly language (MASM).\n* **IDE Desktop Client**: A downloadable Windows IDE designed for novices. The IDE bundled a syntax-highlighting text editor, compiler interface, MASM 6.13 assembler linkage, and step-by-step math tutorials.\n\n## Compiler Showcase\nMVML demonstrates Rob Wood's deep foundational understanding of systems programming, assembly code execution, and compiler design. It illustrates his ability to go beyond high-level application abstractions to build systems that interface directly with physical computing hardware."
+  },
+  {
+    "project": "Early Career Portfolio",
+    "year": "2002-2015",
+    "description": "A comprehensive collection of design, build, and search engine optimization (SEO) consulting projects representing foundational engineering expertise.",
+    "tags": [
+      "Web Design",
+      "SEO",
+      "E-Commerce",
+      "Lead Generation",
+      "Full-Stack Development",
+      "Consulting"
+    ],
+    "clients": [],
+    "images": [
+      {
+        "name": "bayareaplumbing.jpg",
+        "alt": "Showcase screenshot of early career project: Bayareaplumbing",
+        "primary": true
+      },
+      {
+        "name": "bestgranitebuy.jpg",
+        "alt": "Showcase screenshot of early career project: Bestgranitebuy",
+        "primary": false
+      },
+      {
+        "name": "cigar-family-charity.jpg",
+        "alt": "Showcase screenshot of early career project: Cigar Family Charity",
+        "primary": false
+      },
+      {
+        "name": "cindysconstruction.jpg",
+        "alt": "Showcase screenshot of early career project: Cindysconstruction",
+        "primary": false
+      },
+      {
+        "name": "clearwaterinjury.png",
+        "alt": "Showcase screenshot of early career project: Clearwaterinjury",
+        "primary": false
+      },
+      {
+        "name": "clearwaterpersonalinjuryattorney.jpg",
+        "alt": "Showcase screenshot of early career project: Clearwaterpersonalinjuryattorney",
+        "primary": false
+      },
+      {
+        "name": "cornerstone.png",
+        "alt": "Showcase screenshot of early career project: Cornerstone",
+        "primary": false
+      },
+      {
+        "name": "dietzteam.jpg",
+        "alt": "Showcase screenshot of early career project: Dietzteam",
+        "primary": false
+      },
+      {
+        "name": "dnrwoodworks.jpg",
+        "alt": "Showcase screenshot of early career project: Dnrwoodworks",
+        "primary": false
+      },
+      {
+        "name": "duiphoenixarizona.jpg",
+        "alt": "Showcase screenshot of early career project: Duiphoenixarizona",
+        "primary": false
+      },
+      {
+        "name": "email-campaign-example-1.jpg",
+        "alt": "Showcase screenshot of early career project: Email Campaign Example 1",
+        "primary": false
+      },
+      {
+        "name": "email-campaign-example-2.jpg",
+        "alt": "Showcase screenshot of early career project: Email Campaign Example 2",
+        "primary": false
+      },
+      {
+        "name": "essay-annotation-project.png",
+        "alt": "Showcase screenshot of early career project: Essay Annotation Project",
+        "primary": false
+      },
+      {
+        "name": "floridaasphalt.jpg",
+        "alt": "Showcase screenshot of early career project: Floridaasphalt",
+        "primary": false
+      },
+      {
+        "name": "haiticharity.png",
+        "alt": "Showcase screenshot of early career project: Haiticharity",
+        "primary": false
+      },
+      {
+        "name": "homesforsalesarasotafl.jpg",
+        "alt": "Showcase screenshot of early career project: Homesforsalesarasotafl",
+        "primary": false
+      },
+      {
+        "name": "lungtreatment.jpg",
+        "alt": "Showcase screenshot of early career project: Lungtreatment",
+        "primary": false
+      },
+      {
+        "name": "newtampajobs.jpg",
+        "alt": "Showcase screenshot of early career project: Newtampajobs",
+        "primary": false
+      },
+      {
+        "name": "nominpostcards.png",
+        "alt": "Showcase screenshot of early career project: Nominpostcards",
+        "primary": false
+      },
+      {
+        "name": "orlandohealthclubs.jpg",
+        "alt": "Showcase screenshot of early career project: Orlandohealthclubs",
+        "primary": false
+      },
+      {
+        "name": "serenitydentalflorida.jpg",
+        "alt": "Showcase screenshot of early career project: Serenitydentalflorida",
+        "primary": false
+      },
+      {
+        "name": "solidsurfacecountertop.jpg",
+        "alt": "Showcase screenshot of early career project: Solidsurfacecountertop",
+        "primary": false
+      },
+      {
+        "name": "stanthonyschool.png",
+        "alt": "Showcase screenshot of early career project: Stanthonyschool",
+        "primary": false
+      },
+      {
+        "name": "stjoechurch.png",
+        "alt": "Showcase screenshot of early career project: Stjoechurch",
+        "primary": false
+      },
+      {
+        "name": "tampaasphalt.png",
+        "alt": "Showcase screenshot of early career project: Tampaasphalt",
+        "primary": false
+      },
+      {
+        "name": "tampacd.png",
+        "alt": "Showcase screenshot of early career project: Tampacd",
+        "primary": false
+      },
+      {
+        "name": "tampacrane.png",
+        "alt": "Showcase screenshot of early career project: Tampacrane",
+        "primary": false
+      },
+      {
+        "name": "tampadental.png",
+        "alt": "Showcase screenshot of early career project: Tampadental",
+        "primary": false
+      },
+      {
+        "name": "tampaflplumbers.jpg",
+        "alt": "Showcase screenshot of early career project: Tampaflplumbers",
+        "primary": false
+      },
+      {
+        "name": "tampahomesforsale.jpg",
+        "alt": "Showcase screenshot of early career project: Tampahomesforsale",
+        "primary": false
+      },
+      {
+        "name": "tampainsurance.png",
+        "alt": "Showcase screenshot of early career project: Tampainsurance",
+        "primary": false
+      },
+      {
+        "name": "tampapain-clinic.png",
+        "alt": "Showcase screenshot of early career project: Tampapain Clinic",
+        "primary": false
+      },
+      {
+        "name": "tamparealtor.png",
+        "alt": "Showcase screenshot of early career project: Tamparealtor",
+        "primary": false
+      },
+      {
+        "name": "treeoflifemedical.jpg",
+        "alt": "Showcase screenshot of early career project: Treeoflifemedical",
+        "primary": false
+      },
+      {
+        "name": "virtualgrace.png",
+        "alt": "Showcase screenshot of early career project: Virtualgrace",
+        "primary": false
+      }
+    ],
+    "projectNarrative": "# Early Career Portfolio: Engineering Multiplier\n\n## Versatile Foundations\nRob Wood's early career (2002-2015) is characterized by high-impact, full-stack consulting and startup execution. Operating under his consultancy, virtualGrace, and other early ventures, Rob operated as a complete independent consultant—leading design, strategy, custom programming, database optimization, and search engine marketing (SEO) for a massive range of clients.\n\n## High-Impact Visual and SEO Craft\nLong before modern website builders and framework templates dominated the web, Rob developed hand-crafted, pixel-perfect, highly semantic websites.\n\nKey achievements from this foundational era included:\n* **Structural SEO Dominance**: Maintained top-ranking search engine positions for competitive local markets (such as healthcare, law, and home services) by implementing strict semantic HTML, clean site structure, and fast performance architectures.\n* **Demographic Personalization Systems**: Conceived and built an advanced web postcard design and self-service targeting system for Our Town America using Oracle Spatial and Google Maps, opening a massive regional advertiser market.\n* **High-Conversion E-commerce Funnels**: Engineered abandoned cart recovery systems that recaptured ~10% of lost sales, alongside transactional email layouts that raised conversion rates by 25-30% for Web Commerce Partners.\n* **Database Optimization**: Dramatically boosted application performance for regional organizations by refactoring complex business logic out of application code and into highly optimized SQL stored procedures and database queries.\n\n## Foundational Projects\nThis portfolio collects over 20 unique early career designs and builds (including St. Anthony School, Haiti Charity, Clearwater Injury Attorney, Cindy's Construction, and virtualGrace), highlighting the diverse capabilities and rigorous discipline that formed the launching pad for his principal-level software engineering career."
+  }
+]

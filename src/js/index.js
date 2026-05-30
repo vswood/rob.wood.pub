@@ -4,12 +4,21 @@ import initApp from './initApp.js'
 window.vsApp = vsApp
 
 window.addEventListener('preloader:exit', () => {
-  comsole.log('fuck')
   const bodyWrap = document.getElementById('body-wrapper')
   bodyWrap.style.visibility = 'visible'
   bodyWrap.setAttribute('aria-busy', false)
 
 })
+
+const offCanvasMenuOptions = {
+  headerToggle: document.querySelector('.header-toggle'),
+  header: document.querySelector('#header'),
+  menuWrap: document.querySelector('.menu-wrap'),
+  bodyWrapper: document.getElementById('body-wrapper'),
+  scrollTop: document.getElementById('scroll-top'),
+  morphEl: document.getElementById('morph-shape'),
+  homeLink: document.getElementById('home-link')
+}
 
 const sections = document.querySelectorAll('section')
 
@@ -82,16 +91,17 @@ window.addEventListener('DOMContentLoaded', () => {
     scrollbarColor,
     scrollbarActiveColor,
     setGsap: true,
-    gsapPlugins
+    gsapPlugins,
+    offCanvasMenuOptions,
   })
 })
 
 window.addEventListener('load', () => {
   vsApp.emit('window:loaded')
 
-  document.querySelectorAll('.btn').forEach(el => el.addEventListener('click', (e) => {
-    e.preventDefault()
-  }))
+  // document.querySelectorAll('.btn').forEach(el => el.addEventListener('click', (e) => {
+  //   e.preventDefault()
+  // }))
 
   vsApp.scroller = document.getElementById('main')
   /*setTimeout(() => {

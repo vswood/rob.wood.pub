@@ -100,7 +100,7 @@
   </div>
 
   <script type="module" webc:keep>
-    import virtualStyleApp from '../../js/VirtualStyleApp.js'
+    import virtualStyleApp from '/js/VirtualStyleApp.js'
     class VsSimpleLoader extends HTMLElement {
       #loaded = false
       #started

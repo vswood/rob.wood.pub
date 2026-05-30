@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="title" content="Matrix and Vector Manipulation Language" />
+<meta name="description" content="Matrix and Vector Manipulation Language" />
+<meta name="keywords" content="Matrix and Vector Manipulation Language" />
+<meta name="copyright" content="2003.4.10 Rob Wood" />
+<meta http-equiv="content-language" content="english" />
+<meta name="rating" content="general" />
+<!-- Matrix and Vector Manipulation Language  -->
+<title>Matrix and Vector Manipulation Language</title>
+<style type="text/css" media="all">
+@import "main.css";
+</style>
+</head>
+<body>
+
+<div style="width:80ch;margin:0px auto;text-align:center;"><hr /><a href="index.htm">[ Home ]</a> <a href="cfg.htm">[ Grammar ]</a> <a href="cfg2.htm">[ Grammar (With Explanatory Notes) ]</a><br /><a href="prog1.htm">[ Sample Program 1 ]</a> <a href="prog2.htm">[ Sample Program 2 ]</a> <br /><a href="ide.htm">[ MVML Integrated Development Environment ]</a> <hr /></div>
+
+<table summary="Just a table for visual layout purposes." id="mainbox">
+<tr>
+<td id="headercell">
+<h1><span>M</span>atrix and <span>V</span>ector <span>M</span>anipulation <span>L</span>anguage</h1>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<hr />
+<h3 style="margin:0px 0px 0px 25px;">MVML Context Free Grammar (Backus-Naur form)</h3>
+<hr />
+<p>
+&lt;program&gt; --&gt; mvml &lt;decllist&gt; &ltstmtlist&gt; /mvml
+<br />
+&lt;decllist&gt; --&gt; &lt;decl&gt;; &lt;decllist&gt;
+<br />
+&lt;decllist&gt; --&gt; Epsilon
+<br />
+&lt;decl&gt; --&gt; matrix Id = matrix(number ; number);
+<br />
+&lt;decl&gt; --&gt; vector Id = vector(number);
+<br />
+&lt;decl&gt; --&gt; scalar Id = number;
+<br />
+&lt;stmtlist&gt; --&gt; &lt;stmt&gt;;&lt;stmtlist&gt;
+<br />
+&lt;stmtlist&gt; --&gt; Epsilon
+<br />
+&lt;stmt&gt; --> Id = &lt;expr&gt;
+<br />
+&lt;stmt&gt; --> fill(Id);
+<br />
+&lt;stmt&gt; --> out(String);
+<br />
+&lt;stmt&gt; --> print(Id);
+<br />
+&lt;expr&gt; --&gt; &lt;term&gt; &lt;moreexpr&gt
+<br />
+&lt;moreexpr&gt; --&gt; + &lt;term&gt; &lt;moreexpr&gt
+<br />
+&lt;moreexpr&gt; --&gt; - &lt;term&gt; &lt;moreexpr&gt
+<br />
+&lt;moreexpr&gt; --&gt; Epsilon
+<br />
+&lt;term&gt; --&gt; &lt;factor&gt; &lt;moreterm&gt
+<br />
+&lt;moreterm> --&gt; * &lt;factor> &lt;moreterm&gt
+<br />
+&lt;moreterm&gt; --&gt; Epsilon
+<br />
+&lt;factor&gt; --&gt; Number
+<br />
+&lt;factor&gt; --&gt; Id
+<br />
+&lt;factor&gt; --&gt; ( &lt;expr&gt; )
+</p>
+<br />
+</td>
+<tr>
+<td style="background-color:#112233;">
+<h5>Matrix and Vector Manipulation Language<br /> Created by <a href="http://studentweb.eku.edu/robert_wood14/">Rob Wood</a><br />for CSC 350 Fall 2004 <a href="http://www.eku.edu">EKU</a></h5>
+</td>
+</tr>
+</table>
+<div style="width:80ch;margin:0px auto;text-align:center;"><hr /><a href="index.htm">[ Home ]</a> <a href="cfg.htm">[ Grammar ]</a> <a href="cfg2.htm">[ Grammar (With Explanatory Notes) ]</a><br /><a href="prog1.htm">[ Sample Program 1 ]</a> <a href="prog2.htm">[ Sample Program 2 ]</a> <br /><a href="ide.htm">[ MVML Integrated Development Environment ]</a> <hr /></div>
+<div class="button">
+<img style="margin-bottom:15px;" src="virtualStyle.jpg" />
+<img style="margin-bottom:15px;" src="flatulentdog.jpg" />
+</div>
+<p style="margin:0px auto;text-align:center;">Content Copyright &copy; 2004 by Rob Wood, all rights reserved.</p>
+
+
+
+</body>
+</html>

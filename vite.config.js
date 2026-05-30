@@ -36,8 +36,19 @@ export default {
   // assetsInclude: ['**/*.xml', '**/*.txt'],
   mode: 'production',
   optimizeDeps: {
+    include: [
+      'snapsvg',
+      'bootstrap',
+      '@srexi/purecounterjs',
+      'glightbox',
+      'swiper/bundle',
+      'lenis',
+      'lottie-web',
+      'gsap',
+      'jquery',
+      '@popperjs/core',
+    ],
     exclude: [
-      // '*critical.css',
       'fsevents',
       'chromium-bidi',
     ],

@@ -2,7 +2,7 @@
 id: about
 displayOrder: 1
 ---
-{% import "../include/page-components/parts.html" as insert %}
+{% import "../include/page-components/headings.html" as insert %}
 {% import "../include/page-components/accordion.html" as acc %}
 <!-- About Section -->
 <section id="about">
@@ -110,16 +110,16 @@ displayOrder: 1
           </div>
         </div>
         <div class="row actions about-btns">
-          <div class="col-sm-6">
+          <div class="">
             <a href="#portfolio" class="btn btn-secondary">
               <span>View Portfolio</span>
-              {% icon "portfolio", '{ "width": "18", "height": "18" }' %}
+              {% icon "portfolio", '{ "width": "24", "height": "24" }' %}
             </a>
           </div>
-          <div class="col-sm-6">
+          <div class="">
             <a href="#contact" class="btn btn-primary">
               <span>Start a Project</span>
-              {% icon "speech-bubble-square", '{ "width": "18", "height": "18" }' %}
+              {% icon "speech-bubble-square", '{ "width": "24", "height": "24" }' %}
             </a>
           </div>
         </div>
@@ -134,7 +134,7 @@ displayOrder: 1
             <span>Contact Me</span>
             {% icon "speech-bubble-square", '{ "width": "16", "height": "16" }' %}
           </a> -->
-          <h3 class="topic-title"><b>What I bring</b>to projects and teams</h3>
+          <h3 class="topic-title"><b>What I bring</b> to projects and teams</h3>
           <p>
             Immediate results. I employ a pragmatic, no-nonsense approach that produces fast understanding, honest diagnosis, practical execution, and meaningful improvement without unnecessary churn.
           </p>
@@ -150,4 +150,3 @@ displayOrder: 1
   </div>
 
 </section>
-<!-- /About Section -->

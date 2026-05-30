@@ -1,0 +1,22 @@
+{
+  "title": "",
+  "year": "",
+  "description" "",
+  "tags": [
+    "tagname"
+  ],
+  "images": [
+    {
+      "name": "filename.jpg",
+      "alt": "Alt text",
+      "primary": boolean
+    }
+  ],
+  "logos": [
+    {
+      "name": "filename.jpg",
+      "alt": "Alt text"
+    }
+  ],
+  "projectNarrative": ""
+}

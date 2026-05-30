@@ -26,10 +26,6 @@ class VirtualStyleApp {
     window.dispatchEvent(new CustomEvent(event, eventOptions))
   }
 
-  addListeners(element, events, handler) {
-    events.forEach(e => element.addEventListener(e, handler));
-  }
-
   initPreferenceListeners() {
     motionQuery.addEventListener('change', (event) => {
       if (event.matches) {

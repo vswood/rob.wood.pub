@@ -40,5 +40,11 @@ The professional portfolio site of Rob Wood, of virtualStyle intelligent systems
 - Pnpm for dependency/workspace management
 - 11ty for static site generation
 - 11ty webc for webcomponents
-- Vite for JS/CSS manipulation/bundling
+- Vite for JS/CSS manipulation/bundling through @11ty/eleventy-plugin-vite
 - Vitest for test runner
+
+## Commands
+
+```zsh
+pnpm dev # runs eleventy --serve to serve page locally at localhost:8081
+```

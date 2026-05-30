@@ -2,14 +2,19 @@
 id: hero
 displayOrder: 0
 ---
-{% import "../include/page-components/parts.html" as insert %}
+{% import "../include/page-components/headings.html" as insert %}
 <!-- Hero Section -->
 <section id="home">
 
   <div class="container">
 
     <div class="row">
-      <h1 class="site-title">Rob <b>Wood</b>: <span><b>Game Changing</b> Engineer</span></h1>
+      <div class="heading-logo">
+        <div class="heading-icon">
+          {% icon "ai-brain", '{ "width": "100%", "height": "100%" }' %}
+        </div>
+        <div class="site-title-wrap"><h1 class="site-title">Rob <b>Wood</b> <span><b>Game Changing</b> Engineer</span></h1></div>
+      </div>
     </div>
 
     <div class="row">
@@ -20,19 +25,27 @@ displayOrder: 0
             <img src="../../../img/profile/suit-desk-clasped-hands.webp" alt="Creative Designer Portfolio"
               class="img-fluid main-image">
             <div class="floating-card card-1">
-              {% icon "architect", '{ "width": "24", "height": "24" }' %}
+              <div class="card-icon">
+                {% icon "architect", '{ "width": "100%", "height": "100%" }' %}
+              </div>
               <span>Triage<br>Engineer</span>
             </div>
             <div class="floating-card card-2">
-              {% icon "devops", '{ "width": "24", "height": "24" }' %}
+              <div class="card-icon">
+                {% icon "devops", '{ "width": "100%", "height": "100%" }' %}
+              </div>
               <span>Systems<br>Strategist</span>
             </div>
             <div class="floating-card card-3">
-              {% icon "leadership", '{ "width": "24", "height": "24" }' %}
+              <div class="card-icon">
+                {% icon "leadership", '{ "width": "100%", "height": "100%" }' %}
+              </div>
               <span>Force<br>Multiplier</span>
             </div>
             <div class="floating-card card-4">
-              {% icon "money", '{ "width": "24", "height": "24" }' %}
+              <div class="card-icon">
+                {% icon "money", '{ "width": "100%", "height": "100%" }' %}
+              </div>
               <span>Operational<br>Opportunist</span>
             </div>
           </div>
@@ -128,6 +141,12 @@ displayOrder: 0
           <span class="stat-label">Tech Skills</span>
         </div>
       </div>
+    </div>
+
+    <div class="row">
+      <a href="../../img/Rob Wood Engineering Career Highlights.webp" class="glightbox" data-gallery="gallery1">
+        <img style="margin:auto;border-radius:1em;" src="../../img/Rob Wood Engineering Career Highlights Thumbnail.webp" alt="image" />
+      </a>
     </div>
 
   </div>

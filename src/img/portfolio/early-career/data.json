@@ -1,0 +1,192 @@
+{
+  "project": "Early Career Portfolio",
+  "year": "2002-2015",
+  "description": "A comprehensive collection of design, build, and search engine optimization (SEO) consulting projects representing foundational engineering expertise.",
+  "tags": [
+    "Web Design",
+    "SEO",
+    "E-Commerce",
+    "Lead Generation",
+    "Full-Stack Development",
+    "Consulting"
+  ],
+  "clients": [],
+  "images": [
+    {
+      "name": "bayareaplumbing.jpg",
+      "alt": "Showcase screenshot of early career project: Bayareaplumbing",
+      "primary": true
+    },
+    {
+      "name": "bestgranitebuy.jpg",
+      "alt": "Showcase screenshot of early career project: Bestgranitebuy",
+      "primary": false
+    },
+    {
+      "name": "cigar-family-charity.jpg",
+      "alt": "Showcase screenshot of early career project: Cigar Family Charity",
+      "primary": false
+    },
+    {
+      "name": "cindysconstruction.jpg",
+      "alt": "Showcase screenshot of early career project: Cindysconstruction",
+      "primary": false
+    },
+    {
+      "name": "clearwaterinjury.png",
+      "alt": "Showcase screenshot of early career project: Clearwaterinjury",
+      "primary": false
+    },
+    {
+      "name": "clearwaterpersonalinjuryattorney.jpg",
+      "alt": "Showcase screenshot of early career project: Clearwaterpersonalinjuryattorney",
+      "primary": false
+    },
+    {
+      "name": "cornerstone.png",
+      "alt": "Showcase screenshot of early career project: Cornerstone",
+      "primary": false
+    },
+    {
+      "name": "dietzteam.jpg",
+      "alt": "Showcase screenshot of early career project: Dietzteam",
+      "primary": false
+    },
+    {
+      "name": "dnrwoodworks.jpg",
+      "alt": "Showcase screenshot of early career project: Dnrwoodworks",
+      "primary": false
+    },
+    {
+      "name": "duiphoenixarizona.jpg",
+      "alt": "Showcase screenshot of early career project: Duiphoenixarizona",
+      "primary": false
+    },
+    {
+      "name": "email-campaign-example-1.jpg",
+      "alt": "Showcase screenshot of early career project: Email Campaign Example 1",
+      "primary": false
+    },
+    {
+      "name": "email-campaign-example-2.jpg",
+      "alt": "Showcase screenshot of early career project: Email Campaign Example 2",
+      "primary": false
+    },
+    {
+      "name": "essay-annotation-project.png",
+      "alt": "Showcase screenshot of early career project: Essay Annotation Project",
+      "primary": false
+    },
+    {
+      "name": "floridaasphalt.jpg",
+      "alt": "Showcase screenshot of early career project: Floridaasphalt",
+      "primary": false
+    },
+    {
+      "name": "haiticharity.png",
+      "alt": "Showcase screenshot of early career project: Haiticharity",
+      "primary": false
+    },
+    {
+      "name": "homesforsalesarasotafl.jpg",
+      "alt": "Showcase screenshot of early career project: Homesforsalesarasotafl",
+      "primary": false
+    },
+    {
+      "name": "lungtreatment.jpg",
+      "alt": "Showcase screenshot of early career project: Lungtreatment",
+      "primary": false
+    },
+    {
+      "name": "newtampajobs.jpg",
+      "alt": "Showcase screenshot of early career project: Newtampajobs",
+      "primary": false
+    },
+    {
+      "name": "nominpostcards.png",
+      "alt": "Showcase screenshot of early career project: Nominpostcards",
+      "primary": false
+    },
+    {
+      "name": "orlandohealthclubs.jpg",
+      "alt": "Showcase screenshot of early career project: Orlandohealthclubs",
+      "primary": false
+    },
+    {
+      "name": "serenitydentalflorida.jpg",
+      "alt": "Showcase screenshot of early career project: Serenitydentalflorida",
+      "primary": false
+    },
+    {
+      "name": "solidsurfacecountertop.jpg",
+      "alt": "Showcase screenshot of early career project: Solidsurfacecountertop",
+      "primary": false
+    },
+    {
+      "name": "stanthonyschool.png",
+      "alt": "Showcase screenshot of early career project: Stanthonyschool",
+      "primary": false
+    },
+    {
+      "name": "stjoechurch.png",
+      "alt": "Showcase screenshot of early career project: Stjoechurch",
+      "primary": false
+    },
+    {
+      "name": "tampaasphalt.png",
+      "alt": "Showcase screenshot of early career project: Tampaasphalt",
+      "primary": false
+    },
+    {
+      "name": "tampacd.png",
+      "alt": "Showcase screenshot of early career project: Tampacd",
+      "primary": false
+    },
+    {
+      "name": "tampacrane.png",
+      "alt": "Showcase screenshot of early career project: Tampacrane",
+      "primary": false
+    },
+    {
+      "name": "tampadental.png",
+      "alt": "Showcase screenshot of early career project: Tampadental",
+      "primary": false
+    },
+    {
+      "name": "tampaflplumbers.jpg",
+      "alt": "Showcase screenshot of early career project: Tampaflplumbers",
+      "primary": false
+    },
+    {
+      "name": "tampahomesforsale.jpg",
+      "alt": "Showcase screenshot of early career project: Tampahomesforsale",
+      "primary": false
+    },
+    {
+      "name": "tampainsurance.png",
+      "alt": "Showcase screenshot of early career project: Tampainsurance",
+      "primary": false
+    },
+    {
+      "name": "tampapain-clinic.png",
+      "alt": "Showcase screenshot of early career project: Tampapain Clinic",
+      "primary": false
+    },
+    {
+      "name": "tamparealtor.png",
+      "alt": "Showcase screenshot of early career project: Tamparealtor",
+      "primary": false
+    },
+    {
+      "name": "treeoflifemedical.jpg",
+      "alt": "Showcase screenshot of early career project: Treeoflifemedical",
+      "primary": false
+    },
+    {
+      "name": "virtualgrace.png",
+      "alt": "Showcase screenshot of early career project: Virtualgrace",
+      "primary": false
+    }
+  ],
+  "projectNarrative": "# Early Career Portfolio: Engineering Multiplier\n\n## Versatile Foundations\nRob Wood's early career (2002-2015) is characterized by high-impact, full-stack consulting and startup execution. Operating under his consultancy, virtualGrace, and other early ventures, Rob operated as a complete independent consultant—leading design, strategy, custom programming, database optimization, and search engine marketing (SEO) for a massive range of clients.\n\n## High-Impact Visual and SEO Craft\nLong before modern website builders and framework templates dominated the web, Rob developed hand-crafted, pixel-perfect, highly semantic websites.\n\nKey achievements from this foundational era included:\n* **Structural SEO Dominance**: Maintained top-ranking search engine positions for competitive local markets (such as healthcare, law, and home services) by implementing strict semantic HTML, clean site structure, and fast performance architectures.\n* **Demographic Personalization Systems**: Conceived and built an advanced web postcard design and self-service targeting system for Our Town America using Oracle Spatial and Google Maps, opening a massive regional advertiser market.\n* **High-Conversion E-commerce Funnels**: Engineered abandoned cart recovery systems that recaptured ~10% of lost sales, alongside transactional email layouts that raised conversion rates by 25-30% for Web Commerce Partners.\n* **Database Optimization**: Dramatically boosted application performance for regional organizations by refactoring complex business logic out of application code and into highly optimized SQL stored procedures and database queries.\n\n## Foundational Projects\nThis portfolio collects over 20 unique early career designs and builds (including St. Anthony School, Haiti Charity, Clearwater Injury Attorney, Cindy's Construction, and virtualGrace), highlighting the diverse capabilities and rigorous discipline that formed the launching pad for his principal-level software engineering career."
+}

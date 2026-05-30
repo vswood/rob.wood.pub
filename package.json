@@ -16,7 +16,7 @@
   "scripts": {
     "build": "ELEVENTY_ENV=prod eleventy",
     "build-dev": "ELEVENTY_ENV=dev eleventy",
-    "dev": "ELEVENTY_ENV=dev eleventy --serve --incremental",
+    "dev": "ELEVENTY_ENV=dev eleventy --serve",
     "devb": "DEBUG=Eleventy:Benchmark* ELEVENTY_ENV=dev eleventy --serve",
     "devc": "ELEVENTY_ENV=dev npx --node-options=\"--cpu-prof\" eleventy --serve --quiet",
     "stage": "ELEVENTY_ENV=prod eleventy --serve",

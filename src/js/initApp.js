@@ -30,8 +30,9 @@ export default function initApp({
   scrollbarActiveColor,
   setGsap = false,
   gsapPlugins = [],
+  offCanvasMenuOptions,
 } = {}) {
-  const menu = new OffcanvasMenu()
+  const menu = new OffcanvasMenu(offCanvasMenuOptions)
   window.menu = menu
   initTooltips()
 

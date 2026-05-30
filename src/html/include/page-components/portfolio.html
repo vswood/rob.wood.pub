@@ -1,0 +1,29 @@
+{% macro portfolioItem(primaryImg, alt, title, year, description, tags, images, projectStructure, codeSamples, documentationSamples, projectNarrative) %}
+<div class="portfolio-item">
+  <div class="portfolio-card">
+    <div class="portfolio-image">
+      <img src="../../../img/portfolio/{{primaryImg}}" class="img-fluid" alt="{{title1}}"
+        loading="lazy">
+      <div class="portfolio-overlay">
+        <div class="portfolio-actions">
+          <a href="../../../img/portfolio/{{primaryImg}}" class="glightbox action-btn preview-btn"
+            title="{{title}}">
+            {% icon "gallery", '{ "width": "24", "height": "24" }' %}
+          </a>
+          <a href="portfolio-details.html" class="action-btn details-btn" title="View Project">
+            {% icon "ext-link", '{ "width": "24", "height": "24" }' %}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-content">
+      <div class="portfolio-meta">
+        <span class="tags portfolio-category">{{tags | join(", ")}}</span>
+        <span class="portfolio-year">{{year}}</span>
+      </div>
+      <h3 class="topic-subtitle portfolio-title">{{title}}</h3>
+      <p class="portfolio-description">{{description}}</p>
+    </div>
+  </div>
+</div>
+{% endmacro %}

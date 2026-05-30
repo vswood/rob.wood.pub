@@ -2,15 +2,13 @@
 id: contact
 displayOrder: 8
 ---
-{% import "../include/page-components/parts.html" as insert %}
+{% import "../include/page-components/headings.html" as insert %}
 <section id="contact">
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <div class="copy-wrapper">
-          <div class="section-heading-alt">
-            {{insert.pageHeading("", "Start A", "", "", "Conversation")}}
-          </div>
+        <div class="section-heading-alt">
+          {{insert.pageHeading("", "Start A", "", "", "Conversation")}}
         </div>
       </div>
     </div>
@@ -20,7 +18,7 @@ displayOrder: 8
 
         <div class="info-item">
           <div class="info-icon">
-            {% icon "speech-bubble-round", '{ "width": "48", "height": "48" }' %}
+            {% icon "speech-bubble-round", '{ "width": "32", "height": "32" }' %}
           </div>
           <div class="info-content copy-wrapper">
             <h3 class="topic-title">Let's <b>Connect</b></h3>
@@ -87,9 +85,24 @@ displayOrder: 8
           <form class="needs-validation" novalidate>
             <div class="container-fluid">
 
-              <div class="row">
+              <div class="row form-row">
 
                 <div class="col-lg-6 form-col">
+
+                  <div class="form-floating mb-3">
+                    <input type="email" name="email" class="form-control" id="input-email" aria-describedby="help-email"
+                      required="" placeholder="">
+                    <label for="input-email" class="form-label">Email address</label>
+                  </div>
+                  <div class="invalid-feedback">
+                    You must enter a valid email address with your message.
+                  </div>
+                  <div id="help-email" class="form-text">Enter your email address</div>
+
+                </div>
+
+                <div class="col-lg-6 form-col">
+
                   <div class="form-floating mb-3">
                     <input type="phone" name="phone" class="form-control" id="input-name" aria-describedby="help-name"
                       required="" placeholder="">
@@ -103,9 +116,28 @@ displayOrder: 8
                     You must enter a name with your message.
                   </div>
                   <div id="help-name" class="form-text">Enter your full name - preferred name plus surname</div>
+
+                </div>
+
+              </div>
+              <div class="row form-row">
+
+                <div class="col-lg-6 form-col">
+
+                  <div class="form-floating mb-3">
+                    <input type="text" name="subject" class="form-control" id="input-subject"
+                      aria-describedby="help-subject" required="" placeholder="">
+                    <label for="input-subject" class="form-label">Subject</label>
+                  </div>
+                  <div class="invalid-feedback">
+                    You must enter a subject for your message.
+                  </div>
+                  <div id="help-subject" class="form-text">Enter your email subject</div>
+
                 </div>
 
                 <div class="col-lg-6 form-col">
+
                   <div class="form-floating mb-3">
                     <input type="text" name="company" class="form-control" id="input-company"
                       aria-describedby="help-company" required="" placeholder="">
@@ -115,37 +147,11 @@ displayOrder: 8
                     You must enter your company name with your message.
                   </div>
                   <div id="help-company" class="form-text">Enter your company name</div>
+
                 </div>
 
               </div>
-              <div class="row">
-
-                <div class="col-lg-6 form-col">
-                  <div class="form-floating mb-3">
-                    <input type="email" name="email" class="form-control" id="input-email" aria-describedby="help-email"
-                      required="" placeholder="">
-                    <label for="input-email" class="form-label">Email address</label>
-                  </div>
-                  <div class="invalid-feedback">
-                    You must enter a valid email address with your message.
-                  </div>
-                  <div id="help-email" class="form-text">Enter your email address</div>
-                </div>
-
-                <div class="col-lg-6 form-col">
-                  <div class="form-floating mb-3">
-                    <input type="tel" name="name" class="form-control" id="input-phone" aria-describedby="help-phone"
-                      required="" placeholder="">
-                    <label for="input-phone" class="form-label">Phone number</label>
-                  </div>
-                  <div class="invalid-feedback">
-                    You must enter a valid phone number with your message.
-                  </div>
-                  <div id="help-phone" class="form-text">Enter your phone number</div>
-                </div>
-
-              </div>
-              <div class="row">
+              <div class="row form-row">
 
                 <div class="col-lg-6 form-col">
                   <div class="form-floating mb-3">
@@ -160,15 +166,16 @@ displayOrder: 8
                 </div>
 
                 <div class="col-lg-6 form-col">
+
                   <div class="form-floating mb-3">
-                    <input type="text" name="subject" class="form-control" id="input-subject"
-                      aria-describedby="help-subject" required="" placeholder="">
-                    <label for="input-subject" class="form-label">Subject</label>
+                    <input type="tel" name="name" class="form-control" id="input-phone" aria-describedby="help-phone"
+                      required="" placeholder="">
+                    <label for="input-phone" class="form-label">Phone number</label>
                   </div>
                   <div class="invalid-feedback">
-                    You must enter a subject for your message.
+                    You must enter a valid phone number with your message.
                   </div>
-                  <div id="help-subject" class="form-text">Enter your email subject</div>
+                  <div id="help-phone" class="form-text">Enter your phone number</div>
 
                   <div class="actions">
                     <button type="submit" class="btn btn-primary">

@@ -26,7 +26,7 @@
   :where(html) {
     block-size: 100%;
     text-size-adjust: none;
-    interpolate-size: allow-keywords;
+    /* interpolate-size: allow-keywords; */
   }
 
   :where(body) {

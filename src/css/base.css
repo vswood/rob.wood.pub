@@ -532,7 +532,6 @@
 
   }
 
-
  /**
   * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   * Setting font stacks as variables for easy reuse/maintenance
@@ -663,11 +662,17 @@
       text-box: trim-both cap alphabetic;
 
       &.top {
-        top: -4px;
+        top: -3px;
+        @container style(--inline-size-xl: var(--breakpoint-xl)) {
+          top: 3px;
+        }
       }
 
       &.raise {
-        top: -6px;
+        top: -4px;
+        @container style(--inline-size-xl: var(--breakpoint-xl)) {
+          top: -6px;
+        }
       }
     }
   }
@@ -682,10 +687,10 @@
     font-size: var(--xx-large);
     font-weight: 200;
     color: var(--heading-color);
-    margin-bottom: 0;
+    /* margin-bottom: 0.5lh; */
     font-family: var(--font-4);
-    line-height: 1.2;
-    /* text-transform: uppercase; */
+    line-height: 1.25cap;
+    text-transform: uppercase;
 
     &.portfolio-category {
       font-weight: 600;
@@ -702,16 +707,88 @@
     color: var(--text-light);
     line-height: 1;
     margin: 0;
-    font-weight: 200;
+    font-weight: 100;
+  }
+
+
+  .heading-logo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1ch;
+    margin-bottom: 1lh;
+    margin-left: 1ch;
+    padding: 0;
+    padding-top: 0.5lh;
+    color: var(--text);
+    position: relative;
+    top: 0.5lh;
+    height: 2lh;
+
+    @container style(--inline-size-xl: var(--breakpoint-xl)) {
+      margin-bottom: 4lh;
+      padding: lh 0;
+    }
+
+    .heading-icon {
+      width: 32px;
+      height: 32px;
+
+      @container style(--inline-size-xl: var(--breakpoint-xl)) {
+        width: 75px;
+        height: 75px;
+      }
+    }
+
+    .site-title-wrap {
+      margin: 0;
+      padding:0;
+      position: relative;
+      top: -0.25lh;
+
+      svg {
+        margin-right: 2ch;
+        height: 75px;
+        width: 75px;
+        color: color-mix(in oklch, var(--heading-color), transparent 20%);
+      }
+    }
+
+    .site-title {
+      font-size: var(--x-large);
+      font-weight: 100;
+      line-height: 2cap;
+      margin: 0;
+      padding:0;
+
+      @container style(--inline-size-xl: var(--breakpoint-xl)) {
+        top: 5px;
+      }
+
+      b {
+        font-weight: 500;
+      }
+
+      span {
+        line-height: 1cap;
+        display: block;
+        position: relative;
+        top: -6px;
+
+        b {
+          font-weight: 600;
+        }
+      }
+    }
   }
 
   .site-title {
     font-size: var(--xx-large);
     font-weight: 100;
-    color: color-mix(in oklch, var(--heading-color), transparent 50%);
-    margin-bottom: 0;
-    font-family: var(--font-4);
+    color: color-mix(in oklch, var(--heading-color), transparent 10%);
+    margin-bottom: 2lh;
     padding: 2lh 0 2lh 0;
+    font-family: var(--font-4);
     display: inline-block;
     text-transform: uppercase;
     line-height: 1cap;
@@ -743,7 +820,7 @@
       color: var(--text-light);
       margin: 0;
       font-weight: 200;
-      display: inline-block;
+      display: block;
 
       b {
         font-weight: 600;
@@ -759,10 +836,10 @@
 
   .copy-wrapper {
     max-width: 80ch;
-    margin: auto;
 
     p {
-      margin-top: 1lh;
+      margin-bottom: 1lh;
+      font-weight: 400;
     }
   }
 
@@ -773,119 +850,6 @@
 
       @container style(--inline-size-md: var(--breakpoint-md)) {
         margin: 2lh auto;
-      }
-    }
-  }
-
- /**
-  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  * Site header with varying font sizes, weights,and colors,with
-  * gradient text,and gradient lines
-  * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  */
-  .row.heading h1,
-  .row.heading h2 {
-    margin: 0;
-    margin-top: 0.5lh;
-    margin-bottom: 1lh;
-
-    span.intro {
-      --heading-gradient-point: 20ch;
-      width: 30ch;
-      span.top {
-        top: 12px;
-
-        @container style(--inline-size-xl: var(--breakpoint-xl)) {
-          top: 16px;
-        }
-      }
-    }
-
-    span,
-    div {
-      display: inline-block;
-      position: relative;
-
-      &.top {
-        color: var(--accent);
-        text-decoration: none;
-        text-decoration-thickness: 1px;
-        text-underline-offset: 2px;
-        z-index: 10;
-        font-size: var(--medium);
-        font-family: var(--font-5);
-        font-weight: 400;
-        top: 1px;
-        letter-spacing: 2px;
-        line-height: 1cap;
-        text-box: trim-both cap alphabetic;
-
-        &.var {
-          color: var(--text-color);
-          text-decoration: none;
-        }
-
-        @container style(--inline-size-xs: var(--breakpoint-xs)) {
-          top: 0.2lh;
-        }
-      }
-
-      &.main {
-        --heading-gradient-point: 10ch;
-        font-weight: 600;
-        color: var(--heading-color);
-        font-size: var(--xxxxx-large);
-        font-family: var(--font-4);
-        text-transform: uppercase;
-        letter-spacing: -2px;
-        top: 8px;
-        padding-right: 0.25ch;
-        line-height: 1cap;
-        text-box: trim-both cap alphabetic;
-        /* font-variant: small-caps; */
-      }
-
-      &.tag {
-        --heading-gradient-point: 3ch;
-        font-style: italic;
-        font-weight: 400;
-        font-family: var(--font-5);
-        color: var(--accent-color) !important;
-        font-size: calc(var(--x-large) * 0.85);
-        text-transform: none;
-        letter-spacing: -2px;
-        word-spacing: -0.5ch;
-        left: -0.5ch;
-        top: 8px;
-        padding-right: 0.25ch;
-        line-height: 1.155cap;
-        text-box: trim-both cap alphabetic;
-        @container style(--inline-size-xs: var(--breakpoint-xs)) {
-          left: 0;
-        }
-      }
-
-      &.bottom {
-        --heading-gradient-point: 45ch;
-        --gradient-pct: 100%;
-        text-transform: uppercase;
-        font-size: var(--large);
-        font-family: var(--font-4);
-        color: var(--heading-color);
-        font-weight: 400;
-        letter-spacing: 3px;
-        line-height: 1.155cap;
-        text-box: trim-both cap alphabetic;
-        top: 4px;
-
-        @container style(--inline-size-xs: var(--breakpoint-xs)) {
-          line-height: 0.9;
-        }
-
-        &.five {
-          letter-spacing: 4px;
-        }
-
       }
     }
   }

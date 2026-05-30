@@ -288,11 +288,11 @@
     .header-toggle {
       height: fit-content;
       width: fit-content;
-      padding: 0.5lh 1ch;
+      padding: 0.25lh 0.5ch;
       margin: 0;
       position: fixed;
-      bottom: 15px;
-      left: 15px;
+      bottom: 5px;
+      left: 5px;
       z-index: 999999999;
 
       --line-1: 60 207;
@@ -308,8 +308,8 @@
 
       svg {
         pointer-events: none;
-        width: 32px;
-        height: 32px;
+        width: 24px;
+        height: 24px;
       }
 
       &.opened {
@@ -336,7 +336,6 @@
     font-weight: 700;
     justify-content: space-evenly;
     line-height: 1cap;
-    /* margin: 1lh auto; */
     padding: 0.5lh 2ch;
     position: relative;
     width: 28ch;
@@ -358,14 +357,18 @@
     transition: all var(--duration-normal) var(--ease-elastic);
 
     @container style(--inline-size-sm: var(--breakpoint-sm)) {
-      max-width: 90%;
-      font-size: var(--medium);
+      font-size: var(--x-large);
       font-weight: 700;
+      width: 34ch;
     }
 
+    /* @container style(--inline-size-md: var(--breakpoint-md)) {
+      width: 40ch;
+    } */
+
     @container style(--inline-size-lg: var(--breakpoint-lg)) {
-      font-size: var(--large);
-      width: 30ch;
+      font-size: var(--x-large);
+      /* width: 50ch; */
     }
 
     @media (hover: hover) and (pointer: fine) {
@@ -471,7 +474,7 @@
       margin: auto;
       width: 24ch;
 
-      @container style(--inline-size-lg: var(--breakpoint-lg)) {
+      @container style(--inline-size-md: var(--breakpoint-md)) {
         width: 30ch;
       }
     }
@@ -666,7 +669,11 @@
   }
 
   form .container .row .col-lg-6 {
-    padding: 0 2ch;
+    padding: 0;
+  }
+
+  .form-col {
+    padding: 0 0.5ch;
   }
 
   .form-floating > .form-control:not(:placeholder-shown) ~ label {
@@ -709,11 +716,11 @@
   .form-wrapper {
 
     @container style(--inline-size-lg: var(--breakpoint-lg)) {
-      padding: 0 2ch;
+      padding: 0 1ch;
     }
 
     form {
-      margin: 0 2ch;
+      margin: 0;
     }
 
     .form-messages {
@@ -830,11 +837,16 @@
     z-index: 100000;
     transform: translate3d(-200px,0,0);
 
+
+    @container style(--inline-size-md: var(--breakpoint-md)) {
+      transform: translate3d(-300px,0,0);
+    }
+
     &.open {
       transform: translate3d(0,0,0);
     }
 
-    @container style(--inline-size-lg: var(--breakpoint-lg)) {
+    @container style(--inline-size-md: var(--breakpoint-md)) {
       grid-area: header;
       left: 0;
       top: 0;
@@ -886,7 +898,7 @@
     height: 100vh;
     left: 0;
     padding: 0 15px;
-    padding-bottom: 2lh;
+    padding-bottom: 1lh;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -896,6 +908,11 @@
     transform: translate3d(-200px,0,0);
     transition: transform ease-in-out 0.3s;
     z-index: 9999999;
+
+
+    @container style(--inline-size-md: var(--breakpoint-md)) {
+      transform: translate3d(-300px,0,0);
+    }
 
     &.open {
       transform: translate3d(0,0,0);
@@ -929,7 +946,11 @@
         border: 8px solid color-mix(in srgb, var(--text-color), transparent 85%);
         display: block;
         margin: 25px auto;
-        max-width: 120px;
+
+        @container style(--inline-size-md: var(--breakpoint-md)) {
+          width: 280px;
+          height: 280px;
+        }
       }
     }
   }
@@ -964,6 +985,7 @@
     width:100%;
     margin-left: 0.25ch;
     position: relative;
+    top: 2lh;
 
     ul {
       list-style: none;
@@ -985,6 +1007,10 @@
       transition: color 0.3s ease;
       width: 100%;
       border-radius: 0.5em;
+
+      @container style(--inline-size-lg: var(--breakpoint-lg)) {
+        line-height: 2;
+      }
 
       &:hover,
       .active,
@@ -1021,8 +1047,8 @@
     height: fit-content;
     width: fit-content;
     padding: 0.5lh 1ch;
-    right: 15px;
-    bottom: -15px;
+    right: 5px;
+    bottom: -5px;
     z-index: 99999;
     background-color: var(--accent-color);
     transition: color 0.4s ease, background-color 0.4s ease;
@@ -1034,12 +1060,12 @@
     &.active {
       visibility: visible;
       opacity: 1;
-      bottom: 15px;
+      bottom: 5px;
     }
 
     svg {
-      width: 32px;
-      height: 32px;
+      width: 16px;
+      height: 16px;
       /* color: var(--contrast-color); */
       line-height: 0;
     }

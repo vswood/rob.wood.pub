@@ -1,53 +1,74 @@
 import Snap from 'snapsvg'
 import vsApp from './VirtualStyleApp.js'
 import FreezeFrame from './FreezeFrame.js'
+import FocusTrap from './FocusTrap.js'
 
 export default class OffcanvasMenu {
+  #home
   #menuWrap
   #header
   #headerToggle
   #scrollTop
-  #scroller
   #bodyWrapper
-  #mainGrid
   #freezeFrame
   isOpen = false
   #morphEl
   #path
-  #initialPath
-  #stepsIn
-  #stepsOut
-  #stepsTotal
   #isAnimating
-  #closedPath = 'M-7.312,0H15c0,0,66,113.339,66,399.5C81,664.006,15,800,15,800H-7.312V0z'
-  #openPath = 'M-7.312,0H100c0,0,0,113.839,0,400c0,264.506,0,400,0,400H-7.312V0z'
-  #outPath = 'M-7.312,0l107.312,0c0,0 -93,130.839 -93,417c0,264.506 93,383 93,383l-107.312,0l-0,-800Z'
-  #outPath2 = 'M-7.312,0l12.312,0c0,0 2,130.839 2,417c0,264.506 -2,383 -2,383l-12.312,0l0,-800Z'
-  #savedContent
+  #stepsIn = [
+    'M-7.312,0H15c0,0,66,113.339,66,399.5C81,664.006,15,800,15,800H-7.312V0z',
+    'M-7.312,0H100c0,0,0,113.839,0,400c0,264.506,0,400,0,400H-7.312V0z',
+  ]
+  #stepsOut = [
+    'M-7.312,0l107.312,0c0,0 -93,130.839 -93,417c0,264.506 93,383 93,383l-107.312,0l-0,-800Z',
+    'M-7.312,0l12.312,0c0,0 2,130.839 2,417c0,264.506 -2,383 -2,383l-12.312,0l0,-800Z',
+  ]
+  #focusTrap
+  #menuToggleDisableDuration = 1500
 
-  constructor() {
+  constructor({
+    headerToggle,
+    header,
+    menuWrap,
+    bodyWrapper,
+    scrollTop,
+    morphEl,
+    homeLink,
+  } = {}) {
     if (window.offcanvasMenu) {
       return window.offcanvasMenu
     }
-    this.#setVariables()
-    this.#initEvents()
     window.offcanvasMenu = this
+    this.#home = homeLink
+    this.#headerToggle = headerToggle
+    this.#header = header
+    this.#menuWrap = menuWrap
+    this.#bodyWrapper = bodyWrapper
+    this.#scrollTop = scrollTop
+    this.#morphEl = morphEl
+    this.#isAnimating = false
+
+    const s = Snap(this.#morphEl.querySelector('svg'))
+    this.#path = s.select('path')
+
+    this.#initEvents()
     this.#freezeFrame = new FreezeFrame({
       target: document.getElementById('main'),
       extraClass: 'suspended',
     })
+    this.#focusTrap = new FocusTrap()
   }
 
   #initEvents() {
     this.#bodyWrapper.addEventListener('click', (e) => {
       var target = e.target
-      if (this.isOpen && target !== document.querySelector('.header-toggle') && !document.querySelector('.menu-wrap').contains(target)) {
+      if (this.isOpen && target !== document.querySelector('.header-toggle') && !document.querySelector('.menu-wrap').contains(target) && this.#headerToggle.disabled === false) {
         this.#close()
       }
     })
 
     document.addEventListener('keydown', (e) => {
-      if (this.isOpen && e.key === 'Escape') {
+      if (this.isOpen && e.key === 'Escape' && this.#headerToggle.disabled === false) {
         this.#close()
       }
     })
@@ -55,55 +76,26 @@ export default class OffcanvasMenu {
     document.querySelectorAll('.navmenu a').forEach(el => el.addEventListener('click', (e) => {
       if (window.location.hash && document.querySelector(window.location.hash)) {
         e.preventDefault()
-        this.#close(window.location.hash)
+        this.#close()
       }
     }))
 
-    window.addEventListener('toggleMenu', this)
+    window.addEventListener('toggle:menu', this)
 
     this.#headerToggle.addEventListener('click', () => {
-      vsApp.emit('toggleMenu')
+      this.#headerToggle.disabled = true
+      vsApp.emit('toggle:menu')
+      setTimeout(() => {
+        this.#headerToggle.disabled = false
+      }, this.#menuToggleDisableDuration)
     })
   }
 
-  #setVariables() {
-    this.#headerToggle = document.querySelector('.header-toggle')
-    this.#header = document.querySelector('#header')
-    this.#menuWrap = document.querySelector('.menu-wrap')
-    this.#bodyWrapper = document.getElementById('body-wrapper')
-    this.#mainGrid = document.getElementById('main-grid')
-    this.#scrollTop = document.getElementById('scroll-top')
-    this.#scroller = document.getElementById('main')
-
-    this.#morphEl = document.getElementById('morph-shape')
-    const s = Snap(this.#morphEl.querySelector('svg'))
-    this.#path = s.select('path')
-    this.#stepsIn = [
-      this.#closedPath,
-      this.#openPath,
-    ]
-    this.#stepsOut = [
-      this.#outPath,
-      this.#outPath2
-    ]
-    this.#isAnimating = false
-  }
-
-  /*goto(hash) {
-    setTimeout(() => {
-      this.#scroller.scrollTo({
-        top: vsApp.anchors[hash],
-        behavior: 'smooth'
-      })
-    }, 100)
-  }*/
-
   handleEvent(e) {
-    // console.log(`${e.type}Handler`)
-    this[`${e.type}Handler`](e)
+    this[`${e.type.replaceAll(':', '')}Handler`](e)
   }
 
-  #animate(pos, steps, goto) {
+  #animate(pos, steps) {
     if (pos > steps.length - 1) {
       this.#isAnimating = false
       return
@@ -116,26 +108,23 @@ export default class OffcanvasMenu {
       pos % 2 === 0 ? mina.ease : mina.elastic,
       () => {
         if (pos <= steps.length - 1) {
-          this.#animate(pos, steps, goto)
+          this.#animate(pos, steps)
         } else {
-          this.#finishAnimation(goto)
+          this.#finishAnimation()
         }
       }
     )
     pos++
   }
 
-  #finishAnimation(goto) {
+  #finishAnimation() {
     this.isOpen = !this.isOpen
     if (this.isOpen) {
-      this.#morphEl.style.display = 'none'
-      document.querySelector('#home-link').focus({focusVisible: true})
+      this.#home.focus({focusVisible: true})
+      vsApp.emit('menu:opened')
     } else {
-      this.#morphEl.style.display = 'none'
       this.#headerToggle.focus({focusVisible: true})
-      if (goto) {
-        this.goto(goto)
-      }
+      vsApp.emit('menu:closed')
     }
   }
 
@@ -152,20 +141,20 @@ export default class OffcanvasMenu {
     }, 400)
   }
 
-  #close(goto) {
+  #close() {
     this.#headerToggle.classList.remove('opened')
     this.#freezeFrame.toggleViewportFreeze()
     this.#scrollTop.style.display = 'block'
     this.#headerToggle.setAttribute('aria-expanded', false)
     this.#morphEl.style.display = 'block'
     this.#header.classList.remove('open')
-    this.#animate(0, this.#stepsOut, goto)
+    this.#animate(0, this.#stepsOut)
     setTimeout(() => {
       this.#menuWrap.classList.remove('open')
     }, 400)
   }
 
-  toggleMenuHandler() {
+  togglemenuHandler() {
     if (this.isOpen) {
       this.#close()
     } else {

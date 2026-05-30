@@ -2,7 +2,7 @@
 id: about
 displayOrder: 1
 ---
-{% import "../include/page-components/parts.html" as insert %}
+{% import "../include/page-components/headings.html" as insert %}
 {% import "../include/page-components/accordion.html" as acc %}
 <!-- About Section -->
 <section id="about">
