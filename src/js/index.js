@@ -1,3 +1,4 @@
+import { Pagination, Navigation } from 'swiper/modules';
 import vsApp from './VirtualStyleApp.js'
 import initApp from './initApp.js'
 
@@ -25,15 +26,24 @@ const sections = document.querySelectorAll('section')
 const animationSections = document.querySelectorAll('section, .animate-section')
 const setAnimateVisible = true
 
-const swiperEls = document.querySelector('.testimonials-slider.swiper')
+const swiperEls = document.querySelectorAll('.swiper')
+
 const swiperOptions = {
-  loop: true,
+  modules: [Pagination, Navigation],
+  passiveListeners: true,
   speed: 600,
-  autoplay: {
-    delay: 5000,
-  },
+  autoHeight: true,
   slidesPerView: 1,
-  spaceBetween: 30,
+  effect: 'cards',
+  cardsEffect: {
+    perSlideOffset: 8,
+    perSlideRotate: 2,
+    rotate: true,
+    slideShadows: true,
+  },
+  grabCursor: true,
+  observer: true,
+  observeParents: true,
   pagination: {
     el: '.swiper-pagination',
     type: 'bullets',
@@ -46,7 +56,14 @@ const swiperOptions = {
 }
 
 const glightboxOptions = {
-  selector: '.glightbox'
+  selector: '.glightbox',
+  openEffect: 'zoom',
+  closeEffect: 'fade',
+  cssEfects: {
+    // This are some of the animations included, no need to overwrite
+    fade: { in: 'fadeIn', out: 'fadeOut' },
+    zoom: { in: 'zoomIn', out: 'zoomOut' }
+  }
 }
 
 const setTooltips = true
@@ -99,12 +116,27 @@ window.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('load', () => {
   vsApp.emit('window:loaded')
 
+  document.querySelectorAll('.portfolio-image').forEach(el => {
+    el.addEventListener('click', (e) => {
+      const link = el.querySelector('.action-btn.details-btn')
+      if (link && e.target.closest('.action-btn') === null) {
+        link.click()
+      }
+    })
+  })
+
   // document.querySelectorAll('.btn').forEach(el => el.addEventListener('click', (e) => {
   //   e.preventDefault()
   // }))
 
-  vsApp.scroller = document.getElementById('main')
-  /*setTimeout(() => {
-    vsApp.locateAnchors(sections)
-  }, 2000)*/
 })
+
+// let cls = 0;
+// new PerformanceObserver((entryList) => {
+//   for (const entry of entryList.getEntries()) {
+//     if (!entry.hadRecentInput) {
+//       cls += entry.value;
+//       console.log('Current CLS value:', cls, entry);
+//     }
+//   }
+// }).observe({type: 'layout-shift', buffered: true});

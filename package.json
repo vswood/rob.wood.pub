@@ -18,6 +18,7 @@
     "build-dev": "ELEVENTY_ENV=dev eleventy",
     "dev": "ELEVENTY_ENV=dev eleventy --serve",
     "devb": "DEBUG=Eleventy:Benchmark* ELEVENTY_ENV=dev eleventy --serve",
+    "devdb": "DEBUG=Eleventy:* ELEVENTY_ENV=dev eleventy --serve",
     "devc": "ELEVENTY_ENV=dev npx --node-options=\"--cpu-prof\" eleventy --serve --quiet",
     "stage": "ELEVENTY_ENV=prod eleventy --serve",
     "docshtml": "documentation build src/** --config documentation.yml -f html -o docs/rob.wood.pub/html/",
@@ -96,7 +97,7 @@
     "vitest": "^4.1.7",
     "vitest-monocart-coverage": "^4.0.2"
   },
-  "packageManager": "pnpm@11.4.0",
+  "packageManager": "pnpm@11.5.0",
   "dependencies": {
     "@alphanull/visionplayer": "^1.3.0",
     "@mocks-server/config": "^1.4.1",

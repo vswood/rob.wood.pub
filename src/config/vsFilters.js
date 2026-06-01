@@ -16,6 +16,14 @@ export default function(eleventyConfig) {
     return new CleanCSS({}).minify(code).styles
   })
 
+  eleventyConfig.addFilter("findIndex", (array, key, value) => {
+    let found =  array.findIndex(item => item[key] === value)
+    if (!found) {
+      found = 0
+    }
+    return found
+  })
+
   const jsMinCache = {}
   eleventyConfig.addNunjucksAsyncFilter('jsmin', async function (code, callback) {
     try {

@@ -43,7 +43,7 @@ export default function initApp({
     }
 
     if(swiperEls.length > 0) {
-      initSwiper(swiperOptions)
+      initSwiper(swiperEls, swiperOptions)
     }
   }
 

@@ -6,20 +6,17 @@ import postcssClassApply from 'postcss-class-apply/dist/index.js'
 import cssnano from 'cssnano'
 import discardComments from 'postcss-discard-comments'
 import purgeCSSPlugin from '@fullhuman/postcss-purgecss'
+import purgecssConfig from './purgecss.config.js'
 import { glob } from 'glob'
 
 const config = {
   plugins: [
+    discardComments,
     postcssImport,
     postcssUrl,
     postcssNested,
-    discardComments,
     postcssClassApply,
-    purgeCSSPlugin({
-      content: glob.sync(`./src/**/*`, { nodir: true }),
-      rejected: true,
-      rejectedCss: true,
-    }),
+    purgeCSSPlugin(purgecssConfig),
     autoprefixer,
     cssnano({preset: 'default'}),
   ],

@@ -1,0 +1,5 @@
+@import url(bootstrap/dist/css/bootstrap.min.css) layer(external);
+@import url(glightbox/dist/css/glightbox.min.css) layer(external);
+@import url(swiper/swiper-bundle.css) layer(external);
+@import url(open-props/palette.min.css) layer(external);
+@import url(lenis/dist/lenis.css) layer(external);

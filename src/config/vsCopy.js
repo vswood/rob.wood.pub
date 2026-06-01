@@ -2,7 +2,7 @@ import {cpSync, copyFileSync} from 'node:fs'
 import {join} from 'node:path'
 
 export default function(eleventyConfig) {
-  eleventyConfig.addPassthroughCopy('src/css/*.css')
+  eleventyConfig.addPassthroughCopy('src/css')
   eleventyConfig.addPassthroughCopy('src/js')
   eleventyConfig.addPassthroughCopy('src/img')
   // eleventyConfig.addPassthroughCopy('src/media')

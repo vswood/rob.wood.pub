@@ -15,8 +15,8 @@ export default function (eleventyConfig) {
 
   eleventyConfig.setServerPassthroughCopyBehavior('copy')
 
-  eleventyConfig.setQuietMode(true);
-	eleventyConfig.addPlugin(dirOutputPlugin)
+  // eleventyConfig.setQuietMode(true);
+	// eleventyConfig.addPlugin(dirOutputPlugin)
 
   eleventyConfig.setServerOptions({
     port: 8081,
