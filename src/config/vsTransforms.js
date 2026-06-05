@@ -1,17 +1,16 @@
 
-import {eleventyImageTransformPlugin} from '@11ty/eleventy-img'
+import Image from '@11ty/eleventy-img'
 import htmlmin from 'html-minifier-terser'
 import {parse} from 'node:path'
 
 
-const isProd = process.env.ELEVENTY_ENV === "prod"
+const isProd = process.env.ELEVENTY_ENV === ' prod'
 
 export default function(eleventyConfig) {
 
   if(isProd) {
 
     eleventyConfig.addTransform('htmlmin', function (content) {
-      // String conversion to handle `permalink: false`
       if ((this.page.outputPath || '').endsWith('.html') && !this.page.outputPath.includes('single-page')) {
         let minified = htmlmin.minify(content, {
           useShortDoctype: true,
@@ -26,21 +25,53 @@ export default function(eleventyConfig) {
 
   }
 
-  eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
+    eleventyConfig.addShortcode(' image' , async function (src, alt, widths = [300, 600], sizes = ' ' ) {
+      return Image(src, {
+        widths,
+        formats: [' avif' , ' jpeg' ],
+        returnType: ' html' ,
+        transformOnRequest: !isProd,
+        htmlOptions: {
+          imgAttributes: {
+            alt,
+            sizes,
+            loading: ' lazy' ,
+            decoding: ' async' ,
+          }
+        }
+      })
+    })
+
+    eleventyConfig.addShortcode('img', function imageShortcode(src, cls, alt, widths = [300, 600, 'auto'], sizes = '100vh') {
+      let options = {
+        widths,
+        formats: ['avif'],
+      };
+
+      // generate images: this is async but we don’t wait
+      Image(src, options);
+
+      let imageAttributes = {
+        class: cls,
+        alt,
+        sizes,
+        loading: 'lazy',
+        decoding: 'async',
+      };
+      // get metadata even if the images are not fully generated yet
+      let metadata = Image.statsSync(src, options);
+      return Image.generateHTML(metadata, imageAttributes);
+    })
+
+  /* eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
     urlPath: '/img/built/',
     extensions: 'html',
     outputDir: '.cache/@11ty/img/',
-    failOnError: false,
-    transformOnRequest: true,
+    failOnError: true,
+    transformOnRequest: !isProd,
     svgShortCircuit: true,
-    // output image formats
-    formats: ['svg', 'avif', 'webp', 'jpeg'],
-
-    // output image widths
-    // widths: ['auto'],
-    widths: [320, 570, 880, 1024, 1248],
-
-    // optional, attributes assigned on <img> nodes override these values
+    formats: ['avif'],
+    widths: [320, 570, 1024, auto],
     htmlOptions: {
       imgAttributes: {
         loading: 'lazy',
@@ -52,6 +83,6 @@ export default function(eleventyConfig) {
       const {name} = parse(src)
       return `${name}-${width}w.${format}`
     },
-  })
+  }) */
 
 }

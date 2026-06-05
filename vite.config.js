@@ -33,7 +33,6 @@ export default {
     }),
   ],
   clearScreen: false,
-  // assetsInclude: ['**/*.xml', '**/*.txt'],
   mode: 'production',
   optimizeDeps: {
     include: [
@@ -59,12 +58,7 @@ export default {
       '@css': resolve(__dirname, './src/css'),
       '@js': resolve(__dirname, './src/js'),
       '@img': resolve(__dirname, './src/img'),
-      '@media': resolve(__dirname, './src/media'),
       '@html': resolve(__dirname, './src/html'),
-      '@sb': resolve(__dirname, './src/stories'),
-      '~bootstrap': resolve(__dirname, './node_modules/bootstrap'),
-      '~nm': resolve(__dirname, './node_modules'),
-      'snapsvg': resolve(__dirname, './node_modules/snapsvg/dist/snap.svg.js'),
     },
   },
   server: {mode: 'development', middlewareMode: true},

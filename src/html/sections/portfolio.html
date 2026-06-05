@@ -3,7 +3,6 @@ id: portfolio
 displayOrder: 5
 ---
 {% import "../include/page-components/headings.html" as insert %}
-{% import "../include/page-components/portfolio.html" as work %}
 <section id="portfolio">
 
   <div class="container">
@@ -12,10 +11,10 @@ displayOrder: 5
     </div>
 
     <div class="fluid-grid">
+    {% for item in portfolio %}
+      {% renderFile "src/html/include/page-components/portfolio.liquid", item, "liquid" %}
+    {% endfor %}
 
-      {% for item in portfolio %}
-        {{work.portfolioItem(item.coverImage.name, item.coverImage.alt, item.project, item.brief, item.year, item.description, item.tags, item.images, item.projectStructure, item.codeSamples, item.documentationSamples, item.projectNarrative) | safe}}
-      {% endfor %}
 
     </div>
 

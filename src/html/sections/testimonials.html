@@ -16,7 +16,7 @@ displayOrder: 7
       <div class="swiper-wrapper">
 
         {% for item in testimonials %}
-          {{ gen.testimonial(item.name, item.position, item.testimonial, item.avatar) }}
+          {{ gen.testimonial(item.name, item.position, item.company, item.testimonial, item.avatar) }}
         {% endfor %}
 
       </div>

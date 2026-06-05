@@ -253,7 +253,7 @@
         "alt": "SaaS landing page for the Materials Generator platform with custom tenant branding."
       },
       {
-        "name": "m4c-materials-generator-template-editor-templates-page.png",
+        "name": "m4c-materials-generator-admin-templates.png",
         "alt": "Administrative dashboard for managing and editing campaign document templates."
       },
       {
@@ -265,7 +265,7 @@
         "alt": "Collage of different questionnaire user interfaces customized per client tenant."
       },
       {
-        "name": "m4c-materials-generator-template-editor-questionnaire-editor-page.png",
+        "name": "m4c-materials-generator-admin-edit.png",
         "alt": "Template editor and questionnaire configuration dashboard for administrative managers."
       },
       {
@@ -287,10 +287,6 @@
       {
         "name": "m4c-materials-generator-options-modal-full-size.png",
         "alt": "Visual selection modal providing pre-approved copywriting and photography choices."
-      },
-      {
-        "name": "m4c-materials-generator-options-modal-collage.png",
-        "alt": "Collage of customization option panels offering tailored assets for user selections."
       }
     ],
     "projectNarrative": "# M4C Materials Generator: Multi-Tenant Serverless SaaS\n\n## Strategic Challenge\nMarketing for Change Co., a behavioral change creative agency, spent significant engineering resources building bespoke, custom websites and downloadable materials for every individual public safety and public health campaign they won. This agency model had zero leverage: high development costs, slow delivery speeds, and rising maintenance burdens for each unique client campaign. The strategic need was clear—transform one-off campaign builds into a scalable, multi-tenant software product with recurring SaaS revenue.\n\n## Architectural Design\nDesigned, architected, and fully developed from scratch, the Materials Generator was built to be a robust, zero-maintenance SaaS application using a modern, serverless cloud architecture.\n\nKey technological pillars included:\n* **Serverless Scale & Low Costs**: Deployed on AWS Lambda, Amazon API Gateway, and DynamoDB. Operational costs were virtually zero when idle, yet scaled instantly to handle heavy public campaigns.\n* **Automated Multi-Tenant Skinning**: Created a dynamic system where new tenants (such as state 988 helplines or national coalitions) could be provisioned in minutes. The front-end automatically loaded customized fonts, colors, and logos based on the request domain.\n* **Proprietary Canvas and Layout Engine**: Built an in-browser layout engine using React and Canvas that allowed users to preview, edit, and compile complex print-ready PDFs without overlapping text or breaking brand guidelines.\n\n## Business Impact\nAs the company's first recurring-revenue SaaS product, the Materials Generator drove a fundamental cultural and operational transformation in the engineering team, steering them from a manual agency model toward a product-driven organization. The system became highly successful, instantly supporting crucial initiatives including the Central Maryland 988 Helpline, Home Fire Sprinkler Coalition, and multiple state campaigns, providing the agency with durable software leverage and clean recurring revenue."

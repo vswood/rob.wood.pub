@@ -1,29 +1,22 @@
 import vsEleventyPlugin from './src/config/vsEleventyPlugin.js'
 import pluginWebc from '@11ty/eleventy-plugin-webc'
 import dirOutputPlugin from '@11ty/eleventy-plugin-directory-output'
+import ejsPlugin from '@11ty/eleventy-plugin-ejs'
 
 export default function (eleventyConfig) {
 
-  eleventyConfig.addPlugin(vsEleventyPlugin)
+  eleventyConfig.addPlugin(ejsPlugin)
 
-  // eleventyConfig.addBundle("css")
-  // eleventyConfig.addBundle("js")
+  eleventyConfig.addPlugin(vsEleventyPlugin)
 
   eleventyConfig.addPlugin(pluginWebc, {
     components: ['./src/html/component/**/*.webc'],
   })
 
-  eleventyConfig.setServerPassthroughCopyBehavior('copy')
-
-  // eleventyConfig.setQuietMode(true);
-	// eleventyConfig.addPlugin(dirOutputPlugin)
+  // eleventyConfig.setServerPassthroughCopyBehavior('copy')
 
   eleventyConfig.setServerOptions({
     port: 8081,
-    /*https: {
-      key: './.ssl/localhost.key',
-      cert: './.ssl/localhost.cert',
-    },*/
   })
 
   return {
@@ -31,7 +24,6 @@ export default function (eleventyConfig) {
     htmlTemplateEngine: 'njk',
     markdownTemplateEngine: 'njk',
     dataTemplateEngine: 'njk',
-    // passthroughFileCopy: true,
     dir: {
       input: 'src',
       output: 'dist',

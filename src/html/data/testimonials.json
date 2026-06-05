@@ -39,35 +39,35 @@
     "name": "Brian Williams",
     "position": "Owner",
     "company": "Custom Dynamic Graphs",
-    "testimonial": "Rob has been very capable and efficient on all projects he's worked on for us. We would HIGHLY RECOMMEND his services!",
+    "testimonial": "<p>Rob has been very capable and efficient on all projects he's worked on for us. We would HIGHLY RECOMMEND his services!</p>",
     "avatar": "icon-avatar-4"
   },
   {
     "name": "Mark Endres",
     "position": "Owner",
     "company": "Rx Card",
-    "testimonial": "Rob did a very good job for me, creating a membership card, etc. He is good at what he does, and I would recommend him for your project.",
+    "testimonial": "<p>Rob did a very good job for me, creating a membership card, etc. He is good at what he does, and I would recommend him for your project.</p>",
     "avatar": "icon-avatar-5"
   },
   {
     "name": "Tim Flatt",
     "position": "Owner",
     "company": "Customized Affiliate Software Tracking",
-    "testimonial": "Fast, efficient and does the job right",
+    "testimonial": "<p>Fast, efficient and does the job right.</p>",
     "avatar": "icon-avatar-6"
   },
   {
     "name": "Michael Sole",
     "position": "Owner",
     "company": "PHP Reporting Portal",
-    "testimonial": "Robert is an excellent resource and I highly recommend him.",
+    "testimonial": "<p>Robert is an excellent resource and I highly recommend him.</p>",
     "avatar": "icon-avatar-7"
   },
   {
     "name": "Storm Edwards",
     "position": "Owner",
     "company": " Battlewang",
-    "testimonial": "Great job on this project. Will more than likely be working with Robert again on a much larger project. The job was completed 2 days early which was a big + for me. I would definitely recommend him.",
+    "testimonial": "<p>Great job on this project. Will more than likely be working with Robert again on a much larger project. The job was completed 2 days early which was a big + for me. I would definitely recommend him.</p>",
     "avatar": "icon-avatar-8"
   }
 ]

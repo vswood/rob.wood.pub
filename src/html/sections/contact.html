@@ -41,8 +41,7 @@ displayOrder: 8
               <span class="topic-title"><b>Email</b> me</span>
               <span class="detail-value">
                 <span id="eml"></span>
-                <script
-                  type='text/javascript'>const p = (a) => {return a.join('')}; const e = new Array(['&#x75;', '&#x73;',], ['&#x72;', '&#x6F;', '&#x62;',], ['&#x76;', '&#x69;', '&#x72;', '&#x74;', '&#x75;', '&#x61;', '&#x6C;', '&#x73;', '&#x74;', '&#x79;', '&#x6C;', '&#x65;',], ['&#x40;',], ['&#x2E;',],); document.getElementById('eml').innerHTML = "<a href='mailto:" + p(e[1]) + p(e[3]) + p(e[2]) + p(e[4]) + p(e[0]) + "'>" + p(e[1]) + p(e[3]) + p(e[2]) + p(e[4]) + p(e[0]) + "</a>";</script>
+                <script>const p = (a) => {return a.join('')}; const e = new Array(['&#x75;', '&#x73;',], ['&#x72;', '&#x6F;', '&#x62;',], ['&#x76;', '&#x69;', '&#x72;', '&#x74;', '&#x75;', '&#x61;', '&#x6C;', '&#x73;', '&#x74;', '&#x79;', '&#x6C;', '&#x65;',], ['&#x40;',], ['&#x2E;',],); document.getElementById('eml').innerHTML = "<a href='mailto:" + p(e[1]) + p(e[3]) + p(e[2]) + p(e[4]) + p(e[0]) + "'>" + p(e[1]) + p(e[3]) + p(e[2]) + p(e[4]) + p(e[0]) + "</a>";</script>
               </span>
             </div>
           </div>
@@ -93,7 +92,7 @@ displayOrder: 8
 
                   <div class="form-floating mb-3">
                     <input type="email" name="email" class="form-control" id="input-email" aria-describedby="help-email"
-                      required="" placeholder="">
+                      required placeholder="" autocomplete="email">
                     <label for="input-email" class="form-label">Email address</label>
                   </div>
                   <div class="invalid-feedback">
@@ -106,8 +105,8 @@ displayOrder: 8
                 <div class="col-lg-6 form-col">
 
                   <div class="form-floating mb-3">
-                    <input type="phone" name="phone" class="form-control" id="input-name" aria-describedby="help-name"
-                      required="" placeholder="">
+                    <input type="text" name="name" class="form-control" id="input-name" aria-describedby="help-name"
+                      required placeholder="" autocomplete="name">
                     <label for="input-name" class="form-label">
                       <span class="hint">Full name</span>
                       <span class="invalid">Invalid name</span>
@@ -115,9 +114,9 @@ displayOrder: 8
                     </label>
                   </div>
                   <div class="invalid-feedback">
-                    You must enter a name with your message.
+                    You must enter a full name with your message.
                   </div>
-                  <div id="help-name" class="form-text">Enter your full name - preferred name plus surname</div>
+                  <div id="help-name" class="form-text">Enter your full name - preferred name plus family name</div>
 
                 </div>
 
@@ -128,7 +127,7 @@ displayOrder: 8
 
                   <div class="form-floating mb-3">
                     <input type="text" name="subject" class="form-control" id="input-subject"
-                      aria-describedby="help-subject" required="" placeholder="">
+                      aria-describedby="help-subject" required placeholder="">
                     <label for="input-subject" class="form-label">Subject</label>
                   </div>
                   <div class="invalid-feedback">
@@ -142,7 +141,7 @@ displayOrder: 8
 
                   <div class="form-floating mb-3">
                     <input type="text" name="company" class="form-control" id="input-company"
-                      aria-describedby="help-company" required="" placeholder="">
+                      aria-describedby="help-company" required placeholder="" autocomplete="organization">
                     <label for="input-company" class="form-label">Company name</label>
                   </div>
                   <div class="invalid-feedback">
@@ -158,7 +157,7 @@ displayOrder: 8
                 <div class="col-lg-6 form-col">
                   <div class="form-floating mb-3">
                     <textarea style="height:15lh" name="message" class="form-control" id="input-message"
-                      aria-describedby="help-message" required="" placeholder=""></textarea>
+                      aria-describedby="help-message" required placeholder=""></textarea>
                     <label for="input-message" class="form-label textarea">Message</label>
                   </div>
                   <div class="invalid-feedback">
@@ -171,13 +170,20 @@ displayOrder: 8
 
                   <div class="form-floating mb-3">
                     <input type="tel" name="name" class="form-control" id="input-phone" aria-describedby="help-phone"
-                      required="" placeholder="">
+                      required placeholder="" autocomplete="phone">
                     <label for="input-phone" class="form-label">Phone number</label>
                   </div>
                   <div class="invalid-feedback">
                     You must enter a valid phone number with your message.
                   </div>
                   <div id="help-phone" class="form-text">Enter your phone number</div>
+
+                  <div class="form-floating mb-3">
+                    <input type="text" name="url" class="form-control" id="input-url" aria-describedby="help-url"
+                     placeholder="" autocomplete="url">
+                    <label for="input-url" class="form-label">Website URL</label>
+                  </div>
+                  <div id="help-phone" class="form-text">Enter your website URL, if you have one</div>
 
                   <div class="actions">
                     <button type="submit" class="btn btn-primary">

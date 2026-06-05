@@ -1,5 +1,4 @@
-{% macro portfolioItem(coverImage, alt, project, brief, year, description, tags, images, projectStructure, codeSamples, documentationSamples, projectNarrative) %}
-{% set projectSlug = project | slugify %}
+{% assign projectSlug = project | slugify %}
 <div class="portfolio-item">
   <div class="portfolio-card">
     <div class="portfolio-content">
@@ -10,12 +9,12 @@
       <h3 class="topic-subtitle portfolio-brief">{{brief}}</h3>
     </div>
     <div class="portfolio-image">
-      <img src="../img/portfolio/{{projectSlug}}/images/thumbs/{{coverImage}}" class="img-fluid" alt="{{alt}}"
+      <img src="../img/portfolio/{{projectSlug}}/images/thumbs/{{coverImage.name}}" class="img-fluid" alt="{{coverImage.alt}}"
         loading="lazy">
       <div class="portfolio-overlay">
         <div class="portfolio-actions">
           <a href="../img/portfolio/{{projectSlug}}/images/{{images[0].name}}" class="glightbox action-btn preview-btn"
-            title="{{project}} Project Photo Gallery" data-gallery="{{projectSlug}}">
+            title="{{project}} - {{images[0].alt}}" data-gallery="{{projectSlug}}">
             {% icon "gallery", '{ "width": "48", "height": "48" }' %}
           </a>
           <!-- <a href="portfolio-details.html" class="action-btn details-btn" title="View Project">
@@ -27,14 +26,13 @@
     <div class="portfolio-content">
       <p class="portfolio-description">{{description}}</p>
       <div class="tags-container">
-        <span class="tag">{{tags | join("</span><span class=\"tag\">") | safe}}</span>
+        <span class="tag">{{tags | join: "</span><span class=\"tag\">" | raw}}</span>
       </div>
     </div>
   </div>
-  {% for img in images.slice(1) %}
+  {% for img in images offset: 1 %}
   <a href="../img/portfolio/{{projectSlug}}/images/{{img.name}}" class="glightbox hidden-slide" data-gallery="{{projectSlug}}" title="{{project}} - {{img.alt}}">
-    <img src="../img/portfolio/{{projectSlug}}/images/thumbs/{{img.name}}" alt="{img.alt}">
+    <img src="../img/portfolio/{{projectSlug}}/images/thumbs/{{img.name}}" alt="{{img.alt}}">
   </a>
   {% endfor %}
 </div>
-{% endmacro %}

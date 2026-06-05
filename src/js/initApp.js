@@ -45,29 +45,29 @@ export default function initApp({
     if(swiperEls.length > 0) {
       initSwiper(swiperEls, swiperOptions)
     }
+
+    if(setAnimateVisible && animationSections.length > 0) {
+      animateVisible(animationSections)
+    }
+
+    if(setScreensaver) {
+      window.lss = new LottieScreensaver()
+    }
+
+    if(setGsap) {
+     initGsap(gsapPlugins)
+    }
+
+    if(setLenis) {
+     initLenis(lenisOptions, scrollbarColor, scrollbarActiveColor)
+    }
   }
 
   if(Object.keys(glightboxOptions).length > 0) {
     initLightbox(glightboxOptions)
   }
 
-  if(setAnimateVisible && animationSections.length > 0) {
-    animateVisible(animationSections)
-  }
-
-  if(setScreensaver) {
-    window.lss = new LottieScreensaver()
-  }
-
   if(setScrollTop) {
     window.scrollTop = new ScrollTop('#scroll-top', 'main')
-  }
-
-  if(setLenis) {
-   initLenis(lenisOptions, scrollbarColor, scrollbarActiveColor)
-  }
-
-  if(setGsap) {
-   initGsap(gsapPlugins)
   }
 }

@@ -70,8 +70,8 @@
   --surface-inset-shadow-2: rgba(0, 0, 0, 0.28) 0px 2px 4px 0px inset;
   --surface-inset-shadow: inset 3px 3px 2px -1px rgba(21,31,43,0.42),
     inset -3px -3px 2px -1px rgba(75,96,127,0.22);
-  --surface-inset-shadow-reverse: inset 1px 1px 1px 1px rgba(21,31,43,0.92),
-      inset 0px 0px 1px 1px rgba(75,96,127,0.72), rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  --surface-inset-shadow-reverse: inset 1px 1px 1px 1px rgba(21,31,43,0.22),
+      inset 0px 0px 1px 1px rgba(75,96,127,0.32), rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
   --transform-colors-transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
   --content-transition: content-visibility 0.33s allow-discrete, opacity 0.33s, block-size 0.33s;
@@ -82,10 +82,10 @@
   --border-1-subtle-trans-70: 1px solid color-mix(in oklch, var(--subtle), transparent 70%);
   --border-1-subtle-trans-50: 1px solid color-mix(in oklch, var(--subtle), transparent 50%);
 
-  --image-shadow: inset 12px 12px 7px 0px #0000004d, 12px 12px 7px 0px #0000004d;
+  --image-shadow: inset 12px 12px 7px 0px #0000002d, 12px 12px 7px 0px #0000002d;
   --image-shadow-2: 0 20px 60px color-mix(in srgb, var(--heading-color), transparent 85%);
 
-  --image-inset: inset 12px 12px 7px 0px #0000004d, inset -12px -12px 7px 0px #0000004d;
+  --image-inset: inset 12px 12px 7px 0px #0000002d, inset -12px -12px 7px 0px #0000002d;
 
   --section-shadow:  -2px -3px 6px 1px #151f2bcc, inset 3px 2px 6px 1px #151f2bcc;
 

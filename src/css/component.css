@@ -296,7 +296,7 @@
       margin: 0;
       position: fixed;
       bottom: 5px;
-      left: 5px;
+      left: 10px;
       z-index: 999999999;
 
       --line-1: 60 207;
@@ -515,7 +515,7 @@
     padding: 0;
     position: relative;
     top: 0;
-    width: 100%;
+    width: 85%;
     transition: var(--content-transition);
     box-shadow: var(--surface-inset-shadow);
 
@@ -692,6 +692,16 @@
     color: var(--text-color) !important;
   }
 
+  .form-floating:has(> :required ) + * + .form-text::after {
+    font-size: var(--large);
+    content: " *";
+    line-height: 1cap;
+    color: var(--accent-2);
+    position: relative;
+    top: 6px;
+    font-weight: 800;
+  }
+
   .form-header {
     margin-bottom: 1lh;
     margin-left: 1ch;
@@ -740,15 +750,6 @@
     .form-group {
       margin-bottom: 1lh;
 
-    /*  label {
-        display: block;
-        font-size: var(--medium);;
-        font-weight: 500;
-        color: var(--heading-color);
-        margin-bottom: 0;
-        letter-spacing: 1px;
-      } */
-
       textarea,
       input,
       select,
@@ -788,7 +789,6 @@
         line-height: 1.2;
       }
     }
-
 
     label.form-label .invalid {
       display: none;
@@ -1009,16 +1009,9 @@
       }
 
       &:hover,
-      .active,
-      :focus {
+      &.active,
+      &:focus-visible {
         color: var(--accent-2);
-        .navicon {
-          color: var(--accent-2);
-        }
-      }
-
-      .navicon {
-        margin-right: 10px;
       }
 
       svg {
@@ -1043,7 +1036,7 @@
     height: fit-content;
     width: fit-content;
     padding: 0.5lh 1ch;
-    right: 5px;
+    right: 10px;
     bottom: -5px;
     z-index: 99999;
     background-color: var(--accent-color);

@@ -6,6 +6,7 @@
     /* background: var(--bg-gradient); */
     /* background-blend-mode: multiply; */
     max-width: 100%;
+    min-height: 100vh;
     padding: 4lh 0;
     display: flex;
     justify-content: center;
@@ -62,7 +63,7 @@
   #body-wrapper {
     height: 100%;
     position: relative;
-    transition: transform 0.35s ease-in-out;
+    /* transition: transform 0.35s ease-in-out; */
     transform-style: preserve-3d;
     perspective: 1500px;
 

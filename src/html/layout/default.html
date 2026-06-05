@@ -6,6 +6,14 @@
     #body-wrapper {
       visibility: hidden;
     }
+    .no-js {
+      #vs-preloader {
+        display: none !important;
+      }
+      #body-wrapper {
+        visibility: visible;
+      }
+    }
   </style>
 
   {% include "../include/common/head/meta-info.html" %}
@@ -21,6 +29,7 @@
 </head>
 
 <body>
+  <script>document.body.classList.remove('no-js')</script>
   {% renderTemplate "webc" %}
   <vs-simple-loader id="vs-simple-loader"></vs-simple-loader>
   {% endrenderTemplate %}
@@ -63,17 +72,6 @@
 
   {% include "../../../src-assets/icons/_sprite.svg"  %}
   {% include "../include/avatar-sprite.html"  %}
-  <noscript>
-    <style>
-        #vs-preloader {
-          display: none !important;
-        }
-        #body-wrapper {
-          visibility: hidden;
-          /* content-visibility: visible; */
-        }
-    </style>
-  </noscript></div>
 </body>
 
 </html>

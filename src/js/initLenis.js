@@ -23,6 +23,19 @@ export default function initLenis(lenisOptions, scrollBarColor, scrollbarActiveC
     }
   })
 
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault()
+
+      const targetId = this.getAttribute('href')
+      const targetElement = document.querySelector(targetId)
+
+      if (targetElement) {
+        lenis.scrollTo(targetElement)
+      }
+    })
+  })
+
   window.lenis.on('scroll', ScrollTrigger.update)
 
   gsap.ticker.add((time) => {

@@ -5,6 +5,9 @@
 
 _junk/
 
+.wrangler
+.dev.vars*
+
 !.env.example
 !.yarn/patches
 !.yarn/plugins

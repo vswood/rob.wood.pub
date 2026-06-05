@@ -6,7 +6,7 @@
 
     <div class="social-links d-flex justify-content-center">
       {% for item in social %}
-        <a href="{{item.link}}" target="_blank" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-placement="top" data-bs-delay='{"show":400,"hide":150}' data-bs-title="{{item.description}}" aria-label="{{item.description}}">
+        <a href="{{item.link}}" target="_blank" data-bs-toggle="tooltip" data-bs-custom-class="custom-tooltip" data-bs-placement="top" data-bs-delay='{"show":400,"hide":150}' data-bs-title="{{item.description}}"data-bs-offset="12px" aria-label="{{item.description}}">
             {% icon item.iconid, '{ "width": "16", "height": "16" }' %}
           <span class="visually-hidden">{{item.text}}</span>
         </a>

@@ -1,6 +1,7 @@
 import { Pagination, Navigation } from 'swiper/modules';
 import vsApp from './VirtualStyleApp.js'
 import initApp from './initApp.js'
+import $ from 'jquery'
 
 window.vsApp = vsApp
 
@@ -23,7 +24,7 @@ const offCanvasMenuOptions = {
 
 const sections = document.querySelectorAll('section')
 
-const animationSections = document.querySelectorAll('section, .animate-section')
+const animationSections = document.querySelectorAll('section')
 const setAnimateVisible = true
 
 const swiperEls = document.querySelectorAll('.swiper')
@@ -80,8 +81,14 @@ const lenisOptions = {
   eventsTarget: document.getElementById('main'),
   content: document.getElementById('main'),
   syncTouch: true,
+  smooth: true,
   smoothWheel: true,
+  wheelMultiplier: 1.2,
+  touchMultiplier: 1.5,
   stopInertiaOnNavigate: true,
+  anchors: true,
+  duration: 1.2,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
 
 }
 const gsapPlugins = [
@@ -103,7 +110,7 @@ window.addEventListener('DOMContentLoaded', () => {
     counterOptions,
     setScreensaver: true,
     setScrollTop: true,
-    setLenis: false,
+    setLenis: true,
     lenisOptions,
     scrollbarColor,
     scrollbarActiveColor,
@@ -124,6 +131,17 @@ window.addEventListener('load', () => {
       }
     })
   })
+
+
+  window.addEventListener('section:visible', (e) => {
+    const section = e.detail
+    if(section.id) {
+      $('#navmenu a').removeClass('active')
+      $(`#${section.id}-link`).addClass('active')
+    }
+  })
+
+  window.ScrollTrigger.refresh()
 
   // document.querySelectorAll('.btn').forEach(el => el.addEventListener('click', (e) => {
   //   e.preventDefault()

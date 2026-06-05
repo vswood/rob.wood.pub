@@ -2,6 +2,7 @@ import Snap from 'snapsvg'
 import vsApp from './VirtualStyleApp.js'
 import FreezeFrame from './FreezeFrame.js'
 import FocusTrap from './FocusTrap.js'
+import $ from 'jquery'
 
 export default class OffcanvasMenu {
   #home
@@ -24,7 +25,7 @@ export default class OffcanvasMenu {
     'M-7.312,0l12.312,0c0,0 2,130.839 2,417c0,264.506 -2,383 -2,383l-12.312,0l0,-800Z',
   ]
   #focusTrap
-  #menuToggleDisableDuration = 1500
+  #menuToggleDisableDuration = 1150
 
   constructor({
     headerToggle,
@@ -62,20 +63,19 @@ export default class OffcanvasMenu {
   #initEvents() {
     this.#bodyWrapper.addEventListener('click', (e) => {
       var target = e.target
-      if (this.isOpen && target !== document.querySelector('.header-toggle') && !document.querySelector('.menu-wrap').contains(target) && this.#headerToggle.disabled === false) {
+      if ($(this.#headerToggle).css('display') !== 'none' && this.isOpen && target !== document.querySelector('.header-toggle') && !document.querySelector('.menu-wrap').contains(target) && this.#headerToggle.disabled === false) {
         this.#close()
       }
     })
 
     document.addEventListener('keydown', (e) => {
-      if (this.isOpen && e.key === 'Escape' && this.#headerToggle.disabled === false) {
+      if ($(this.#headerToggle).css('display') !== 'none' && this.isOpen && e.key === 'Escape' && this.#headerToggle.disabled === false) {
         this.#close()
       }
     })
 
     document.querySelectorAll('.navmenu a').forEach(el => el.addEventListener('click', (e) => {
-      if (window.location.hash && document.querySelector(window.location.hash)) {
-        e.preventDefault()
+      if ($(this.#headerToggle).css('display') !== 'none' &&window.location.hash && document.querySelector(window.location.hash)) {
         this.#close()
       }
     }))
