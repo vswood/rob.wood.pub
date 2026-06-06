@@ -1,31 +1,41 @@
 ---
 id: resume
 displayOrder: 4
+tags:
+  - sections
+permalink: /resume.html
+layout: section.html
+curnav: resume
 ---
 {% import "../include/page-components/headings.html" as insert %}
 <section id="resume">
+
   <div class="container">
 
-    <div class="section-heading-alt">
+    <div class="section-heading-alt resume-1">
       {{insert.pageHeading("", "Resume", "", "", "Curriculum Vitae")}}
     </div>
     <div class="copy-wrapper">
 
-      <h3 class="topic-title"><b>Senior Full Stack</b> Software Engineer</h3>
-      <p class="topic-subtitle">Scalable Cloud & Performance Architect</p>
-      <p>
-        Senior engineering leader, founder, and consultant with 20+ years of experience modernizing legacy systems, building scalable AWS Cloud Platforms, and transforming underperforming teams into High-Velocity Product Organizations.
-      </p>
-      <p>Trusted by global enterprises—including Netflix and Sunrun—to rescue fragile systems, reduce operational complexity, and ensure four-nines uptime for business-critical platforms.
-      </p>
-      <p> Proven record of Legacy Modernization, converting bespoke solutions into repeatable, revenue-generating products that secure multi-million dollar revenue impact.
-      </p>
+      <div class="resume-2">
+        <h3 class="topic-title"><b>Senior Full Stack</b> Software Engineer</h3>
+        <p class="topic-subtitle">Scalable Cloud & Performance Architect</p>
+      </div>
+      <div class="resume-2">
+        <p>
+          Senior engineering leader, founder, and consultant with 20+ years of experience modernizing legacy systems, building scalable AWS Cloud Platforms, and transforming underperforming teams into High-Velocity Product Organizations.
+        </p>
+        <p>Trusted by global enterprises—including Netflix and Sunrun—to rescue fragile systems, reduce operational complexity, and ensure four-nines uptime for business-critical platforms.
+        </p>
+        <p> Proven record of Legacy Modernization, converting bespoke solutions into repeatable, revenue-generating products that secure multi-million dollar revenue impact.
+        </p>
+      </div>
     </div>
 
     <div class="row align-items-start">
       <div class="col-lg-8">
         <div class="professional-journey">
-          <div class="subsection-heading">
+          <div class="subsection-heading resume-3">
             <div class="resume-heading-wrapper">
               <div class="icon-wrapper">
                 {% icon "experience", '{ "width": "32", "height": "32" }' %}
@@ -180,7 +190,7 @@ displayOrder: 4
 
       <div class="col-lg-4" id="edu">
         <div class="education-skills">
-          <div class="subsection-heading">
+          <div class="subsection-heading resume-4">
             <div class="resume-heading-wrapper">
               <div class="icon-wrapper">
                 {% icon "education", '{ "width": "32", "height": "32" }' %}
@@ -189,11 +199,11 @@ displayOrder: 4
             </div>
           </div>
 
-          <div class="education-grid">
+          <div class="education-grid resume-5">
 
             <div class="education-card primary">
               <div class="education-header">
-                <div class="degree-icon">
+                <div class="icon-wrapper">
                   {% icon "services", '{ "width": "32", "height": "32" }' %}
                 </div>
                 <div class="degree-info">

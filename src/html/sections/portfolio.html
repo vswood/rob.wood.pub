@@ -1,23 +1,27 @@
 ---
 id: portfolio
 displayOrder: 5
+tags:
+  - sections
+permalink: /portfolio.html
+layout: section.html
+curnav: portfolio
 ---
 {% import "../include/page-components/headings.html" as insert %}
 <section id="portfolio">
 
-  <div class="container">
-    <div class="section-heading-alt">
-      {{insert.pageHeading("", "Portfolio", "", "", "Work Samples")}}
+    <div class="container">
+
+      <div class="section-heading-alt portfolio-1">
+        {{insert.pageHeading("", "Portfolio", "", "", "Work Samples")}}
+      </div>
+
+      <div class="fluid-grid">
+        {% for item in portfolio %}
+          {% renderFile "src/html/include/page-components/portfolio.liquid", item, "liquid" %}
+        {% endfor %}
+      </div>
+
     </div>
-
-    <div class="fluid-grid">
-    {% for item in portfolio %}
-      {% renderFile "src/html/include/page-components/portfolio.liquid", item, "liquid" %}
-    {% endfor %}
-
-
-    </div>
-
-  </div>
 
 </section>

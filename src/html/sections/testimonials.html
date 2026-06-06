@@ -1,38 +1,48 @@
 ---
 id: testimonials
 displayOrder: 7
+tags:
+  - sections
+permalink: /testimonials.html
+layout: section.html
+curnav: testimonials
 ---
 {% import "../include/page-components/headings.html" as insert %}
 {% import "../include/page-components/testimonial.html" as gen %}
 <section id="testimonials">
 
-  <div class="container section-heading-alt">
-    {{insert.pageHeading("", "Kind Words &", "", "", "Testimonials")}}
-  </div>
+    <div class="container">
 
-  <div class="container">
+      <div class="section-heading-alt">
+        {{insert.pageHeading("", "Recommendations", "", "", "References & Testimonials")}}
+      </div>
 
-    <div class="testimonials-slider swiper">
-      <div class="swiper-wrapper">
+      <div class="testimonials-slider swiper">
+        <div class="gallery">
+          <ul class="cards">
 
-        {% for item in testimonials %}
-          {{ gen.testimonial(item.name, item.position, item.company, item.testimonial, item.avatar) }}
-        {% endfor %}
+          {% for item in testimonials %}
+            <li class="card">
+            {{ gen.testimonial(item.name, item.position, item.company, item.testimonial, item.avatar) }}
+            </li>
+          {% endfor %}
+
+          </ul>
+
+        </div>
 
       </div>
 
-      <div class="swiper-navigation-wrapper">
-        <div class="swiper-button-prev">
-          {% icon "arrow-left", '{ "width": "24", "height": "24" }' %}
+        <div class="swiper-navigation-wrapper">
+          <div class="swiper-button-prev">
+            {% icon "arrow-left", '{ "width": "24", "height": "24" }' %}
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next">
+            {% icon "arrow-right", '{ "width": "24", "height": "24" }' %}
+          </div>
         </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-next">
-          {% icon "arrow-right", '{ "width": "24", "height": "24" }' %}
-        </div>
-      </div>
 
     </div>
-
-  </div>
 
 </section>

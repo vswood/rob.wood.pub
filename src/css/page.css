@@ -943,7 +943,7 @@
         opacity: 0;
         transition: opacity 0.4s ease;
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         justify-content: center;
       }
 
@@ -952,16 +952,21 @@
         gap: 16px;
         transform: translateY(20px);
         transition: transform 0.4s ease;
+        margin-bottom: 0.25lh;
       }
 
-      .action-btn {
+      .icon-wrapper {
+        background: var(--primary);
+      }
+
+      /* .action-btn {
         width: 96px;
         height: 96px;
         border-radius: 50%;
         background: var(--surface-color);
         color: var(--heading-color);
         border: 3px solid color-mix(in oklch, var(--heading-color), transparent 80%);
-        box-shadow: var(--shadow-elevation-medium), inset 0px 4px 8px 0px #00000073;
+        box-shadow: var(--shadow-elevation-low);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -974,7 +979,9 @@
           color: var(--contrast-color);
           transform: scale(1.1);
         }
-      }
+      } */
+
+
     }
 
     .portfolio-content {
@@ -1041,23 +1048,6 @@
 
     .subsection-heading {
       margin-bottom: 1rem;
-
-      .icon-wrapper {
-        width: 64px;
-        height: 64px;
-        background: color-mix(in srgb, var(--accent-color), transparent 90%);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.5rem;
-
-        svg {
-          width:32px;
-          height: 32px;
-          color: var(--accent-color);
-        }
-      }
 
       h2 {
         font-size: var(--xx-large);
@@ -1326,9 +1316,10 @@
             max-width: 35ch;
             margin: auto;
             ul {
-              font-size: var(--large);
+              font-size: var(--medium);
               line-height: 1.2;
-              margin-top: 3.5lh;
+              margin-top: 1.5lh;
+              margin-left: 1.5ch;
               color: color-mix(in srgb, var(--text-color), transparent 35%);
               margin-bottom: 1lh;
             }
@@ -1664,7 +1655,11 @@
     }
 
     .skills-intro {
-      padding: 0 2ch;
+      padding: 0;
+    }
+
+    .read-more {
+      margin-bottom: 5lh;
     }
 
     .row.skills-top {
@@ -1715,9 +1710,12 @@
                 margin: 0.5lh 0.5ch;
 
                 .skill-name {
-                  font-size: var(--medium);
-                  color: var(--text-color);
-                  font-weight: 300;
+                  font-family: var(--font-2);
+                  font-size: var(--large);
+                  color: var(--subtle);
+                  font-weight: 500;
+                  letter-spacing: 1px;
+                  text-transform: uppercase;
                 }
 
                 .skill-percentage {
@@ -1790,36 +1788,38 @@
         .tech-item {
           display: grid;
           grid-template-rows: 1fr;
-          grid-template-columns: 40% 1fr;
+          grid-template-columns: 25% 1fr;
           gap: 12px;
           align-items: center;
-          background: var(--surface-color);
-          border: 1px solid var(--border-light);
+          background: transparent);
+          border: 1px solid var(--primary-dark);
           border-radius: 6px;
-          box-shadow: var(--surface-inset-shadow), rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: inset -1px -1px 3px 1px #00000055;
           /* transition: all 0.3s ease; */
 
           .tech-icon {
-            background: var(--surface-dark);
-            padding: 1lh 1ch;
+            background: var(--primary-dark);
+            padding: 0.5lh 0.5ch;
             border-top-left-radius: 4px;
             border-bottom-left-radius: 4px;
+            box-shadow: inset 1px -1px 3px 1px #00000055;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100%;
+            min-width: 48px;
             svg {
-              width: 36px;
-              height: 36px;
+              width: 24px;
+              height: 24px;
               color: var(--accent-color);
             }
           }
 
           span {
-            font-family: var(--font-2);
-            font-size: var(--large);
+            font-family: var(--font-4);
+            font-size: var(--medium);
             color: var(--text-color);
-            font-weight: 500;
+            font-weight: 400;
             display: block;
             text-align: center;
             line-height: 1;
@@ -1897,7 +1897,7 @@
       width: 20.35ch;
       text-align: center;
       max-width: 96vw;
-      margin: 0;
+      margin: 0 auto;
       margin-bottom: 5lh;
 
       @container style(--inline-size-lg: var(--breakpoint-lg)) {
@@ -1932,7 +1932,6 @@
       gap: 3lh;
       margin-bottom: 4lh;
       text-align: center;
-
 
       @container style(--inline-size-lg: var(--breakpoint-lg)) {
         grid-template-columns: repeat(3, 1fr);
@@ -1990,6 +1989,10 @@
         border-top: 1px solid color-mix(in srgb, var(--text-color), transparent 90%);
         padding: 1lh 1ch;
 
+        .achievement-copy {
+          width: 80%;
+        }
+
         .copy-wrapper {
           p {
             margin-top: 0;
@@ -2033,12 +2036,12 @@
     contain-intrinsic-size: 1011px;
 
     .section-heading-alt {
-      width: 25.35ch;
+      width: 27.35ch;
       margin-bottom: 1lh;
       max-width: 96vw;
 
       @container style(--inline-size-lg: var(--breakpoint-lg)) {
-        width: 28.35ch;
+        width: 33.35ch;
       }
       .primary-heading {
         .large {
@@ -2046,10 +2049,10 @@
           letter-spacing: 0px;
         }
         .small {
-          letter-spacing: 7px;
+          letter-spacing: 1px;
 
           @container style(--inline-size-lg: var(--breakpoint-lg)) {
-           letter-spacing: 10.5px;
+           letter-spacing: 1.5px;
           }
         }
         .raise {
@@ -2059,13 +2062,11 @@
     }
 
     .testimonials-slider {
-      max-width: 80vw;
+      --carousel-width: 50ch;
+      --carousel-height: 21lh;
+      height: var(--carousel-height);
       margin: 0 auto;
       position: relative;
-
-      @container style(--inline-size-xs: var(--breakpoint-xs)) {
-        max-width: 80ch;
-      }
 
       .swiper-slide {
         border-radius: 25px;
@@ -2088,8 +2089,42 @@
         transition: width linear;
       }
 
-      .swiper-wrapper {
-        height: auto !important;
+      .gallery {
+        position: relative;
+        width: 100%;
+        height: var(--carousel-height);
+        overflow: hidden;
+      }
+
+      .cards {
+        position: absolute;
+        height: var(--carousel-height);
+        width: var(--carousel-width);
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .cards li {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        height: var(--carousel-height);
+        width: var(--carousel-width);
+        text-align: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 0.8rem;
+        border: 1px solid #f00;
+      }
+
+      .cards li img {
+        max-width: 90%;
+        opacity: 0;
+      }
+
+      .gallery {
 
         .testimonial-slide {
           padding: 1lh 4ch;
@@ -2139,10 +2174,9 @@
         }
 
         .testimonial-body {
-          height: 10lh;
           display: flex;
-          flex-direction: column;
-          overflow-y: scroll;
+          flex-wrap: wrap;
+          /* overflow-y: scroll;
           overscroll-behavior: contain;
           scroll-behavior: smooth;
           scrollbar-gutter: stable;
@@ -2163,8 +2197,7 @@
           &::-webkit-scrollbar-thumb {
             background: var(--accent-2);
             border-radius: 0.33rem;
-            /*width: 10px;*/
-          }
+          } */
 
           p {
             font-size: var(--small);
@@ -2174,7 +2207,7 @@
             margin: 1lh auto;
             position: relative;
             text-align: left;
-            max-width: 60ch;
+            max-width: 30ch;
           }
         }
 
@@ -2199,7 +2232,7 @@
 
           .author-details {
             text-align: left;
-            width: 75%;
+            width: 50%;
 
             h3 {
               font-size: var(--x-large);

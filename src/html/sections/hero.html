@@ -1,12 +1,16 @@
 ---
 id: hero
 displayOrder: 0
+tags:
+  - sections
+permalink: /home.html
+layout: section.html
+active: home
 ---
 {% import "../include/page-components/headings.html" as insert %}
-<!-- Hero Section -->
 <section id="home">
 
-  <div class="container">
+  <div class="container" data-skeleton-container>
 
     <div class="row">
       <div class="heading-logo">
@@ -124,18 +128,18 @@ displayOrder: 0
     <div class="row">
       <div class="hero-stats">
         <div class="stat-item">
-          <span class="stat-number"><span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-separator="true" data-purecounter-once ="false" data-purecounter-duration="1"
+          <span class="stat-number"><span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-separator="true" data-purecounter-once ="false" data-purecounter-duration="0.25"
             class="purecounter"></span>+</span>
           <span class="stat-label">Years Experience</span>
         </div>
         <div class="stat-item">
           <span class=" stat-number">
-            <span data-purecounter-start="0" data-purecounter-end="27" data-purecounter-separator="true" data-purecounter-once ="false" data-purecounter-duration="0.5"
+            <span data-purecounter-start="0" data-purecounter-end="27" data-purecounter-separator="true" data-purecounter-once ="false" data-purecounter-duration="0.25"
           class="purecounter"></span>+</span>
           <span class="stat-label">Coding Languages</span>
         </div>
         <div class="stat-item">
-          <span class="stat-number"><span data-purecounter-start="0" data-purecounter-end="252" data-purecounter-separator="true" data-purecounter-once ="false" data-purecounter-duration="0.5"
+          <span class="stat-number"><span data-purecounter-start="0" data-purecounter-end="252" data-purecounter-separator="true" data-purecounter-once ="false" data-purecounter-duration="0.25"
             class="purecounter"></span>+</span>
           <span class="stat-label">Tech Skills</span>
         </div>
@@ -152,4 +156,3 @@ displayOrder: 0
 
 
 </section>
-<!-- /Hero Section -->

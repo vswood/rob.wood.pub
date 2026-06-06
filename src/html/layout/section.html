@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en-US" data-bs-theme="dark">
+
+<head>
+  <style>
+    #body-wrapper {
+      visibility: hidden;
+    }
+    .no-js {
+      #vs-preloader {
+        display: none !important;
+      }
+      #body-wrapper {
+        visibility: visible;
+      }
+    }
+  </style>
+
+  {% include "../include/common/head/meta-info.html" %}
+
+  {% favicons './src/img/rob-wood-icon.svg', appleIconBgColor='#ffffff' %}
+
+  {% include "../include/common/head/fonts.html" %}
+
+  {% include "../include/common/head/styles.html" %}
+
+</head>
+
+<body>
+  <script>document.body.classList.remove('no-js')</script>
+  {% renderTemplate "webc" %}
+  <vs-simple-loader id="vs-simple-loader"></vs-simple-loader>
+  {% endrenderTemplate %}
+
+  {% include "../include/page-components/skip-link.html"  %}
+
+  <div class="nav-wrapper">
+    <button class="btn btn-primary header-toggle"  aria-label="Main Menu">
+      <svg aria-hidden="true" width="32" height="32"><use href="#icon-hamburger"></use></svg>
+    </button>
+    <a href="#" id="scroll-top" class="btn btn-primary scroll-top">{% icon "arrow-up", '{ "width": "16", "height": "16" }' %}</a>
+  </div>
+
+  <div id="body-wrapper" aria-live="polite" aria-busy="true">
+
+    <div id="breakpoint-meter">
+      <div></div><div></div><div></div><div></div><div></div>
+    </div>
+
+    <div id="main-grid" class="">
+
+      {% include "../include/common/header.html" %}
+
+      <main class="main" id="main">
+
+        {{content | safe}}
+        {% include "../include/common/footer.html" %}
+
+      </main>
+
+    </div>
+
+  </div>
+
+  {% include "../include/common/scripts.html" %}
+
+  {% include "../../../src-assets/hamburger.svg"  %}
+
+  {% include "../../../src-assets/icons/_sprite.svg"  %}
+  {% include "../include/avatar-sprite.html"  %}
+</body>
+
+</html>

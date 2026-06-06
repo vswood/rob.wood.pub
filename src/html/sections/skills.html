@@ -1,24 +1,29 @@
 ---
 id: skills
 displayOrder: 3
+tags:
+  - sections
+permalink: /skills.html
+layout: section.html
+curnav: skills
 ---
 {% import "../include/page-components/headings.html" as insert %}
 <section id="skills">
 
   <div class="container">
     <div class="row">
-      <div class="copy-wrapper top section-heading-alt">
+      <div class="copy-wrapper top section-heading-alt skills-1">
         {{insert.pageHeading("", "Versatility", "as", "", "Risk Mitigation.")}}
       </div>
     </div>
     <div class="row skills-top">
       <div class="col-lg-7 skills-intro">
 
-        <div class="copy-wrapper">
+        <div class="copy-wrapper skills-2">
           <p>My professional philosophy - the "mastery of any and all tools" - is a strategic asset in a volatile technical landscape. By specializing in rapid mastery of whatever tools a project requires, I provide a unique form of "talent insurance" for potential employers.</p>
         </div>
 
-        <details class="read-more">
+        <details class="read-more skills-3">
           <summary>
             {% icon "expand", '{ "width": "16", "height": "16" }' %}
             <span class="closed">More... (click to expand details)</span>
@@ -56,7 +61,7 @@ displayOrder: 3
 
       </div>
       <div class="col-lg-5">
-        <div class="expertise-highlight">
+        <div class="expertise-highlight skills-4">
           <div class="experience-number-wrapper">
             <div class="highlight-icon">
               {% icon "certificate", '{ "width": "72", "height": "72" }' %}
@@ -64,7 +69,7 @@ displayOrder: 3
             </div>
             <div class="experience-number">
               <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-separator="true"
-                data-purecounter-once="false" data-purecounter-duration="1"
+                data-purecounter-once="false" data-purecounter-duration="0.25"
                 class="purecounter"></span>
               <span class="experience-label">+</span>
             </div>
@@ -80,7 +85,7 @@ displayOrder: 3
         <div class="skills-container">
 
           <div class="skill-category skills-animation">
-            <div class="category-header">
+            <div class="category-header skills-5">
               <h3 class="topic-title">Technical <b>Expertise</b></h3>
               <p class="topic-subtitle">Core dev and tech skills</p>
             </div>
@@ -158,8 +163,8 @@ displayOrder: 3
             </div>
           </div>
 
-          <div class="skill-category skills-animation">
-            <div class="category-header">
+          <div class="skill-category skills-animation skills-9">
+            <div class="category-header skills-6">
               <h3 class="topic-title"><b>Strategic</b> Leadership</h3>
               <p class="topic-subtitle">Skills Beyond Code</p>
             </div>
@@ -217,8 +222,8 @@ displayOrder: 3
             </div>
           </div>
 
-          <div class="skill-category skills-animation">
-            <div class="category-header">
+          <div class="skill-category skills-animation skills-10">
+            <div class="category-header skills-7">
               <h3 class="topic-title"><b>Creative</b> Design</h3>
               <p class="topic-subtitle">Visual and user experience design</p>
             </div>
@@ -263,13 +268,13 @@ displayOrder: 3
         <div class="skills-sidebar">
 
           <div class="technologies-section">
-            <h3 class="topic-title"><b>Favored</b> Technologies</h3>
+            <h3 class="topic-title skills-8"><b>Favored</b> Technologies</h3>
             <p class="topic-subtitle">A few preferred technology skills</p>
             <div class="tech-stack">
               {% for key, value in skills   %}
               <div class="tech-item">
                 <div class="tech-icon">
-                  {% icon key, '{ "width": "36", "height": "36" }' %}
+                  {% icon key, '{ "width": "100%", "height": "100%" }' %}
                 </div>
                 <span>{{value}}</span>
               </div>

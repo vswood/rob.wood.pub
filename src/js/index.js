@@ -1,4 +1,3 @@
-import { Pagination, Navigation } from 'swiper/modules';
 import vsApp from './VirtualStyleApp.js'
 import initApp from './initApp.js'
 import $ from 'jquery'
@@ -27,41 +26,11 @@ const sections = document.querySelectorAll('section')
 const animationSections = document.querySelectorAll('section')
 const setAnimateVisible = true
 
-const swiperEls = document.querySelectorAll('.swiper')
-
-const swiperOptions = {
-  modules: [Pagination, Navigation],
-  passiveListeners: true,
-  speed: 600,
-  autoHeight: true,
-  slidesPerView: 1,
-  effect: 'cards',
-  cardsEffect: {
-    perSlideOffset: 8,
-    perSlideRotate: 2,
-    rotate: true,
-    slideShadows: true,
-  },
-  grabCursor: true,
-  observer: true,
-  observeParents: true,
-  pagination: {
-    el: '.swiper-pagination',
-    type: 'bullets',
-    clickable: true
-  },
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-}
-
 const glightboxOptions = {
   selector: '.glightbox',
   openEffect: 'zoom',
   closeEffect: 'fade',
   cssEfects: {
-    // This are some of the animations included, no need to overwrite
     fade: { in: 'fadeIn', out: 'fadeOut' },
     zoom: { in: 'zoomIn', out: 'zoomOut' }
   }
@@ -70,7 +39,7 @@ const glightboxOptions = {
 const setTooltips = true
 
 const setCounters = true
-const counterOptions = {separator: true}
+const counterOptions = {}
 
 const setScreensaver = true
 
@@ -92,7 +61,9 @@ const lenisOptions = {
 
 }
 const gsapPlugins = [
-  'ScrollTrigger'
+  'ScrollTrigger',
+  'Draggable',
+  'Observer',
 ]
 
 const scrollbarActiveColor = '#22e7a1'
@@ -102,8 +73,6 @@ window.addEventListener('DOMContentLoaded', () => {
   initApp({
     animationSections,
     setAnimateVisible: true,
-    swiperEls,
-    swiperOptions,
     glightboxOptions,
     setTooltips: true,
     setCounters: true,
@@ -132,7 +101,6 @@ window.addEventListener('load', () => {
     })
   })
 
-
   window.addEventListener('section:visible', (e) => {
     const section = e.detail
     if(section.id) {
@@ -140,8 +108,6 @@ window.addEventListener('load', () => {
       $(`#${section.id}-link`).addClass('active')
     }
   })
-
-  window.ScrollTrigger.refresh()
 
   // document.querySelectorAll('.btn').forEach(el => el.addEventListener('click', (e) => {
   //   e.preventDefault()

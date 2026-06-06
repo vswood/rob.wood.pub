@@ -1,47 +1,47 @@
 <nav id="navmenu" class="navmenu menu">
   <ul>
     <li>
-      <a id="home-link" href="#home" class="active">
+      <a id="home-link" href="#home" class="{% if curnav == 'home' or not curnav %}active{% endif  %}">
         {% icon "home", '{ "width": "24", "height": "24" }' %} Home
       </a>
     </li>
     <li>
-      <a id="about-link" href="#about">
+      <a id="about-link" href="#about" class="{% if curnav == 'about' %}active{% endif  %}">
         {% icon "about", '{ "width": "24", "height": "24" }' %} About
       </a>
     </li>
     <li>
-      <a id="stats-link" href="#stats">
+      <a id="stats-link" href="#stats" class="{% if curnav == 'stats' %}active{% endif  %}">
         {% icon "stats", '{ "width": "24", "height": "24" }' %} Stats
       </a>
     </li>
     <li>
-      <a id="skills-link" href="#skills">
+      <a id="skills-link" href="#skills" class="{% if curnav == 'skills' %}active{% endif  %}">
         {% icon "skills", '{ "width": "24", "height": "24" }' %} Skills
       </a>
     </li>
     <li>
-      <a id="resume-link" href="#resume">
+      <a id="resume-link" href="#resume" class="{% if curnav == 'resume' %}active{% endif  %}">
         {% icon "resume", '{ "width": "24", "height": "24" }' %} Resume
       </a>
     </li>
     <li>
-      <a id="portfolio-link" href="#portfolio">
+      <a id="portfolio-link" href="#portfolio" class="{% if curnav == 'portfolio' %}active{% endif  %}">
         {% icon "portfolio", '{ "width": "24", "height": "24" }' %} Portfolio
       </a>
     </li>
     <!-- <li>
-      <a id="services-link" href="#services">
+      <a id="services-link" href="#services" class="{% if curnav == 'about' %}active{% endif  %}">
         {% icon "services", '{ "width": "24", "height": "24" }' %} Services
       </a>
     </li> -->
     <li>
-      <a id="testimonials-link" href="#testimonials">
+      <a id="testimonials-link" href="#testimonials" class="{% if curnav == 'testimonials' %}active{% endif  %}">
         {% icon "testimonials", '{ "width": "24", "height": "24" }' %} Testimonials
       </a>
     </li>
     <li>
-      <a id="contact-link" href="#contact">
+      <a id="contact-link" href="#contact" class="{% if curnav == 'contact' %}active{% endif  %}">
         {% icon "contact", '{ "width": "24", "height": "24" }' %} Contact
       </a>
     </li>

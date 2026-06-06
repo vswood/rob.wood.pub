@@ -11,6 +11,7 @@ export default function animateVisible(sections) {
       } else {
         entry.target.classList.remove('no-animations')
         entry.target.classList.add('animate')
+
         vsApp.emit('section:visible', {detail: entry.target})
       }
     })

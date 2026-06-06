@@ -1,81 +1,89 @@
 ---
 id: stats
 displayOrder: 2
+tags:
+  - sections
+permalink: /stats.html
+layout: section.html
+curnav: stats
 ---
 {% import "../include/page-components/headings.html" as insert %}
 <section id="stats">
 
-  <div class="container section-heading-alt">
-    {{insert.pageHeading("", "Lasting", "", "", "Impacts")}}
-  </div>
+    <div class="container">
 
-  <div class="container">
-
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="stats-grid">
-
-          <div class="stat-item">
-            <div class="stat-number">
-              $<span data-purecounter-start="0" data-purecounter-end="1000000" data-purecounter-separator="true" data-purecounter-once ="false" data-purecounter-duration="0.5"
-                class="purecounter"></span>s
-            </div>
-            <p class="stat-label">Millions of Dollars of revenue generated</p>
-          </div>
-
-          <div class="stat-item">
-            <div class="stat-number">
-              <span data-purecounter-start="0" data-purecounter-end="99" data-purecounter-separator="true" data-purecounter-once ="false" data-purecounter-duration="0.5"
-                class="purecounter"></span>%
-            </div>
-            <p class="stat-label">99% reduction in errors on a critical Netflix onboarding platform</p>
-          </div>
-
-          <div class="stat-item">
-            <div class="stat-number">
-              <span data-purecounter-start="0" data-purecounter-end="100" data-purecounter-separator="true" data-purecounter-once ="false" data-purecounter-duration="0.5"
-                class="purecounter"></span>s
-            </div>
-            <p class="stat-label">100s of developer hours reclaimed through workflow and environment modernization</p>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-heading-alt stats-title">
+            {{insert.pageHeading("", "Lasting", "", "", "Impacts")}}
           </div>
         </div>
-
-        <div class="achievements-row">
-          <div class="achievement">
-            <div class="achievement-icon">
-              <svg width="32" height="32" aria-hidden="true"><use href="#icon-brain"></use></svg>
-            </div>
-            <div class="copy-wrapper">
-              <h3 class="topic-title"><b>Strong</b> in both depth and range</h3>
-              <p>Comfortable moving from application code to cloud architecture to delivery systems and team enablement.</p>
-            </div>
-          </div>
-
-          <div class="achievement">
-            <div class="achievement-icon">
-              <svg width="32" height="32" aria-hidden="true"><use href="#icon-identity-security"></use></svg>
-            </div>
-            <div class="copy-wrapper">
-              <h3 class="topic-title"><b>Trusted</b> in high-stakes environments</h3>
-              <p>Experience across enterprise platforms, public-sector systems, and revenue-critical products.</p>
-            </div>
-          </div>
-
-          <div class="achievement">
-            <div class="achievement-icon">
-              <svg width="32" height="32" aria-hidden="true"><use href="#icon-leadership"></use></svg>
-            </div>
-            <div class="copy-wrapper">
-              <h3 class="topic-title"><b>Practical</b> leadership</h3>
-              <p>Hands-on enough to unblock the work, strategic enough to improve the system around it.</p>
-            </div>
-          </div>
-        </div>
-
       </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="stats-grid">
+
+            <div class="stat-item">
+              <div class="stat-number">
+                $<span data-purecounter-start="0" data-purecounter-end="1000000" data-purecounter-separator="true" data-purecounter-once ="true" data-purecounter-duration="0.25"
+                  class="purecounter"></span>s
+              </div>
+              <p class="stat-label">Millions of Dollars of revenue generated</p>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-number">
+                <span data-purecounter-start="0" data-purecounter-end="99" data-purecounter-separator="true" data-purecounter-once ="true" data-purecounter-duration="0.25"
+                  class="purecounter"></span>%
+              </div>
+              <p class="stat-label">99% reduction in errors on a critical Netflix onboarding platform</p>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-number">
+                <span data-purecounter-start="0" data-purecounter-end="100" data-purecounter-separator="true" data-purecounter-once ="true" data-purecounter-duration="0.25"
+                  class="purecounter"></span>s
+              </div>
+              <p class="stat-label">100s of developer hours reclaimed through workflow and environment modernization</p>
+            </div>
+          </div>
+
+          <div class="achievements-row">
+            <div class="achievement one">
+              <div class="icon-wrapper">
+                {% icon "brain", '{ "width": "32", "height": "32" }' %}
+              </div>
+              <div class="copy-wrapper achievement-copy">
+                <h3 class="topic-title"><b>Strong</b> in both depth and range</h3>
+                <p>Comfortable moving from application code to cloud architecture to delivery systems and team enablement.</p>
+              </div>
+            </div>
+
+            <div class="achievement two">
+              <div class="icon-wrapper">
+                {% icon "identity-security", '{ "width": "32", "height": "32" }' %}
+              </div>
+              <div class="copy-wrapper achievement-copy">
+                <h3 class="topic-title"><b>Trusted</b> in high-stakes environments</h3>
+                <p>Experience across enterprise platforms, public-sector systems, and revenue-critical products.</p>
+              </div>
+            </div>
+
+            <div class="achievement three">
+              <div class="icon-wrapper">
+                {% icon "leadership", '{ "width": "32", "height": "32" }' %}
+              </div>
+              <div class="copy-wrapper achievement-copy">
+                <h3 class="topic-title"><b>Practical</b> leadership</h3>
+                <p>Hands-on enough to unblock the work, strategic enough to improve the system around it.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
 
-  </div>
-
 </section>
-<!-- /Stats Section -->

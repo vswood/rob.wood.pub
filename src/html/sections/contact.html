@@ -1,9 +1,15 @@
 ---
 id: contact
 displayOrder: 8
+tags:
+  - sections
+permalink: /contact.html
+layout: section.html
+curnav: contact
 ---
 {% import "../include/page-components/headings.html" as insert %}
 <section id="contact">
+
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -18,7 +24,7 @@ displayOrder: 8
 
         <div class="info-item">
           <div class="icon-header">
-            <div class="info-icon">
+            <div class="icon-wrapper">
               {% icon "speech-bubble-round", '{ "width": "32", "height": "32" }' %}
             </div>
             <h3 class="topic-title">Let's <b>Connect</b></h3>
@@ -180,7 +186,7 @@ displayOrder: 8
 
                   <div class="form-floating mb-3">
                     <input type="text" name="url" class="form-control" id="input-url" aria-describedby="help-url"
-                     placeholder="" autocomplete="url">
+                    placeholder="" autocomplete="url">
                     <label for="input-url" class="form-label">Website URL</label>
                   </div>
                   <div id="help-phone" class="form-text">Enter your website URL, if you have one</div>

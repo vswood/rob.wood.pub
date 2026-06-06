@@ -2,7 +2,6 @@ import vsApp from './VirtualStyleApp.js'
 import OffcanvasMenu from './OffcanvasMenu.js'
 import initCounter from './initCounter.js'
 import initLightbox from './initGlightbox.js'
-import initSwiper from './initSwiper.js'
 import initTooltips from './initTooltips.js'
 import animateVisible from './animateVisible.js'
 import LottieScreensaver from './LottieScreensaver.js'
@@ -16,8 +15,6 @@ window.ff = new FreezeFrame()
 export default function initApp({
   animationSections = [],
   setAnimateVisible = false,
-  swiperEls = [],
-  swiperOptions = {},
   glightboxOptions = {},
   setTooltips = false,
   setCounters = false,
@@ -40,10 +37,6 @@ export default function initApp({
 
     if(counterOptions) {
       initCounter(counterOptions)
-    }
-
-    if(swiperEls.length > 0) {
-      initSwiper(swiperEls, swiperOptions)
     }
 
     if(setAnimateVisible && animationSections.length > 0) {
