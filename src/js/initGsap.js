@@ -1,5 +1,5 @@
 import gsap from 'gsap'
-import initSwiper from './initSwiper.js'
+import InfiniteCarousel from './InfiniteCarousel.js'
 
 function initScrollTrigger() {
   window.ScrollTrigger.defaults({
@@ -217,6 +217,21 @@ function initSectionAnimations() {
 
 }
 
+function initTestimonialsCarousel() {
+  window.carousel = new InfiniteCarousel({
+    cardSelector: '.cards li',
+    cardClass: '.card',
+    scrollTriggerOptions: {
+      trigger: '#testimonials',
+      start: 'top top',
+      end: '+=2000',
+      pin: '#testimonials',
+      pinSpacing: true,
+      scrub: true,
+    }
+  })
+}
+
 export default async function initGsap(plugins) {
   if(plugins.includes('Draggable')) {
     const dg = await import('gsap/Draggable')
@@ -235,9 +250,9 @@ export default async function initGsap(plugins) {
     initScrollTrigger()
     // initSectionStacking()
     initSectionAnimations()
-    initSwiper()
+    initTestimonialsCarousel()
     window.addEventListener('section:visible', e => {
-      if(e.detail === 'testimonials') {
+      if(e.detail.id === 'testimonials') {
         window.ScrollTrigger.refresh()
       }
     })

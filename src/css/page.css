@@ -1791,7 +1791,7 @@
           grid-template-columns: 25% 1fr;
           gap: 12px;
           align-items: center;
-          background: transparent);
+          background: transparent;
           border: 1px solid var(--primary-dark);
           border-radius: 6px;
           box-shadow: inset -1px -1px 3px 1px #00000055;
@@ -2029,6 +2029,18 @@
 * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 */
 @layer page {
+
+  :root {
+    --carousel-width: 50ch;
+    --carousel-height: 21lh;
+  }
+
+  #drag-proxy {
+    height: var(--carousel-height);
+    width: var(--carousel-width);
+    border: 1px solid #f00;
+  }
+
   #testimonials {
     flex-direction: column;
     align-items: center;
@@ -2061,9 +2073,8 @@
       }
     }
 
+
     .testimonials-slider {
-      --carousel-width: 50ch;
-      --carousel-height: 21lh;
       height: var(--carousel-height);
       margin: 0 auto;
       position: relative;
@@ -2100,7 +2111,7 @@
         position: absolute;
         height: var(--carousel-height);
         width: var(--carousel-width);
-        top: 40%;
+        top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
       }
@@ -2109,14 +2120,13 @@
         list-style: none;
         padding: 0;
         margin: 0;
-        height: var(--carousel-height);
+        height:100%;
         width: var(--carousel-width);
         text-align: center;
         position: absolute;
         top: 0;
         left: 0;
         border-radius: 0.8rem;
-        border: 1px solid #f00;
       }
 
       .cards li img {
@@ -2131,6 +2141,7 @@
           text-align: center;
           position: relative;
           min-height: 400px;
+          height: var(--carousel-height);
           border-radius: 25px;
           /* background: linear-gradient(135deg, var(--surface-color), color-mix(in srgb, var(--accent-color), transparent 97%)); */
           background-image: var(--bg-gradient);
@@ -2176,7 +2187,8 @@
         .testimonial-body {
           display: flex;
           flex-wrap: wrap;
-          /* overflow-y: scroll;
+          max-height: 200px;
+          overflow-y: auto;
           overscroll-behavior: contain;
           scroll-behavior: smooth;
           scrollbar-gutter: stable;
@@ -2197,7 +2209,7 @@
           &::-webkit-scrollbar-thumb {
             background: var(--accent-2);
             border-radius: 0.33rem;
-          } */
+          }
 
           p {
             font-size: var(--small);

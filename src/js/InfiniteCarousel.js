@@ -73,6 +73,8 @@ export default class InfiniteCarousel {
     spacing = 0.06,
     cardSelector = '.cards li',
     cardClass = '.card',
+    scrollTriggerOptions = {},
+    wrapOnScroll = false,
   } = {}) {
 
     gsap.to(cardClass, {opacity: 1, delay: 0.1})
@@ -80,31 +82,39 @@ export default class InfiniteCarousel {
     this.#spacing = spacing
     this.#snap = gsap.utils.snap(spacing)
     this.#cards = gsap.utils.toArray(cardSelector)
-    this.#loop = this.#buildSeamlessLoop(),
-      this.#scrub = gsap.to(this.#loop, {
-        totalTime: 0,
-        duration: 0.5,
-        ease: 'power3',
-        paused: true
-      })
-    this.#trigger = window.ScrollTrigger.create({
-      start: 0,
+    this.#loop = this.#buildSeamlessLoop()
+    this.#scrub = gsap.to(this.#loop, {
+      totalTime: 0,
+      duration: 0.5,
+      ease: 'power3',
+      paused: true
+    })
+
+    const triggerConfig = {
+      trigger: '#testimonials',
+      start: 'top top',
+      end: '+=2000',
+      pin: '#testimonials',
+      pinSpacing: true,
+      scrub: true,
+      ...scrollTriggerOptions,
       onUpdate(self) {
-        if (self.progress === 1 && self.direction > 0 && !self.wrapping) {
+        if (wrapOnScroll && self.progress === 1 && self.direction > 0 && !self.wrapping) {
           _this.#wrapForward(self)
-        } else if (self.progress < 1e-5 && self.direction < 0 && !self.wrapping) {
+        } else if (wrapOnScroll && self.progress < 1e-5 && self.direction < 0 && !self.wrapping) {
           _this.#wrapBackward(self)
         } else {
           _this.#scrub.vars.totalTime = _this.#snap((_this.#iteration + self.progress) * _this.#loop.duration())
           _this.#scrub.invalidate().restart()
           self.wrapping = false
         }
-      },
-      pin: '.gallery'
-    })
+      }
+    }
+
+    this.#trigger = window.ScrollTrigger.create(triggerConfig)
 
     let dragProxy = document.createElement('div')
-    let scrollTrigger = this.#trigger.scrollTrigger
+    dragProxy.id = 'drag-proxy'
     let clamp
     let dragRatio
 
