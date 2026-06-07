@@ -1,49 +1,73 @@
+{% set currentSection = curnav or active or "home" %}
+{% set isSinglePage = page.url == "/" or page.url == "/index.html" %}
+{% set singlePageUrl = "/index.html#" + currentSection %}
+{% set multiPageUrl = "/" + currentSection + ".html" %}
+{% set navItems = [
+  {
+    "id": "home",
+    "label": "Home",
+    "icon": "home",
+    "url": "/home.html"
+  },
+  {
+    "id": "about",
+    "label": "About",
+    "icon": "about",
+    "url": "/about.html"
+  },
+  {
+    "id": "stats",
+    "label": "Stats",
+    "icon": "stats",
+    "url": "/stats.html"
+  },
+  {
+    "id": "skills",
+    "label": "Skills",
+    "icon": "skills",
+    "url": "/skills.html"
+  },
+  {
+    "id": "resume",
+    "label": "Resume",
+    "icon": "resume",
+    "url": "/resume.html"
+  },
+  {
+    "id": "portfolio",
+    "label": "Portfolio",
+    "icon": "portfolio",
+    "url": "/portfolio.html"
+  },
+  {
+    "id": "testimonials",
+    "label": "Testimonials",
+    "icon": "testimonials",
+    "url": "/testimonials.html"
+  },
+  {
+    "id": "contact",
+    "label": "Contact",
+    "icon": "contact",
+    "url": "/contact.html"
+  }
+] %}
 <nav id="navmenu" class="navmenu menu">
   <ul>
+    {% for item in navItems %}
     <li>
-      <a id="home-link" href="#home" class="{% if curnav == 'home' or not curnav %}active{% endif  %}">
-        {% icon "home", '{ "width": "24", "height": "24" }' %} Home
+      <a id="{{ item.id }}-link" href="{% if isSinglePage %}#{{ item.id }}{% else %}{{ item.url }}{% endif %}" class="{% if currentSection == item.id %}active{% endif  %}">
+        {% icon item.icon, '{ "width": "24", "height": "24" }' %} {{ item.label }}
       </a>
     </li>
-    <li>
-      <a id="about-link" href="#about" class="{% if curnav == 'about' %}active{% endif  %}">
-        {% icon "about", '{ "width": "24", "height": "24" }' %} About
+    {% endfor %}
+    <!-- <li class="site-mode" aria-label="Site version">
+      <a href="{{ singlePageUrl }}" class="{% if isSinglePage %}active{% endif %}">
+        Single Page
       </a>
-    </li>
-    <li>
-      <a id="stats-link" href="#stats" class="{% if curnav == 'stats' %}active{% endif  %}">
-        {% icon "stats", '{ "width": "24", "height": "24" }' %} Stats
-      </a>
-    </li>
-    <li>
-      <a id="skills-link" href="#skills" class="{% if curnav == 'skills' %}active{% endif  %}">
-        {% icon "skills", '{ "width": "24", "height": "24" }' %} Skills
-      </a>
-    </li>
-    <li>
-      <a id="resume-link" href="#resume" class="{% if curnav == 'resume' %}active{% endif  %}">
-        {% icon "resume", '{ "width": "24", "height": "24" }' %} Resume
-      </a>
-    </li>
-    <li>
-      <a id="portfolio-link" href="#portfolio" class="{% if curnav == 'portfolio' %}active{% endif  %}">
-        {% icon "portfolio", '{ "width": "24", "height": "24" }' %} Portfolio
-      </a>
-    </li>
-    <!-- <li>
-      <a id="services-link" href="#services" class="{% if curnav == 'about' %}active{% endif  %}">
-        {% icon "services", '{ "width": "24", "height": "24" }' %} Services
+      <a href="{{ multiPageUrl }}" class="{% if not isSinglePage %}active{% endif %}">
+        Multi Page
       </a>
     </li> -->
-    <li>
-      <a id="testimonials-link" href="#testimonials" class="{% if curnav == 'testimonials' %}active{% endif  %}">
-        {% icon "testimonials", '{ "width": "24", "height": "24" }' %} Testimonials
-      </a>
-    </li>
-    <li>
-      <a id="contact-link" href="#contact" class="{% if curnav == 'contact' %}active{% endif  %}">
-        {% icon "contact", '{ "width": "24", "height": "24" }' %} Contact
-      </a>
-    </li>
   </ul>
 </nav>

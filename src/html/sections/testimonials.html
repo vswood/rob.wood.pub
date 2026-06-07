@@ -13,11 +13,11 @@ curnav: testimonials
 
     <div class="container">
 
-      <div class="section-heading-alt">
+      <div class="section-heading-alt testimonials-1">
         {{insert.pageHeading("", "Recommendations", "", "", "References & Testimonials")}}
       </div>
 
-      <div class="testimonials-slider swiper">
+      <div class="testimonials-slider swiper testimonials-2">
         <div class="gallery">
           <ul class="cards">
 
@@ -34,13 +34,19 @@ curnav: testimonials
       </div>
 
         <div class="swiper-navigation-wrapper">
-          <div class="swiper-button-prev">
+          <button class="btn btn-secondary slide-btn prev-testimonial"  aria-label="Previous testimonial">
             {% icon "arrow-left", '{ "width": "24", "height": "24" }' %}
-          </div>
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-next">
+          </button>
+          <button class="btn btn-secondary slide-btn next-testimonial"  aria-label="Next testimonial">
             {% icon "arrow-right", '{ "width": "24", "height": "24" }' %}
-          </div>
+          </button>
+        </div>
+
+        <div class="swiper-pagination">
+          {% for item in testimonials %}
+            <span class="swiper-pagination-bullet">
+            </span>
+          {% endfor %}
         </div>
 
     </div>

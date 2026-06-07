@@ -72,8 +72,8 @@ function animationTwo(targets, scrollTrigger) {
     opacity: 1,
     scale: 1,
     rotation: 0,
-    duration: 0.15,
-    stagger: 0.075,
+    duration: 0.1,
+    stagger: 0.1,
   })
 }
 
@@ -130,7 +130,40 @@ const sectionAnimations = [
     targets: ['.portfolio-1',],
     trigger: '#portfolio',
   },
+  {
+    targets: ['.testimonials-1', '.testimonials-2',],
+    trigger: {
+      trigger: '#testimonials',
+      start: 'top 35%',
+    },
+  },
+  {
+    targets: ['.contact-1',],
+    trigger: '#contact',
+  },
+  {
+    targets: ['.contact-2',],
+    trigger: '.contact-2',
+  },
+  {
+    targets: ['.contact-3',],
+    trigger: '.contact-3',
+  },
 ]
+
+function animateGroup(selector, set, to, triggerOpts = null) {
+  const items = gsap.utils.toArray(selector)
+  items.forEach(item => {
+    gsap.set(item, set)
+    to.scrollTrigger =  {
+      trigger: item,
+    }
+    if(triggerOpts) {
+      Object.assign(to.scrollTrigger, triggerOpts)
+    }
+    gsap.to(item, to)
+  })
+}
 
 function initSectionAnimations() {
   for(const section of sectionAnimations) {
@@ -166,78 +199,99 @@ function initSectionAnimations() {
     },
   })
 
-  const bars = gsap.utils.toArray('#skills .progress-bar')
-  bars.forEach(bar => {
-    const targetVal = bar.getAttribute('aria-valuenow') || 100
-    gsap.set(bar, { transition: 'none' })
-    gsap.to(bar, {
-      scrollTrigger: {
-        trigger: bar,
-        start: 'top bottom',
-        end: 'bottom center',
-      },
-      width: `${targetVal}%`,
+  animateGroup(
+    '#skills .progress-bar',
+    {
+      transition: 'none',
+    },
+    {
+      width: `${(item) => item.getAttribute('aria-valuenow') || 100}%`,
       ease: 'none'
-    })
-  })
+    },
+    {
+      start: 'top bottom',
+      end: 'bottom center',
+    }
+  )
 
-  const positions = gsap.utils.toArray('.timeline-item')
-  positions.forEach(p => {
-    gsap.set(p, {
-      opacity: 0,
-      scale: 0,
-      transformOrigin: 'center center'
-    })
-    gsap.to(p, {
-      scrollTrigger: p,
-      opacity: 1,
-      scale: 1,
-      duration: 0.25,
-      stagger: 0.15,
-    })
-  })
+  const setOne = {
+    opacity: 0,
+    scale: 0,
+    transformOrigin: 'center center'
+  }
 
-  const portfolioItems = gsap.utils.toArray('.portfolio-item')
-  portfolioItems.forEach(p => {
-    gsap.set(p, {
-      opacity: 0,
-      scale: 0,
-      rotation: -360,
-      transformOrigin: 'center center'
-    })
-    gsap.to(p, {
-      scrollTrigger: p,
-      opacity: 1,
-      scale: 1,
-      rotation: 0,
-      duration: 0.25,
-      stagger: 0.15,
-    })
-  })
+  const toOne = {
+    opacity: 1,
+    scale: 1,
+    duration: 0.25,
+    stagger: 0.15,
+  }
+
+  const setTwo = {
+    opacity: 0,
+    scale: 0,
+    rotation: -360,
+    transformOrigin: 'center center'
+  }
+
+  const toTwo = {
+    opacity: 1,
+    scale: 1,
+    rotation: 0,
+    duration: 0.25,
+    stagger: 0.15,
+  }
+
+  animateGroup(
+    '.timeline-item',
+    setOne,
+    toOne,
+    {
+      start: 'top bottom',
+    }
+  )
+
+  animateGroup(
+    '.portfolio-item',
+    setTwo,
+    toTwo,
+  )
+
+  animateGroup(
+    '.detail-item',
+    setTwo,
+    toTwo,
+  )
+
+  animateGroup(
+    '.form-col',
+    setTwo,
+    toTwo,
+    {
+      start: 'top 90%',
+    }
+  )
 
 }
 
 function initTestimonialsCarousel() {
+  if(!document.querySelector('.cards li') || !document.querySelector('.prev-testimonial') || !document.querySelector('.next-testimonial')) {
+    return
+  }
+
   window.carousel = new InfiniteCarousel({
+    spacing: 0.1,
     cardSelector: '.cards li',
     cardClass: '.card',
-    scrollTriggerOptions: {
-      trigger: '#testimonials',
-      start: 'top top',
-      end: '+=2000',
-      pin: '#testimonials',
-      pinSpacing: true,
-      scrub: true,
-    }
   })
 }
 
 export default async function initGsap(plugins) {
-  if(plugins.includes('Draggable')) {
-    const dg = await import('gsap/Draggable')
-    window.Draggable = dg.Draggable
-    gsap.registerPlugin(window.Draggable)
-  }
+  // if(plugins.includes('Draggable')) {
+  //   const dg = await import('gsap/Draggable')
+  //   window.Draggable = dg.Draggable
+  //   gsap.registerPlugin(window.Draggable)
+  // }
   if(plugins.includes('Observer')) {
     const ob = await import('gsap/Observer')
     window.Observer = ob.Observer
@@ -258,17 +312,9 @@ export default async function initGsap(plugins) {
     })
     window.ScrollTrigger.refresh()
   }
-  if(plugins.includes('ScrollSmoother')) {
-    window.ScrollSmoother = await import('gsap/ScrollSmoother')
-    gsap.registerPlugin(window.ScrollSmoother)
-  }
-  if(plugins.includes('ScrollToPlugin')) {
-    window.ScrollToPlugin = await import('gsap/ScrollToPlugin')
-    gsap.registerPlugin(window.ScrollToPlugin)
-  }
   if(plugins.includes('SplitText')) {
-    window.SplitText = await import( 'gsap/SplitText')
+    const st = await import('gsap/SplitText')
+    window.SplitText = st.SplitText
     gsap.registerPlugin(window.SplitText)
   }
 }
-

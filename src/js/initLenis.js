@@ -2,7 +2,7 @@ import Lenis from 'lenis'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
-function htmlScrollbarOnscroll(e,scrollTimeout, scrollbarColor, scrollbarActiveColor) {
+function htmlScrollbarOnscroll(e, scrollTimeout, scrollbarColor, scrollbarActiveColor) {
   document.documentElement.style.setProperty('--doc-thumb-color', scrollbarActiveColor)
 
   clearTimeout(scrollTimeout)
@@ -13,12 +13,13 @@ function htmlScrollbarOnscroll(e,scrollTimeout, scrollbarColor, scrollbarActiveC
 
 export default function initLenis(lenisOptions, scrollBarColor, scrollbarActiveColor) {
   window.lenis = new Lenis(lenisOptions)
+  const lenis = window.lenis
   let scrollTimeout
   window.lenis.on('scroll', (e) => {
     htmlScrollbarOnscroll(e, scrollTimeout, scrollBarColor, scrollbarActiveColor)
     if (false) {
       setTimeout(() => {
-        window.lenis.scrollTo(0, { immediate: true })
+        window.lenis.scrollTo(0, {immediate: true})
       }, 500)
     }
   })
@@ -32,6 +33,7 @@ export default function initLenis(lenisOptions, scrollBarColor, scrollbarActiveC
 
       if (targetElement) {
         lenis.scrollTo(targetElement)
+        history.pushState(null, null, targetId);
       }
     })
   })
@@ -43,5 +45,19 @@ export default function initLenis(lenisOptions, scrollBarColor, scrollbarActiveC
   })
 
   gsap.ticker.lagSmoothing(0)
+
+  const hash = window.location.hash
+
+  if (hash) {
+    const targetElement = document.querySelector(hash)
+
+    if (targetElement) {
+      history.scrollRestoration = 'manual'
+      lenis.scrollTo(targetElement, {
+        duration: 1.2,
+        offset: 0,
+      })
+    }
+  }
 
 }

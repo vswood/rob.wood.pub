@@ -1,15 +1,33 @@
 import vsApp from './VirtualStyleApp.js'
 import initApp from './initApp.js'
-import $ from 'jquery'
 
 window.vsApp = vsApp
 
-window.addEventListener('preloader:exit', () => {
+function revealBody() {
   const bodyWrap = document.getElementById('body-wrapper')
-  bodyWrap.style.visibility = 'visible'
-  bodyWrap.setAttribute('aria-busy', false)
+  if(bodyWrap) {
+    bodyWrap.style.visibility = 'visible'
+    bodyWrap.setAttribute('aria-busy', false)
+  }
+}
 
-})
+function hasMultipleSections() {
+  return document.querySelectorAll('section').length > 1
+}
+
+function shouldUseGsap() {
+  return hasMultipleSections() || Boolean(document.querySelector('.testimonials-slider'))
+}
+
+function shouldUseScreensaver() {
+  return hasMultipleSections()
+}
+
+function shouldUseLenis() {
+  return hasMultipleSections()
+}
+
+window.addEventListener('preloader:exit', revealBody)
 
 const offCanvasMenuOptions = {
   headerToggle: document.querySelector('.header-toggle'),
@@ -21,10 +39,7 @@ const offCanvasMenuOptions = {
   homeLink: document.getElementById('home-link')
 }
 
-const sections = document.querySelectorAll('section')
-
 const animationSections = document.querySelectorAll('section')
-const setAnimateVisible = true
 
 const glightboxOptions = {
   selector: '.glightbox',
@@ -36,12 +51,7 @@ const glightboxOptions = {
   }
 }
 
-const setTooltips = true
-
-const setCounters = true
 const counterOptions = {}
-
-const setScreensaver = true
 
 const lenisOptions = {
   allowNestedScroll: true,
@@ -62,7 +72,7 @@ const lenisOptions = {
 }
 const gsapPlugins = [
   'ScrollTrigger',
-  'Draggable',
+  // 'Draggable',
   'Observer',
 ]
 
@@ -70,23 +80,28 @@ const scrollbarActiveColor = '#22e7a1'
 const scrollbarColor = '#22e7a155'
 
 window.addEventListener('DOMContentLoaded', () => {
+  const multipleSections = hasMultipleSections()
   initApp({
     animationSections,
-    setAnimateVisible: true,
+    setAnimateVisible: multipleSections,
     glightboxOptions,
     setTooltips: true,
     setCounters: true,
     counterOptions,
-    setScreensaver: true,
+    setScreensaver: shouldUseScreensaver(),
     setScrollTop: true,
-    setLenis: true,
+    setLenis: shouldUseLenis(),
     lenisOptions,
     scrollbarColor,
     scrollbarActiveColor,
-    setGsap: true,
+    setGsap: shouldUseGsap(),
     gsapPlugins,
     offCanvasMenuOptions,
   })
+
+  if(!multipleSections) {
+    revealBody()
+  }
 })
 
 window.addEventListener('load', () => {
@@ -101,13 +116,15 @@ window.addEventListener('load', () => {
     })
   })
 
-  window.addEventListener('section:visible', (e) => {
-    const section = e.detail
-    if(section.id) {
-      $('#navmenu a').removeClass('active')
-      $(`#${section.id}-link`).addClass('active')
-    }
-  })
+  if(hasMultipleSections()) {
+    window.addEventListener('section:visible', (e) => {
+      const section = e.detail
+      if(section.id) {
+        document.querySelectorAll('#navmenu a').forEach(link => link.classList.remove('active'))
+        document.getElementById(`${section.id}-link`)?.classList.add('active')
+      }
+    })
+  }
 
   // document.querySelectorAll('.btn').forEach(el => el.addEventListener('click', (e) => {
   //   e.preventDefault()

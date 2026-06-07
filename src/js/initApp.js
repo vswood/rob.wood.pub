@@ -1,18 +1,31 @@
 import vsApp from './VirtualStyleApp.js'
-import OffcanvasMenu from './OffcanvasMenu.js'
-import initCounter from './initCounter.js'
-import initLightbox from './initGlightbox.js'
-import initTooltips from './initTooltips.js'
-import animateVisible from './animateVisible.js'
-import LottieScreensaver from './LottieScreensaver.js'
-import FreezeFrame from './FreezeFrame.js'
-import ScrollTop from './ScrollTop.js'
-import initLenis from './initLenis.js'
-import initGsap from './initGsap.js'
 
-window.ff = new FreezeFrame()
+async function loadDefault(importPromise) {
+  const module = await importPromise
+  return module.default
+}
 
-export default function initApp({
+function hasRequiredMenuElements({
+  headerToggle,
+  header,
+  menuWrap,
+  bodyWrapper,
+  scrollTop,
+  morphEl,
+  homeLink,
+} = {}) {
+  return Boolean(
+    headerToggle &&
+    header &&
+    menuWrap &&
+    bodyWrapper &&
+    scrollTop &&
+    morphEl &&
+    homeLink,
+  )
+}
+
+export default async function initApp({
   animationSections = [],
   setAnimateVisible = false,
   glightboxOptions = {},
@@ -29,38 +42,52 @@ export default function initApp({
   gsapPlugins = [],
   offCanvasMenuOptions,
 } = {}) {
-  const menu = new OffcanvasMenu(offCanvasMenuOptions)
-  window.menu = menu
-  initTooltips()
+  if (hasRequiredMenuElements(offCanvasMenuOptions)) {
+    const OffcanvasMenu = await loadDefault(import('./OffcanvasMenu.js'))
+    const menu = new OffcanvasMenu(offCanvasMenuOptions)
+    window.menu = menu
+  }
+
+  if(setTooltips && document.querySelector('[data-bs-toggle="tooltip"]')) {
+    const initTooltips = await loadDefault(import('./initTooltips.js'))
+    initTooltips()
+  }
 
   if(vsApp.prefersReducedMotion === false) {
 
-    if(counterOptions) {
+    if(setCounters && document.querySelector('.purecounter')) {
+      const initCounter = await loadDefault(import('./initCounter.js'))
       initCounter(counterOptions)
     }
 
     if(setAnimateVisible && animationSections.length > 0) {
+      const animateVisible = await loadDefault(import('./animateVisible.js'))
       animateVisible(animationSections)
     }
 
     if(setScreensaver) {
+      const LottieScreensaver = await loadDefault(import('./LottieScreensaver.js'))
       window.lss = new LottieScreensaver()
     }
 
     if(setGsap) {
-     initGsap(gsapPlugins)
+      const initGsap = await loadDefault(import('./initGsap.js'))
+      initGsap(gsapPlugins)
     }
 
     if(setLenis) {
-     initLenis(lenisOptions, scrollbarColor, scrollbarActiveColor)
+      const initLenis = await loadDefault(import('./initLenis.js'))
+      initLenis(lenisOptions, scrollbarColor, scrollbarActiveColor)
     }
   }
 
-  if(Object.keys(glightboxOptions).length > 0) {
+  if(Object.keys(glightboxOptions).length > 0 && document.querySelector(glightboxOptions.selector)) {
+    const initLightbox = await loadDefault(import('./initGlightbox.js'))
     initLightbox(glightboxOptions)
   }
 
-  if(setScrollTop) {
+  if(setScrollTop && document.querySelector('#scroll-top')) {
+    const ScrollTop = await loadDefault(import('./ScrollTop.js'))
     window.scrollTop = new ScrollTop('#scroll-top', 'main')
   }
 }
