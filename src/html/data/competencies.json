@@ -1,88 +1,88 @@
 [
   {
     "name": "Triage Engineer:",
-    "description": "I find root causes and technical bottlenecks fast, and quickly restore performance, stability, and trust.",
+    "description": "I find root causes fast, restore stability, and give teams a clear path out of operational noise.",
     "iconid": "triage",
     "impact": [
       {
         "name": "High-Stakes System Rescue:",
-        "description": "Restored viability to a Sunrun system suffering from severe data and query bottlenecks.",
+        "description": "Restored performance and viability to a Sunrun platform constrained by severe data growth, query lockups, and fragile legacy patterns.",
         "iconid": "rising-graph"
       },
       {
         "name": "Strategic Decoupling:",
-        "description": "Helped eliminate recurring failures at Netflix by decoupling critical logic from volatile third-party schemas.",
+        "description": "Helped eliminate recurring failures at Netflix by separating critical onboarding logic from volatile third-party schema changes.",
         "iconid": "disconnect"
       },
       {
-        "name": "Mission Focused & Battle-Ready:",
-        "description": "Steady in unfamiliar or high-pressure environments where teams need clear technical judgment fast.",
+        "name": "Pressure-Tested Judgment:",
+        "description": "Stay effective in unfamiliar, ambiguous, or high-pressure environments where teams need clear diagnosis and decisive technical direction.",
         "iconid": "architect"
       }
     ]
   },
   {
-    "name": "Systems Revisionist:",
-    "description": "I help organizations build delivery systems that are resilient, maintainable, and easier to operate.",
+    "name": "Systems Strategist:",
+    "description": "I turn brittle architecture, manual workflows, and unclear technical direction into maintainable delivery systems.",
     "iconid": "cloud-network",
     "impact": [
       {
         "name": "Strategic Modernization:",
-        "description": "Planned & led AWS organizational improvements focused on isolation, security, and operational control.",
+        "description": "Planned and led AWS architecture improvements focused on workload isolation, security, operational control, and long-term maintainability.",
         "iconid": "cloud-governance"
       },
       {
-        "name": "Championing Best Practices",
-        "description": "Reduced cloud cost, operational drag, and risk by pioneering infrastructure-as-code and deployment standards.",
+        "name": "Operational Standards",
+        "description": "Reduced risk and delivery friction by standardizing infrastructure-as-code, CI/CD, and repeatable deployment patterns.",
         "iconid": "cloud-circle"
       },
       {
-        "name": "Inspiring Lasting Change",
-        "description": "Led the adoption of cloud-native platforms with fewer failure points.",
+        "name": "Durable Change",
+        "description": "Led adoption of cloud-native foundations that reduced failure points and gave teams more reliable systems to build on.",
         "iconid": "strategy-plan"
       }
     ]
   },
   {
     "name": "DevEx Force Multiplier",
-    "description": "I raise the ceiling by improving both the system and the environment engineers work in.",
+    "description": "I improve the environment engineers work in so teams can move faster with less frustration and fewer avoidable mistakes.",
     "iconid": "team-leader",
     "impact": [
       {
         "name": "Developer Advocate",
-        "description": "Standardized local development and delivery workflows to dramatically improve velocity.",
+        "description": "Standardized local development and delivery workflows, reclaiming lost engineering time and improving day-to-day execution.",
         "iconid": "question-duck"
       },
       {
-        "name": "Bar Raiser",
-        "description": "Raised engineering quality through mentoring, better defaults, and clearer technical direction.",
+        "name": "Engineering Bar Raiser",
+        "description": "Raised team capability through mentoring, better defaults, clearer standards, and practical technical leadership.",
         "iconid": "mentor"
       },
       {
-        "name": "Cross-Cultural Facilitator",
-        "description": "Built stronger collaboration between product, leadership, and engineering teams.",
+        "name": "Cross-Functional Translator",
+        "description": "Built stronger alignment between engineering, product, and leadership by turning technical complexity into clear decisions and tradeoffs.",
         "iconid": "executive"
       }
     ]
   },
   {
-    "name": "Operational Opportunist",
-    "description": "I prioritize technical decisions that create durable business value, over short-term output.",
+    "name": "Operational Modernizer",
+    "description": "I prioritize technical decisions that reduce risk, lower cost, improve reliability, and create durable business value.",
     "iconid": "optimization",
     "impact": [
       {
-        "name": "Innovative Impact",
-        "description": "Conceived & built systems that improved usability, reduced support burden, and opened new revenue opportunities.",
+        "name": "Product-Minded Engineering",
+        "description": "Built systems that improved usability, reduced support burden, and opened new revenue opportunities.",
         "iconid": "product"
       },
       {
-        "name": "Realizing Revenue Streams",
-        "description": "My imagination, skills, and persistence have resulted in millions of dollars of income generation, much of it still ongoing to this day. ",
+        "name": "Revenue-Oriented Modernization",
+        "description": "Turned bespoke legacy applications into reusable, scalable platforms that supported multi-million-dollar business outcomes.",
         "iconid": "money"
       },
       {
-        "name": "Stakeholder Success Producer",
-        "description": "Improved reliability and throughput in systems tied directly to customer and operational outcomes.",
+        "name": "Stakeholder Impact",
+        "description": "Improved reliability, throughput, and operational clarity in systems tied directly to customer experience and business performance.",
         "iconid": "uptime"
       }
     ]

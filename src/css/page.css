@@ -595,7 +595,6 @@
     }
 
     .actions {
-
       .btn {
         max-width: 90%;
       }
@@ -921,10 +920,10 @@
 
         .portfolio-overlay {
           opacity: 1;
-        }
 
-        .portfolio-actions {
-          transform: translateY(0);
+          .portfolio-actions {
+            transform: translateY(0);
+          }
         }
 
         img {
@@ -954,42 +953,22 @@
         display: flex;
         align-items: flex-end;
         justify-content: center;
-      }
 
-      .portfolio-actions {
-        display: flex;
-        gap: 16px;
-        transform: translateY(20px);
-        transition: transform 0.4s ease;
-        margin-bottom: 0.25lh;
-      }
 
-      .icon-wrapper {
-        background: var(--primary);
-      }
+        .portfolio-actions {
+          display: flex;
+          gap: 16px;
+          transform: translateY(20px);
+          transition: transform 0.4s ease;
+          margin-bottom: 0.25lh;
 
-      /* .action-btn {
-        width: 96px;
-        height: 96px;
-        border-radius: 50%;
-        background: var(--surface-color);
-        color: var(--heading-color);
-        border: 3px solid color-mix(in oklch, var(--heading-color), transparent 80%);
-        box-shadow: var(--shadow-elevation-low);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        transition: background 0.3s ease, color 0.3s ease, transform ground 0.3s ease;
-        font-size: var(--large);
 
-        &:hover {
-          background: var(--accent-color);
-          color: var(--contrast-color);
-          transform: scale(1.1);
+          .icon-wrapper {
+            background: var(--primary);
+          }
+
         }
-      } */
-
+      }
 
     }
 
@@ -2147,7 +2126,7 @@
       width: var(--carousel-width);
       margin: auto;
       padding: 0 0.5ch;
-      max-width: 90vw;
+      max-width: 92vw;
 
 
       @container style(--inline-size-md: var(--breakpoint-md)) {
@@ -2156,7 +2135,12 @@
 
       .slide-btn {
         height: 5lh;
-        width: 100%%;
+        width: 47.5%;
+
+
+        @container style(--inline-size-md: var(--breakpoint-md)) {
+          width: 48.5%;
+        }
 
         &.prev-testimonial {
           border-bottom-left-radius: 0.25em;

@@ -35,3 +35,25 @@
   </span>
 </h2>
 {% endmacro %}
+
+{% macro pageHeading2(one, two, three, four, five, xclass="raise", xclass2="") %}
+<h2 class="primary-heading two {{xclass2}}">
+  {% if(two !== "") %}
+  <span class="large block">
+    {% if(one !== "") %}
+    <span class="small top">{{one}}</span>
+    {% endif %}
+    {{two}}
+    <span class="small top two">{{three}}</span>
+  </span>
+  {% endif %}
+  <span class="bottom block">
+    {% if(four !== "") %}
+    <span class="large">{{four}}</span>
+    {% endif %}
+    {% if(five !== "") %}
+    <span class="small {{xclass}}">{{five}}</span>
+    {% endif %}
+  </span>
+</h2>
+{% endmacro %}

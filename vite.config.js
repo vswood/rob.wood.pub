@@ -5,6 +5,7 @@ import eslint from 'vite-plugin-eslint2'
 import { fontless } from 'fontless'
 import PluginCritical from 'rollup-plugin-critical'
 import browserslistToEsbuild from 'browserslist-to-esbuild'
+import { cloudflare } from "@cloudflare/vite-plugin"
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -61,7 +62,13 @@ export default {
       '@html': resolve(__dirname, './src/html'),
     },
   },
-  server: {mode: 'development', middlewareMode: true},
+  server: {
+    mode: 'development',
+    middlewareMode: true,
+    allowedHosts: [
+      'r.wood.pub',
+    ]
+  },
   appType: 'custom',
   build: {
     target: browserslistToEsbuild(),

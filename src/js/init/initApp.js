@@ -1,4 +1,4 @@
-import vsApp from './VirtualStyleApp.js'
+import vsApp from '../lib/VirtualStyleApp.js'
 
 async function loadDefault(importPromise) {
   const module = await importPromise
@@ -40,10 +40,11 @@ export default async function initApp({
   scrollbarActiveColor,
   setGsap = false,
   gsapPlugins = [],
+  scrollTriggerOptions = {},
   offCanvasMenuOptions,
 } = {}) {
   if (hasRequiredMenuElements(offCanvasMenuOptions)) {
-    const OffcanvasMenu = await loadDefault(import('./OffcanvasMenu.js'))
+    const OffcanvasMenu = await loadDefault(import('../lib/OffcanvasMenu.js'))
     const menu = new OffcanvasMenu(offCanvasMenuOptions)
     window.menu = menu
   }
@@ -55,24 +56,24 @@ export default async function initApp({
 
   if(vsApp.prefersReducedMotion === false) {
 
-    if(setCounters && document.querySelector('.purecounter')) {
-      const initCounter = await loadDefault(import('./initCounter.js'))
-      initCounter(counterOptions)
-    }
+    // if(setCounters && document.querySelector('.purecounter')) {
+    //   const initCounter = await loadDefault(import('./initCounter.js'))
+    //   initCounter(counterOptions)
+    // }
 
     if(setAnimateVisible && animationSections.length > 0) {
-      const animateVisible = await loadDefault(import('./animateVisible.js'))
+      const animateVisible = await loadDefault(import('../lib/animateVisible.js'))
       animateVisible(animationSections)
     }
 
     if(setScreensaver) {
-      const LottieScreensaver = await loadDefault(import('./LottieScreensaver.js'))
+      const LottieScreensaver = await loadDefault(import('../lib/LottieScreensaver.js'))
       window.lss = new LottieScreensaver()
     }
 
     if(setGsap) {
       const initGsap = await loadDefault(import('./initGsap.js'))
-      initGsap(gsapPlugins)
+      initGsap(gsapPlugins, scrollTriggerOptions)
     }
 
     if(setLenis) {
@@ -87,7 +88,7 @@ export default async function initApp({
   }
 
   if(setScrollTop && document.querySelector('#scroll-top')) {
-    const ScrollTop = await loadDefault(import('./ScrollTop.js'))
+    const ScrollTop = await loadDefault(import('../lib/ScrollTop.js'))
     window.scrollTop = new ScrollTop('#scroll-top', 'main')
   }
 }

@@ -16,7 +16,7 @@ export default {
       /inactive/, /prev/, /next/, /active/,
     ],
     deep: [
-
+      '.portfolio-item',
       /swiper-/,
       /^glightbox/,
       /^gslide/,

@@ -304,7 +304,7 @@
       padding: 0.25lh 0.5ch;
       margin: 0;
       position: fixed;
-      bottom: 5px;
+      bottom: 60px;
       left: 10px;
       z-index: 999999999;
 
@@ -636,7 +636,7 @@
     padding: 2em 0;
     position: relative;
     grid-area: footer;
-    padding-bottom: 3lh;
+    padding-bottom: 6lh;
 
     h3 {
       font-size: var(--x-large);
@@ -904,7 +904,6 @@
     height: 100vh;
     left: 0;
     padding: 0 15px;
-    padding-bottom: 1lh;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -1069,7 +1068,7 @@
     width: fit-content;
     padding: 0.5lh 1ch;
     right: 10px;
-    bottom: -5px;
+    bottom: 60px;
     z-index: 99999;
     background-color: var(--accent-color);
     transition: color 0.4s ease, background-color 0.4s ease;
@@ -1081,7 +1080,7 @@
     &.active {
       visibility: visible;
       opacity: 1;
-      bottom: 5px;
+      bottom: 60px;
     }
 
     svg {
@@ -1099,7 +1098,7 @@
 */
 @layer component {
   #header .social-links {
-    margin: 0 0 20px 0;
+    margin: 0;
     padding: 0 1ch;
     bottom: 0;
     z-index: 9999999999;
@@ -1199,12 +1198,37 @@
     bottom: 0px;
     margin: auto;
   }
-
+}
+@layer component {
  /**
   * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   * Section headings with varied font sizes
   * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   */
+
+  .primary-heading.hero.two {
+
+    .large {
+      font-size: var(--xxxxx-large);
+      line-height: 1cap;
+    }
+
+    .small.top.two {
+      top: 0;
+      line-height: 1cap;
+      @container style(--inline-size-xl: var(--breakpoint-xl)) {
+        top: 0;
+      }
+    }
+    .bottom {
+      .large {
+        letter-spacing: -2px;
+        font-size: calc(var(--xxxxx-large) * 1.15);
+      }
+    }
+  }
+
+
   .primary-heading {
 
     font-weight: 100;
@@ -1293,6 +1317,8 @@
     }
   }
 
+}
+@layer component {
   /**
   * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   * Tags
@@ -1328,6 +1354,8 @@
 
   }
 
+}
+@layer component {
   /**
   * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   * Section & heading icons
@@ -1353,6 +1381,8 @@
     }
   }
 
+}
+@layer component {
   /**
   * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   * Topic titles and subtitles
@@ -1381,7 +1411,7 @@
     font-family: var(--font-2);
     font-size: var(--x-large);
     color: var(--text-light);
-    line-height: 1cap;
+    line-height: 1;
     margin: 0;
     font-weight: 400;
   }
@@ -1528,6 +1558,8 @@
     }
   }
 
+}
+@layer component {
  /**
   * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   * Primary text container
@@ -1543,17 +1575,18 @@
     }
   }
 
-  .copy-wrapper:not(.skills-heading-two) {
+  .copy-section {
+    margin: 1lh auto;
+    padding: 0;
 
-    .copy-section {
-      margin: 1lh auto;
 
-      @container style(--inline-size-md: var(--breakpoint-md)) {
-        margin: 2lh auto;
-      }
+    @container style(--inline-size-md: var(--breakpoint-md)) {
+      margin: 0 auto;
     }
   }
 
+}
+@layer component {
  /**
   * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   * Gradient bar above text line
@@ -1571,6 +1604,8 @@
       background: linear-gradient(90deg, var(--top-bar-color), color-mix(in srgb, var(--top-bar-color), transparent 100%) var(--gradient-pct));
     }
   }
+}
+@layer component {
  /**
   * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   * Gradient bar below text line
@@ -1588,7 +1623,8 @@
       background: linear-gradient(90deg, var(--bottom-bar-color), color-mix(in srgb, var(--bottom-bar-color), transparent 100%) var(--gradient-pct));
     }
   }
-
+}
+@layer component {
  /**
   * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   * White gradient background clipped with text
@@ -1611,6 +1647,8 @@
     }
   }
 
+}
+@layer component {
  /**
   * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   * Green gradient background clipped with text

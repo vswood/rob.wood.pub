@@ -1,0 +1,19 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "rwp-contact-form",
+  "main": "./src/index.js",
+  "send_metrics": false,
+  "compatibility_date": "2026-06-07",
+  "compatibility_flags": [ "nodejs_compat" ],
+  "workers_dev": false,
+  "route": {
+    "pattern": "rob.wood.pub/*",
+    "zone_name": "rob.wood.pub"
+  },
+  /*"kv_namespaces": [
+    {
+      "binding": "<MY_NAMESPACE>",
+      "id": "<KV_ID>"
+    }
+  ],*/
+}

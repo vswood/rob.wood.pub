@@ -1,5 +1,5 @@
-import vsApp from './VirtualStyleApp.js'
-import initApp from './initApp.js'
+import vsApp from './lib/VirtualStyleApp.js'
+import initApp from './init/initApp.js'
 
 window.vsApp = vsApp
 

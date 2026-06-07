@@ -1,5 +1,5 @@
 import gsap from 'gsap'
-import InfiniteCarousel from './InfiniteCarousel.js'
+import InfiniteCarousel from '../lib/InfiniteCarousel.js'
 
 function initScrollTrigger() {
   window.ScrollTrigger.defaults({
@@ -166,38 +166,38 @@ function animateGroup(selector, set, to, triggerOpts = null) {
 }
 
 function initSectionAnimations() {
-  for(const section of sectionAnimations) {
-    const animFunc = section.animFunc ? section.animFunc : animationOne
-    animFunc(gsap.utils.toArray(section.targets), section.trigger)
-  }
+  // for(const section of sectionAnimations) {
+  //   const animFunc = section.animFunc ? section.animFunc : animationOne
+  //   animFunc(gsap.utils.toArray(section.targets), section.trigger)
+  // }
 
-  gsap.set('.about-image', {
-    opacity: 0,
-    x: '-125%',
-    transformOrigin: 'center center'
-  })
+  // gsap.set('.about-image', {
+  //   opacity: 0,
+  //   x: '-125%',
+  //   transformOrigin: 'center center'
+  // })
 
-  gsap.to('.about-image', {
-    scrollTrigger: '.about-image',
-    opacity: 1,
-    x: 0,
-    duration: 0.15,
-  })
+  // gsap.to('.about-image', {
+  //   scrollTrigger: '.about-image',
+  //   opacity: 1,
+  //   x: 0,
+  //   duration: 0.15,
+  // })
 
-  gsap.to('.about-image', {
-    scrollTrigger: {
-      trigger: '.about-image',
-      start: 'top 5%',
-    },
-    opacity: 1,
-    x: '250%',
-    duration: 0.5,
-    onComplete: () => {
-      setTimeout(() => {
-        gsap.set('.about-image', { x: 0, opacity: 1, scale: 1 })
-      }, 1000)
-    },
-  })
+  // gsap.to('.about-image', {
+  //   scrollTrigger: {
+  //     trigger: '.about-image',
+  //     start: 'top 5%',
+  //   },
+  //   opacity: 1,
+  //   x: '250%',
+  //   duration: 0.5,
+  //   onComplete: () => {
+  //     setTimeout(() => {
+  //       gsap.set('.about-image', { x: 0, opacity: 1, scale: 1 })
+  //     }, 1000)
+  //   },
+  // })
 
   animateGroup(
     '#skills .progress-bar',
@@ -247,7 +247,7 @@ function initSectionAnimations() {
     setOne,
     toOne,
     {
-      start: 'top bottom',
+      start: 'top 95%',
     }
   )
 
@@ -255,6 +255,9 @@ function initSectionAnimations() {
     '.portfolio-item',
     setTwo,
     toTwo,
+    {
+      start: 'top 85%',
+    }
   )
 
   animateGroup(
@@ -263,18 +266,18 @@ function initSectionAnimations() {
     toTwo,
   )
 
-  animateGroup(
-    '.form-col',
-    setTwo,
-    toTwo,
-    {
-      start: 'top 90%',
-    }
-  )
+  // animateGroup(
+  //   '.form-col',
+  //   setTwo,
+  //   toTwo,
+  //   {
+  //     start: 'top 90%',
+  //   }
+  // )
 
 }
 
-function initTestimonialsCarousel() {
+function initTestimonialsCarousel(scrollTriggerOptions) {
   if(!document.querySelector('.cards li') || !document.querySelector('.prev-testimonial') || !document.querySelector('.next-testimonial')) {
     return
   }
@@ -283,15 +286,28 @@ function initTestimonialsCarousel() {
     spacing: 0.1,
     cardSelector: '.cards li',
     cardClass: '.card',
+    scrollTriggerOptions,
   })
 }
 
-export default async function initGsap(plugins) {
-  // if(plugins.includes('Draggable')) {
-  //   const dg = await import('gsap/Draggable')
-  //   window.Draggable = dg.Draggable
-  //   gsap.registerPlugin(window.Draggable)
-  // }
+function initCounts() {
+  const counters = gsap.utils.toArray('.purecounter')
+  counters.forEach(counter => {
+    const stop = counter.getAttribute('data-purecounter-end')
+    const countObj = {val: 0}
+    gsap.to(countObj, {
+      scrollTrigger: counter,
+      val: stop,
+      duration: 1,
+      ease: 'ease.in.out',
+      onUpdate: () => {
+        counter.innerText = Math.round(countObj.val)
+      }
+    })
+  })
+}
+
+export default async function initGsap(plugins, scrollTriggerOptions = {}) {
   if(plugins.includes('Observer')) {
     const ob = await import('gsap/Observer')
     window.Observer = ob.Observer
@@ -304,7 +320,8 @@ export default async function initGsap(plugins) {
     initScrollTrigger()
     // initSectionStacking()
     initSectionAnimations()
-    initTestimonialsCarousel()
+    initTestimonialsCarousel(scrollTriggerOptions)
+    initCounts()
     window.addEventListener('section:visible', e => {
       if(e.detail.id === 'testimonials') {
         window.ScrollTrigger.refresh()
