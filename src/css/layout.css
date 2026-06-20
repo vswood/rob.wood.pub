@@ -7,8 +7,8 @@
     /* background-blend-mode: multiply; */
     max-width: 100%;
     min-height: 100vh;
-    padding: 4lh 0;
     display: flex;
+    padding: 3lh 0;
     justify-content: center;
     align-items: flex-start;
     overflow-x: clip;
@@ -17,7 +17,7 @@
 
 
     @container style(--inline-size-lg: var(--breakpoint-lg)) {
-      padding: 3lh 0;
+      padding: 1lh 4ch 4lh 4ch;
     }
 
     .container {
@@ -108,6 +108,7 @@
         height: 100vh;
         max-width: 100%;
         overflow-y: scroll;
+        overflow-x: clip;
         transition: transform 0.35s ease-in-out, width 0.35s ease-in-out;
         perspective: 1000px;
         transform-style: preserve-3d;

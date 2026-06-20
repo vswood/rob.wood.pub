@@ -1,32 +1,25 @@
 {% macro testimonial(name, position, company, testimonial, avatar) %}
-<div class="swiper-slide">
-  <div class="testimonial-slide">
-    <div class="testimonial-header">
-      <div class="stars-rating">
-        {% icon "star-full", '{ "width": "16", "height": "16" }' %}
-        {% icon "star-full", '{ "width": "16", "height": "16" }' %}
-        {% icon "star-full", '{ "width": "16", "height": "16" }' %}
-        {% icon "star-full", '{ "width": "16", "height": "16" }' %}
-        {% icon "star-full", '{ "width": "16", "height": "16" }' %}
-      </div>
-      <div class="icon-wrapper">
-        {% icon "quote", '{ "width": "32", "height": "32" }' %}
-      </div>
+<div class="testimonial-slide">
+  <div class="testimonial-header">
+    <div class="stars-rating">
+      {% icon "star-full", '{ "width": "16", "height": "16" }' %}
+      {% icon "star-full", '{ "width": "16", "height": "16" }' %}
+      {% icon "star-full", '{ "width": "16", "height": "16" }' %}
+      {% icon "star-full", '{ "width": "16", "height": "16" }' %}
+      {% icon "star-full", '{ "width": "16", "height": "16" }' %}
     </div>
-    <div class="testimonial-body">
-      {{testimonial | safe}}
+    <div class="icon-wrapper">
+      {% icon "quote", '{ "width": "24", "height": "24" }' %}
     </div>
-    <div class="testimonial-footer">
-      <div class="author-info">
-        <svg class="author-avatar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.8 144.8">
-          <use href="#{{avatar}}"></use>
-        </svg>
-        <div class="author-details">
-          <h3>{{name}}</h3>
-          <span class="role">{{position}}</span>
-          <span class="company">{{company}}</span>
-        </div>
-      </div>
+  </div>
+  <div class="testimonial-body">
+    {{testimonial | safe}}
+  </div>
+  <div class="testimonial-footer">
+    <div class="author-info">
+      <h3>{{name}}</h3>
+      <div class="role">{{position}}</div>
+      <div class="company">{{company}}</div>
     </div>
   </div>
 </div>

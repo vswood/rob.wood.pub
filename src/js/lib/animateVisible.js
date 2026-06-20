@@ -17,7 +17,7 @@ export default function animateVisible(sections) {
     })
   }, {
     rootMargin: '0px',
-    threshold: 0.1,
+    threshold: 0.01,
   })
 
   sections.forEach(el => {

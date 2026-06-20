@@ -4,35 +4,35 @@
     "name": "Paula Kaledzi",
     "position": "Analyst, Business Insights",
     "company": "CMI Media Group ",
-    "testimonial": "<p>No man is an island, but when it comes to web development, Rob gets pretty close. In my three years of collaboration and supervision on projects, I’ve rarely worried about Rob’s ability to build, troubleshoot or deploy web products or services. As a senior full stack developer, Rob is able to independently handle a breadth and depth of full-stack projects and challenges. Rob’s quick thinking, curious nature, and problem-solving abilities have been key tenants in turning wireframes and sandboxes into quality websites and meaningful digital tools.</p><p>However, Rob’s bootstrap nature doesn’t detract from his ability to grow and lead his team or enrich the knowledge and experience of his non-developer colleagues. Rob advocates for his team throughout the development and management process, pushing for realistic timelines and deliverables while also ensuring work meets client and end-user expectations. Rob has consulted leadership and clients on best practices, new tools, and potential pitfalls of projects, ensuring integrity and upskill of his work/team.</p><p>Rob is receptive to the feedback and needs of graphic designers, copy writers, digital marketers, and web analysts, often incorporating content/design tools and functionalities to make their work easier or systematic, in turn giving them more ownership. Rob is more than willing to pull back the curtain on development or expand his knowledge on adjacent subjects. This makes him a trusted internal resource and helps cross functional teams engage more thoughtfully and efficiently with developers.</p><p>Rob’s unique skills and personal style add the touch of brash and grit needed to make the impossible happen.</p>",
+    "testimonial": "<p>Rob is a rare full-stack engineer who can build, troubleshoot, deploy, and explain complex systems with confidence. He is independent, fast, practical, and trusted by both developers and non-developers. He improves the work, the workflow, and the people around him.</p>",
     "avatar": "icon-avatar-9"
   },
   {
     "name": "John Evans",
     "position": "Full Stack Developer/Technical Consultant",
     "company": "C1Secure ",
-    "testimonial": "<p>I had the privilege of working under Rob’s leadership at Marketing for Change, and I can confidently say he is one of the most talented, driven, and forward-thinking engineers I’ve ever worked with. As the Senior Developer and leader of our web development team, Rob consistently demonstrated an exceptional ability to architect modern, scalable solutions to complex problems.</p><p>What sets Rob apart is not just his technical expertise in AWS, cloud engineering, and DevOps, but his unwavering dedication to excellence. He often worked off the clock, refining solutions and learning the best way to conquer any challenge that stood in his way. No matter how complex the problem, Rob was determined to find the most elegant and efficient solution.</p><p>Rob’s brilliance was especially evident in his work with Docker and containerization. He designed seamless local development environments that integrated with BitBucket CI/CD pipelines, significantly improving our team’s development and deployment workflows. On the cloud side, he leveraged AWS Organizations, ECS, and Fargate to host and maintain our applications, applying Infrastructure as Code (IaC) principles to ensure scalability, security, and cost efficiency.</p><p>Beyond his technical skills, Rob was an incredible mentor. When I joined the team, I had a primarily front-end background, but thanks to his guidance, I gained deep expertise in Node.js, AWS services, and DevOps best practices. His ability to teach complex back-end concepts in an approachable way played a huge role in my transition to full-stack development.</p><p>Any team would be fortunate to have Rob. His leadership, problem-solving mindset, and relentless drive make him an invaluable asset in any modern engineering environment. I wholeheartedly recommend him to any organization looking for a top-tier engineering leader who not only gets the job done but does it with passion and precision.</p>",
+    "testimonial": "<p>Rob is one of the most talented, driven, and forward-thinking engineers I have worked with. His leadership in Docker, AWS, DevOps, and backend architecture improved our workflows, raised team capability, and helped me grow from frontend-focused developer into full-stack engineer.</p>",
     "avatar": "icon-avatar-10"
   },
   {
     "name": "Josh Lone",
     "position": "Solutions Architect",
     "company": "Latitude IT Solutions",
-    "testimonial": "<p>I’ve known and worked with Rob for many years. I would go to him a lot based on how much he knew. He taught me a lot.</p><p>Rob gets along great with his peers - he has leadership qualities. He takes the time to listen to other’s perspectives. When there were differences, he was able to resolve problems quickly.</p><p>He puts a lot of effort into whatever he works on. He thinks outside the box and finds creative solutions to problems where most people wouldn’t. He wouldn’t give up.  If you're considering hiring him, he’s a very strong candidate.</p>",
-    "avatar": "icon-avatar-1"
+    "testimonial": "<p>Rob is knowledgeable, creative, persistent, and strong under pressure. He listens, resolves problems quickly, and brings leadership qualities that make him a strong candidate for serious technical work.</p>",
+    "avatar": "icon-avatar-7"
   },
   {
     "name": "Babak Keradman",
     "position": "Chief Technology Officer",
     "company": "Cyber Hornet ETFs",
-    "testimonial": "<p>Rob is definitely a self-motivated person. He takes it upon himself to figure things out. When he gets stuck, he doesn’t twiddle his thumbs. He’s intrinsically motivated. When he came to me with a problem, he always had potential solutions lined up which was really refreshing. He got along really well with co-workers. I would definitely hire him again if I could.<p>",
+    "testimonial": "<p>Rob is self-motivated, practical, and solution-oriented. When he hits a problem, he brings options instead of excuses. I would hire him again.<p>",
     "avatar": "icon-avatar-2"
   },
   {
     "name": "David Eng",
     "position": "Legal, Innovation and Productivity Manager",
     "company": "Netflix",
-    "testimonial": "<p>I managed Rob as an 100% remote worker, supporting Netflix's legacy supplier onboarding system (Memento) and then redevloping it as the Ozark app. I loved working with him. I was the product manager. We were able to bring up an app within 4 months with an aggressive timeline.</p><p>He was easy to work with, came in willing to learn, asked questions / he’s willing to say ‘I don’t know’ / he won’t make any big assumptions without asking for clarifications. </p><p>He gets along with people well / straightforward personality / you don’t have to babysit or follow-up / he’ll reach out to me if he has finished work or needs anything. If he has a problem we address it on the spot / immediate feedback / if we disagree with anything we address immediately / it’s always constructive.</p>",
+    "testimonial": "<p>Rob was easy to work with, reliable remotely, willing to ask clarifying questions, and strong at immediate constructive feedback. He helped bring up a new app within an aggressive four-month timeline without needing babysitting.</p>",
     "avatar": "icon-avatar-3"
   },
   {
@@ -61,7 +61,7 @@
     "position": "Owner",
     "company": "PHP Reporting Portal",
     "testimonial": "<p>Robert is an excellent resource and I highly recommend him.</p>",
-    "avatar": "icon-avatar-7"
+    "avatar": "icon-avatar-9"
   },
   {
     "name": "Storm Edwards",

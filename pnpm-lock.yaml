@@ -56,6 +56,12 @@ importers:
       dom-skeleton-generator:
         specifier: link:../skeleton
         version: link:../skeleton
+      escape-html:
+        specifier: ^1.0.3
+        version: 1.0.3
+      form-data:
+        specifier: ^4.0.5
+        version: 4.0.5
       glightbox:
         specifier: ^3.3.1
         version: 3.3.1

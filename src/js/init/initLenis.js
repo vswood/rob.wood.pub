@@ -16,6 +16,7 @@ export default function initLenis(lenisOptions, scrollBarColor, scrollbarActiveC
   const lenis = window.lenis
   let scrollTimeout
   window.lenis.on('scroll', (e) => {
+    ScrollTrigger.update()
     htmlScrollbarOnscroll(e, scrollTimeout, scrollBarColor, scrollbarActiveColor)
     if (false) {
       setTimeout(() => {
@@ -39,8 +40,6 @@ export default function initLenis(lenisOptions, scrollBarColor, scrollbarActiveC
       }
     })
   })
-
-  window.lenis.on('scroll', ScrollTrigger.update)
 
   gsap.ticker.add((time) => {
     window.lenis.raf(time * 1000)

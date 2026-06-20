@@ -82,6 +82,10 @@
     outline-offset: 2px;
   }
 
+  :where(:focus:not(:focus-visible)) {
+    outline: none;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

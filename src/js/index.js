@@ -1,5 +1,6 @@
 import vsApp from './lib/VirtualStyleApp.js'
 import initApp from './init/initApp.js'
+import handleFormSubmit from './handleFormSubmit.js'
 
 window.vsApp = vsApp
 
@@ -102,6 +103,8 @@ window.addEventListener('DOMContentLoaded', () => {
   if(!multipleSections) {
     revealBody()
   }
+
+  document.getElementById('contact-form').addEventListener('submit', handleFormSubmit)
 })
 
 window.addEventListener('load', () => {

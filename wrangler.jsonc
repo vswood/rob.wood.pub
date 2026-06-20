@@ -10,10 +10,26 @@
     "pattern": "rob.wood.pub/*",
     "zone_name": "rob.wood.pub"
   },
-  /*"kv_namespaces": [
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+  },
+  "secrets_store_secrets": [
     {
-      "binding": "<MY_NAMESPACE>",
-      "id": "<KV_ID>"
+      "binding": "MAILGUN_API_KEY",
+      "store_id": "4ebb59c094e4442e9c50ab90102470e4",
+      "secret_name": "MAILGUN_API_KEY"
+    },
+    {
+      "binding": "TURNSTILE_SECRET",
+      "store_id": "4ebb59c094e4442e9c50ab90102470e4",
+      "secret_name": "TURNSTILE_SECRET"
     }
-  ],*/
+  ],
+  "vars": {
+    "MAILGUN_DOMAIN": "'mg.virtualstyle.us'",
+    "FORMMAIL_FROM": "Portfolio Webform <postmaster@mg.virtualstyle.us>",
+    "FORMMAIL_TO": "Rob Wood <rob@virtualstyle.us>"
+  }
 }

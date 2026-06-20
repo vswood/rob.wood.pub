@@ -26,6 +26,11 @@ curnav: testimonials
             {{ gen.testimonial(item.name, item.position, item.company, item.testimonial, item.avatar) }}
             </li>
           {% endfor %}
+          {% for item in testimonials %}
+            <li class="card">
+            {{ gen.testimonial(item.name, item.position, item.company, item.testimonial, item.avatar) }}
+            </li>
+          {% endfor %}
 
           </ul>
 

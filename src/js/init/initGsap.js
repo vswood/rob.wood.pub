@@ -199,20 +199,36 @@ function initSectionAnimations() {
   //   },
   // })
 
-  animateGroup(
-    '#skills .progress-bar',
-    {
-      transition: 'none',
-    },
-    {
-      width: `${(item) => item.getAttribute('aria-valuenow') || 100}%`,
+  // animateGroup(
+  //   '#skills .progress-bar',
+  //   {
+  //     transition: 'none',
+  //   },
+  //   {
+  //     width: `${(item) => item.getAttribute('aria-valuenow') || 100}%`,
+  //     ease: 'none'
+  //   },
+  //   {
+  //     start: 'top 75%',
+  //     end: 'bottom 5%',
+  //   }
+  // )
+
+  const bars = gsap.utils.toArray('#skills .progress-bar')
+  bars.forEach(bar => {
+    const targetVal = bar.getAttribute('aria-valuenow') || 100
+    gsap.set(bar, { transition: 'none' })
+    gsap.to(bar, {
+      scrollTrigger: {
+        trigger: bar,
+        start: 'top bottom',
+        end: 'bottom center',
+        scrub: true
+      },
+      width: `${targetVal}%`,
       ease: 'none'
-    },
-    {
-      start: 'top bottom',
-      end: 'bottom center',
-    }
-  )
+    })
+  })
 
   const setOne = {
     opacity: 0,
@@ -253,6 +269,15 @@ function initSectionAnimations() {
 
   animateGroup(
     '.portfolio-item',
+    setOne,
+    toOne,
+    {
+      start: 'top 85%',
+    }
+  )
+
+  animateGroup(
+    '.portfolio-image',
     setTwo,
     toTwo,
     {
@@ -262,6 +287,15 @@ function initSectionAnimations() {
 
   animateGroup(
     '.detail-item',
+    setTwo,
+    toTwo,
+  ),
+  {
+    start: 'top -5%',
+  }
+
+  animateGroup(
+    '.tech-item',
     setTwo,
     toTwo,
   )
@@ -283,12 +317,14 @@ function initTestimonialsCarousel(scrollTriggerOptions) {
   }
 
   window.carousel = new InfiniteCarousel({
-    spacing: 0.1,
+    spacing: 0.045,
     cardSelector: '.cards li',
     cardClass: '.card',
     scrollTriggerOptions,
   })
 }
+
+const fmt = new Intl.NumberFormat('en-US')
 
 function initCounts() {
   const counters = gsap.utils.toArray('.purecounter')
@@ -301,7 +337,7 @@ function initCounts() {
       duration: 1,
       ease: 'ease.in.out',
       onUpdate: () => {
-        counter.innerText = Math.round(countObj.val)
+        counter.innerText =fmt.format( Math.round(countObj.val))
       }
     })
   })
@@ -318,16 +354,16 @@ export default async function initGsap(plugins, scrollTriggerOptions = {}) {
     window.ScrollTrigger = st.ScrollTrigger
     gsap.registerPlugin(window.ScrollTrigger)
     initScrollTrigger()
+    initCounts()
     // initSectionStacking()
     initSectionAnimations()
     initTestimonialsCarousel(scrollTriggerOptions)
-    initCounts()
-    window.addEventListener('section:visible', e => {
-      if(e.detail.id === 'testimonials') {
-        window.ScrollTrigger.refresh()
-      }
-    })
-    window.ScrollTrigger.refresh()
+    // window.addEventListener('section:visible', e => {
+    //   if(e.detail.id === 'testimonials') {
+    //     window.ScrollTrigger.refresh()
+    //   }
+    // })
+    // window.ScrollTrigger.refresh()
   }
   if(plugins.includes('SplitText')) {
     const st = await import('gsap/SplitText')

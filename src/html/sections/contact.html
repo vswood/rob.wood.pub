@@ -86,11 +86,26 @@ curnav: contact
         <div class="form-wrapper">
           <div class="form-header contact-3">
             <h3 class="topic-title"><b>Send</b> me a message</h3>
-            <h4 class="topic-subtitle">I <b>do not</b> retain, sell, or share any user information.</h4>
+            <div class="topic-subtitle">I <b>do not</b> retain, sell, or share any user information.</div>
           </div>
 
-          <form class="needs-validation" novalidate>
+          <form id="contact-form" class="needs-validation" novalidate>
+
             <div class="container-fluid">
+
+              <div class="row form-messages">
+
+                <div class="col-12 form-col copy-wrapper">
+                  <div class="error message"></div>
+                  <div class="success message">
+                    <h2>Success!</h2>
+                    <p>Your message has been sent. Thank you!</p>
+                    <p>We will respond ASAP, within 3 to 5 business days.</p>
+                    <p>If you have an urgent situation, booking a meeting is the better method of getting our assistance quickly.</p>
+                  </div>
+                </div>
+
+              </div>
 
               <div class="row form-row">
 
@@ -99,7 +114,11 @@ curnav: contact
                   <div class="form-floating mb-3">
                     <input type="email" name="email" class="form-control" id="input-email" aria-describedby="help-email"
                       required placeholder="" autocomplete="email">
-                    <label for="input-email" class="form-label">Email address</label>
+                    <label for="input-email" class="form-label">
+                      <span class="hint">Email address</span>
+                      <span class="invalid">Invalid email address</span>
+                      <span class="valid">Looks good!</span>
+                    </label>
                   </div>
                   <div class="invalid-feedback">
                     You must enter a valid email address with your message.
@@ -134,7 +153,11 @@ curnav: contact
                   <div class="form-floating mb-3">
                     <input type="text" name="subject" class="form-control" id="input-subject"
                       aria-describedby="help-subject" required placeholder="">
-                    <label for="input-subject" class="form-label">Subject</label>
+                    <label for="input-subject" class="form-label">
+                      <span class="hint">Subject</span>
+                      <span class="invalid">Invalid subject</span>
+                      <span class="valid">Looks good!</span>
+                    </label>
                   </div>
                   <div class="invalid-feedback">
                     You must enter a subject for your message.
@@ -148,7 +171,11 @@ curnav: contact
                   <div class="form-floating mb-3">
                     <input type="text" name="company" class="form-control" id="input-company"
                       aria-describedby="help-company" required placeholder="" autocomplete="organization">
-                    <label for="input-company" class="form-label">Company name</label>
+                    <label for="input-company" class="form-label">
+                      <span class="hint">Company name</span>
+                      <span class="invalid">Invalid company name</span>
+                      <span class="valid">Looks good!</span>
+                    </label>
                   </div>
                   <div class="invalid-feedback">
                     You must enter your company name with your message.
@@ -162,12 +189,13 @@ curnav: contact
 
                 <div class="col-lg-6 form-col">
                   <div class="form-floating mb-3">
-                    <textarea style="height:15lh" name="message" class="form-control" id="input-message"
+                    <textarea name="message" class="form-control" id="input-message"
                       aria-describedby="help-message" required placeholder=""></textarea>
-                    <label for="input-message" class="form-label textarea">Message</label>
-                  </div>
-                  <div class="invalid-feedback">
-                    You must enter a message to send.
+                    <label for="input-message" class="form-label textarea">
+                      <span class="hint">Message</span>
+                      <span class="invalid">Invalid message</span>
+                      <span class="valid">Looks good!</span>
+                    </label>
                   </div>
                   <div id="help-message" class="form-text">Enter your email message</div>
                 </div>
@@ -177,19 +205,34 @@ curnav: contact
                   <div class="form-floating mb-3">
                     <input type="tel" name="name" class="form-control" id="input-phone" aria-describedby="help-phone"
                       required placeholder="" autocomplete="phone">
-                    <label for="input-phone" class="form-label">Phone number</label>
-                  </div>
-                  <div class="invalid-feedback">
-                    You must enter a valid phone number with your message.
+                    <label for="input-phone" class="form-label">
+                      <span class="hint">Phone number</span>
+                      <span class="invalid">Invalid phone number</span>
+                      <span class="valid">Looks good!</span>
+                    </label>
                   </div>
                   <div id="help-phone" class="form-text">Enter your phone number</div>
 
                   <div class="form-floating mb-3">
                     <input type="text" name="url" class="form-control" id="input-url" aria-describedby="help-url"
                     placeholder="" autocomplete="url">
-                    <label for="input-url" class="form-label">Website URL</label>
+                    <label for="input-url" class="form-label">
+                      <span class="hint">Website URL</span>
+                      <span class="invalid">Invalid website URLr</span>
+                      <span class="valid">Looks good!</span>
+                    </label>
                   </div>
                   <div id="help-phone" class="form-text">Enter your website URL, if you have one</div>
+
+                  <input type="text" name="question" class="form-control" id="input-question" aria-hidden="true">
+                  <div class="turnstileWrapper">
+                    <div class="cf-turnstile"
+                      data-size="flexible"
+                      data-sitekey="1x00000000000000000000BB"
+                      data-theme="dark"
+                      data-appearance="interaction-only"
+                      ></div>
+                  </div>
 
                   <div class="actions">
                     <button type="submit" class="btn btn-primary">
@@ -198,18 +241,6 @@ curnav: contact
                       </svg>
                     </button>
                   </div>
-                </div>
-
-              </div>
-              <div class="row">
-
-                <div class="col-md-12 form-col">
-                  <div class="form-messages">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div>
-                  </div>
-
                 </div>
 
               </div>

@@ -120,10 +120,10 @@ export default class OffcanvasMenu {
   #finishAnimation() {
     this.isOpen = !this.isOpen
     if (this.isOpen) {
-      this.#home.focus({focusVisible: true})
+      this.#home.focus()
       vsApp.emit('menu:opened')
     } else {
-      this.#headerToggle.focus({focusVisible: true})
+      this.#headerToggle.focus()
       vsApp.emit('menu:closed')
     }
   }
