@@ -52,19 +52,19 @@
         }
       }
 
-      &[open] {
+      &[open],
+      &:open {
         height: auto;
 
         &::details-content {
           opacity: 1;
           block-size: auto;
         }
-      }
 
-      &[open] {
         .vs-accordion-header {
           .vs-accordion-header-inner {
             .vs-accordion-title {
+              color: var(--accent-2);
               svg {
                 transform: rotate(180deg);
               }
@@ -94,6 +94,7 @@
         text-align: left;
         transition: var(--transform-colors-transition);
         width: 100%;
+        height: 5lh;
         border: 1px solid #090e13;
 
         &:focus,
@@ -108,6 +109,7 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
+        height: 100%;
 
         .vs-accordion-header-inner {
           display: grid;
@@ -115,6 +117,7 @@
           grid-template-columns: 25% 1fr;
           grid-template-rows: 1fr;
           padding: 0;
+          height: 100%;
 
           .vs-accordion-icon {
             align-items: center;
@@ -251,6 +254,7 @@
           .alert-content {
             flex: 1;
             padding: 0lh 0.5ch 1lh 0.5ch;
+            text-align: left;
 
             .alert-title {
               color: var(--accent);

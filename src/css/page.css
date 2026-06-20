@@ -110,8 +110,13 @@
 
     }
 
+    .about-competencies {
+      margin-top: 2lh;
+      text-align: center;
+    }
+
     .video-link {
-      margin: 2lh auto;
+      margin: 0 auto;
       width: 100%;
       aspect-ratio: 600/334;
       opacity: 0.5;
@@ -219,6 +224,7 @@
     .expertise-grid {
       margin-top: 3lh;
       margin-bottom: 1lh;
+      padding: 0 1ch;
 
       /* .expertise-grid.copy-wrapper h3 {
         font-size: var(--x-large);
@@ -2108,16 +2114,6 @@
 */
 @layer page {
 
-  :root {
-    --carousel-width: 80vw;
-    --carousel-height: 14lh;
-
-    @container style(--inline-size-lg: var(--breakpoint-lg)) {
-      --carousel-width: 32ch;
-      --carousel-height: 14lh;
-    }
-  }
-
   #drag-proxy {
     height: var(--carousel-height);
     width: var(--carousel-width);
@@ -2129,6 +2125,13 @@
     /* content-visibility: visible; */
     contain-intrinsic-size: 1011px;
     padding: 1lh 0 8lh 0;
+
+    --carousel-width: 80vw;
+    --carousel-height: 14lh;
+
+    @container style(--inline-size-xs: var(--breakpoint-xs)) {
+      --carousel-width: 32ch;
+    }
 
     .section-heading-alt {
       width: 27.35ch;

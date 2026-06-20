@@ -49,32 +49,6 @@ curnav: about
             </p>
           </div>
 
-          <!-- <div class="read-more about-details">
-
-            <div class="copy-wrapper">
-              <p class="copy-section">
-                That usually means stepping into environments where the technology is underperforming, the delivery process is noisy, or the business has outgrown the way the software was originally built.
-              </p>
-              <p class="copy-section">
-                I help teams regain control by clarifying the technical path, fixing structural problems, and improving the way software gets delivered.
-              </p>
-              <p class="copy-section">
-                Over the past 20+ years, I have modernized legacy products, rescued fragile systems, improved cloud foundations, and helped teams work with more speed and less noise.
-              </p>
-              <p class="copy-section">
-                My background spans hands-on engineering, architecture, platform work, and leadership, which makes me effective in situations where technical problems are tightly coupled to process and organizational drag.
-              </p>
-              <p class="copy-section">
-                My work has included stabilizing critical systems for companies such as Netflix and Sunrun, supporting nationally visible public-sector platforms, and helping turn internal tools into revenue-generating products.
-              </p>
-            </div>
-          </div> -->
-
-          <div class="expertise-grid copy-wrapper about-title-3">
-            <h3 class="topic-title"><b>Signature Strengths</b> & Strategic Competencies</h3>
-            {{ acc.accordion(competencies)  }}
-          </div>
-
         </div>
       </div>
 
@@ -115,6 +89,22 @@ curnav: about
 
     </div>
 
+    <div class="row about-competencies">
+      <div class="col-12 about-title-3">
+        <h3 class="topic-title"><b>Signature Strengths</b> & Strategic Competencies</h3>
+      </div>
+      <div class="col-md-6">
+        <div class="expertise-grid">
+          {{ acc.accordion(competencies | slice(2) | first) }}
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="expertise-grid">
+          {{ acc.accordion(competencies | slice(2) | last) }}
+        </div>
+      </div>
+    </div>
+
     <div class="row about-lower">
       <div class="col-lg-12">
         <div class="section-heading-alt about-2">
@@ -146,6 +136,7 @@ curnav: about
           </div>
         </div>
       </div>
+
       <div class="col-lg-7 collab-text">
         <div class="copy-wrapper">
           <div class="copy-section">
@@ -159,10 +150,6 @@ curnav: about
         </div>
         <div class="copy-wrapper">
           <div class="copy-section">
-            <!-- <a href="#contact" class="btn btn-primary about-2">
-              <span>Contact Me</span>
-              {% icon "speech-bubble-square", '{ "width": "16", "height": "16" }' %}
-            </a> -->
             <h3 class="topic-title"><b>What I bring</b> to projects and teams</h3>
             <p><b>Fast understanding. Honest diagnosis. Practical execution. Clear communication. Measurable improvement.</b></p>
 
