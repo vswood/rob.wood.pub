@@ -7,7 +7,6 @@ import vsFilters from './vsFilters.js'
 import vsTransforms from './vsTransforms.js'
 import vsIcons from './vsIcons.js'
 import vsCopy from './vsCopy.js'
-import vsContent from './vsContent.js'
 
 const isProd = process.env.ELEVENTY_ENV === "prod"
 

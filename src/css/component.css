@@ -67,6 +67,7 @@
               color: var(--accent-2);
               svg {
                 transform: rotate(180deg);
+                color: var(--accent-2) !important;
               }
             }
           }
@@ -1520,14 +1521,14 @@
   .icon-wrapper {
     width: 64px;
     height: 64px;
-    background: color-mix(in srgb, var(--accent-color), transparent 90%);
+    background: color-mix(in srgb, var(--contrast-color), transparent 20%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     /* margin-bottom: 1.5rem; */
     box-shadow: inset -2px -2px 1px 1px #00000033;
-    border: 1px solid var(--darkest);
+    border: 1px solid var(--primary-light);
     margin-right: 1ch;
 
     svg {

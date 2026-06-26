@@ -73,23 +73,28 @@ export default class InfiniteCarousel {
 
     window.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') {
-        window.carousel.scrubTo()
+        _this.scrubTo()
       } else if (e.key === 'ArrowLeft') {
-        window.carousel.scrubTo(true)
+        _this.scrubTo(true)
       }
     })
 
     document.querySelector('.prev-testimonial').addEventListener('click', () => {
-        window.carousel.scrubTo(true)
+        _this.scrubTo(true)
     })
 
     document.querySelector('.next-testimonial').addEventListener('click', () => {
-        window.carousel.scrubTo()
+        _this.scrubTo()
     })
   }
 
   adjustTime(delta) {
-    this.#scrub.vars.totalTime = this.#snap(this.#scrub.vars.totalTime + delta)
+    const cycle = this.#loop.duration()
+    const target = this.#scrub.vars.totalTime + delta
+    const wrappedTarget = this.#snap(gsap.utils.wrap(cycle, cycle * 2, target))
+    const offset = target - wrappedTarget
+    this.#loop.totalTime(this.#loop.totalTime() - offset)
+    this.#scrub.vars.totalTime = wrappedTarget
     this.#scrub.invalidate().restart()
   }
 
@@ -98,7 +103,12 @@ export default class InfiniteCarousel {
   }
 
   setScrubTime(time) {
-    this.#scrub.vars.totalTime = this.#snap(time)
+    const cycle = this.#loop.duration()
+    const target = this.#snap(time)
+    const wrappedTarget = gsap.utils.wrap(cycle, cycle * 2, target)
+    const offset = target - wrappedTarget
+    this.#loop.totalTime(this.#loop.totalTime() - offset)
+    this.#scrub.vars.totalTime = wrappedTarget
     this.#scrub.invalidate().restart()
   }
 

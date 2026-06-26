@@ -1019,7 +1019,7 @@
           font-family: var(--font-2);
           /* text-transform: uppercase; */
           margin-bottom: 1lh;
-          min-height: 2.75cap;
+          min-height: 3cap;
           margin: 0;
         }
 
@@ -1201,8 +1201,8 @@
 
               .timeline-year {
                 font-size: var(--medium);
+                font-weight: 400;
                 color: var(--accent);
-                font-weight: 200;
                 letter-spacing: 0.05em;
                 text-transform: uppercase;
               }
@@ -1354,18 +1354,34 @@
 
               .institution {
                 font-family: var(--font-4);
-                font-size: var(--x-large);
+                font-size: var(--large);
                 color: var(--accent-light);
-                letter-spacing: -1px;
+                /* letter-spacing: -1px; */
                 margin-bottom: 0.5rem;
-                font-weight: 600;
+                font-weight: 400;
+                margin-top: 0.5rem;
+              }
+
+              .institution-abbr {
+                font-family: var(--font-4);
+                font-size: var(--xxxxx-large);
+                /* color: var(--accent-light); */
+                color: #861F41;
+                text-shadow:
+                -2px -2px 0 #fff,
+                2px -2px 0 #fff,
+                -2px  2px 0 #fff,
+                2px  2px 0 #fff; /* Simulates a 2px sharp outline */
+                letter-spacing: 1px;
+                margin-bottom: 0.5rem;
+                font-weight: 700;
                 margin-top: 2.5rem;
               }
 
               .graduation-year {
                 font-size: var(--large);
                 color: var(--accent-color);
-                font-weight: 100;
+                font-weight: 500;
                 letter-spacing: 0.02em;
               }
 

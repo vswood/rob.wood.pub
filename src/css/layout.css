@@ -56,7 +56,7 @@
   @container style(--inline-size-xl: var(--breakpoint-xl)) {
     .container {
       max-width: 1720px;
-      padding: 0 3ch;
+      padding: 0 1ch;
     }
   }
 

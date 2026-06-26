@@ -25,8 +25,6 @@ function handleFormSubmit(e) {
   console.log(data)
 }
 
-/*
-
 function formMessage(error = false) {
   document.querySelectorAll('.form-row').forEach(e => e.style.display = 'none')
   document.querySelector('.form-messages').style.display = 'flex'
@@ -71,7 +69,7 @@ function checkInput(selector, data, exp = false) {
   }
 }
 
-function postForm(data) {
+async function postForm(data) {
   const json = JSON.stringify(data);
 
   try {
@@ -90,8 +88,9 @@ function postForm(data) {
 
     const result = await response.json()
     formMessage()
+  } catch (e) {
+    formMessage(`Server error: ${e.message | 'Unknown'}`)
+  }
 }
-
-*/
 
 export default handleFormSubmit
