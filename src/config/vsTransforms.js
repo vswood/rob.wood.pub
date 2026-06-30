@@ -11,7 +11,7 @@ export default function(eleventyConfig) {
   if(isProd) {
 
     eleventyConfig.addTransform('htmlmin', function (content) {
-      if ((this.page.outputPath || '').endsWith('.html') && !this.page.outputPath.includes('single-page')) {
+      if ((this.page.outputPath || '').endsWith('.html')) {
         let minified = htmlmin.minify(content, {
           useShortDoctype: true,
           removeComments: true,
