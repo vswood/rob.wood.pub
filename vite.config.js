@@ -66,6 +66,7 @@ export default {
     mode: 'development',
     middlewareMode: true,
     allowedHosts: [
+      'localhost',
       'r.wood.pub',
     ]
   },

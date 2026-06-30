@@ -179,13 +179,9 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url)
 
-    if (url.pathname !== CONTACT_PATH) {
-      return createNotFoundResponse()
-    }
-
     if (request.method === "OPTIONS") {
       return new Response(null, {
-        status: 204, // 204 No Content is ideal for preflight responses
+        status: 204,
         headers: {
           "Access-Control-Allow-Origin": "rob.wood.pub",
           "Access-Control-Allow-Methods": "POST, OPTIONS",
@@ -195,6 +191,10 @@ export default {
       })
     }
 
-    return handleContactRequest(request, env)
+    if (url.pathname.startsWith('/api/contact')) {
+      return handleContactRequest(request, env)
+    }
+
+    return env.ASSETS.fetch(request)
   }
 }

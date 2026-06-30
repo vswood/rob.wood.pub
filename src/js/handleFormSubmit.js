@@ -26,9 +26,6 @@ function handleFormSubmit(e) {
   if(valid) {
     postForm(data)
   }
-
-
-  console.log(data)
 }
 
 function formMessage(error = false) {

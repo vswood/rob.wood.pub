@@ -65,6 +65,7 @@
           .vs-accordion-header-inner {
             .vs-accordion-title {
               color: var(--accent-2);
+
               svg {
                 transform: rotate(180deg);
                 color: var(--accent-2) !important;
@@ -80,7 +81,7 @@
       &:has(summary:focus-visible),
       &:has(.vs-accordion-button:focus-visible) {
         /* outline: 1px solid var(--accent); */
-        /* background: color-mix(in oklch, var(--primary), black 5%); */
+      /* background: color-mix(in oklch, var(--primary), black 5%); */
       /* } */
 
       .vs-accordion-button {
@@ -895,7 +896,8 @@
     }
 
     textarea {
-      height: 10lh;
+      height: 8lh !important;
+      padding-top: 1lh !important;
     }
 
     select {
@@ -1032,8 +1034,6 @@
   }
 
   #header {
-    /* background-blend-mode: darken; */
-    /* background: var(--gradient-bg); */
     background-color: color-mix(in oklch, var(--primary-dark), transparent 50%);
     bottom: 0;
     color: var(--text-color);
@@ -1053,14 +1053,8 @@
     box-shadow: var(--section-shadow);
     border-right: 0.5ch solid var(--surface-dark);
 
-
-
     @container style(--inline-size-md: var(--breakpoint-md)) {
       transform: translate3d(-300px, 0, 0);
-    }
-
-    &.open {
-      transform: translate3d(0, 0, 0);
     }
 
     @container style(--inline-size-xl: var(--breakpoint-xl)) {
@@ -1069,6 +1063,10 @@
       flex-direction: column;
       font-size: var(--small);
       transform: none;
+    }
+
+    &.open {
+      transform: translate3d(0, 0, 0);
     }
 
     &::after {
