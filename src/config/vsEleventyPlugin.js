@@ -6,7 +6,6 @@ import schema from '@quasibit/eleventy-plugin-schema'
 import vsFilters from './vsFilters.js'
 import vsTransforms from './vsTransforms.js'
 import vsIcons from './vsIcons.js'
-import vsCopy from './vsCopy.js'
 
 const isProd = process.env.ELEVENTY_ENV === "prod"
 
@@ -35,7 +34,6 @@ export default function(eleventyConfig) {
   eleventyConfig.addPlugin(vsFilters)
   eleventyConfig.addPlugin(vsTransforms)
   eleventyConfig.addPlugin(vsIcons)
-  eleventyConfig.addPlugin(vsCopy)
 
   eleventyConfig.addPlugin(EleventyVitePlugin, vitePluginConfig)
 }

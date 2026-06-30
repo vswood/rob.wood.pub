@@ -13,7 +13,11 @@ export default function (eleventyConfig) {
     components: ['./src/html/component/**/*.webc'],
   })
 
-  // eleventyConfig.setServerPassthroughCopyBehavior('copy')
+  eleventyConfig.addPassthroughCopy('src/css')
+  eleventyConfig.addPassthroughCopy('src/js')
+  eleventyConfig.addPassthroughCopy('src/img')
+
+  eleventyConfig.setServerPassthroughCopyBehavior('copy')
 
   eleventyConfig.setServerOptions({
     port: 8081,

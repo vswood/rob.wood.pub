@@ -1368,10 +1368,10 @@
                 /* color: var(--accent-light); */
                 color: #861F41;
                 text-shadow:
-                -2px -2px 0 #fff,
-                2px -2px 0 #fff,
-                -2px  2px 0 #fff,
-                2px  2px 0 #fff; /* Simulates a 2px sharp outline */
+                -2px -2px 0 #c5cfda,
+                2px -2px 0 #c5cfda,
+                -2px  2px 0 #c5cfda,
+                2px  2px 0 #c5cfda; /* Simulates a 2px sharp outline */
                 letter-spacing: 1px;
                 margin-bottom: 0.5rem;
                 font-weight: 700;

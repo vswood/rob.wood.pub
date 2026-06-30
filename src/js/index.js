@@ -6,7 +6,7 @@ window.vsApp = vsApp
 
 function revealBody() {
   const bodyWrap = document.getElementById('body-wrapper')
-  if(bodyWrap) {
+  if (bodyWrap) {
     bodyWrap.style.visibility = 'visible'
     bodyWrap.setAttribute('aria-busy', false)
   }
@@ -47,8 +47,8 @@ const glightboxOptions = {
   openEffect: 'zoom',
   closeEffect: 'fade',
   cssEfects: {
-    fade: { in: 'fadeIn', out: 'fadeOut' },
-    zoom: { in: 'zoomIn', out: 'zoomOut' }
+    fade: {in: 'fadeIn', out: 'fadeOut'},
+    zoom: {in: 'zoomIn', out: 'zoomOut'}
   }
 }
 
@@ -100,11 +100,32 @@ window.addEventListener('DOMContentLoaded', () => {
     offCanvasMenuOptions,
   })
 
-  if(!multipleSections) {
+  if (!multipleSections) {
     revealBody()
   }
 
   document.getElementById('contact-form').addEventListener('submit', handleFormSubmit)
+})
+
+const phoneInput = document.getElementById('input-phone')
+
+phoneInput.addEventListener('input', (e) => {
+  let input = e.target.value.replace(/\D/g, '')
+  if (input.length > 10 && input.startsWith('1')) {
+    input = input.substring(1)
+  }
+  input = input.substring(0, 10)
+
+  let size = input.length
+  if (size === 0) {
+    e.target.value = input
+  } else if (size < 4) {
+    e.target.value = `(${input}`
+  } else if (size < 7) {
+    e.target.value = `(${input.substring(0, 3)}) ${input.substring(3)}`
+  } else {
+    e.target.value = `(${input.substring(0, 3)}) ${input.substring(3, 6)}-${input.substring(6)}`
+  }
 })
 
 window.addEventListener('load', () => {
@@ -119,10 +140,10 @@ window.addEventListener('load', () => {
     })
   })
 
-  if(hasMultipleSections()) {
+  if (hasMultipleSections()) {
     window.addEventListener('section:visible', (e) => {
       const section = e.detail
-      if(section.id) {
+      if (section.id) {
         document.querySelectorAll('#navmenu a').forEach(link => link.classList.remove('active'))
         document.getElementById(`${section.id}-link`)?.classList.add('active')
       }

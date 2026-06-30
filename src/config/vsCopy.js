@@ -19,14 +19,14 @@ export default function(eleventyConfig) {
     './node_modules/glightbox/dist/css/glightbox.min.css': 'css/glightbox.min.css',
   })*/
 
-  eleventyConfig.on('eleventy.after', () => {
+  // eleventyConfig.on('eleventy.after', () => {
     /*cpSync(join(eleventyConfig.directories.output, '/vendor-css/'), join(eleventyConfig.directories.output, '/css/vendor/'), {
       recursive: true
     })*/
-    cpSync('.cache/@11ty/img/', join(eleventyConfig.directories.output, '/img/built/'), {
-      recursive: true
-    })
+    // cpSync('.cache/@11ty/img/', join(eleventyConfig.directories.output, '/img/built/'), {
+    //   recursive: true
+    // })
 
     // copyFileSync(`${join(eleventyConfig.directories.output, '/vendor-css/')}bootstrap.min.css`, `${join(eleventyConfig.directories.output, '/css/')}bootstrap.min.css`)
-  })
+  // })
 }

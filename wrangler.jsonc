@@ -1,14 +1,14 @@
 {
   "$schema": "../../node_modules/wrangler/config-schema.json",
   "name": "rwp-contact-form",
-  "main": "./src/index.js",
+  "main": "./src/api/index.js",
   "send_metrics": false,
   "compatibility_date": "2026-06-07",
   "compatibility_flags": [ "nodejs_compat" ],
   "workers_dev": false,
   "route": {
     "pattern": "rob.wood.pub/*",
-    "zone_name": "rob.wood.pub"
+    "zone_name": "wood.pub"
   },
   "assets": {
     "directory": "./dist",

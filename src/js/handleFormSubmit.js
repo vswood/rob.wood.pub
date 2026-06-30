@@ -2,6 +2,12 @@ function handleFormSubmit(e) {
   e.preventDefault()
   const formData = new FormData(e.target)
   const data = Object.fromEntries(formData.entries())
+
+  const tests = {
+    email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/,
+    phone: /^(\+1[-. ]?)?\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/,
+  }
+
   if(data.question !=='') {
     formMessage()
   }
@@ -58,7 +64,8 @@ function showSuccessLabel(el) {
 function checkInput(selector, data, exp = false) {
   const el = document.getElementById(`input-${selector}`)
   const label = el.nextElementSibling
-  if(data[selector] === '' || (exp && exp.test(data[selector]))) {
+  console.log(data[selector], exp, exp? exp.test(data[selector]) : '')
+  if(data[selector] === '' || (exp && !exp.test(data[selector]))) {
     el.classList.add('is-invalid')
     showErrorLabel(label)
     return false
