@@ -45,6 +45,16 @@ The professional portfolio site of Rob Wood, of virtualStyle intelligent systems
 
 ## Commands
 
-```zsh
-pnpm dev # runs eleventy --serve to serve page locally at localhost:8081
-```
+- `pnpm dev` starts the Eleventy dev server on `http://localhost:8081`
+- `pnpm dev:worker` starts the Cloudflare Worker locally with Wrangler on `http://127.0.0.1:8787`
+- `pnpm test` runs the Vitest suite
+- `pnpm build` generates the production site in `dist`
+
+## Local Development
+
+Run these in separate terminals for a full local contact-form loop:
+
+1. `pnpm dev:worker`
+1. `pnpm dev`
+
+The Eleventy dev server proxies `POST /api/contact` to the Wrangler worker, so the front end can keep using the same relative API path in local development and production.

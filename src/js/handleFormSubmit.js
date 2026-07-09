@@ -1,4 +1,4 @@
-function handleFormSubmit(e) {
+async function handleFormSubmit(e) {
   e.preventDefault()
   const formData = new FormData(e.target)
   const data = Object.fromEntries(formData.entries())
@@ -24,7 +24,7 @@ function handleFormSubmit(e) {
   const invalid = document.querySelectorAll('.is-invalid')
   valid = invalid.length <= 0
   if(valid) {
-    postForm(data)
+    postForm(formData)
   }
 }
 
@@ -61,7 +61,6 @@ function showSuccessLabel(el) {
 function checkInput(selector, data, exp = false) {
   const el = document.getElementById(`input-${selector}`)
   const label = el.nextElementSibling
-  console.log(data[selector], exp, exp? exp.test(data[selector]) : '')
   if(data[selector] === '' || (exp && !exp.test(data[selector]))) {
     el.classList.add('is-invalid')
     showErrorLabel(label)
@@ -74,16 +73,15 @@ function checkInput(selector, data, exp = false) {
 }
 
 async function postForm(data) {
-  const json = JSON.stringify(data);
+  const apiUrl = '/api/contact'
 
   try {
-    const response = await fetch('https://rob.wood.pub/api/contact', {
+    const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      body: json
+      body: data,
     });
 
     if (!response.ok) {
@@ -93,7 +91,7 @@ async function postForm(data) {
     const result = await response.json()
     formMessage()
   } catch (e) {
-    formMessage(`Server error: ${e.message | 'Unknown'}`)
+    formMessage(`Server error: ${e.message ?? 'Unknown'}`)
   }
 }
 

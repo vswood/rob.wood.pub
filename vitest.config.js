@@ -19,7 +19,7 @@ export default defineConfig({
       exclude: [...configDefaults.coverage.exclude, '**/*.test.js'],
     },
     browser: {
-      enabled: true,
+      enabled: false,
       provider: playwright(),
       viewport: {width: 1800, height: 1200},
       headless: true,

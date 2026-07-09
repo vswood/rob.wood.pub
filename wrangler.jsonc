@@ -28,7 +28,7 @@
     }
   ],
   "vars": {
-    "MAILGUN_DOMAIN": "'mg.virtualstyle.us'",
+    "MAILGUN_DOMAIN": "mg.virtualstyle.us",
     "FORMMAIL_FROM": "Portfolio Webform <postmaster@mg.virtualstyle.us>",
     "FORMMAIL_TO": "Rob Wood <rob@virtualstyle.us>"
   },

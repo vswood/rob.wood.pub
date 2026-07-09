@@ -5,7 +5,7 @@ import eslint from 'vite-plugin-eslint2'
 import { fontless } from 'fontless'
 import PluginCritical from 'rollup-plugin-critical'
 import browserslistToEsbuild from 'browserslist-to-esbuild'
-import { cloudflare } from "@cloudflare/vite-plugin"
+// import { cloudflare } from '@cloudflare/vite-plugin'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)

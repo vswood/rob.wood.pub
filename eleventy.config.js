@@ -2,6 +2,7 @@ import vsEleventyPlugin from './src/config/vsEleventyPlugin.js'
 import pluginWebc from '@11ty/eleventy-plugin-webc'
 import dirOutputPlugin from '@11ty/eleventy-plugin-directory-output'
 import ejsPlugin from '@11ty/eleventy-plugin-ejs'
+import {createContactProxyMiddleware} from './src/config/contactProxy.js'
 
 export default function (eleventyConfig) {
 
@@ -21,6 +22,9 @@ export default function (eleventyConfig) {
 
   eleventyConfig.setServerOptions({
     port: 8081,
+    middleware: [
+      createContactProxyMiddleware(),
+    ],
   })
 
   return {
