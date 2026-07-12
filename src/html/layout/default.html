@@ -77,6 +77,14 @@
   {% include "../../../src-assets/icons/_sprite.svg"  %}
   {% include "../include/avatar-sprite.html"  %}
 
+  <script>
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      const turnstileDiv = document.querySelector('.cf-turnstile')
+      if (turnstileDiv) {
+        turnstileDiv.setAttribute('data-sitekey', '1x00000000000000000000AA')
+      }
+    }
+  </script>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 

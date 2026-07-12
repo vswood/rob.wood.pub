@@ -34,6 +34,12 @@ class ServiceResponseError extends Error {
 }
 
 function createErrorResponse(error) {
+  console.error('Worker contact form error:', error)
+
+  if (error instanceof ServiceResponseError && error.response) {
+    console.error('Worker contact form error details:', JSON.stringify(error.response, null, 2))
+  }
+
   if (error instanceof RequestValidationError) {
     return createJsonResponse({error: error.message}, 400)
   }
@@ -50,7 +56,10 @@ function createErrorResponse(error) {
     }, status)
   }
 
-  throw error
+  return createJsonResponse({
+    error: error instanceof Error ? error.message : String(error),
+    stack: error instanceof Error ? error.stack : undefined,
+  }, 500)
 }
 
 function getStringValue(formData, key) {
@@ -73,8 +82,15 @@ function getRequiredStringValue(formData, key) {
   throw new RequestValidationError(`Missing required form field: ${key}`)
 }
 
-function getRequiredEnvValue(env, key) {
-  const value = env[key]
+async function getRequiredEnvValue(env, key) {
+  const binding = env[key]
+  let value
+
+  if (binding && typeof binding === 'object' && typeof binding.get === 'function') {
+    value = await binding.get()
+  } else {
+    value = binding
+  }
 
   if (typeof value === 'string' && value.trim() !== '') {
     return value.trim()
@@ -107,7 +123,7 @@ function createAcceptedResponse(mailgunResponse) {
 
 async function verifyTurnstileToken(env, token, remoteIp) {
   const payload = new FormData()
-  payload.set('secret', getRequiredEnvValue(env, 'TURNSTILE_SECRET'))
+  payload.set('secret', await getRequiredEnvValue(env, 'TURNSTILE_SECRET'))
   payload.set('response', token)
   payload.set('remoteip', remoteIp)
 
@@ -127,12 +143,13 @@ async function verifyTurnstileToken(env, token, remoteIp) {
   })
 }
 
-function createMailgunClient(env) {
+async function createMailgunClient(env) {
   const mailgun = new Mailgun(FormData)
+  const apiKey = await getRequiredEnvValue(env, 'MAILGUN_API_KEY')
 
   return mailgun.client({
     username: 'api',
-    key: getRequiredEnvValue(env, 'MAILGUN_API_KEY'),
+    key: apiKey,
     url: MAILGUN_API_BASE_URL,
     useFetch: true,
   })
@@ -141,8 +158,8 @@ function createMailgunClient(env) {
 async function sendMailgunMessage(env, mailgunClient, contactMessage) {
   try {
     return await mailgunClient.messages.create(
-      getRequiredEnvValue(env, 'MAILGUN_DOMAIN'),
-      createMailgunPayload(env, contactMessage),
+      await getRequiredEnvValue(env, 'MAILGUN_DOMAIN'),
+      await createMailgunPayload(env, contactMessage),
     )
   } catch (error) {
     throw new ServiceResponseError('Mailgun delivery failed', {
@@ -154,14 +171,25 @@ async function sendMailgunMessage(env, mailgunClient, contactMessage) {
 }
 
 async function processContactRequest(request, env) {
+  const isLocal = env.ENVIRONMENT === 'development'
+
   const formData = await request.formData()
+  const contactMessage = getContactMessage(formData)
+
+  if (isLocal) {
+    console.log('Local contact message submission:', contactMessage)
+    return {
+      id: 'local-mock-id',
+      message: 'Local development mock delivery success',
+    }
+  }
+
   const token = getRequiredStringValue(formData, 'cf-turnstile-response')
   const remoteIp = request.headers.get('CF-Connecting-IP') ?? ''
-  const contactMessage = getContactMessage(formData)
 
   await verifyTurnstileToken(env, token, remoteIp)
 
-  const mailgunClient = createMailgunClient(env)
+  const mailgunClient = await createMailgunClient(env)
 
   return sendMailgunMessage(env, mailgunClient, contactMessage)
 }
@@ -239,16 +267,15 @@ function formatOptionalHtml(label, value) {
   return `<p><strong>${escapeHtml(label)}:</strong> ${escapeHtml(value)}</p>`
 }
 
-function createMailgunPayload(env, contactMessage) {
-  const payload = new FormData()
-  payload.set('from', getRequiredEnvValue(env, 'FORMMAIL_FROM'))
-  payload.set('to', getRequiredEnvValue(env, 'FORMMAIL_TO'))
-  payload.set('h:Reply-To', contactMessage.email)
-  payload.set('subject', `Portfolio contact: ${contactMessage.subject}`)
-  payload.set('text', createMessageText(contactMessage))
-  payload.set('html', createMessageHtml(contactMessage))
-
-  return payload
+async function createMailgunPayload(env, contactMessage) {
+  return {
+    from: await getRequiredEnvValue(env, 'FORMMAIL_FROM'),
+    to: await getRequiredEnvValue(env, 'FORMMAIL_TO'),
+    'h:Reply-To': contactMessage.email,
+    subject: `Portfolio contact: ${contactMessage.subject}`,
+    text: createMessageText(contactMessage),
+    html: createMessageHtml(contactMessage),
+  }
 }
 
 export default {

@@ -64,7 +64,7 @@ function createFormData(overrides = {}) {
 }
 
 function createRequest(formData, method = 'POST') {
-  return new Request('http://localhost/api/contact', {
+  return new Request('https://rob.wood.pub/api/contact', {
     method,
     body: formData,
   })
@@ -113,13 +113,41 @@ describe('contact worker', () => {
 
     const [domain, payload] = hoisted.mailgunMessagesCreate.mock.calls[0]
     expect(domain).toBe(baseEnv.MAILGUN_DOMAIN)
-    expect(payload.get('from')).toBe(baseEnv.FORMMAIL_FROM)
-    expect(payload.get('to')).toBe(baseEnv.FORMMAIL_TO)
-    expect(payload.get('subject')).toBe('Portfolio contact: Local dev check')
-    expect(payload.get('text')).toContain('Website: https://example.com')
-    expect(payload.get('text')).toContain('Hello <world>')
-    expect(payload.get('html')).toContain('&lt;world&gt;')
-    expect(payload.get('html')).toContain('<p><strong>Website:</strong> https://example.com</p>')
+    expect(payload.from).toBe(baseEnv.FORMMAIL_FROM)
+    expect(payload.to).toBe(baseEnv.FORMMAIL_TO)
+    expect(payload.subject).toBe('Portfolio contact: Local dev check')
+    expect(payload.text).toContain('Website: https://example.com')
+    expect(payload.text).toContain('Hello <world>')
+    expect(payload.html).toContain('&lt;world&gt;')
+    expect(payload.html).toContain('<p><strong>Website:</strong> https://example.com</p>')
+  })
+
+  it('accepts Secrets Store binding objects for secrets', async () => {
+    hoisted.turnstileFetch.mockResolvedValue(
+      new Response(JSON.stringify({success: true}), {status: 200}),
+    )
+    hoisted.mailgunMessagesCreate.mockResolvedValue({id: '<msg-id>', message: 'Queued'})
+
+    const secretsStoreEnv = {
+      ...baseEnv,
+      TURNSTILE_SECRET: {
+        get: async () => 'test-turnstile-secret',
+      },
+      MAILGUN_API_KEY: {
+        get: async () => 'test-mailgun-key',
+      },
+    }
+
+    const request = createRequest(createFormData())
+    const response = await worker.default.fetch(request, secretsStoreEnv, {})
+
+    expect(response.status).toBe(202)
+    const body = await response.json()
+    expect(body.ok).toBe(true)
+
+    expect(hoisted.turnstileFetch).toHaveBeenCalledTimes(1)
+    const turnstileRequest = hoisted.turnstileFetch.mock.calls[0][1]
+    expect(turnstileRequest.body.get('secret')).toBe('test-turnstile-secret')
   })
 
   it('returns a validation error for missing fields', async () => {
@@ -139,7 +167,7 @@ describe('contact worker', () => {
   })
 
   it('returns a method error for non-post requests', async () => {
-    const request = new Request('http://localhost/api/contact', {method: 'GET'})
+    const request = new Request('https://rob.wood.pub/api/contact', {method: 'GET'})
     const response = await worker.default.fetch(request, baseEnv, {})
 
     expect(response.status).toBe(405)
@@ -149,7 +177,7 @@ describe('contact worker', () => {
   })
 
   it('returns the CORS preflight response', async () => {
-    const request = new Request('http://localhost/api/contact', {method: 'OPTIONS'})
+    const request = new Request('https://rob.wood.pub/api/contact', {method: 'OPTIONS'})
     const response = await worker.default.fetch(request, baseEnv, {})
 
     expect(response.status).toBe(204)

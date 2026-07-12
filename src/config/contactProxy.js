@@ -75,10 +75,14 @@ async function forwardContactRequest(request, workerOrigin = WORKER_DEV_ORIGIN) 
   })
 
   const responseBody = await response.arrayBuffer()
+  const responseHeaders = new Headers(response.headers)
+
+  responseHeaders.delete('content-encoding')
+  responseHeaders.delete('content-length')
 
   return new Response(responseBody, {
     status: response.status,
-    headers: response.headers,
+    headers: responseHeaders,
   })
 }
 
