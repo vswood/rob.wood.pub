@@ -52,8 +52,6 @@ const glightboxOptions = {
   }
 }
 
-const counterOptions = {}
-
 const lenisOptions = {
   allowNestedScroll: true,
   // infinite: true,
@@ -87,8 +85,6 @@ window.addEventListener('DOMContentLoaded', () => {
     setAnimateVisible: multipleSections,
     glightboxOptions,
     setTooltips: true,
-    setCounters: true,
-    counterOptions,
     setScreensaver: shouldUseScreensaver(),
     setScrollTop: true,
     setLenis: shouldUseLenis(),
