@@ -47,7 +47,7 @@ curnav: contact
               <span class="topic-title"><b>Email</b> me</span>
               <span class="detail-value">
                 <span id="eml"></span>
-                <script>const p = (a) => {return a.join('')}; const e = new Array(['&#x75;', '&#x73;',], ['&#x72;', '&#x6F;', '&#x62;',], ['&#x76;', '&#x69;', '&#x72;', '&#x74;', '&#x75;', '&#x61;', '&#x6C;', '&#x73;', '&#x74;', '&#x79;', '&#x6C;', '&#x65;',], ['&#x40;',], ['&#x2E;',],); document.getElementById('eml').innerHTML = "<a href='mailto:" + p(e[1]) + p(e[3]) + p(e[2]) + p(e[4]) + p(e[0]) + "'>" + p(e[1]) + p(e[3]) + p(e[2]) + p(e[4]) + p(e[0]) + "</a>";</script>
+                <script>const p = (a) => {return a.map(s => String.fromCharCode(parseInt(s.replace(/&#x|;/g, ''), 16))).join('')}; const e = new Array(['&#x75;', '&#x73;',], ['&#x72;', '&#x6F;', '&#x62;',], ['&#x76;', '&#x69;', '&#x72;', '&#x74;', '&#x75;', '&#x61;', '&#x6C;', '&#x73;', '&#x74;', '&#x79;', '&#x6C;', '&#x65;',], ['&#x40;',], ['&#x2E;',],); const raw = p(e[1]) + p(e[3]) + p(e[2]) + p(e[4]) + p(e[0]); const aEml = document.createElement('a'); aEml.href = 'mailto:' + raw; aEml.textContent = raw; document.getElementById('eml').appendChild(aEml);</script>
               </span>
             </div>
           </div>
@@ -62,7 +62,7 @@ curnav: contact
               <span class="detail-value">
                 <span id="phn"></span>
                 <script>
-                  const b = new Array(['&#x33;','&#x30;','&#x36;',],['&#x20;','&#x28;','&#x33;','&#x31;','&#x33;','&#x29;','&#x20;',],['&#x2B;','&#x31;',],['&#x31;','&#x30;','&#x36;','&#x34;',],['&#x2D;',],); document.getElementById('phn').innerHTML = "<a href='tel:" + p(b[2]) + p(b[1]) + p(b[0]) + p(b[4]) + p(b[3]) + "'>" + p(b[2]) + p(b[1]) + p(b[0]) + p(b[4]) + p(b[3]) + "</a>";</script>
+                  const b = new Array(['&#x33;','&#x30;','&#x36;',],['&#x20;','&#x28;','&#x33;','&#x31;','&#x33;','&#x29;','&#x20;',],['&#x2B;','&#x31;',],['&#x31;','&#x30;','&#x36;','&#x34;',],['&#x2D;',],); const rawPhn = p(b[2]) + p(b[1]) + p(b[0]) + p(b[4]) + p(b[3]); const aPhn = document.createElement('a'); aPhn.href = 'tel:' + rawPhn; aPhn.textContent = rawPhn; document.getElementById('phn').appendChild(aPhn);</script>
                 </span>
             </div>
           </div>
