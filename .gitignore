@@ -78,3 +78,5 @@ yarn-error.log*
 
 *storybook.log
 storybook-static
+coverage-reports/
+docs/coverage/
