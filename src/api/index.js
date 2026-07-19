@@ -268,9 +268,14 @@ function formatOptionalHtml(label, value) {
 }
 
 async function createMailgunPayload(env, contactMessage) {
+  const [from, to] = await Promise.all([
+    getRequiredEnvValue(env, 'FORMMAIL_FROM'),
+    getRequiredEnvValue(env, 'FORMMAIL_TO'),
+  ])
+
   return {
-    from: await getRequiredEnvValue(env, 'FORMMAIL_FROM'),
-    to: await getRequiredEnvValue(env, 'FORMMAIL_TO'),
+    from,
+    to,
     'h:Reply-To': contactMessage.email,
     subject: `Portfolio contact: ${contactMessage.subject}`,
     text: createMessageText(contactMessage),
