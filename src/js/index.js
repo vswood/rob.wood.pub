@@ -111,20 +111,24 @@ const phoneInput = document.getElementById('input-phone')
 
 phoneInput.addEventListener('input', (e) => {
   let input = e.target.value.replace(/\D/g, '')
-  if (input.length > 10 && input.startsWith('1')) {
-    input = input.substring(1)
+  if (input.length > 10 && input[0] === '1') {
+    input = input.substring(1, 11)
+  } else if (input.length > 10) {
+    input = input.substring(0, 10)
   }
-  input = input.substring(0, 10)
 
-  let size = input.length
-  if (size === 0) {
+  if (input.length === 0) {
     e.target.value = input
-  } else if (size < 4) {
-    e.target.value = `(${input}`
-  } else if (size < 7) {
-    e.target.value = `(${input.substring(0, 3)}) ${input.substring(3)}`
+    return
+  }
+
+  const match = input.match(/^(\d{1,3})(\d{1,3})?(\d{1,4})?$/)
+  if (match[3]) {
+    e.target.value = `(${match[1]}) ${match[2]}-${match[3]}`
+  } else if (match[2]) {
+    e.target.value = `(${match[1]}) ${match[2]}`
   } else {
-    e.target.value = `(${input.substring(0, 3)}) ${input.substring(3, 6)}-${input.substring(6)}`
+    e.target.value = `(${match[1]}`
   }
 })
 
