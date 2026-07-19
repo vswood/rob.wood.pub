@@ -358,12 +358,6 @@ export default async function initGsap(plugins, scrollTriggerOptions = {}) {
     // initSectionStacking()
     initSectionAnimations()
     initTestimonialsCarousel(scrollTriggerOptions)
-    // window.addEventListener('section:visible', e => {
-    //   if(e.detail.id === 'testimonials') {
-    //     window.ScrollTrigger.refresh()
-    //   }
-    // })
-    // window.ScrollTrigger.refresh()
   }
   if(plugins.includes('SplitText')) {
     const st = await import('gsap/SplitText')
