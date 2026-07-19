@@ -18,11 +18,6 @@ export default function initLenis(lenisOptions, scrollBarColor, scrollbarActiveC
   window.lenis.on('scroll', (e) => {
     ScrollTrigger.update()
     htmlScrollbarOnscroll(e, scrollTimeout, scrollBarColor, scrollbarActiveColor)
-    if (false) {
-      setTimeout(() => {
-        window.lenis.scrollTo(0, {immediate: true})
-      }, 500)
-    }
   })
 
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
