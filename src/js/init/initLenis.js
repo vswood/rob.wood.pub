@@ -31,7 +31,6 @@ export default function initLenis(lenisOptions, scrollBarColor, scrollbarActiveC
 
       const targetId = this.getAttribute('href')
       const targetElement = document.querySelector(targetId)
-      console.log(targetId, targetElement)
       if (targetElement) {
         setTimeout(() => {
           lenis.scrollTo(targetElement)
