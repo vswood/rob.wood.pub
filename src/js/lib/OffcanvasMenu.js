@@ -74,11 +74,17 @@ export default class OffcanvasMenu {
       }
     })
 
-    document.querySelectorAll('.navmenu a').forEach(el => el.addEventListener('click', (e) => {
-      if ($(this.#headerToggle).css('display') !== 'none' &&window.location.hash && document.querySelector(window.location.hash)) {
-        this.#close()
-      }
-    }))
+    document.querySelectorAll('.navmenu').forEach(nav => {
+      nav.addEventListener('click', (e) => {
+        const link = e.target.closest('a')
+        if (link) {
+          const hash = link.hash || window.location.hash
+          if ($(this.#headerToggle).css('display') !== 'none' && hash && document.querySelector(hash)) {
+            this.#close()
+          }
+        }
+      })
+    })
 
     window.addEventListener('toggle:menu', this)
 
