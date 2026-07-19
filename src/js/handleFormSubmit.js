@@ -36,7 +36,7 @@ function formMessage(error = false) {
   } else {
     const msg = document.querySelector('.error.message')
     msg.style.display = 'block'
-    msg.innerHTML = error
+    msg.textContent = error
   }
   setTimeout(formReset, 8000)
 }
