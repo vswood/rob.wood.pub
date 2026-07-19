@@ -246,6 +246,9 @@ importers:
       jsdoc:
         specifier: ^4.0.5
         version: 4.0.5(patch_hash=cc20185b2f013e7dafba247a96a9037b4fe05476fee6a611bdfc49ad4280656c)
+      jsdom:
+        specifier: 29.1.1
+        version: 29.1.1
       monocart-coverage-reports:
         specifier: ^2.12.11
         version: 2.12.11(patch_hash=be6aedbbc7ae4767f2b575897df4d332ad950e2c9fd6682dbf73e6932604fc45)
@@ -1364,6 +1367,7 @@ packages:
   '@mocks-server/config@1.4.1':
     resolution: {integrity: sha512-+CAcBxl3RiUoIJ7sDtn6077OXIdmrfTs92TT7G29DJLI+TtYKYSzw5q2Bhvr+AEhEpCAjyaPMoy3BSWTWzt/HA==}
     engines: {node: '>=14.x'}
+    deprecated: This package has been discontinued and is no longer maintained. It will not receive bug fixes or security updates.
 
   '@napi-rs/wasm-runtime@1.1.4':
     resolution: {integrity: sha512-3NQNNgA1YSlJb/kMH1ildASP9HW7/7kYnRI2szWJaofaS1hWmbGI4H+d3+22aGzXXN9IJ+n+GiFVcGipJP18ow==}
@@ -6241,10 +6245,6 @@ packages:
     resolution: {integrity: sha512-6KQ/+QxK49Z/p3HO6E5ZCZWNnCasyZLa5ExaVYyvPxUwKtbCPMKELJOqh7EqOle0t9cH/7d2TaaTRRa6Nhs4YQ==}
     engines: {node: '>=20.18.1'}
 
-  undici@7.26.0:
-    resolution: {integrity: sha512-3O9Tf67pGhgOv9jM35AbhkXAKi13f3oy3aE4CSgr+TckGeY+/iu97ZXN+J7DpHPzLbVApFd1IFhcnBjREYXYcg==}
-    engines: {node: '>=20.18.1'}
-
   undici@7.28.0:
     resolution: {integrity: sha512-cRZYrTDwWznlnRiPjggAGxZXanty6M8RV1ff8Wm4LWXBp7/IG8v5DnOm74DtUBp9OONpK75YlPnIjQqX0dBDtA==}
     engines: {node: '>=20.18.1'}
@@ -8905,7 +8905,7 @@ snapshots:
       parse5: 7.3.0
       parse5-htmlparser2-tree-adapter: 7.1.0
       parse5-parser-stream: 7.1.2
-      undici: 7.26.0
+      undici: 7.28.0
       whatwg-mimetype: 4.0.0
     transitivePeerDependencies:
       - '@noble/hashes'
@@ -10978,7 +10978,7 @@ snapshots:
       saxes: 6.0.0
       symbol-tree: 3.2.4
       tough-cookie: 6.0.1
-      undici: 7.26.0
+      undici: 7.28.0
       w3c-xmlserializer: 5.0.0
       webidl-conversions: 8.0.1
       whatwg-mimetype: 5.0.0
@@ -13433,8 +13433,6 @@ snapshots:
   undici-types@7.24.6: {}
 
   undici@7.24.8: {}
-
-  undici@7.26.0: {}
 
   undici@7.28.0: {}
 
