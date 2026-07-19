@@ -1,0 +1,58 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - trunk
+  pull_request:
+    branches:
+      - trunk
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.10.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run Tests
+        run: |
+          if [ "${{ github.event_name }}" = "push" ] || [ -z "${{ github.base_ref }}" ]; then
+            echo "Push event or missing base ref. Running all tests."
+            pnpm test
+          else
+            BASE_BRANCH="origin/${{ github.base_ref }}"
+            echo "Detecting changes relative to base branch: $BASE_BRANCH"
+            
+            # Fetch the base branch explicitly to ensure it exists for diffing
+            git fetch origin ${{ github.base_ref }} --depth=1
+            
+            # Get list of changed files
+            CHANGED_FILES=$(git diff --name-only "$BASE_BRANCH"...)
+            
+            if echo "$CHANGED_FILES" | grep -qE '^(package\.json|pnpm-lock\.yaml|vitest\.config\.js|pnpm-workspace\.yaml|\.github/workflows/)'; then
+              echo "Configuration files changed. Running all tests."
+              pnpm test
+            else
+              echo "Running tests related to changed files."
+              git diff --name-only -z "$BASE_BRANCH"... | xargs -0 -r pnpm exec vitest related --run
+            fi
+          fi
