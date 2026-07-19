@@ -30,8 +30,6 @@ export default async function initApp({
   setAnimateVisible = false,
   glightboxOptions = {},
   setTooltips = false,
-  setCounters = false,
-  counterOptions = {separator: true},
   setScreensaver = false,
   setScrollTop = false,
   setLenis = false,
@@ -55,11 +53,6 @@ export default async function initApp({
   }
 
   if(vsApp.prefersReducedMotion === false) {
-
-    // if(setCounters && document.querySelector('.purecounter')) {
-    //   const initCounter = await loadDefault(import('./initCounter.js'))
-    //   initCounter(counterOptions)
-    // }
 
     if(setAnimateVisible && animationSections.length > 0) {
       const animateVisible = await loadDefault(import('../lib/animateVisible.js'))
