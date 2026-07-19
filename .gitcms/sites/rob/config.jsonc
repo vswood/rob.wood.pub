@@ -1,0 +1,75 @@
+{
+  "version": "1.2",
+  "media": {
+    "default_library": "repo_media",
+    "libraries": [
+      {
+        "key": "repo_media",
+        "label": "Repository media",
+        "references": {
+          "write": {
+            "mode": "root_relative",
+            "base_path": "/"
+          },
+          "allow_default_library_fallback": true
+        },
+        "limits": {
+          "max_file_size_mb": 10,
+          "accepted_mime_types": [
+            "image/*"
+          ]
+        },
+        "driver": "git",
+        "storage": {
+          "root_path": "src/img"
+        }
+      }
+    ]
+  },
+  "ssg_framework": "eleventy",
+  "frontmatter_format": "yaml",
+  "sitemap_url": "https://rob.wood.pub/sitemap.xml",
+  "publishing_mode": "editorial_workflow",
+  "i18n": {
+    "enabled": true,
+    "locales": [
+      "en"
+    ],
+    "default_locale": "en",
+    "prefix_default_locale": true
+  },
+  "collections": [
+    {
+      "name": "blog",
+      "git_path": "src/content/blog",
+      "file_extension": ".md",
+      "filename_pattern": "{title.kebabCase}",
+      "label": "Tech Journal",
+      "description": "Thoughts about tech, the tech industry, and some philosophy.",
+      "i18n": {
+        "enabled": true,
+        "strategy": "path"
+      },
+      "frontmatter_schema": [
+        {
+          "name": "title",
+          "type": "title",
+          "required": true
+        },
+        {
+          "name": "text",
+          "type": "richtext",
+          "required": true
+        },
+        {
+          "name": "image",
+          "type": "image"
+        },
+        {
+          "name": "created",
+          "type": "datetime"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "sites": [
+    {
+      "key": "rob",
+      "display_name": "Rob",
+      "website_url": "https://rob.wood.pub",
+      "root_path": ""
+    }
+  ]
+}
