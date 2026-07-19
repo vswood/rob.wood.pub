@@ -23,20 +23,13 @@ export default class FocusTrap {
   }
 
   keydownHandler(e) {
-    // if (e.key === 'Escape') {
-    //   console.log('Escape key pressed')
-    //   this.disable()
-    // }
-
     if (e.key === 'Tab' && !e.shiftKey) {
-      console.log('Tab key pressed')
       if(e.currentTarget === this.#lastEl) {
         this.#firstEl.focus()
       }
     }
 
     else if (e.key === 'Tab' && e.shiftKey) {
-      console.log('Shift + Tab pressed')
       if(e.currentTarget === this.#firstEl) {
         this.#lastEl.focus()
       }
