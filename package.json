@@ -99,7 +99,7 @@
     "vite-plugin-eslint2": "^5.1.0",
     "vitest": "^4.1.7",
     "vitest-monocart-coverage": "^4.0.2",
-    "wrangler": "^4.106.0"
+    "wrangler": "^4.112.0"
   },
   "packageManager": "pnpm@11.10.0",
   "dependencies": {

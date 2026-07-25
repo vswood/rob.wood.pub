@@ -98,6 +98,7 @@ window.addEventListener('DOMContentLoaded', () => {
     setGsap: shouldUseGsap(),
     gsapPlugins,
     offCanvasMenuOptions,
+    setFullscreen: true,
   })
 
   if (!multipleSections) {

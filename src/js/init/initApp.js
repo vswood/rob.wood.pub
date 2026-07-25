@@ -42,7 +42,14 @@ export default async function initApp({
   gsapPlugins = [],
   scrollTriggerOptions = {},
   offCanvasMenuOptions,
+  setFullscreen = true,
+  fullscreenOptions = {},
 } = {}) {
+  if (setFullscreen) {
+    const initFullscreen = await loadDefault(import('./initFullscreen.js'))
+    initFullscreen(fullscreenOptions)
+  }
+
   if (hasRequiredMenuElements(offCanvasMenuOptions)) {
     const OffcanvasMenu = await loadDefault(import('../lib/OffcanvasMenu.js'))
     const menu = new OffcanvasMenu(offCanvasMenuOptions)

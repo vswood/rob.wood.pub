@@ -21,6 +21,8 @@
       visibility: hidden;
       width: 100%;
       height: 100%;
+      position: relative;
+      z-index: 500;
     }
 
     :host(.loading) {
@@ -147,6 +149,10 @@
         this.#loaded = true
         this.classList.remove('loading')
         this.style.display = 'none'
+        const headerToggle = document.querySelector('.nav-wrapper .header-toggle')
+        if (headerToggle) {
+          headerToggle.style.opacity = 1
+        }
         vsApp.emit('preloader:exit')
       }
 

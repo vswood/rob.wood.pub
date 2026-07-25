@@ -321,6 +321,7 @@
       bottom: 60px;
       left: 10px;
       z-index: 9;
+      opacity: 0;
 
       @container style(--inline-size-xl: var(--breakpoint-xl)) {
         display: none;
@@ -364,6 +365,7 @@
         --line-3o: -134;
       }
     }
+
   }
 
   .actions {
